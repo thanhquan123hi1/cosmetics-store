@@ -1,0 +1,9 @@
+D:\GitHub\cosmetics-store\BusinessAccessLayer\bin\Debug\BusinessAccessLayer.dll
+D:\GitHub\cosmetics-store\BusinessAccessLayer\bin\Debug\BusinessAccessLayer.pdb
+D:\GitHub\cosmetics-store\BusinessAccessLayer\bin\Debug\DataAccessLayer.dll
+D:\GitHub\cosmetics-store\BusinessAccessLayer\bin\Debug\DataAccessLayer.pdb
+D:\GitHub\cosmetics-store\BusinessAccessLayer\obj\Debug\BusinessAccessLayer.csproj.AssemblyReference.cache
+D:\GitHub\cosmetics-store\BusinessAccessLayer\obj\Debug\BusinessAccessLayer.csproj.CoreCompileInputs.cache
+D:\GitHub\cosmetics-store\BusinessAccessLayer\obj\Debug\Business.395A7FC9.Up2Date
+D:\GitHub\cosmetics-store\BusinessAccessLayer\obj\Debug\BusinessAccessLayer.dll
+D:\GitHub\cosmetics-store\BusinessAccessLayer\obj\Debug\BusinessAccessLayer.pdb
