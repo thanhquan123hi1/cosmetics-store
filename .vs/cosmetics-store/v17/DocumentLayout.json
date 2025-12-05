@@ -7,7 +7,7 @@
       "RelativeMoniker": "D:0:0:{3DEAB2B2-E7D0-458E-A79A-A67E673F8981}|cosmetics-store\\cosmetics-store.csproj|solutionrelative:cosmetics-store\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3DEAB2B2-E7D0-458E-A79A-A67E673F8981}|cosmetics-store\\cosmetics-store.csproj|d:\\github\\cosmetics-store\\cosmetics-store\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{3DEAB2B2-E7D0-458E-A79A-A67E673F8981}|cosmetics-store\\cosmetics-store.csproj|D:\\GitHub\\cosmetics-store\\cosmetics-store\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{3DEAB2B2-E7D0-458E-A79A-A67E673F8981}|cosmetics-store\\cosmetics-store.csproj|solutionrelative:cosmetics-store\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
@@ -41,8 +41,7 @@
               "ToolTip": "D:\\GitHub\\cosmetics-store\\cosmetics-store\\Form1.cs [Design]",
               "RelativeToolTip": "cosmetics-store\\Form1.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-05T12:44:29.334Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2025-12-05T12:44:29.334Z"
             },
             {
               "$type": "Document",
@@ -52,7 +51,7 @@
               "RelativeDocumentMoniker": "cosmetics-store\\Program.cs",
               "ToolTip": "D:\\GitHub\\cosmetics-store\\cosmetics-store\\Program.cs",
               "RelativeToolTip": "cosmetics-store\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAmwBIAAAApAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAmwA0AAAATAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-12-05T12:44:06.801Z",
               "EditorCaption": ""
