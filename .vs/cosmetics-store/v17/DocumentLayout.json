@@ -3,19 +3,35 @@
   "WorkspaceRootPath": "D:\\GitHub\\cosmetics-store\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{AD771EA8-9463-4721-A40E-82834E62B640}|DataAccessLayer\\DataAccessLayer.csproj|d:\\github\\cosmetics-store\\dataaccesslayer\\entityclass\\taikhoan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AD771EA8-9463-4721-A40E-82834E62B640}|DataAccessLayer\\DataAccessLayer.csproj|solutionrelative:dataaccesslayer\\entityclass\\taikhoan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AD771EA8-9463-4721-A40E-82834E62B640}|DataAccessLayer\\DataAccessLayer.csproj|d:\\github\\cosmetics-store\\dataaccesslayer\\entityclass\\nhacungcap.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AD771EA8-9463-4721-A40E-82834E62B640}|DataAccessLayer\\DataAccessLayer.csproj|solutionrelative:dataaccesslayer\\entityclass\\nhacungcap.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AD771EA8-9463-4721-A40E-82834E62B640}|DataAccessLayer\\DataAccessLayer.csproj|d:\\github\\cosmetics-store\\dataaccesslayer\\entityclass\\hoadon.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AD771EA8-9463-4721-A40E-82834E62B640}|DataAccessLayer\\DataAccessLayer.csproj|solutionrelative:dataaccesslayer\\entityclass\\hoadon.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AD771EA8-9463-4721-A40E-82834E62B640}|DataAccessLayer\\DataAccessLayer.csproj|d:\\github\\cosmetics-store\\dataaccesslayer\\entityclass\\ct_phieunhap.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AD771EA8-9463-4721-A40E-82834E62B640}|DataAccessLayer\\DataAccessLayer.csproj|solutionrelative:dataaccesslayer\\entityclass\\ct_phieunhap.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{AD771EA8-9463-4721-A40E-82834E62B640}|DataAccessLayer\\DataAccessLayer.csproj|d:\\github\\cosmetics-store\\dataaccesslayer\\cosmeticscontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{AD771EA8-9463-4721-A40E-82834E62B640}|DataAccessLayer\\DataAccessLayer.csproj|solutionrelative:dataaccesslayer\\cosmeticscontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3DEAB2B2-E7D0-458E-A79A-A67E673F8981}|cosmetics-store\\cosmetics-store.csproj|d:\\github\\cosmetics-store\\cosmetics-store\\app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "AbsoluteMoniker": "D:0:0:{3DEAB2B2-E7D0-458E-A79A-A67E673F8981}|cosmetics-store\\cosmetics-store.csproj|D:\\GitHub\\cosmetics-store\\cosmetics-store\\app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
       "RelativeMoniker": "D:0:0:{3DEAB2B2-E7D0-458E-A79A-A67E673F8981}|cosmetics-store\\cosmetics-store.csproj|solutionrelative:cosmetics-store\\app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3DEAB2B2-E7D0-458E-A79A-A67E673F8981}|cosmetics-store\\cosmetics-store.csproj|d:\\github\\cosmetics-store\\cosmetics-store\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{3DEAB2B2-E7D0-458E-A79A-A67E673F8981}|cosmetics-store\\cosmetics-store.csproj|D:\\GitHub\\cosmetics-store\\cosmetics-store\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3DEAB2B2-E7D0-458E-A79A-A67E673F8981}|cosmetics-store\\cosmetics-store.csproj|solutionrelative:cosmetics-store\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{AD771EA8-9463-4721-A40E-82834E62B640}|DataAccessLayer\\DataAccessLayer.csproj|d:\\github\\cosmetics-store\\dataaccesslayer\\app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "AbsoluteMoniker": "D:0:0:{AD771EA8-9463-4721-A40E-82834E62B640}|DataAccessLayer\\DataAccessLayer.csproj|D:\\GitHub\\cosmetics-store\\dataaccesslayer\\app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
       "RelativeMoniker": "D:0:0:{AD771EA8-9463-4721-A40E-82834E62B640}|DataAccessLayer\\DataAccessLayer.csproj|solutionrelative:dataaccesslayer\\app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
     }
   ],
@@ -26,7 +42,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
@@ -42,7 +58,59 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "TaiKhoan.cs",
+              "DocumentMoniker": "D:\\GitHub\\cosmetics-store\\DataAccessLayer\\EntityClass\\TaiKhoan.cs",
+              "RelativeDocumentMoniker": "DataAccessLayer\\EntityClass\\TaiKhoan.cs",
+              "ToolTip": "D:\\GitHub\\cosmetics-store\\DataAccessLayer\\EntityClass\\TaiKhoan.cs",
+              "RelativeToolTip": "DataAccessLayer\\EntityClass\\TaiKhoan.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-05T17:06:33.746Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "NhaCungCap.cs",
+              "DocumentMoniker": "D:\\GitHub\\cosmetics-store\\DataAccessLayer\\EntityClass\\NhaCungCap.cs",
+              "RelativeDocumentMoniker": "DataAccessLayer\\EntityClass\\NhaCungCap.cs",
+              "ToolTip": "D:\\GitHub\\cosmetics-store\\DataAccessLayer\\EntityClass\\NhaCungCap.cs",
+              "RelativeToolTip": "DataAccessLayer\\EntityClass\\NhaCungCap.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-05T17:03:42.091Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 2,
+              "Title": "HoaDon.cs",
+              "DocumentMoniker": "D:\\GitHub\\cosmetics-store\\DataAccessLayer\\EntityClass\\HoaDon.cs",
+              "RelativeDocumentMoniker": "DataAccessLayer\\EntityClass\\HoaDon.cs",
+              "ToolTip": "D:\\GitHub\\cosmetics-store\\DataAccessLayer\\EntityClass\\HoaDon.cs",
+              "RelativeToolTip": "DataAccessLayer\\EntityClass\\HoaDon.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAgwCAAAAAwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-05T17:01:28.145Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "CT_PhieuNhap.cs",
+              "DocumentMoniker": "D:\\GitHub\\cosmetics-store\\DataAccessLayer\\EntityClass\\CT_PhieuNhap.cs",
+              "RelativeDocumentMoniker": "DataAccessLayer\\EntityClass\\CT_PhieuNhap.cs",
+              "ToolTip": "D:\\GitHub\\cosmetics-store\\DataAccessLayer\\EntityClass\\CT_PhieuNhap.cs",
+              "RelativeToolTip": "DataAccessLayer\\EntityClass\\CT_PhieuNhap.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAA7wBUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-05T16:47:32.38Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
               "Title": "Program.cs",
               "DocumentMoniker": "D:\\GitHub\\cosmetics-store\\cosmetics-store\\Program.cs",
               "RelativeDocumentMoniker": "cosmetics-store\\Program.cs",
@@ -50,12 +118,11 @@
               "RelativeToolTip": "cosmetics-store\\Program.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-05T15:18:13.596Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-05T15:18:13.596Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 5,
               "Title": "App.config",
               "DocumentMoniker": "D:\\GitHub\\cosmetics-store\\cosmetics-store\\App.config",
               "RelativeDocumentMoniker": "cosmetics-store\\App.config",
@@ -63,12 +130,11 @@
               "RelativeToolTip": "cosmetics-store\\App.config",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
-              "WhenOpened": "2025-12-05T15:16:39.235Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-05T15:16:39.235Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 7,
               "Title": "App.config",
               "DocumentMoniker": "D:\\GitHub\\cosmetics-store\\DataAccessLayer\\App.config",
               "RelativeDocumentMoniker": "DataAccessLayer\\App.config",
@@ -76,18 +142,17 @@
               "RelativeToolTip": "DataAccessLayer\\App.config",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
-              "WhenOpened": "2025-12-05T15:16:32.049Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-05T15:16:32.049Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 4,
               "Title": "CosmeticsContext.cs",
               "DocumentMoniker": "D:\\GitHub\\cosmetics-store\\DataAccessLayer\\CosmeticsContext.cs",
               "RelativeDocumentMoniker": "DataAccessLayer\\CosmeticsContext.cs",
               "ToolTip": "D:\\GitHub\\cosmetics-store\\DataAccessLayer\\CosmeticsContext.cs",
               "RelativeToolTip": "DataAccessLayer\\CosmeticsContext.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAAA8AAAAyAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAyAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-12-05T15:15:13.653Z",
               "EditorCaption": ""

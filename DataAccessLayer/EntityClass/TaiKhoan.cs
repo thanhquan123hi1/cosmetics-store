@@ -21,6 +21,11 @@ namespace DataAccessLayer.EntityClass
         [StringLength(20, ErrorMessage = "Quyền không được quá 20 ký tự")]
         public string Quyen { get; set; }
 
+        [Required(ErrorMessage = "Email là bắt buộc")]
+        [StringLength(100)]
+        [EmailAddress(ErrorMessage = "Email không hợp lệ")]
+        public string Email { get; set; }
+
         public virtual NhanVien NhanVien { get; set; }
     }
 }

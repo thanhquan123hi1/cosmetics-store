@@ -28,6 +28,10 @@ namespace DataAccessLayer.EntityClass
         [StringLength(50, ErrorMessage = "Trạng thái không được quá 50 ký tự")]
         public string TrangThai { get; set; }
 
+        [Required(ErrorMessage = "Phương thức thanh toán là bắt buộc")]
+        [StringLength(100)]
+        public string PhuongThucTT { get; set; }
+
         [ForeignKey("MaKH")]
         public virtual KhachHang KhachHang { get; set; }
 

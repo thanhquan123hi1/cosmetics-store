@@ -24,6 +24,9 @@ namespace DataAccessLayer.EntityClass
         [Range(0, double.MaxValue, ErrorMessage = "Đơn giá nhập phải >= 0")]
         public decimal DonGiaNhap { get; set; }
 
+        [Required(ErrorMessage = "Hạn sử dụng là bắt buộc")]
+        public DateTime HanSuDung { get; set; }
+
         [ForeignKey("MaPN")]
         public virtual PhieuNhap PhieuNhap { get; set; }
 

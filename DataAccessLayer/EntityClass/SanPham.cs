@@ -29,6 +29,10 @@ namespace DataAccessLayer.EntityClass
         [Required(ErrorMessage = "Mã thương hiệu là bắt buộc")]
         public int MaThuongHieu { get; set; }
 
+        [StringLength(500)]
+        public string HinhAnh { get; set; }
+
+
         [ForeignKey("MaLoai")]
         public virtual LoaiSP LoaiSP { get; set; }
 
