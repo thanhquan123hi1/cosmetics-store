@@ -1,13 +1,10 @@
 ﻿using DataAccessLayer.EntityClass;
 using System.Data.Entity;
 
-
 namespace DataAccessLayer
 {
     public class CosmeticsContext : DbContext
     {
-        /// Để kết nối tới DBMS của mn thì vào App.config của cosmetics-store (ViewLayer) sửa chuỗi kết nối "CosmeticsDbConnection"
-
         public CosmeticsContext() : base("CosmeticsDbConnection")
         {
         }
@@ -23,6 +20,8 @@ namespace DataAccessLayer
         public DbSet<KhachHang> KhachHangs { get; set; }
         public DbSet<NhanVien> NhanViens { get; set; }
         public DbSet<TaiKhoan> TaiKhoans { get; set; }
+
+        public DbSet<AuditLog> AuditLogs { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -61,6 +60,7 @@ namespace DataAccessLayer
                 .WithMany(pn => pn.CT_PhieuNhaps)
                 .HasForeignKey(ct => ct.MaPN)
                 .WillCascadeOnDelete(false);
+
             modelBuilder.Entity<CT_PhieuNhap>()
                 .HasRequired(ct => ct.SanPham)
                 .WithMany(sp => sp.CT_PhieuNhaps)
@@ -72,6 +72,7 @@ namespace DataAccessLayer
                 .WithMany(hd => hd.CT_HoaDons)
                 .HasForeignKey(ct => ct.MaHD)
                 .WillCascadeOnDelete(false);
+
             modelBuilder.Entity<CT_HoaDon>()
                 .HasRequired(ct => ct.SanPham)
                 .WithMany(sp => sp.CT_HoaDons)
@@ -81,6 +82,13 @@ namespace DataAccessLayer
             modelBuilder.Entity<NhanVien>()
                 .HasOptional(nv => nv.TaiKhoan)
                 .WithRequired(tk => tk.NhanVien);
+
+            modelBuilder.Entity<AuditLog>()
+                .HasOptional(a => a.NhanVien)
+                .WithMany()
+                .HasForeignKey(a => a.MaNV)
+                .WillCascadeOnDelete(false);
+
 
             base.OnModelCreating(modelBuilder);
         }

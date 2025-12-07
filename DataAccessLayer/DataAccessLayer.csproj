@@ -52,6 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CosmeticsContext.cs" />
+    <Compile Include="EntityClass\AuditLog.cs" />
     <Compile Include="EntityClass\CT_HoaDon.cs" />
     <Compile Include="EntityClass\CT_PhieuNhap.cs" />
     <Compile Include="EntityClass\HoaDon.cs" />
