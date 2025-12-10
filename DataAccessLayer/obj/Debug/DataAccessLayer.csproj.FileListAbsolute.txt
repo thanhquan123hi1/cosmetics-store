@@ -4,3 +4,15 @@ D:\GitHub\cosmetics-store\DataAccessLayer\obj\Debug\DataAccessLayer.csproj.Assem
 D:\GitHub\cosmetics-store\DataAccessLayer\obj\Debug\DataAccessLayer.csproj.CoreCompileInputs.cache
 D:\GitHub\cosmetics-store\DataAccessLayer\obj\Debug\DataAccessLayer.dll
 D:\GitHub\cosmetics-store\DataAccessLayer\obj\Debug\DataAccessLayer.pdb
+C:\Đồ án\cosmetics-store\DataAccessLayer\bin\Debug\DataAccessLayer.dll.config
+C:\Đồ án\cosmetics-store\DataAccessLayer\bin\Debug\DataAccessLayer.dll
+C:\Đồ án\cosmetics-store\DataAccessLayer\bin\Debug\DataAccessLayer.pdb
+C:\Đồ án\cosmetics-store\DataAccessLayer\bin\Debug\EntityFramework.dll
+C:\Đồ án\cosmetics-store\DataAccessLayer\bin\Debug\EntityFramework.SqlServer.dll
+C:\Đồ án\cosmetics-store\DataAccessLayer\bin\Debug\EntityFramework.xml
+C:\Đồ án\cosmetics-store\DataAccessLayer\bin\Debug\EntityFramework.SqlServer.xml
+C:\Đồ án\cosmetics-store\DataAccessLayer\obj\Debug\DataAccessLayer.csproj.AssemblyReference.cache
+C:\Đồ án\cosmetics-store\DataAccessLayer\obj\Debug\DataAccessLayer.csproj.CoreCompileInputs.cache
+C:\Đồ án\cosmetics-store\DataAccessLayer\obj\Debug\DataAcce.E67BD773.Up2Date
+C:\Đồ án\cosmetics-store\DataAccessLayer\obj\Debug\DataAccessLayer.dll
+C:\Đồ án\cosmetics-store\DataAccessLayer\obj\Debug\DataAccessLayer.pdb

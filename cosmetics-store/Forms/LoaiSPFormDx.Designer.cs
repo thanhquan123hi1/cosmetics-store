@@ -1,0 +1,120 @@
+namespace cosmetics_store.Forms
+{
+    partial class LoaiSPFormDx
+    {
+        private System.ComponentModel.IContainer components = null;
+        private System.Windows.Forms.Panel pnlTop;
+        private DevExpress.XtraEditors.SearchControl searchControl;
+        private DevExpress.XtraEditors.SimpleButton btnAdd;
+        private DevExpress.XtraEditors.SimpleButton btnEdit;
+        private DevExpress.XtraEditors.SimpleButton btnDelete;
+        private DevExpress.XtraGrid.GridControl grid;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView;
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null)) components.Dispose();
+            base.Dispose(disposing);
+        }
+
+        private void InitializeComponent()
+        {
+            this.pnlTop = new System.Windows.Forms.Panel();
+            this.searchControl = new DevExpress.XtraEditors.SearchControl();
+            this.btnAdd = new DevExpress.XtraEditors.SimpleButton();
+            this.btnEdit = new DevExpress.XtraEditors.SimpleButton();
+            this.btnDelete = new DevExpress.XtraEditors.SimpleButton();
+            this.grid = new DevExpress.XtraGrid.GridControl();
+            this.gridView = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.pnlTop.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.searchControl.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // pnlTop
+            // 
+            this.pnlTop.Controls.Add(this.searchControl);
+            this.pnlTop.Controls.Add(this.btnAdd);
+            this.pnlTop.Controls.Add(this.btnEdit);
+            this.pnlTop.Controls.Add(this.btnDelete);
+            this.pnlTop.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlTop.Location = new System.Drawing.Point(0, 0);
+            this.pnlTop.Name = "pnlTop";
+            this.pnlTop.Size = new System.Drawing.Size(800, 48);
+            this.pnlTop.TabIndex = 0;
+            // 
+            // searchControl
+            // 
+            this.searchControl.Location = new System.Drawing.Point(12, 12);
+            this.searchControl.Name = "searchControl";
+            this.searchControl.Properties.NullValuePrompt = "Tim loai san pham...";
+            this.searchControl.Properties.ShowClearButton = false;
+            this.searchControl.Properties.ShowSearchButton = false;
+            this.searchControl.Size = new System.Drawing.Size(250, 22);
+            this.searchControl.TabIndex = 0;
+            // 
+            // btnAdd
+            // 
+            this.btnAdd.Location = new System.Drawing.Point(420, 8);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(94, 29);
+            this.btnAdd.TabIndex = 1;
+            this.btnAdd.Text = "Them";
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            // 
+            // btnEdit
+            // 
+            this.btnEdit.Location = new System.Drawing.Point(540, 8);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(94, 29);
+            this.btnEdit.TabIndex = 2;
+            this.btnEdit.Text = "Sua";
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.Location = new System.Drawing.Point(664, 8);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(94, 29);
+            this.btnDelete.TabIndex = 3;
+            this.btnDelete.Text = "Xoa";
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
+            // grid
+            // 
+            this.grid.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.grid.Location = new System.Drawing.Point(0, 48);
+            this.grid.MainView = this.gridView;
+            this.grid.Name = "grid";
+            this.grid.Size = new System.Drawing.Size(800, 402);
+            this.grid.TabIndex = 1;
+            this.grid.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridView});
+            this.grid.Click += new System.EventHandler(this.grid_Click);
+            // 
+            // gridView
+            // 
+            this.gridView.GridControl = this.grid;
+            this.gridView.Name = "gridView";
+            this.gridView.OptionsBehavior.Editable = false;
+            this.gridView.OptionsView.ShowGroupPanel = false;
+            // 
+            // LoaiSPFormDx
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.grid);
+            this.Controls.Add(this.pnlTop);
+            this.Name = "LoaiSPFormDx";
+            this.Text = "Quan ly loai san pham";
+            this.pnlTop.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.searchControl.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView)).EndInit();
+            this.ResumeLayout(false);
+
+        }
+    }
+}

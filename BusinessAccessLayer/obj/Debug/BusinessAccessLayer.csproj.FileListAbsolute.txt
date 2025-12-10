@@ -7,3 +7,18 @@ D:\GitHub\cosmetics-store\BusinessAccessLayer\obj\Debug\BusinessAccessLayer.cspr
 D:\GitHub\cosmetics-store\BusinessAccessLayer\obj\Debug\Business.395A7FC9.Up2Date
 D:\GitHub\cosmetics-store\BusinessAccessLayer\obj\Debug\BusinessAccessLayer.dll
 D:\GitHub\cosmetics-store\BusinessAccessLayer\obj\Debug\BusinessAccessLayer.pdb
+C:\Đồ án\cosmetics-store\BusinessAccessLayer\bin\Debug\BusinessAccessLayer.dll.config
+C:\Đồ án\cosmetics-store\BusinessAccessLayer\bin\Debug\BusinessAccessLayer.dll
+C:\Đồ án\cosmetics-store\BusinessAccessLayer\bin\Debug\BusinessAccessLayer.pdb
+C:\Đồ án\cosmetics-store\BusinessAccessLayer\bin\Debug\DataAccessLayer.dll
+C:\Đồ án\cosmetics-store\BusinessAccessLayer\bin\Debug\EntityFramework.dll
+C:\Đồ án\cosmetics-store\BusinessAccessLayer\bin\Debug\EntityFramework.SqlServer.dll
+C:\Đồ án\cosmetics-store\BusinessAccessLayer\bin\Debug\DataAccessLayer.pdb
+C:\Đồ án\cosmetics-store\BusinessAccessLayer\bin\Debug\EntityFramework.xml
+C:\Đồ án\cosmetics-store\BusinessAccessLayer\bin\Debug\EntityFramework.SqlServer.xml
+C:\Đồ án\cosmetics-store\BusinessAccessLayer\obj\Debug\BusinessAccessLayer.csproj.AssemblyReference.cache
+C:\Đồ án\cosmetics-store\BusinessAccessLayer\obj\Debug\BusinessAccessLayer.csproj.CoreCompileInputs.cache
+C:\Đồ án\cosmetics-store\BusinessAccessLayer\obj\Debug\Business.395A7FC9.Up2Date
+C:\Đồ án\cosmetics-store\BusinessAccessLayer\obj\Debug\BusinessAccessLayer.dll
+C:\Đồ án\cosmetics-store\BusinessAccessLayer\obj\Debug\BusinessAccessLayer.pdb
+C:\Đồ án\cosmetics-store\BusinessAccessLayer\bin\Debug\DataAccessLayer.dll.config
