@@ -26,6 +26,8 @@ namespace DataAccessLayer.EntityClass
         [EmailAddress(ErrorMessage = "Email không hợp lệ")]
         public string Email { get; set; }
 
+        public bool TrangThai { get; set; } = true;
+
         public virtual NhanVien NhanVien { get; set; }
     }
 }

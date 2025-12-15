@@ -54,8 +54,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="DTOs\LoginResult.cs" />
+    <Compile Include="DTOs\RegisterDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\AuthService.cs" />
+    <Compile Include="Services\CurrentUser.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

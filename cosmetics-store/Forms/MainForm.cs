@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using System.Windows.Forms.DataVisualization.Charting;
+using BusinessAccessLayer.Services;
 
 namespace cosmetics_store.Forms
 {
@@ -19,6 +20,7 @@ namespace cosmetics_store.Forms
         {
             InitializeComponent();
             InitializeContentPanels();
+            ConfigureRoleBasedUI();
 
             this.btnTrangChu.Click += (s, e) => ShowPanel(pnlDashboard);
             this.btnBanHang.Click += (s, e) => ShowPanel(pnlPOS);
@@ -28,7 +30,33 @@ namespace cosmetics_store.Forms
             this.btnBaoCao.Click += (s, e) => ShowPanel(pnlReports);
         }
 
+        private void ConfigureRoleBasedUI()
+        {
+            if (!CurrentUser.IsLoggedIn)
+            {
+                MessageBox.Show("Bạn chưa đăng nhập!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Application.Exit();
+                return;
+            }
 
+            // Update status bar or ribbon with user info
+            this.Text = $"Hệ thống quản lý Cosmetics - {CurrentUser.User.HoTen} ({CurrentUser.User.Quyen})";
+
+            if (CurrentUser.IsStaff)
+            {
+                // Staff: Hide admin-only features
+                if (btnNhanSu != null)
+                    btnNhanSu.Enabled = false;
+                
+                // Can add more restrictions based on business rules
+                // For example: Staff can only view reports, not manage accounts
+            }
+            else if (CurrentUser.IsAdmin)
+            {
+                // Admin: Full access to all features
+                // All buttons enabled by default
+            }
+        }
 
         private void InitializeContentPanels()
         {

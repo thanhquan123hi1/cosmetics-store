@@ -16,3 +16,9 @@ C:\Đồ án\cosmetics-store\DataAccessLayer\obj\Debug\DataAccessLayer.csproj.Co
 C:\Đồ án\cosmetics-store\DataAccessLayer\obj\Debug\DataAcce.E67BD773.Up2Date
 C:\Đồ án\cosmetics-store\DataAccessLayer\obj\Debug\DataAccessLayer.dll
 C:\Đồ án\cosmetics-store\DataAccessLayer\obj\Debug\DataAccessLayer.pdb
+D:\GitHub\cosmetics-store\DataAccessLayer\bin\Debug\DataAccessLayer.dll.config
+D:\GitHub\cosmetics-store\DataAccessLayer\bin\Debug\EntityFramework.dll
+D:\GitHub\cosmetics-store\DataAccessLayer\bin\Debug\EntityFramework.SqlServer.dll
+D:\GitHub\cosmetics-store\DataAccessLayer\bin\Debug\EntityFramework.xml
+D:\GitHub\cosmetics-store\DataAccessLayer\bin\Debug\EntityFramework.SqlServer.xml
+D:\GitHub\cosmetics-store\DataAccessLayer\obj\Debug\DataAcce.E67BD773.Up2Date

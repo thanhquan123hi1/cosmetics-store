@@ -65,6 +65,7 @@
     <Compile Include="EntityClass\TaiKhoan.cs" />
     <Compile Include="EntityClass\ThuongHieu.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utilities\PasswordHasher.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

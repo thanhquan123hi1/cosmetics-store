@@ -22,3 +22,9 @@ C:\Đồ án\cosmetics-store\BusinessAccessLayer\obj\Debug\Business.395A7FC9.Up2
 C:\Đồ án\cosmetics-store\BusinessAccessLayer\obj\Debug\BusinessAccessLayer.dll
 C:\Đồ án\cosmetics-store\BusinessAccessLayer\obj\Debug\BusinessAccessLayer.pdb
 C:\Đồ án\cosmetics-store\BusinessAccessLayer\bin\Debug\DataAccessLayer.dll.config
+D:\GitHub\cosmetics-store\BusinessAccessLayer\bin\Debug\BusinessAccessLayer.dll.config
+D:\GitHub\cosmetics-store\BusinessAccessLayer\bin\Debug\EntityFramework.dll
+D:\GitHub\cosmetics-store\BusinessAccessLayer\bin\Debug\EntityFramework.SqlServer.dll
+D:\GitHub\cosmetics-store\BusinessAccessLayer\bin\Debug\DataAccessLayer.dll.config
+D:\GitHub\cosmetics-store\BusinessAccessLayer\bin\Debug\EntityFramework.xml
+D:\GitHub\cosmetics-store\BusinessAccessLayer\bin\Debug\EntityFramework.SqlServer.xml
