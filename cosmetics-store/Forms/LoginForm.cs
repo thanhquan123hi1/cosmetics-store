@@ -1,6 +1,8 @@
-using System;
+﻿using System;
+using System.Drawing;
 using System.Windows.Forms;
 using BusinessAccessLayer.Services;
+using DevExpress.XtraEditors;
 
 namespace cosmetics_store.Forms
 {
@@ -12,60 +14,110 @@ namespace cosmetics_store.Forms
         {
             InitializeComponent();
             _authService = new AuthService();
-            InitializeVietnameseText();
+            ApplyVietnameseFont();
         }
 
-        private void InitializeVietnameseText()
+        private void ApplyVietnameseFont()
         {
-            // Set Vietnamese text for labels and controls
-            this.Text = "��ng nh?p h? th?ng";
+            // Áp dụng font hỗ trợ tiếng Việt
+            this.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             
-            lblWelcome.Text = "Ch�o m?ng!";
-            lblSystemName.Text = "H? th?ng qu?n l?\nC?a h�ng m? ph?m";
+            // Title
+            lblTitle.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
+            lblTitle.Text = "Đăng nhập";
+
+            // Welcome panel
+            lblWelcome.Font = new Font("Segoe UI", 24F, FontStyle.Bold);
+            lblWelcome.Text = "Chào mừng!";
+
+            lblSystemName.Font = new Font("Segoe UI", 11F, FontStyle.Regular);
+            lblSystemName.Text = "Hệ thống quản lý\nCửa hàng mỹ phẩm";
+            
+            lblVersion.Font = new Font("Segoe UI", 9F, FontStyle.Regular);
             lblVersion.Text = "Version 1.0.0";
-            lblTitle.Text = "��ng nh?p";
-            
-            lblUsername.Text = "T�n ��ng nh?p";
-            lblPassword.Text = "M?t kh?u";
-            
-            btnLogin.Text = "��ng nh?p";
-            btnExit.Text = "Tho�t";
-            lnkForgot.Text = "Qu�n m?t kh?u?";
-            lnkRegister.Text = "Ch�a c� t�i kho?n? ��ng k?";
+
+            // Labels
+            lblUsername.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular);
+            lblUsername.Text = "Tên đăng nhập";
+
+            lblPassword.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular);
+            lblPassword.Text = "Mật khẩu";
+
+            // Buttons
+            btnLogin.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular);
+            btnLogin.Text = "Đăng nhập";
+
+            btnExit.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular);
+            btnExit.Text = "Thoát";
+
+            // Links
+            lnkForgot.Font = new Font("Segoe UI", 9F, FontStyle.Regular);
+            lnkForgot.Text = "Quên mật khẩu?";
+
+            lnkRegister.Font = new Font("Segoe UI", 9F, FontStyle.Regular);
+            lnkRegister.Text = "Chưa có tài khoản? Đăng ký";
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
             string username = txtUsername.Text.Trim();
-            string password = txtPassword.Text.Trim();
+            string password = txtPassword.Text;
 
-            if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password))
+            // Validate
+            if (string.IsNullOrEmpty(username))
             {
-                MessageBox.Show("Vui l?ng nh?p t�n ��ng nh?p v� m?t kh?u!", "Th�ng b�o", 
+                XtraMessageBox.Show("Vui lòng nhập tên đăng nhập!", "Thông báo", 
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtUsername.Focus();
                 return;
             }
 
-            var result = _authService.Login(username, password);
-
-            if (result.Success)
+            if (string.IsNullOrEmpty(password))
             {
-                CurrentUser.SetUser(result.UserInfo);
-                
-                MessageBox.Show($"Ch�o m?ng {result.UserInfo.HoTen}!\nQuy?n: {result.UserInfo.Quyen}", 
-                    "��ng nh?p th�nh c�ng", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                MainForm frmMain = new MainForm();
-                frmMain.Show();
-                this.Hide();
-            }
-            else
-            {
-                MessageBox.Show(result.Message, "��ng nh?p th?t b?i", 
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                txtPassword.Text = "";
+                XtraMessageBox.Show("Vui lòng nhập mật khẩu!", "Thông báo", 
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtPassword.Focus();
+                return;
+            }
+
+            try
+            {
+                btnLogin.Enabled = false;
+                btnLogin.Text = "Đang đăng nhập...";
+
+                var result = _authService.Login(username, password);
+
+                if (result.Success)
+                {
+                    // Lưu thông tin user vào CurrentUser
+                    CurrentUser.SetUser(result.UserInfo);
+
+                    XtraMessageBox.Show($"Đăng nhập thành công!\nXin chào {result.UserInfo.HoTen}", 
+                        "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    // Mở MainForm (Dashboard)
+                    this.Hide();
+                    var mainForm = new MainForm();
+                    mainForm.FormClosed += (s, args) => this.Close();
+                    mainForm.Show();
+                }
+                else
+                {
+                    XtraMessageBox.Show(result.Message, "Lỗi đăng nhập", 
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtPassword.Text = "";
+                    txtPassword.Focus();
+                }
+            }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show($"Lỗi: {ex.Message}", "Lỗi", 
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                btnLogin.Enabled = true;
+                btnLogin.Text = "Đăng nhập";
             }
         }
 
@@ -74,40 +126,39 @@ namespace cosmetics_store.Forms
             Application.Exit();
         }
 
-        private void lnkForgot_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            MessageBox.Show("Vui l?ng li�n h? qu?n tr? vi�n �? kh�i ph?c m?t kh?u.", 
-                "Qu�n m?t kh?u", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
-
         private void lnkRegister_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            RegisterForm registerForm = new RegisterForm();
             this.Hide();
-            
-            if (registerForm.ShowDialog() == DialogResult.OK)
+            var registerForm = new RegisterForm();
+            registerForm.FormClosed += (s, args) => this.Show();
+            registerForm.Show();
+        }
+
+        private void lnkForgot_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            XtraMessageBox.Show("Vui lòng liên hệ quản trị viên để đặt lại mật khẩu.", 
+                "Quên mật khẩu", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void txtPassword_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
             {
-                MessageBox.Show("��ng k? th�nh c�ng! Vui l?ng ��ng nh?p.", 
-                    "Th�ng b�o", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                btnLogin_Click(sender, e);
             }
-            
-            this.Show();
-            txtUsername.Focus();
+        }
+
+        private void txtUsername_EditValueChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void txtPassword_EditValueChanged(object sender, EventArgs e)
+        {
         }
 
         private void LoginForm_Load(object sender, EventArgs e)
         {
             txtUsername.Focus();
-        }
-
-        private void txtUsername_EditValueChanged(object sender, EventArgs e)
-        {
-           
-        }
-
-        private void txtPassword_EditValueChanged(object sender, EventArgs e)
-        {
-
         }
 
         protected override void OnFormClosing(FormClosingEventArgs e)

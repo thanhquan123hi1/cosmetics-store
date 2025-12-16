@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Linq;
 using DataAccessLayer;
 using DataAccessLayer.EntityClass;
@@ -28,7 +28,7 @@ namespace BusinessAccessLayer.Services
                     return new LoginResult
                     {
                         Success = false,
-                        Message = "Tên ğãng nh?p và m?t kh?u không ğı?c ğ? tr?ng"
+                        Message = "TÃªn Ä‘Äƒng nh?p vÃ  m?t kh?u khÃ´ng Ä‘Æ°?c Ä‘? tr?ng"
                     };
                 }
 
@@ -42,7 +42,7 @@ namespace BusinessAccessLayer.Services
                     return new LoginResult
                     {
                         Success = false,
-                        Message = "Tên ğãng nh?p không t?n t?i"
+                        Message = "TÃªn Ä‘Äƒng nh?p khÃ´ng t?n t?i"
                     };
                 }
 
@@ -52,7 +52,7 @@ namespace BusinessAccessLayer.Services
                     return new LoginResult
                     {
                         Success = false,
-                        Message = "Tài kho?n ğ? b? khóa. Vui l?ng liên h? qu?n tr? viên"
+                        Message = "TÃ i kho?n Ä‘? b? khÃ³a. Vui l?ng liÃªn h? qu?n tr? viÃªn"
                     };
                 }
 
@@ -82,7 +82,7 @@ namespace BusinessAccessLayer.Services
                     return new LoginResult
                     {
                         Success = false,
-                        Message = "M?t kh?u không chính xác"
+                        Message = "M?t kh?u khÃ´ng chÃ­nh xÃ¡c"
                     };
                 }
 
@@ -90,7 +90,7 @@ namespace BusinessAccessLayer.Services
                 return new LoginResult
                 {
                     Success = true,
-                    Message = "Ğãng nh?p thành công",
+                    Message = "ÄÄƒng nh?p thÃ nh cÃ´ng",
                     UserInfo = new UserInfo
                     {
                         MaNV = taiKhoan.MaNV,
@@ -112,9 +112,6 @@ namespace BusinessAccessLayer.Services
             }
         }
 
-        /// <summary>
-        /// Register new user account
-        /// </summary>
         public RegisterResult Register(RegisterDTO registerInfo)
         {
             try
@@ -122,51 +119,51 @@ namespace BusinessAccessLayer.Services
                 // Validate required fields
                 if (string.IsNullOrWhiteSpace(registerInfo.HoTen))
                 {
-                    return new RegisterResult { Success = false, Message = "H? tên không ğı?c ğ? tr?ng" };
+                    return new RegisterResult { Success = false, Message = "H? tÃªn khÃ´ng Ä‘Æ°?c Ä‘? tr?ng" };
                 }
 
                 if (string.IsNullOrWhiteSpace(registerInfo.TenDN))
                 {
-                    return new RegisterResult { Success = false, Message = "Tên ğãng nh?p không ğı?c ğ? tr?ng" };
+                    return new RegisterResult { Success = false, Message = "TÃªn Ä‘Äƒng nh?p khÃ´ng Ä‘Æ°?c Ä‘? tr?ng" };
                 }
 
                 if (string.IsNullOrWhiteSpace(registerInfo.MatKhau))
                 {
-                    return new RegisterResult { Success = false, Message = "M?t kh?u không ğı?c ğ? tr?ng" };
+                    return new RegisterResult { Success = false, Message = "M?t kh?u khÃ´ng Ä‘Æ°?c Ä‘? tr?ng" };
                 }
 
                 if (registerInfo.MatKhau.Length < 6)
                 {
-                    return new RegisterResult { Success = false, Message = "M?t kh?u ph?i có ít nh?t 6 k? t?" };
+                    return new RegisterResult { Success = false, Message = "M?t kh?u ph?i cÃ³ Ã­t nh?t 6 k? t?" };
                 }
 
                 if (string.IsNullOrWhiteSpace(registerInfo.Email))
                 {
-                    return new RegisterResult { Success = false, Message = "Email không ğı?c ğ? tr?ng" };
+                    return new RegisterResult { Success = false, Message = "Email khÃ´ng Ä‘Æ°?c Ä‘? tr?ng" };
                 }
 
                 // Check if username already exists
                 var existingUser = _context.TaiKhoans.FirstOrDefault(tk => tk.TenDN == registerInfo.TenDN);
                 if (existingUser != null)
                 {
-                    return new RegisterResult { Success = false, Message = "Tên ğãng nh?p ğ? t?n t?i" };
+                    return new RegisterResult { Success = false, Message = "TÃªn Ä‘Äƒng nh?p Ä‘? t?n t?i" };
                 }
 
                 // Check if email already exists
                 var existingEmail = _context.TaiKhoans.FirstOrDefault(tk => tk.Email == registerInfo.Email);
                 if (existingEmail != null)
                 {
-                    return new RegisterResult { Success = false, Message = "Email ğ? ğı?c s? d?ng" };
+                    return new RegisterResult { Success = false, Message = "Email Ä‘? Ä‘Æ°?c s? d?ng" };
                 }
 
                 // Create new employee
                 var nhanVien = new NhanVien
                 {
                     HoTen = registerInfo.HoTen,
-                    GioiTinh = registerInfo.GioiTinh ?? "Khác",
+                    GioiTinh = registerInfo.GioiTinh ?? "KhÃ¡c",
                     NgaySinh = registerInfo.NgaySinh,
                     DiaChi = registerInfo.DiaChi,
-                    ChucVu = "Nhân viên",
+                    ChucVu = "NhÃ¢n viÃªn",
                     SDT = registerInfo.SDT
                 };
 
@@ -179,7 +176,7 @@ namespace BusinessAccessLayer.Services
                     MaNV = nhanVien.MaNV,
                     TenDN = registerInfo.TenDN,
                     MatKhau = PasswordHasher.HashPassword(registerInfo.MatKhau),
-                    Quyen = "Nhân viên",
+                    Quyen = "NhÃ¢n viÃªn",
                     Email = registerInfo.Email,
                     TrangThai = true
                 };
@@ -190,7 +187,7 @@ namespace BusinessAccessLayer.Services
                 return new RegisterResult
                 {
                     Success = true,
-                    Message = "Ğãng k? thành công",
+                    Message = "ÄÄƒng k? thÃ nh cÃ´ng",
                     MaNV = nhanVien.MaNV
                 };
             }
@@ -270,7 +267,7 @@ namespace BusinessAccessLayer.Services
 
                 if (newPassword.Length < 6)
                 {
-                    throw new Exception("M?t kh?u m?i ph?i có ít nh?t 6 k? t?");
+                    throw new Exception("M?t kh?u m?i ph?i cÃ³ Ã­t nh?t 6 k? t?");
                 }
 
                 var taiKhoan = _context.TaiKhoans.FirstOrDefault(tk => tk.TenDN == username);
@@ -291,7 +288,7 @@ namespace BusinessAccessLayer.Services
 
                 if (!isOldPasswordValid)
                 {
-                    throw new Exception("M?t kh?u c? không chính xác");
+                    throw new Exception("M?t kh?u c? khÃ´ng chÃ­nh xÃ¡c");
                 }
 
                 // Update to new hashed password
