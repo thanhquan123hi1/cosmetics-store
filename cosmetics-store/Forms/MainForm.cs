@@ -34,7 +34,8 @@ namespace cosmetics_store.Forms
         {
             if (!CurrentUser.IsLoggedIn)
             {
-                MessageBox.Show("Bạn chưa đăng nhập!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                XtraMessageBox.Show("Bạn chưa đăng nhập!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.Close();
                 Application.Exit();
                 return;
             }
@@ -109,13 +110,13 @@ namespace cosmetics_store.Forms
             split.SplitterDistance = 260;
 
             var tv = new TreeView() { Dock = DockStyle.Fill };
-            tv.Nodes.Add(new TreeNode("Cai dat"));
-            tv.Nodes.Add(new TreeNode("Tao hoa don"));
-            tv.Nodes.Add(new TreeNode("Quan ly thu/ phi"));
-            tv.Nodes.Add(new TreeNode("Nha cung cap"));
-            tv.Nodes.Add(new TreeNode("Tao phieu/ Thanh toan"));
-            tv.Nodes.Add(new TreeNode("Tai khoan"));
-            tv.Nodes.Add(new TreeNode("Bao cao"));
+            tv.Nodes.Add(new TreeNode("Cài đặt"));
+            tv.Nodes.Add(new TreeNode("Tạo hóa đơn"));
+            tv.Nodes.Add(new TreeNode("Quản lý thu/chi"));
+            tv.Nodes.Add(new TreeNode("Nhà cung cấp"));
+            tv.Nodes.Add(new TreeNode("Tạo phiếu/Thanh toán"));
+            tv.Nodes.Add(new TreeNode("Tài khoản"));
+            tv.Nodes.Add(new TreeNode("Báo cáo"));
             split.Panel1.Controls.Add(tv);
 
       
@@ -131,10 +132,10 @@ namespace cosmetics_store.Forms
             tileControl.Dock = DockStyle.Fill;
             var group = new DevExpress.XtraEditors.TileGroup();
 
-            TileItem tile1 = new TileItem(); tile1.Text = "Dashboard\n€ 14,5909"; tile1.AppearanceItem.Normal.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            TileItem tile2 = new TileItem(); tile2.Text = "Ban hang\n23%"; tile2.AppearanceItem.Normal.Font = new Font("Segoe UI", 10F);
-            TileItem tile3 = new TileItem(); tile3.Text = "So don\n38%"; tile3.AppearanceItem.Normal.Font = new Font("Segoe UI", 10F);
-            TileItem tile4 = new TileItem(); tile4.Text = "Ton kho thap\n6"; tile4.AppearanceItem.Normal.Font = new Font("Segoe UI", 10F);
+            TileItem tile1 = new TileItem(); tile1.Text = "Dashboard\n€ 14,590.9"; tile1.AppearanceItem.Normal.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            TileItem tile2 = new TileItem(); tile2.Text = "Bán hàng\n23%"; tile2.AppearanceItem.Normal.Font = new Font("Segoe UI", 10F);
+            TileItem tile3 = new TileItem(); tile3.Text = "Số đơn\n38%"; tile3.AppearanceItem.Normal.Font = new Font("Segoe UI", 10F);
+            TileItem tile4 = new TileItem(); tile4.Text = "Tồn kho thấp\n6"; tile4.AppearanceItem.Normal.Font = new Font("Segoe UI", 10F);
 
             group.Items.Add(tile1); group.Items.Add(tile2); group.Items.Add(tile3); group.Items.Add(tile4);
             tileControl.Groups.Add(group);
@@ -150,9 +151,11 @@ namespace cosmetics_store.Forms
      
             var tabs = new TabControl();
             tabs.Dock = DockStyle.Fill;
+            tabs.Font = new Font("Segoe UI", 9.75F);
             var tab1 = new TabPage("Dashboard");
             var lb = new ListBox() { Dock = DockStyle.Fill };
-            lb.Items.AddRange(new string[] { "Phan tich ban hang", "Cac cong viec can lam", "Thong ke nhanh" });
+            lb.Font = new Font("Segoe UI", 9.75F);
+            lb.Items.AddRange(new string[] { "Phân tích bán hàng", "Các công việc cần làm", "Thống kê nhanh" });
             tab1.Controls.Add(lb);
             tabs.TabPages.Add(tab1);
             bottom.Panel1.Controls.Add(tabs);
@@ -207,7 +210,7 @@ namespace cosmetics_store.Forms
         private Control CreateChartPlaceholder(string title)
         {
             var p = new Panel() { Dock = DockStyle.Fill, BackColor = Color.WhiteSmoke, BorderStyle = BorderStyle.FixedSingle };
-            var lbl = new Label() { Text = title, Dock = DockStyle.Top, Height = 28, TextAlign = ContentAlignment.MiddleLeft, Padding = new Padding(6,0,0,0) };
+            var lbl = new Label() { Text = title, Dock = DockStyle.Top, Height = 28, TextAlign = ContentAlignment.MiddleLeft, Padding = new Padding(6,0,0,0), Font = new Font("Segoe UI", 9.75F) };
             var pic = new Panel() { Dock = DockStyle.Fill, BackColor = Color.White };
             p.Controls.Add(pic); p.Controls.Add(lbl);
             return p;
@@ -241,6 +244,25 @@ namespace cosmetics_store.Forms
         private void btnBanHang_Click(object sender, EventArgs e)
         {
 
+        }
+
+        protected override void OnFormClosing(FormClosingEventArgs e)
+        {
+            if (CurrentUser.IsLoggedIn)
+            {
+                var result = XtraMessageBox.Show("Bạn có muốn đăng xuất?", "Xác nhận", 
+                    MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (result == DialogResult.Yes)
+                {
+                    CurrentUser.Logout();
+                }
+                else
+                {
+                    e.Cancel = true;
+                }
+            }
+            base.OnFormClosing(e);
         }
     }
 }

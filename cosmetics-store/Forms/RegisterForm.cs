@@ -1,53 +1,87 @@
-using System;
+Ôªøusing System;
+using System.Drawing;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
+using DevExpress.XtraEditors;
 using BusinessAccessLayer.Services;
 using BusinessAccessLayer.DTOs;
-using System.Text.RegularExpressions;
 
 namespace cosmetics_store.Forms
 {
-    public partial class RegisterForm : DevExpress.XtraEditors.XtraForm
+    public partial class RegisterForm : XtraForm
     {
         private readonly AuthService _authService;
+
+        private static readonly Font VN_FONT =
+            new Font("Segoe UI", 9.75F, FontStyle.Regular);
 
         public RegisterForm()
         {
             InitializeComponent();
             _authService = new AuthService();
-            InitializeVietnameseText();
+            InitVietnameseUI();
         }
 
-        private void InitializeVietnameseText()
+        #region UI ‚Äì Vietnamese & Font
+
+        private void InitVietnameseUI()
         {
-            // Set Vietnamese text for labels and controls
-            this.Text = "–„ng k? t‡i kho?n";
-            
-            lblWelcome.Text = "–„ng k?";
-            lblSystemName.Text = "T?o t‡i kho?n m?i ? b?t ?u";
-            lblTitle.Text = "ThÙng tin „ng k?";
-            
-            lblHoTen.Text = "H? tÍn (*):";
-            lblGioiTinh.Text = "Gi?i tÌnh:";
-            lblNgaySinh.Text = "Ng‡y sinh (*):";
-            lblDiaChi.Text = "–?a ch?:";
-            lblSDT.Text = "S? i?n tho?i:";
-            lblUsername.Text = "TÍn „ng nh?p (*):";
+            // Form
+            this.Font = VN_FONT;
+            this.Text = "ƒêƒÉng k√Ω t√†i kho·∫£n";
+
+            // Title
+            lblTitle.Text = "Th√¥ng tin ƒëƒÉng k√Ω";
+            lblTitle.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
+
+            lblWelcome.Text = "ƒêƒÉng k√Ω";
+            lblWelcome.Font = new Font("Segoe UI", 24F, FontStyle.Bold);
+
+            lblSystemName.Text = "T·∫°o t√†i kho·∫£n m·ªõi ƒë·ªÉ b·∫Øt ƒë·∫ßu";
+
+            // Labels
+            lblHoTen.Text = "H·ªç t√™n (*):";
+            lblGioiTinh.Text = "Gi·ªõi t√≠nh:";
+            lblNgaySinh.Text = "Ng√†y sinh (*):";
+            lblDiaChi.Text = "ƒê·ªãa ch·ªâ:";
+            lblSDT.Text = "S·ªë ƒëi·ªán tho·∫°i:";
+            lblUsername.Text = "T√™n ƒëƒÉng nh·∫≠p (*):";
             lblEmail.Text = "Email (*):";
-            lblPassword.Text = "M?t kh?u (*):";
-            lblConfirmPassword.Text = "X·c nh?n m?t kh?u (*):";
-            
-            btnRegister.Text = "–„ng k?";
-            btnCancel.Text = "H?y";
-            lnkLogin.Text = "–? cÛ t‡i kho?n? –„ng nh?p ngay";
-            
-            // Set combobox items
+            lblPassword.Text = "M·∫≠t kh·∫©u (*):";
+            lblConfirmPassword.Text = "X√°c nh·∫≠n m·∫≠t kh·∫©u (*):";
+
+            // Buttons
+            btnRegister.Text = "ƒêƒÉng k√Ω";
+            btnCancel.Text = "H·ªßy";
+
+            // Link
+            lnkLogin.Text = "ƒê√£ c√≥ t√†i kho·∫£n? ƒêƒÉng nh·∫≠p ngay";
+
+            // ComboBox
             cboGioiTinh.Items.Clear();
-            cboGioiTinh.Items.AddRange(new object[] { "Nam", "N?", "Kh·c" });
+            cboGioiTinh.Items.AddRange(new object[] { "Nam", "N·ªØ", "Kh√°c" });
+
+            // √Åp font cho to√†n b·ªô control con (ch·ªëng s√≥t ‚Äì chu·∫©n DevExpress)
+            ApplyFontRecursive(this, VN_FONT);
         }
+
+        private void ApplyFontRecursive(Control parent, Font font)
+        {
+            foreach (Control c in parent.Controls)
+            {
+                c.Font = font;
+
+                if (c.HasChildren)
+                    ApplyFontRecursive(c, font);
+            }
+        }
+
+        #endregion
+
+        #region Form Events
 
         private void RegisterForm_Load(object sender, EventArgs e)
         {
-            // Set default values
             cboGioiTinh.SelectedIndex = 0;
             dtpNgaySinh.Value = DateTime.Now.AddYears(-18);
             dtpNgaySinh.MaxDate = DateTime.Now.AddYears(-16);
@@ -56,193 +90,72 @@ namespace cosmetics_store.Forms
 
         private void btnRegister_Click(object sender, EventArgs e)
         {
-            // Validate input
-            if (!ValidateInput())
-            {
-                return;
-            }
+            if (!ValidateInput()) return;
 
-            // Create register DTO
-            var registerInfo = new RegisterDTO
+            try
             {
-                HoTen = txtHoTen.Text.Trim(),
-                GioiTinh = cboGioiTinh.SelectedItem?.ToString(),
-                NgaySinh = dtpNgaySinh.Value,
-                DiaChi = txtDiaChi.Text.Trim(),
-                SDT = txtSDT.Text.Trim(),
-                TenDN = txtUsername.Text.Trim(),
-                MatKhau = txtPassword.Text.Trim(),
-                Email = txtEmail.Text.Trim()
-            };
+                btnRegister.Enabled = false;
+                btnRegister.Text = "ƒêang x·ª≠ l√Ω...";
 
-            // Call register service
-            var result = _authService.Register(registerInfo);
-
-            if (result.Success)
-            {
-                MessageBox.Show($"{result.Message}\n\nB?n cÛ th? „ng nh?p v?i t‡i kho?n v?a t?o.",
-                    "–„ng k? th‡nh cÙng", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                
-                this.DialogResult = DialogResult.OK;
-                this.Close();
-            }
-            else
-            {
-                MessageBox.Show(result.Message, "–„ng k? th?t b?i",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private bool ValidateInput()
-        {
-            // Validate H? tÍn
-            if (string.IsNullOrWhiteSpace(txtHoTen.Text))
-            {
-                MessageBox.Show("Vui l?ng nh?p h? tÍn!", "ThÙng b·o",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtHoTen.Focus();
-                return false;
-            }
-
-            if (txtHoTen.Text.Trim().Length < 2)
-            {
-                MessageBox.Show("H? tÍn ph?i cÛ Ìt nh?t 2 k? t?!", "ThÙng b·o",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtHoTen.Focus();
-                return false;
-            }
-
-            // Validate Ng‡y sinh
-            if (dtpNgaySinh.Value >= DateTime.Now.AddYears(-16))
-            {
-                MessageBox.Show("B?n ph?i t? 16 tu?i tr? lÍn ? „ng k?!", "ThÙng b·o",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                dtpNgaySinh.Focus();
-                return false;
-            }
-
-            // Validate S? i?n tho?i (optional but if provided must be valid)
-            if (!string.IsNullOrWhiteSpace(txtSDT.Text))
-            {
-                string sdt = txtSDT.Text.Trim();
-                if (!Regex.IsMatch(sdt, @"^[0-9]{10,11}$"))
+                var dto = new RegisterDTO
                 {
-                    MessageBox.Show("S? i?n tho?i khÙng h?p l?! Vui l?ng nh?p 10-11 ch? s?.", "ThÙng b·o",
-                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    txtSDT.Focus();
-                    return false;
+                    HoTen = txtHoTen.Text.Trim(),
+                    GioiTinh = cboGioiTinh.SelectedItem?.ToString(),
+                    NgaySinh = dtpNgaySinh.Value,
+                    DiaChi = txtDiaChi.Text.Trim(),
+                    SDT = txtSDT.Text.Trim(),
+                    TenDN = txtUsername.Text.Trim(),
+                    MatKhau = txtPassword.Text,
+                    Email = txtEmail.Text.Trim()
+                };
+
+                var result = _authService.Register(dto);
+
+                if (result.Success)
+                {
+                    XtraMessageBox.Show(
+                        $"{result.Message}\n\nB·∫°n c√≥ th·ªÉ ƒëƒÉng nh·∫≠p v·ªõi t√†i kho·∫£n v·ª´a t·∫°o.",
+                        "ƒêƒÉng k√Ω th√†nh c√¥ng",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Information);
+
+                    DialogResult = DialogResult.OK;
+                    Close();
+                }
+                else
+                {
+                    XtraMessageBox.Show(
+                        result.Message,
+                        "ƒêƒÉng k√Ω th·∫•t b·∫°i",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
                 }
             }
-
-            // Validate TÍn „ng nh?p
-            if (string.IsNullOrWhiteSpace(txtUsername.Text))
+            catch (Exception ex)
             {
-                MessageBox.Show("Vui l?ng nh?p tÍn „ng nh?p!", "ThÙng b·o",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtUsername.Focus();
-                return false;
+                XtraMessageBox.Show(
+                    $"L·ªói h·ªá th·ªëng:\n{ex.Message}",
+                    "L·ªói",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
             }
-
-            string username = txtUsername.Text.Trim();
-            if (username.Length < 4)
+            finally
             {
-                MessageBox.Show("TÍn „ng nh?p ph?i cÛ Ìt nh?t 4 k? t?!", "ThÙng b·o",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtUsername.Focus();
-                return false;
+                btnRegister.Enabled = true;
+                btnRegister.Text = "ƒêƒÉng k√Ω";
             }
-
-            if (!Regex.IsMatch(username, @"^[a-zA-Z0-9_]+$"))
-            {
-                MessageBox.Show("TÍn „ng nh?p ch? ˝?c ch?a ch? c·i, s? v‡ d?u g?ch d˝?i!", "ThÙng b·o",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtUsername.Focus();
-                return false;
-            }
-
-            // Check username availability
-            if (!_authService.IsUsernameAvailable(username))
-            {
-                MessageBox.Show("TÍn „ng nh?p ? t?n t?i! Vui l?ng ch?n tÍn kh·c.", "ThÙng b·o",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtUsername.Focus();
-                return false;
-            }
-
-            // Validate Email
-            if (string.IsNullOrWhiteSpace(txtEmail.Text))
-            {
-                MessageBox.Show("Vui l?ng nh?p email!", "ThÙng b·o",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtEmail.Focus();
-                return false;
-            }
-
-            string email = txtEmail.Text.Trim();
-            if (!Regex.IsMatch(email, @"^[^@\s]+@[^@\s]+\.[^@\s]+$"))
-            {
-                MessageBox.Show("Email khÙng h?p l?!", "ThÙng b·o",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtEmail.Focus();
-                return false;
-            }
-
-            // Check email availability
-            if (!_authService.IsEmailAvailable(email))
-            {
-                MessageBox.Show("Email ? ˝?c s? d?ng! Vui l?ng s? d?ng email kh·c.", "ThÙng b·o",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtEmail.Focus();
-                return false;
-            }
-
-            // Validate M?t kh?u
-            if (string.IsNullOrWhiteSpace(txtPassword.Text))
-            {
-                MessageBox.Show("Vui l?ng nh?p m?t kh?u!", "ThÙng b·o",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtPassword.Focus();
-                return false;
-            }
-
-            if (txtPassword.Text.Length < 6)
-            {
-                MessageBox.Show("M?t kh?u ph?i cÛ Ìt nh?t 6 k? t?!", "ThÙng b·o",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtPassword.Focus();
-                return false;
-            }
-
-            // Validate X·c nh?n m?t kh?u
-            if (string.IsNullOrWhiteSpace(txtConfirmPassword.Text))
-            {
-                MessageBox.Show("Vui l?ng x·c nh?n m?t kh?u!", "ThÙng b·o",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtConfirmPassword.Focus();
-                return false;
-            }
-
-            if (txtPassword.Text != txtConfirmPassword.Text)
-            {
-                MessageBox.Show("M?t kh?u x·c nh?n khÙng kh?p!", "ThÙng b·o",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtConfirmPassword.Focus();
-                return false;
-            }
-
-            return true;
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            this.DialogResult = DialogResult.Cancel;
-            this.Close();
+            DialogResult = DialogResult.Cancel;
+            Close();
         }
 
         private void lnkLogin_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            this.DialogResult = DialogResult.Cancel;
-            this.Close();
+            DialogResult = DialogResult.Cancel;
+            Close();
         }
 
         protected override void OnFormClosing(FormClosingEventArgs e)
@@ -250,5 +163,68 @@ namespace cosmetics_store.Forms
             _authService?.Dispose();
             base.OnFormClosing(e);
         }
+
+        #endregion
+
+        #region Validation
+
+        private bool ValidateInput()
+        {
+            if (string.IsNullOrWhiteSpace(txtHoTen.Text))
+                return Warn("Vui l√≤ng nh·∫≠p h·ªç t√™n!", txtHoTen);
+
+            if (txtHoTen.Text.Trim().Length < 2)
+                return Warn("H·ªç t√™n ph·∫£i c√≥ √≠t nh·∫•t 2 k√Ω t·ª±!", txtHoTen);
+
+            if (dtpNgaySinh.Value >= DateTime.Now.AddYears(-16))
+                return Warn("B·∫°n ph·∫£i t·ª´ 16 tu·ªïi tr·ªü l√™n ƒë·ªÉ ƒëƒÉng k√Ω!", dtpNgaySinh);
+
+            if (!string.IsNullOrWhiteSpace(txtSDT.Text) &&
+                !Regex.IsMatch(txtSDT.Text.Trim(), @"^[0-9]{10,11}$"))
+                return Warn("S·ªë ƒëi·ªán tho·∫°i kh√¥ng h·ª£p l·ªá (10‚Äì11 ch·ªØ s·ªë).", txtSDT);
+
+            if (string.IsNullOrWhiteSpace(txtUsername.Text))
+                return Warn("Vui l√≤ng nh·∫≠p t√™n ƒëƒÉng nh·∫≠p!", txtUsername);
+
+            if (txtUsername.Text.Trim().Length < 4)
+                return Warn("T√™n ƒëƒÉng nh·∫≠p ph·∫£i c√≥ √≠t nh·∫•t 4 k√Ω t·ª±!", txtUsername);
+
+            if (!Regex.IsMatch(txtUsername.Text.Trim(), @"^[a-zA-Z0-9_]+$"))
+                return Warn("T√™n ƒëƒÉng nh·∫≠p ch·ªâ g·ªìm ch·ªØ c√°i, s·ªë v√† d·∫•u g·∫°ch d∆∞·ªõi!", txtUsername);
+
+            if (!_authService.IsUsernameAvailable(txtUsername.Text.Trim()))
+                return Warn("T√™n ƒëƒÉng nh·∫≠p ƒë√£ t·ªìn t·∫°i!", txtUsername);
+
+            if (string.IsNullOrWhiteSpace(txtEmail.Text))
+                return Warn("Vui l√≤ng nh·∫≠p email!", txtEmail);
+
+            if (!Regex.IsMatch(txtEmail.Text.Trim(), @"^[^@\s]+@[^@\s]+\.[^@\s]+$"))
+                return Warn("Email kh√¥ng h·ª£p l·ªá!", txtEmail);
+
+            if (!_authService.IsEmailAvailable(txtEmail.Text.Trim()))
+                return Warn("Email ƒë√£ ƒë∆∞·ª£c s·ª≠ d·ª•ng!", txtEmail);
+
+            if (txtPassword.Text.Length < 6)
+                return Warn("M·∫≠t kh·∫©u ph·∫£i c√≥ √≠t nh·∫•t 6 k√Ω t·ª±!", txtPassword);
+
+            if (txtPassword.Text != txtConfirmPassword.Text)
+                return Warn("M·∫≠t kh·∫©u x√°c nh·∫≠n kh√¥ng kh·ªõp!", txtConfirmPassword);
+
+            return true;
+        }
+
+        private bool Warn(string message, Control focus)
+        {
+            XtraMessageBox.Show(
+                message,
+                "Th√¥ng b√°o",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Warning);
+
+            focus.Focus();
+            return false;
+        }
+
+        #endregion
     }
 }
