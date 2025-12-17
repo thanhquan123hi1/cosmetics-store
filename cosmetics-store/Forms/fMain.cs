@@ -14,9 +14,9 @@ using BusinessAccessLayer.Services;
 
 namespace cosmetics_store.Forms
 {
-    public partial class MainForm : DevExpress.XtraBars.Ribbon.RibbonForm
+    public partial class fMain : DevExpress.XtraBars.Ribbon.RibbonForm
     {
-        public MainForm()
+        public fMain()
         {
             InitializeComponent();
             InitializeContentPanels();

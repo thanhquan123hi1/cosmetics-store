@@ -1,6 +1,6 @@
-namespace cosmetics_store.Forms
+﻿namespace cosmetics_store.Forms
 {
-    partial class LoginForm
+    partial class fLogin
     {
         private System.ComponentModel.IContainer components = null;
         private System.Windows.Forms.Panel pnlLeft;
@@ -26,7 +26,6 @@ namespace cosmetics_store.Forms
 
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginForm));
             this.pnlLeft = new System.Windows.Forms.Panel();
             this.lblWelcome = new DevExpress.XtraEditors.LabelControl();
             this.lblSystemName = new DevExpress.XtraEditors.LabelControl();
@@ -67,9 +66,9 @@ namespace cosmetics_store.Forms
             this.lblWelcome.Appearance.Options.UseForeColor = true;
             this.lblWelcome.Location = new System.Drawing.Point(40, 180);
             this.lblWelcome.Name = "lblWelcome";
-            this.lblWelcome.Size = new System.Drawing.Size(251, 62);
+            this.lblWelcome.Size = new System.Drawing.Size(272, 62);
             this.lblWelcome.TabIndex = 0;
-            this.lblWelcome.Text = "Chao mung!";
+            this.lblWelcome.Text = "Chào Mừng!";
             // 
             // lblSystemName
             // 
@@ -77,11 +76,12 @@ namespace cosmetics_store.Forms
             this.lblSystemName.Appearance.ForeColor = System.Drawing.Color.White;
             this.lblSystemName.Appearance.Options.UseFont = true;
             this.lblSystemName.Appearance.Options.UseForeColor = true;
-            this.lblSystemName.Location = new System.Drawing.Point(40, 260);
+            this.lblSystemName.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.Vertical;
+            this.lblSystemName.Location = new System.Drawing.Point(40, 248);
             this.lblSystemName.Name = "lblSystemName";
-            this.lblSystemName.Size = new System.Drawing.Size(270, 37);
+            this.lblSystemName.Size = new System.Drawing.Size(288, 74);
             this.lblSystemName.TabIndex = 1;
-            this.lblSystemName.Text = "He thong quan ly\r\nCua hang my pham";
+            this.lblSystemName.Text = "Hệ Thống Quản Lý Cửa Hàng Mỹ Phẩm";
             // 
             // lblVersion
             // 
@@ -91,7 +91,7 @@ namespace cosmetics_store.Forms
             this.lblVersion.Appearance.Options.UseForeColor = true;
             this.lblVersion.Location = new System.Drawing.Point(40, 510);
             this.lblVersion.Name = "lblVersion";
-            this.lblVersion.Size = new System.Drawing.Size(89, 20);
+            this.lblVersion.Size = new System.Drawing.Size(83, 20);
             this.lblVersion.TabIndex = 2;
             this.lblVersion.Text = "Version 1.0.0";
             // 
@@ -121,9 +121,10 @@ namespace cosmetics_store.Forms
             this.lblTitle.Appearance.Options.UseForeColor = true;
             this.lblTitle.Location = new System.Drawing.Point(90, 80);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(198, 54);
+            this.lblTitle.Size = new System.Drawing.Size(215, 54);
             this.lblTitle.TabIndex = 0;
-            this.lblTitle.Text = "Dang nhap";
+            this.lblTitle.Text = "Đăng Nhập";
+            this.lblTitle.Click += new System.EventHandler(this.lblTitle_Click);
             // 
             // lblUsername
             // 
@@ -131,9 +132,9 @@ namespace cosmetics_store.Forms
             this.lblUsername.Appearance.Options.UseFont = true;
             this.lblUsername.Location = new System.Drawing.Point(70, 180);
             this.lblUsername.Name = "lblUsername";
-            this.lblUsername.Size = new System.Drawing.Size(110, 23);
+            this.lblUsername.Size = new System.Drawing.Size(119, 23);
             this.lblUsername.TabIndex = 1;
-            this.lblUsername.Text = "Ten dang nhap";
+            this.lblUsername.Text = "Tên Đăng Nhập";
             // 
             // txtUsername
             // 
@@ -152,9 +153,9 @@ namespace cosmetics_store.Forms
             this.lblPassword.Appearance.Options.UseFont = true;
             this.lblPassword.Location = new System.Drawing.Point(70, 270);
             this.lblPassword.Name = "lblPassword";
-            this.lblPassword.Size = new System.Drawing.Size(69, 23);
+            this.lblPassword.Size = new System.Drawing.Size(74, 23);
             this.lblPassword.TabIndex = 3;
-            this.lblPassword.Text = "Mat khau";
+            this.lblPassword.Text = "Mật Khẩu";
             // 
             // txtPassword
             // 
@@ -163,7 +164,7 @@ namespace cosmetics_store.Forms
             this.txtPassword.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 11F);
             this.txtPassword.Properties.Appearance.Options.UseFont = true;
             this.txtPassword.Properties.AutoHeight = false;
-            this.txtPassword.Properties.PasswordChar = '?';
+            this.txtPassword.Properties.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(310, 40);
             this.txtPassword.TabIndex = 4;
             this.txtPassword.EditValueChanged += new System.EventHandler(this.txtPassword_EditValueChanged);
@@ -180,12 +181,12 @@ namespace cosmetics_store.Forms
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(150, 45);
             this.btnLogin.TabIndex = 5;
-            this.btnLogin.Text = "Dang nhap";
+            this.btnLogin.Text = "Đăng Nhập";
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
             // btnExit
             // 
-            this.btnExit.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(189)))), ((int)(((byte)(195)))), ((int)(((byte)(199)))));
+            this.btnExit.Appearance.BackColor = System.Drawing.Color.WhiteSmoke;
             this.btnExit.Appearance.Font = new System.Drawing.Font("Segoe UI", 11F);
             this.btnExit.Appearance.ForeColor = System.Drawing.Color.White;
             this.btnExit.Appearance.Options.UseBackColor = true;
@@ -195,7 +196,7 @@ namespace cosmetics_store.Forms
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(150, 45);
             this.btnExit.TabIndex = 6;
-            this.btnExit.Text = "Thoat";
+            this.btnExit.Text = "Thoát";
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // lnkForgot
@@ -206,10 +207,10 @@ namespace cosmetics_store.Forms
             this.lnkForgot.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(165)))), ((int)(((byte)(166)))));
             this.lnkForgot.Location = new System.Drawing.Point(70, 435);
             this.lnkForgot.Name = "lnkForgot";
-            this.lnkForgot.Size = new System.Drawing.Size(121, 20);
+            this.lnkForgot.Size = new System.Drawing.Size(116, 20);
             this.lnkForgot.TabIndex = 7;
             this.lnkForgot.TabStop = true;
-            this.lnkForgot.Text = "Quen mat khau?";
+            this.lnkForgot.Text = "Quên mật khẩu?";
             this.lnkForgot.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkForgot_LinkClicked);
             // 
             // lnkRegister
@@ -220,13 +221,13 @@ namespace cosmetics_store.Forms
             this.lnkRegister.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
             this.lnkRegister.Location = new System.Drawing.Point(140, 485);
             this.lnkRegister.Name = "lnkRegister";
-            this.lnkRegister.Size = new System.Drawing.Size(176, 20);
+            this.lnkRegister.Size = new System.Drawing.Size(193, 20);
             this.lnkRegister.TabIndex = 8;
             this.lnkRegister.TabStop = true;
-            this.lnkRegister.Text = "Chua co tai khoan? Dang ky";
+            this.lnkRegister.Text = "Chưa có tài khoản? Đăng ký";
             this.lnkRegister.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkRegister_LinkClicked);
             // 
-            // LoginForm
+            // fLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -235,7 +236,7 @@ namespace cosmetics_store.Forms
             this.Controls.Add(this.pnlLeft);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
-            this.Name = "LoginForm";
+            this.Name = "fLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Dang nhap he thong";
             this.Load += new System.EventHandler(this.LoginForm_Load);

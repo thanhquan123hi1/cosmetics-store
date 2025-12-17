@@ -3,9 +3,9 @@ using System.Windows.Forms;
 
 namespace cosmetics_store.Forms
 {
-    public partial class ThuongHieuFormDx : DevExpress.XtraEditors.XtraForm
+    public partial class fBrand : DevExpress.XtraEditors.XtraForm
     {
-        public ThuongHieuFormDx()
+        public fBrand()
         {
             InitializeComponent();
         }

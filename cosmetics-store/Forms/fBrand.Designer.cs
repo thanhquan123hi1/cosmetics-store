@@ -1,6 +1,6 @@
 namespace cosmetics_store.Forms
 {
-    partial class ThuongHieuFormDx
+    partial class fBrand
     {
         private System.ComponentModel.IContainer components = null;
         private System.Windows.Forms.Panel pnlTop;

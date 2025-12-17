@@ -1,6 +1,6 @@
 ﻿namespace cosmetics_store.Forms
 {
-    partial class MainForm
+    partial class fMain
     {
         /// <summary>
         /// Required designer variable.

@@ -5,9 +5,9 @@ using cosmetics_store.Helpers;
 
 namespace cosmetics_store.Forms
 {
-    public partial class KhachHangForm : DevExpress.XtraEditors.XtraForm
+    public partial class fCostumer : DevExpress.XtraEditors.XtraForm
     {
-        public KhachHangForm()
+        public fCostumer()
         {
             InitializeComponent();
             ApplyVietnameseFont();

@@ -6,15 +6,50 @@ using DevExpress.XtraEditors;
 
 namespace cosmetics_store.Forms
 {
-    public partial class LoginForm : DevExpress.XtraEditors.XtraForm
+    public partial class fLogin : DevExpress.XtraEditors.XtraForm
     {
         private readonly AuthService _authService;
+        private Button btnClose;
 
-        public LoginForm()
+        public fLogin()
         {
             InitializeComponent();
             _authService = new AuthService();
+            CreateCloseButton();
             ApplyVietnameseFont();
+        }
+
+        private void CreateCloseButton()
+        {
+            // Tạo nút X đóng form
+            btnClose = new Button();
+            btnClose.Text = "✕";
+            btnClose.Font = new Font("Arial", 14F, FontStyle.Bold);
+            btnClose.Size = new Size(35, 35);
+            btnClose.Location = new Point(this.Width - 45, 10);
+            btnClose.FlatStyle = FlatStyle.Flat;
+            btnClose.FlatAppearance.BorderSize = 0;
+            btnClose.BackColor = Color.Transparent;
+            btnClose.ForeColor = Color.White;
+            btnClose.Cursor = Cursors.Hand;
+            btnClose.Click += BtnClose_Click;
+            
+            // Hiệu ứng hover
+            btnClose.MouseEnter += (s, e) => {
+                btnClose.BackColor = Color.FromArgb(232, 17, 35); // Màu đỏ khi hover
+            };
+            btnClose.MouseLeave += (s, e) => {
+                btnClose.BackColor = Color.Transparent;
+            };
+
+            // Thêm vào form (trên panel phải)
+            this.Controls.Add(btnClose);
+            btnClose.BringToFront();
+        }
+
+        private void BtnClose_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
 
         private void ApplyVietnameseFont()
@@ -97,7 +132,7 @@ namespace cosmetics_store.Forms
 
                     // Mở MainForm (Dashboard)
                     this.Hide();
-                    var mainForm = new MainForm();
+                    var mainForm = new fMain();
                     mainForm.FormClosed += (s, args) => this.Close();
                     mainForm.Show();
                 }
@@ -129,15 +164,18 @@ namespace cosmetics_store.Forms
         private void lnkRegister_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             this.Hide();
-            var registerForm = new RegisterForm();
+            var registerForm = new fRegister();
             registerForm.FormClosed += (s, args) => this.Show();
             registerForm.Show();
         }
 
         private void lnkForgot_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            XtraMessageBox.Show("Vui lòng liên hệ quản trị viên để đặt lại mật khẩu.", 
-                "Quên mật khẩu", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            // Mở form quên mật khẩu
+            this.Hide();
+            var forgotPasswordForm = new ForgotPasswordForm();
+            forgotPasswordForm.FormClosed += (s, args) => this.Show();
+            forgotPasswordForm.Show();
         }
 
         private void txtPassword_KeyPress(object sender, KeyPressEventArgs e)
@@ -165,6 +203,11 @@ namespace cosmetics_store.Forms
         {
             _authService?.Dispose();
             base.OnFormClosing(e);
+        }
+
+        private void lblTitle_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

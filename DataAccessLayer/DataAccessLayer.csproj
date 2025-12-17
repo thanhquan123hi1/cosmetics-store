@@ -61,6 +61,7 @@
     <Compile Include="EntityClass\NhaCungCap.cs" />
     <Compile Include="EntityClass\NhanVien.cs" />
     <Compile Include="EntityClass\PhieuNhap.cs" />
+    <Compile Include="EntityClass\ResetPasswordToken.cs" />
     <Compile Include="EntityClass\SanPham.cs" />
     <Compile Include="EntityClass\TaiKhoan.cs" />
     <Compile Include="EntityClass\ThuongHieu.cs" />

@@ -92,17 +92,29 @@
       <DependentUpon>BaoCaoForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\fDashBoard.cs" />
+    <Compile Include="Forms\ForgotPasswordForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ForgotPasswordForm.Designer.cs">
+      <DependentUpon>ForgotPasswordForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\fRegister.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\fRegister.Designer.cs">
+      <DependentUpon>fRegister.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\KhachHangEditForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\KhachHangEditForm.Designer.cs">
       <DependentUpon>KhachHangEditForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\KhachHangForm.cs">
+    <Compile Include="Forms\fCostumer.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\KhachHangForm.Designer.cs">
-      <DependentUpon>KhachHangForm.cs</DependentUpon>
+    <Compile Include="Forms\fCostumer.Designer.cs">
+      <DependentUpon>fCostumer.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\LoaiSPFormDx.cs">
       <SubType>Form</SubType>
@@ -110,17 +122,17 @@
     <Compile Include="Forms\LoaiSPFormDx.Designer.cs">
       <DependentUpon>LoaiSPFormDx.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\LoginForm.cs">
+    <Compile Include="Forms\fLogin.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\LoginForm.Designer.cs">
-      <DependentUpon>LoginForm.cs</DependentUpon>
+    <Compile Include="Forms\fLogin.Designer.cs">
+      <DependentUpon>fLogin.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\MainForm.cs">
+    <Compile Include="Forms\fMain.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\MainForm.Designer.cs">
-      <DependentUpon>MainForm.cs</DependentUpon>
+    <Compile Include="Forms\fMain.Designer.cs">
+      <DependentUpon>fMain.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\NhaCungCapEditForm.cs">
       <SubType>Form</SubType>
@@ -152,10 +164,12 @@
     <Compile Include="Forms\NhapHangForm.Designer.cs">
       <DependentUpon>NhapHangForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\RegisterForm.cs">
+    <Compile Include="Forms\ResetPasswordForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\RegisterForm.Designer.cs" />
+    <Compile Include="Forms\ResetPasswordForm.Designer.cs">
+      <DependentUpon>ResetPasswordForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\SanPhamEditForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -180,15 +194,20 @@
     <Compile Include="Forms\TaiKhoanForm.Designer.cs">
       <DependentUpon>TaiKhoanForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\ThuongHieuFormDx.cs">
+    <Compile Include="Forms\fBrand.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\ThuongHieuFormDx.Designer.cs">
-      <DependentUpon>ThuongHieuFormDx.cs</DependentUpon>
+    <Compile Include="Forms\fBrand.Designer.cs">
+      <DependentUpon>fBrand.cs</DependentUpon>
     </Compile>
     <Compile Include="Helpers\FontHelper.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Services\CurrentUser.cs" />
     <EmbeddedResource Include="Forms\BanHangForm.resx">
       <DependentUpon>BanHangForm.cs</DependentUpon>
@@ -199,17 +218,21 @@
     <EmbeddedResource Include="Forms\BaoCaoForm.resx">
       <DependentUpon>BaoCaoForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\KhachHangForm.resx">
-      <DependentUpon>KhachHangForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\fCostumer.resx">
+      <DependentUpon>fCostumer.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ForgotPasswordForm.resx">
+      <DependentUpon>ForgotPasswordForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\fRegister.resx" />
     <EmbeddedResource Include="Forms\LoaiSPFormDx.resx">
       <DependentUpon>LoaiSPFormDx.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\LoginForm.resx">
-      <DependentUpon>LoginForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\fLogin.resx">
+      <DependentUpon>fLogin.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\MainForm.resx">
-      <DependentUpon>MainForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\fMain.resx">
+      <DependentUpon>fMain.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\NhaCungCapForm.resx">
       <DependentUpon>NhaCungCapForm.cs</DependentUpon>
@@ -217,25 +240,20 @@
     <EmbeddedResource Include="Forms\NhanVienEditForm.resx">
       <DependentUpon>NhanVienEditForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\RegisterForm.resx">
-      <DependentUpon>RegisterForm.cs</DependentUpon>
-      <SubType>Designer</SubType>
+    <EmbeddedResource Include="Forms\ResetPasswordForm.resx">
+      <DependentUpon>ResetPasswordForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\SanPhamEditForm.resx">
       <DependentUpon>SanPhamEditForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\ThuongHieuFormDx.resx">
-      <DependentUpon>ThuongHieuFormDx.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\fBrand.resx">
+      <DependentUpon>fBrand.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -249,6 +267,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\wrong-password.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\wrong-password1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\forgotpwd.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

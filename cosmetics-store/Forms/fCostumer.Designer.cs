@@ -1,6 +1,6 @@
 namespace cosmetics_store.Forms
 {
-    partial class KhachHangForm
+    partial class fCostumer
     {
         private System.ComponentModel.IContainer components = null;
         private System.Windows.Forms.Panel pnlTop;

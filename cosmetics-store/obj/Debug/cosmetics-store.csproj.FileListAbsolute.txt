@@ -104,14 +104,10 @@ D:\GitHub\cosmetics-store\cosmetics-store\obj\Debug\cosmetics-store.exe.config
 D:\GitHub\cosmetics-store\cosmetics-store\obj\Debug\cosmetics_store.Forms.BanHangForm.resources
 D:\GitHub\cosmetics-store\cosmetics-store\obj\Debug\cosmetics_store.Forms.BanHangFormDx.resources
 D:\GitHub\cosmetics-store\cosmetics-store\obj\Debug\cosmetics_store.Forms.BaoCaoForm.resources
-D:\GitHub\cosmetics-store\cosmetics-store\obj\Debug\cosmetics_store.Forms.KhachHangForm.resources
 D:\GitHub\cosmetics-store\cosmetics-store\obj\Debug\cosmetics_store.Forms.LoaiSPFormDx.resources
-D:\GitHub\cosmetics-store\cosmetics-store\obj\Debug\cosmetics_store.Forms.LoginForm.resources
-D:\GitHub\cosmetics-store\cosmetics-store\obj\Debug\cosmetics_store.Forms.MainForm.resources
 D:\GitHub\cosmetics-store\cosmetics-store\obj\Debug\cosmetics_store.Forms.NhaCungCapForm.resources
 D:\GitHub\cosmetics-store\cosmetics-store\obj\Debug\cosmetics_store.Forms.NhanVienEditForm.resources
 D:\GitHub\cosmetics-store\cosmetics-store\obj\Debug\cosmetics_store.Forms.SanPhamEditForm.resources
-D:\GitHub\cosmetics-store\cosmetics-store\obj\Debug\cosmetics_store.Forms.ThuongHieuFormDx.resources
 D:\GitHub\cosmetics-store\cosmetics-store\bin\Debug\DevExpress.XtraGrid.v25.1.dll
 D:\GitHub\cosmetics-store\cosmetics-store\bin\Debug\DevExpress.XtraLayout.v25.1.dll
 D:\GitHub\cosmetics-store\cosmetics-store\bin\Debug\DevExpress.XtraPrinting.v25.1.dll
@@ -126,4 +122,10 @@ D:\GitHub\cosmetics-store\cosmetics-store\bin\Debug\DevExpress.XtraPrinting.v25.
 D:\GitHub\cosmetics-store\cosmetics-store\bin\Debug\DevExpress.RichEdit.v25.1.Core.xml
 D:\GitHub\cosmetics-store\cosmetics-store\bin\Debug\DevExpress.XtraTreeList.v25.1.xml
 D:\GitHub\cosmetics-store\cosmetics-store\bin\Debug\DevExpress.Office.v25.1.Core.xml
-D:\GitHub\cosmetics-store\cosmetics-store\obj\Debug\cosmetics_store.Forms.RegisterForm.resources
+D:\GitHub\cosmetics-store\cosmetics-store\obj\Debug\cosmetics_store.Forms.fCostumer.resources
+D:\GitHub\cosmetics-store\cosmetics-store\obj\Debug\cosmetics_store.Forms.fLogin.resources
+D:\GitHub\cosmetics-store\cosmetics-store\obj\Debug\cosmetics_store.Forms.fMain.resources
+D:\GitHub\cosmetics-store\cosmetics-store\obj\Debug\cosmetics_store.Forms.fRegister.resources
+D:\GitHub\cosmetics-store\cosmetics-store\obj\Debug\cosmetics_store.Forms.fBrand.resources
+D:\GitHub\cosmetics-store\cosmetics-store\obj\Debug\cosmetics_store.Forms.ResetPasswordForm.resources
+D:\GitHub\cosmetics-store\cosmetics-store\obj\Debug\cosmetics_store.Forms.ForgotPasswordForm.resources

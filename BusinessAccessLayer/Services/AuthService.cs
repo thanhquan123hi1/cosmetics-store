@@ -7,13 +7,15 @@ using BusinessAccessLayer.DTOs;
 
 namespace BusinessAccessLayer.Services
 {
-    public class AuthService
+    public class AuthService : IDisposable
     {
         private readonly CosmeticsContext _context;
+        private readonly EmailService _emailService;
 
         public AuthService()
         {
             _context = new CosmeticsContext();
+            _emailService = new EmailService();
         }
 
         /// <summary>
@@ -119,64 +121,64 @@ namespace BusinessAccessLayer.Services
                 // Validate required fields
                 if (string.IsNullOrWhiteSpace(registerInfo.HoTen))
                 {
-                    return new RegisterResult { Success = false, Message = "H? tên không đư?c đ? tr?ng" };
+                    return new RegisterResult { Success = false, Message = "Họ tên không được để trống" };
                 }
 
                 if (string.IsNullOrWhiteSpace(registerInfo.TenDN))
                 {
-                    return new RegisterResult { Success = false, Message = "Tên đăng nh?p không đư?c đ? tr?ng" };
+                    return new RegisterResult { Success = false, Message = "Tên đăng nhập không được để trống" };
                 }
 
                 if (string.IsNullOrWhiteSpace(registerInfo.MatKhau))
                 {
-                    return new RegisterResult { Success = false, Message = "M?t kh?u không đư?c đ? tr?ng" };
+                    return new RegisterResult { Success = false, Message = "Mật khẩu không được để trống" };
                 }
 
                 if (registerInfo.MatKhau.Length < 6)
                 {
-                    return new RegisterResult { Success = false, Message = "M?t kh?u ph?i có ít nh?t 6 k? t?" };
+                    return new RegisterResult { Success = false, Message = "Mật khẩu phải có ít nhất 6 ký tự" };
                 }
 
                 if (string.IsNullOrWhiteSpace(registerInfo.Email))
                 {
-                    return new RegisterResult { Success = false, Message = "Email không đư?c đ? tr?ng" };
+                    return new RegisterResult { Success = false, Message = "Email không được để trống" };
                 }
 
                 // Check if username already exists
                 var existingUser = _context.TaiKhoans.FirstOrDefault(tk => tk.TenDN == registerInfo.TenDN);
                 if (existingUser != null)
                 {
-                    return new RegisterResult { Success = false, Message = "Tên đăng nh?p đ? t?n t?i" };
+                    return new RegisterResult { Success = false, Message = "Tên đăng nhập đã tồn tại" };
                 }
 
                 // Check if email already exists
                 var existingEmail = _context.TaiKhoans.FirstOrDefault(tk => tk.Email == registerInfo.Email);
                 if (existingEmail != null)
                 {
-                    return new RegisterResult { Success = false, Message = "Email đ? đư?c s? d?ng" };
+                    return new RegisterResult { Success = false, Message = "Email đã được sử dụng" };
                 }
 
-                // Create new employee
+                // Create new employee (với chức vụ là Khách hàng)
                 var nhanVien = new NhanVien
                 {
                     HoTen = registerInfo.HoTen,
                     GioiTinh = registerInfo.GioiTinh ?? "Khác",
                     NgaySinh = registerInfo.NgaySinh,
                     DiaChi = registerInfo.DiaChi,
-                    ChucVu = "Nhân viên",
+                    ChucVu = "Khách hàng",  // Sửa từ "Nhân viên" thành "Khách hàng"
                     SDT = registerInfo.SDT
                 };
 
                 _context.NhanViens.Add(nhanVien);
                 _context.SaveChanges();
 
-                // Create new account
+                // Create new account (với quyền là Khách hàng)
                 var taiKhoan = new TaiKhoan
                 {
                     MaNV = nhanVien.MaNV,
                     TenDN = registerInfo.TenDN,
                     MatKhau = PasswordHasher.HashPassword(registerInfo.MatKhau),
-                    Quyen = "Nhân viên",
+                    Quyen = "Khách hàng",  // Sửa từ "Nhân viên" thành "Khách hàng"
                     Email = registerInfo.Email,
                     TrangThai = true
                 };
@@ -187,7 +189,7 @@ namespace BusinessAccessLayer.Services
                 return new RegisterResult
                 {
                     Success = true,
-                    Message = "Đăng k? thành công",
+                    Message = "Đăng ký thành công",
                     MaNV = nhanVien.MaNV
                 };
             }
@@ -196,7 +198,7 @@ namespace BusinessAccessLayer.Services
                 return new RegisterResult
                 {
                     Success = false,
-                    Message = "L?i h? th?ng: " + ex.Message
+                    Message = "Lỗi hệ thống: " + ex.Message
                 };
             }
         }
@@ -333,9 +335,285 @@ namespace BusinessAccessLayer.Services
             }
         }
 
+        #region Reset Password Functions
+
+        /// <summary>
+        /// Yêu cầu reset mật khẩu - Gửi email chứa token
+        /// Không tiết lộ email có tồn tại hay không (bảo mật)
+        /// </summary>
+        /// <param name="email">Email của tài khoản cần reset</param>
+        /// <returns>Luôn trả về success=true để không tiết lộ thông tin</returns>
+        public ResetPasswordResult RequestResetPassword(string email)
+        {
+            try
+            {
+                if (string.IsNullOrWhiteSpace(email))
+                {
+                    return new ResetPasswordResult
+                    {
+                        Success = false,
+                        Message = "Vui lòng nhập email"
+                    };
+                }
+
+                // Tìm tài khoản theo email
+                var taiKhoan = _context.TaiKhoans.FirstOrDefault(tk => tk.Email == email);
+
+                // Dù email có tồn tại hay không, vẫn trả về thông báo giống nhau (bảo mật)
+                if (taiKhoan == null)
+                {
+                    // Không tiết lộ email không tồn tại
+                    return new ResetPasswordResult
+                    {
+                        Success = true,
+                        Message = "Nếu email tồn tại trong hệ thống, bạn sẽ nhận được mã xác nhận."
+                    };
+                }
+
+                // Kiểm tra quyền - Chỉ cho phép Khách hàng reset password qua email
+                if (taiKhoan.Quyen.ToUpper() == "ADMIN" || taiKhoan.Quyen.ToUpper() == "STAFF" || taiKhoan.Quyen == "Nhân viên")
+                {
+                    return new ResetPasswordResult
+                    {
+                        Success = true,
+                        Message = "Nếu email tồn tại trong hệ thống, bạn sẽ nhận được mã xác nhận."
+                    };
+                }
+
+                // Tạo token mới
+                string token = GenerateResetToken();
+                var resetToken = new ResetPasswordToken
+                {
+                    Email = email,
+                    Token = token,
+                    CreatedAt = DateTime.Now,
+                    ExpiredAt = DateTime.Now.AddMinutes(30), // Hết hạn sau 30 phút
+                    IsUsed = false
+                };
+
+                // Vô hiệu hóa các token cũ chưa sử dụng của email này
+                var oldTokens = _context.ResetPasswordTokens
+                    .Where(t => t.Email == email && !t.IsUsed)
+                    .ToList();
+                foreach (var oldToken in oldTokens)
+                {
+                    oldToken.IsUsed = true;
+                }
+
+                _context.ResetPasswordTokens.Add(resetToken);
+                _context.SaveChanges();
+
+                // Gửi email chứa token
+                bool emailSent = _emailService.SendResetPasswordEmail(email, token);
+
+                if (!emailSent)
+                {
+                    // Ghi log lỗi nhưng không thông báo cho user
+                    System.Diagnostics.Debug.WriteLine($"Failed to send reset email to {email}");
+                }
+
+                return new ResetPasswordResult
+                {
+                    Success = true,
+                    Message = "Nếu email tồn tại trong hệ thống, bạn sẽ nhận được mã xác nhận."
+                };
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"RequestResetPassword Error: {ex.Message}");
+                return new ResetPasswordResult
+                {
+                    Success = false,
+                    Message = "Có lỗi xảy ra, vui lòng thử lại sau."
+                };
+            }
+        }
+
+        /// <summary>
+        /// Xác thực token reset password
+        /// </summary>
+        /// <param name="token">Token cần xác thực</param>
+        /// <returns>Kết quả xác thực</returns>
+        public ResetPasswordResult ValidateResetToken(string token)
+        {
+            try
+            {
+                if (string.IsNullOrWhiteSpace(token))
+                {
+                    return new ResetPasswordResult
+                    {
+                        Success = false,
+                        Message = "Mã xác nhận không hợp lệ"
+                    };
+                }
+
+                var resetToken = _context.ResetPasswordTokens
+                    .FirstOrDefault(t => t.Token == token);
+
+                if (resetToken == null)
+                {
+                    return new ResetPasswordResult
+                    {
+                        Success = false,
+                        Message = "Mã xác nhận không tồn tại"
+                    };
+                }
+
+                if (resetToken.IsUsed)
+                {
+                    return new ResetPasswordResult
+                    {
+                        Success = false,
+                        Message = "Mã xác nhận đã được sử dụng"
+                    };
+                }
+
+                if (DateTime.Now > resetToken.ExpiredAt)
+                {
+                    return new ResetPasswordResult
+                    {
+                        Success = false,
+                        Message = "Mã xác nhận đã hết hạn"
+                    };
+                }
+
+                return new ResetPasswordResult
+                {
+                    Success = true,
+                    Message = "Mã xác nhận hợp lệ",
+                    Email = resetToken.Email
+                };
+            }
+            catch (Exception ex)
+            {
+                return new ResetPasswordResult
+                {
+                    Success = false,
+                    Message = "Có lỗi xảy ra: " + ex.Message
+                };
+            }
+        }
+
+        /// <summary>
+        /// Reset mật khẩu với token
+        /// </summary>
+        /// <param name="token">Token xác thực</param>
+        /// <param name="newPassword">Mật khẩu mới</param>
+        /// <returns>Kết quả reset</returns>
+        public ResetPasswordResult ResetPassword(string token, string newPassword)
+        {
+            try
+            {
+                // Validate token
+                var validateResult = ValidateResetToken(token);
+                if (!validateResult.Success)
+                {
+                    return validateResult;
+                }
+
+                // Validate password
+                if (string.IsNullOrWhiteSpace(newPassword))
+                {
+                    return new ResetPasswordResult
+                    {
+                        Success = false,
+                        Message = "Mật khẩu mới không được để trống"
+                    };
+                }
+
+                if (newPassword.Length < 6)
+                {
+                    return new ResetPasswordResult
+                    {
+                        Success = false,
+                        Message = "Mật khẩu mới phải có ít nhất 6 ký tự"
+                    };
+                }
+
+                // Tìm token và tài khoản
+                var resetToken = _context.ResetPasswordTokens.FirstOrDefault(t => t.Token == token);
+                var taiKhoan = _context.TaiKhoans.FirstOrDefault(tk => tk.Email == resetToken.Email);
+
+                if (taiKhoan == null)
+                {
+                    return new ResetPasswordResult
+                    {
+                        Success = false,
+                        Message = "Không tìm thấy tài khoản"
+                    };
+                }
+
+                // Cập nhật mật khẩu mới (hash SHA256)
+                taiKhoan.MatKhau = PasswordHasher.HashPassword(newPassword);
+
+                // Đánh dấu token đã sử dụng
+                resetToken.IsUsed = true;
+
+                _context.SaveChanges();
+
+                // Gửi email thông báo mật khẩu đã thay đổi
+                _emailService.SendPasswordChangedNotification(taiKhoan.Email);
+
+                // Ghi Audit Log
+                try
+                {
+                    var auditLog = new AuditLog
+                    {
+                        MaNV = taiKhoan.MaNV,
+                        HanhDong = "RESET_PASSWORD",
+                        MaBanGhi = taiKhoan.MaNV.ToString(),
+                        ThoiGian = DateTime.Now,
+                        DuLieuMoi = $"Đặt lại mật khẩu qua email cho tài khoản {taiKhoan.TenDN}"
+                    };
+                    _context.AuditLogs.Add(auditLog);
+                    _context.SaveChanges();
+                }
+                catch { /* Bỏ qua lỗi audit log */ }
+
+                return new ResetPasswordResult
+                {
+                    Success = true,
+                    Message = "Đặt lại mật khẩu thành công! Bạn có thể đăng nhập với mật khẩu mới."
+                };
+            }
+            catch (Exception ex)
+            {
+                return new ResetPasswordResult
+                {
+                    Success = false,
+                    Message = "Có lỗi xảy ra: " + ex.Message
+                };
+            }
+        }
+
+        /// <summary>
+        /// Tạo token reset password ngẫu nhiên (8 ký tự chữ và số)
+        /// </summary>
+        private string GenerateResetToken()
+        {
+            // Tạo token 8 ký tự dễ nhập
+            const string chars = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
+            var random = new Random();
+            return new string(Enumerable.Repeat(chars, 8)
+                .Select(s => s[random.Next(s.Length)]).ToArray());
+        }
+
+        #endregion
+
         public void Dispose()
         {
+            _emailService?.Dispose();
             _context?.Dispose();
         }
+    }
+
+    /// <summary>
+    /// DTO cho kết quả reset password
+    /// </summary>
+    public class ResetPasswordResult
+    {
+        public bool Success { get; set; }
+        public string Message { get; set; }
+        public string Email { get; set; }
     }
 }
