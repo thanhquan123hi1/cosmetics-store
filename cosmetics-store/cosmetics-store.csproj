@@ -359,6 +359,9 @@
     <EmbeddedResource Include="FormAdmin\TonKhoForm.resx">
       <DependentUpon>TonKhoForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormKH\fDashboardKH.resx">
+      <DependentUpon>fDashboardKH.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormStaff\fDashboardStaff.resx">
       <DependentUpon>fDashboardStaff.cs</DependentUpon>
     </EmbeddedResource>
