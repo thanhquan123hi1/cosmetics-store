@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using cosmetics_store.Forms;
+using BusinessAccessLayer.Services;
 
 namespace cosmetics_store
 {
@@ -14,6 +15,17 @@ namespace cosmetics_store
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            
+            // Seed dữ liệu mặc định (tài khoản Admin)
+            try
+            {
+                DatabaseSeeder.SeedAll();
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Seeding error: {ex.Message}");
+            }
+            
             Application.Run(new fLogin());
         }
     }

@@ -2,9 +2,7 @@ using BusinessAccessLayer.DTOs;
 
 namespace BusinessAccessLayer.Services
 {
-    /// <summary>
-    /// Manages the current logged-in user session
-    /// </summary>
+
     public static class CurrentUser
     {
         public static UserInfo User { get; set; }

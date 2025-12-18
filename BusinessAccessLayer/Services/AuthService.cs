@@ -586,9 +586,6 @@ namespace BusinessAccessLayer.Services
             }
         }
 
-        /// <summary>
-        /// Tạo token reset password ngẫu nhiên (8 ký tự chữ và số)
-        /// </summary>
         private string GenerateResetToken()
         {
             // Tạo token 8 ký tự dễ nhập
@@ -607,9 +604,6 @@ namespace BusinessAccessLayer.Services
         }
     }
 
-    /// <summary>
-    /// DTO cho kết quả reset password
-    /// </summary>
     public class ResetPasswordResult
     {
         public bool Success { get; set; }

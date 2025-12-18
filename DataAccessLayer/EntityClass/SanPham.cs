@@ -15,6 +15,9 @@ namespace DataAccessLayer.EntityClass
         [StringLength(200, ErrorMessage = "Tên sản phẩm không được quá 200 ký tự")]
         public string TenSP { get; set; }
 
+        [StringLength(1000)]
+        public string MoTa { get; set; }
+
         [Required(ErrorMessage = "Số lượng tồn là bắt buộc")]
         [Range(0, int.MaxValue, ErrorMessage = "Số lượng tồn phải >= 0")]
         public int SoLuongTon { get; set; }

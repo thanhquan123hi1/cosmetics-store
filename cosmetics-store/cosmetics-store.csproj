@@ -73,132 +73,221 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Forms\BanHangForm.cs">
+    <Compile Include="FormAdmin\AuditLogForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\BanHangForm.Designer.cs">
+    <Compile Include="FormAdmin\AuditLogForm.Designer.cs">
+      <DependentUpon>AuditLogForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormAdmin\BanHangForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAdmin\BanHangForm.Designer.cs">
       <DependentUpon>BanHangForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\BanHangFormDx.cs">
+    <Compile Include="FormAdmin\BanHangFormDx.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\BanHangFormDx.Designer.cs">
+    <Compile Include="FormAdmin\BanHangFormDx.Designer.cs">
       <DependentUpon>BanHangFormDx.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\BaoCaoForm.cs">
+    <Compile Include="FormAdmin\BaoCaoForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\BaoCaoForm.Designer.cs">
+    <Compile Include="FormAdmin\BaoCaoForm.Designer.cs">
       <DependentUpon>BaoCaoForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\fDashBoard.cs" />
-    <Compile Include="Forms\ForgotPasswordForm.cs">
+    <Compile Include="FormAdmin\CauHinhForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\ForgotPasswordForm.Designer.cs">
-      <DependentUpon>ForgotPasswordForm.cs</DependentUpon>
+    <Compile Include="FormAdmin\CauHinhForm.Designer.cs">
+      <DependentUpon>CauHinhForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\fRegister.cs">
+    <Compile Include="FormAdmin\fDashboardAdmin.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\fRegister.Designer.cs">
+    <Compile Include="FormAdmin\fDashboardAdmin.Designer.cs">
+      <DependentUpon>fDashboardAdmin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormAdmin\fDashboardKhachHang.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAdmin\fDashboardKhachHang.Designer.cs">
+      <DependentUpon>fDashboardKhachHang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormAdmin\fDashboardNhanVien.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAdmin\fDashboardNhanVien.Designer.cs">
+      <DependentUpon>fDashboardNhanVien.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormAdmin\fForgotPassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAdmin\fForgotPassword.Designer.cs">
+      <DependentUpon>fForgotPassword.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormAdmin\fRegister.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAdmin\fRegister.Designer.cs">
       <DependentUpon>fRegister.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\KhachHangEditForm.cs">
+    <Compile Include="FormAdmin\fCostumer.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\KhachHangEditForm.Designer.cs">
-      <DependentUpon>KhachHangEditForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\fCostumer.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\fCostumer.Designer.cs">
+    <Compile Include="FormAdmin\fCostumer.Designer.cs">
       <DependentUpon>fCostumer.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\LoaiSPFormDx.cs">
+    <Compile Include="FormAdmin\LoaiSPFormDx.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\LoaiSPFormDx.Designer.cs">
+    <Compile Include="FormAdmin\LoaiSPFormDx.Designer.cs">
       <DependentUpon>LoaiSPFormDx.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\fLogin.cs">
+    <Compile Include="FormAdmin\fLogin.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\fLogin.Designer.cs">
+    <Compile Include="FormAdmin\fLogin.Designer.cs">
       <DependentUpon>fLogin.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\fMain.cs">
+    <Compile Include="FormAdmin\fMain.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\fMain.Designer.cs">
+    <Compile Include="FormAdmin\fMain.Designer.cs">
       <DependentUpon>fMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\NhaCungCapEditForm.cs">
+    <Compile Include="FormAdmin\NhaCungCapEditForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\NhaCungCapEditForm.Designer.cs">
+    <Compile Include="FormAdmin\NhaCungCapEditForm.Designer.cs">
       <DependentUpon>NhaCungCapEditForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\NhaCungCapForm.cs">
+    <Compile Include="FormAdmin\NhaCungCapForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\NhaCungCapForm.Designer.cs">
+    <Compile Include="FormAdmin\NhaCungCapForm.Designer.cs">
       <DependentUpon>NhaCungCapForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\NhanVienEditForm.cs">
+    <Compile Include="FormAdmin\fNhanVienEdit.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\NhanVienEditForm.Designer.cs">
-      <DependentUpon>NhanVienEditForm.cs</DependentUpon>
+    <Compile Include="FormAdmin\fNhanVienEdit.Designer.cs">
+      <DependentUpon>fNhanVienEdit.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\NhanVienForm.cs">
+    <Compile Include="FormAdmin\fNhanVien.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\NhanVienForm.Designer.cs">
-      <DependentUpon>NhanVienForm.cs</DependentUpon>
+    <Compile Include="FormAdmin\fNhanVien.Designer.cs">
+      <DependentUpon>fNhanVien.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\NhapHangForm.cs">
+    <Compile Include="FormAdmin\NhapHangForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\NhapHangForm.Designer.cs">
+    <Compile Include="FormAdmin\NhapHangForm.Designer.cs">
       <DependentUpon>NhapHangForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\ResetPasswordForm.cs">
+    <Compile Include="FormAdmin\fResetPassword.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\ResetPasswordForm.Designer.cs">
-      <DependentUpon>ResetPasswordForm.cs</DependentUpon>
+    <Compile Include="FormAdmin\fResetPassword.Designer.cs">
+      <DependentUpon>fResetPassword.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\SanPhamEditForm.cs">
+    <Compile Include="FormAdmin\SanPhamEditForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\SanPhamEditForm.Designer.cs">
+    <Compile Include="FormAdmin\SanPhamEditForm.Designer.cs">
       <DependentUpon>SanPhamEditForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\SanPhamForm.cs">
+    <Compile Include="FormAdmin\SanPhamForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\SanPhamForm.Designer.cs">
+    <Compile Include="FormAdmin\SanPhamForm.Designer.cs">
       <DependentUpon>SanPhamForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\TaiKhoanEditForm.cs">
+    <Compile Include="FormAdmin\TaiKhoanEdit.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\TaiKhoanEditForm.Designer.cs">
-      <DependentUpon>TaiKhoanEditForm.cs</DependentUpon>
+    <Compile Include="FormAdmin\TaiKhoanEdit.Designer.cs">
+      <DependentUpon>TaiKhoanEdit.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\TaiKhoanForm.cs">
+    <Compile Include="FormAdmin\fTaiKhoan.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\TaiKhoanForm.Designer.cs">
-      <DependentUpon>TaiKhoanForm.cs</DependentUpon>
+    <Compile Include="FormAdmin\fTaiKhoan.Designer.cs">
+      <DependentUpon>fTaiKhoan.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\fBrand.cs">
+    <Compile Include="FormAdmin\fBrand.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\fBrand.Designer.cs">
+    <Compile Include="FormAdmin\fBrand.Designer.cs">
       <DependentUpon>fBrand.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormAdmin\TonKhoForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAdmin\TonKhoForm.Designer.cs">
+      <DependentUpon>TonKhoForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormKH\fDashboardKH.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormKH\fDashboardKH.Designer.cs">
+      <DependentUpon>fDashboardKH.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormKH\fGioHang.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormKH\fGioHang.Designer.cs">
+      <DependentUpon>fGioHang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormKH\fSanPhamDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormKH\fSanPhamDetail.Designer.cs">
+      <DependentUpon>fSanPhamDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormStaff\fChonKhachHang.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormStaff\fChonKhachHang.Designer.cs">
+      <DependentUpon>fChonKhachHang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormStaff\fDashboardStaff.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormStaff\fDashboardStaff.Designer.cs">
+      <DependentUpon>fDashboardStaff.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormStaff\fLapHoaDon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormStaff\fLapHoaDon.Designer.cs">
+      <DependentUpon>fLapHoaDon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormStaff\fLichSuGiaoDich.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormStaff\fLichSuGiaoDich.Designer.cs">
+      <DependentUpon>fLichSuGiaoDich.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormStaff\fThanhToan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormStaff\fThanhToan.Designer.cs">
+      <DependentUpon>fThanhToan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormStaff\fThemKhachHangNhanh.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormStaff\fThemKhachHangNhanh.Designer.cs">
+      <DependentUpon>fThemKhachHangNhanh.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormStaff\fTraCuuSanPham.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormStaff\fTraCuuSanPham.Designer.cs">
+      <DependentUpon>fTraCuuSanPham.cs</DependentUpon>
     </Compile>
     <Compile Include="Helpers\FontHelper.cs" />
     <Compile Include="Program.cs" />
@@ -209,45 +298,78 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Services\CurrentUser.cs" />
-    <EmbeddedResource Include="Forms\BanHangForm.resx">
+    <EmbeddedResource Include="FormAdmin\AuditLogForm.resx">
+      <DependentUpon>AuditLogForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormAdmin\BanHangForm.resx">
       <DependentUpon>BanHangForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\BanHangFormDx.resx">
+    <EmbeddedResource Include="FormAdmin\BanHangFormDx.resx">
       <DependentUpon>BanHangFormDx.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\BaoCaoForm.resx">
+    <EmbeddedResource Include="FormAdmin\BaoCaoForm.resx">
       <DependentUpon>BaoCaoForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\fCostumer.resx">
+    <EmbeddedResource Include="FormAdmin\CauHinhForm.resx">
+      <DependentUpon>CauHinhForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormAdmin\fCostumer.resx">
       <DependentUpon>fCostumer.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\ForgotPasswordForm.resx">
-      <DependentUpon>ForgotPasswordForm.cs</DependentUpon>
+    <EmbeddedResource Include="FormAdmin\fDashboardAdmin.resx">
+      <DependentUpon>fDashboardAdmin.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\fRegister.resx" />
-    <EmbeddedResource Include="Forms\LoaiSPFormDx.resx">
+    <EmbeddedResource Include="FormAdmin\fForgotPassword.resx">
+      <DependentUpon>fForgotPassword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormAdmin\fRegister.resx" />
+    <EmbeddedResource Include="FormAdmin\TaiKhoanEdit.resx">
+      <DependentUpon>TaiKhoanEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormAdmin\LoaiSPFormDx.resx">
       <DependentUpon>LoaiSPFormDx.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\fLogin.resx">
+    <EmbeddedResource Include="FormAdmin\fLogin.resx">
       <DependentUpon>fLogin.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\fMain.resx">
+    <EmbeddedResource Include="FormAdmin\fMain.resx">
       <DependentUpon>fMain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\NhaCungCapForm.resx">
+    <EmbeddedResource Include="FormAdmin\NhaCungCapForm.resx">
       <DependentUpon>NhaCungCapForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\NhanVienEditForm.resx">
-      <DependentUpon>NhanVienEditForm.cs</DependentUpon>
+    <EmbeddedResource Include="FormAdmin\fNhanVienEdit.resx">
+      <DependentUpon>fNhanVienEdit.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\ResetPasswordForm.resx">
-      <DependentUpon>ResetPasswordForm.cs</DependentUpon>
+    <EmbeddedResource Include="FormAdmin\fNhanVien.resx">
+      <DependentUpon>fNhanVien.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\SanPhamEditForm.resx">
+    <EmbeddedResource Include="FormAdmin\fResetPassword.resx">
+      <DependentUpon>fResetPassword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormAdmin\SanPhamEditForm.resx">
       <DependentUpon>SanPhamEditForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\fBrand.resx">
+    <EmbeddedResource Include="FormAdmin\fBrand.resx">
       <DependentUpon>fBrand.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormAdmin\fTaiKhoan.resx">
+      <DependentUpon>fTaiKhoan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormAdmin\TonKhoForm.resx">
+      <DependentUpon>TonKhoForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormStaff\fDashboardStaff.resx">
+      <DependentUpon>fDashboardStaff.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormStaff\fLichSuGiaoDich.resx">
+      <DependentUpon>fLichSuGiaoDich.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormStaff\fThanhToan.resx">
+      <DependentUpon>fThanhToan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormStaff\fThemKhachHangNhanh.resx">
+      <DependentUpon>fThemKhachHangNhanh.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -277,6 +399,7 @@
   <ItemGroup>
     <Content Include="Resources\forgotpwd.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

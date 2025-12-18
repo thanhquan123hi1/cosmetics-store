@@ -13,7 +13,13 @@ namespace cosmetics_store
 
         public static bool IsAdmin => User?.Quyen?.ToLower() == "admin";
 
-        public static bool IsStaff => User?.Quyen?.ToLower() == "staff" || User?.Quyen?.ToLower() == "nhân viên" || User?.Quyen?.ToLower() == "nhanvien";
+        public static bool IsNhanVien => User?.Quyen?.ToLower() == "nhân viên" || 
+                                          User?.Quyen?.ToLower() == "nhanvien" || 
+                                          User?.Quyen?.ToLower() == "staff";
+
+        public static bool IsKhachHang => User?.Quyen?.ToLower() == "khách hàng" || 
+                                           User?.Quyen?.ToLower() == "khachhang" || 
+                                           User?.Quyen?.ToLower() == "customer";
 
         public static void SetUser(UserInfo userInfo)
         {
