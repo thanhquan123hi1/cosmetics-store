@@ -2,7 +2,7 @@
 
 ## 1. Mục tiêu tài liệu
 
-Tài liệu này **tập trung hoàn toàn vào các CHỨC NĂNG của project** và **LỘ TRÌNH THỰC HIỆN từng chức năng**, dùng làm:
+**tập trung hoàn toàn vào các CHỨC NĂNG của project** và **LỘ TRÌNH THỰC HIỆN từng chức năng**, dùng làm:
 
 * Kế hoạch triển khai thực tế
 * Checklist phát triển
