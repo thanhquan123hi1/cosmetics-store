@@ -273,5 +273,10 @@ namespace cosmetics_store.Forms
             _context?.Dispose();
             base.OnFormClosed(e);
         }
+
+        private void grid_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

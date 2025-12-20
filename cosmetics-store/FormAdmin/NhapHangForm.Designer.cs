@@ -1,4 +1,4 @@
-namespace cosmetics_store.Forms
+﻿namespace cosmetics_store.Forms
 {
     partial class NhapHangForm
     {
@@ -66,13 +66,13 @@ namespace cosmetics_store.Forms
             this.splitContainer.SuspendLayout();
             this.pnlLeft.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lookupNCC.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dateNgayNhap.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateNgayNhap.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateNgayNhap.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lookupSPMoi.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.spinSoLuong.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.spinDonGia.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dateHanSD.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateHanSD.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateHanSD.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridChiTietMoi)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewChiTietMoi)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridMaster)).BeginInit();
@@ -87,8 +87,19 @@ namespace cosmetics_store.Forms
             this.splitContainer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer.Location = new System.Drawing.Point(0, 0);
             this.splitContainer.Name = "splitContainer";
+            // 
+            // splitContainer.Panel1
+            // 
+            this.splitContainer.Panel1.Controls.Add(this.pnlLeft);
+            this.splitContainer.Panel1.Controls.Add(this.gridChiTietMoi);
+            // 
+            // splitContainer.Panel2
+            // 
+            this.splitContainer.Panel2.Controls.Add(this.gridMaster);
+            this.splitContainer.Panel2.Controls.Add(this.gridDetail);
             this.splitContainer.Size = new System.Drawing.Size(1100, 700);
-            this.splitContainer.SplitterDistance = 450;
+            this.splitContainer.SplitterDistance = 449;
+            this.splitContainer.TabIndex = 0;
             // 
             // pnlLeft
             // 
@@ -109,103 +120,154 @@ namespace cosmetics_store.Forms
             this.pnlLeft.Controls.Add(this.btnTaoPhieu);
             this.pnlLeft.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlLeft.Location = new System.Drawing.Point(0, 0);
-            this.pnlLeft.Size = new System.Drawing.Size(450, 280);
-            this.splitContainer.Panel1.Controls.Add(this.pnlLeft);
-            this.splitContainer.Panel1.Controls.Add(this.gridChiTietMoi);
+            this.pnlLeft.Name = "pnlLeft";
+            this.pnlLeft.Size = new System.Drawing.Size(449, 310);
+            this.pnlLeft.TabIndex = 0;
             // 
             // lblNCC
             // 
             this.lblNCC.Location = new System.Drawing.Point(12, 15);
-            this.lblNCC.Text = "Nha cung cap:";
+            this.lblNCC.Name = "lblNCC";
+            this.lblNCC.Size = new System.Drawing.Size(82, 16);
+            this.lblNCC.TabIndex = 0;
+            this.lblNCC.Text = "Nhà cung cấp:";
             // 
             // lookupNCC
             // 
             this.lookupNCC.Location = new System.Drawing.Point(120, 12);
+            this.lookupNCC.Name = "lookupNCC";
             this.lookupNCC.Size = new System.Drawing.Size(300, 22);
+            this.lookupNCC.TabIndex = 1;
             // 
             // lblNgayNhap
             // 
             this.lblNgayNhap.Location = new System.Drawing.Point(12, 55);
-            this.lblNgayNhap.Text = "Ngay nhap:";
+            this.lblNgayNhap.Name = "lblNgayNhap";
+            this.lblNgayNhap.Size = new System.Drawing.Size(65, 16);
+            this.lblNgayNhap.TabIndex = 2;
+            this.lblNgayNhap.Text = "Ngày nhập:";
             // 
             // dateNgayNhap
             // 
+            this.dateNgayNhap.EditValue = new System.DateTime(2025, 12, 21, 0, 0, 0, 0);
             this.dateNgayNhap.Location = new System.Drawing.Point(120, 52);
+            this.dateNgayNhap.Name = "dateNgayNhap";
             this.dateNgayNhap.Size = new System.Drawing.Size(140, 22);
+            this.dateNgayNhap.TabIndex = 3;
             // 
             // lblSPMoi
             // 
             this.lblSPMoi.Location = new System.Drawing.Point(12, 95);
-            this.lblSPMoi.Text = "San pham:";
+            this.lblSPMoi.Name = "lblSPMoi";
+            this.lblSPMoi.Size = new System.Drawing.Size(63, 16);
+            this.lblSPMoi.TabIndex = 4;
+            this.lblSPMoi.Text = "Sản phẩm:";
             // 
             // lookupSPMoi
             // 
             this.lookupSPMoi.Location = new System.Drawing.Point(120, 92);
+            this.lookupSPMoi.Name = "lookupSPMoi";
             this.lookupSPMoi.Size = new System.Drawing.Size(300, 22);
+            this.lookupSPMoi.TabIndex = 5;
             // 
             // lblSoLuong
             // 
             this.lblSoLuong.Location = new System.Drawing.Point(12, 135);
-            this.lblSoLuong.Text = "So luong:";
+            this.lblSoLuong.Name = "lblSoLuong";
+            this.lblSoLuong.Size = new System.Drawing.Size(56, 16);
+            this.lblSoLuong.TabIndex = 6;
+            this.lblSoLuong.Text = "Số lượng:";
             // 
             // spinSoLuong
             // 
-            this.spinSoLuong.EditValue = new decimal(1);
+            this.spinSoLuong.EditValue = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.spinSoLuong.Location = new System.Drawing.Point(120, 132);
+            this.spinSoLuong.Name = "spinSoLuong";
             this.spinSoLuong.Size = new System.Drawing.Size(100, 22);
+            this.spinSoLuong.TabIndex = 7;
             // 
             // lblDonGia
             // 
             this.lblDonGia.Location = new System.Drawing.Point(240, 135);
-            this.lblDonGia.Text = "Don gia:";
+            this.lblDonGia.Name = "lblDonGia";
+            this.lblDonGia.Size = new System.Drawing.Size(49, 16);
+            this.lblDonGia.TabIndex = 8;
+            this.lblDonGia.Text = "Đơn giá:";
             // 
             // spinDonGia
             // 
-            this.spinDonGia.EditValue = new decimal(0);
+            this.spinDonGia.EditValue = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
             this.spinDonGia.Location = new System.Drawing.Point(300, 132);
+            this.spinDonGia.Name = "spinDonGia";
             this.spinDonGia.Size = new System.Drawing.Size(120, 22);
+            this.spinDonGia.TabIndex = 9;
             // 
             // lblHanSD
             // 
             this.lblHanSD.Location = new System.Drawing.Point(12, 175);
-            this.lblHanSD.Text = "Han su dung:";
+            this.lblHanSD.Name = "lblHanSD";
+            this.lblHanSD.Size = new System.Drawing.Size(77, 16);
+            this.lblHanSD.TabIndex = 10;
+            this.lblHanSD.Text = "Hạn sử dụng:";
             // 
             // dateHanSD
             // 
+            this.dateHanSD.EditValue = new System.DateTime(2025, 12, 21, 0, 0, 0, 0);
             this.dateHanSD.Location = new System.Drawing.Point(120, 172);
+            this.dateHanSD.Name = "dateHanSD";
             this.dateHanSD.Size = new System.Drawing.Size(140, 22);
+            this.dateHanSD.TabIndex = 11;
             // 
             // btnThemSP
             // 
             this.btnThemSP.Location = new System.Drawing.Point(120, 212);
+            this.btnThemSP.Name = "btnThemSP";
             this.btnThemSP.Size = new System.Drawing.Size(94, 29);
-            this.btnThemSP.Text = "Them SP";
+            this.btnThemSP.TabIndex = 12;
+            this.btnThemSP.Text = "➕ Thêm SP";
             this.btnThemSP.Click += new System.EventHandler(this.btnThemSP_Click);
             // 
             // btnXoaSP
             // 
             this.btnXoaSP.Location = new System.Drawing.Point(230, 212);
+            this.btnXoaSP.Name = "btnXoaSP";
             this.btnXoaSP.Size = new System.Drawing.Size(94, 29);
-            this.btnXoaSP.Text = "Xoa SP";
+            this.btnXoaSP.TabIndex = 13;
+            this.btnXoaSP.Text = "❌ Xóa SP";
             this.btnXoaSP.Click += new System.EventHandler(this.btnXoaSP_Click);
             // 
             // btnTaoPhieu
             // 
             this.btnTaoPhieu.Location = new System.Drawing.Point(120, 248);
+            this.btnTaoPhieu.Name = "btnTaoPhieu";
             this.btnTaoPhieu.Size = new System.Drawing.Size(200, 29);
-            this.btnTaoPhieu.Text = "TAO PHIEU NHAP";
+            this.btnTaoPhieu.TabIndex = 14;
+            this.btnTaoPhieu.Text = "📦 TẠO PHIẾU NHẬP";
             this.btnTaoPhieu.Click += new System.EventHandler(this.btnTaoPhieu_Click);
             // 
             // gridChiTietMoi
             // 
             this.gridChiTietMoi.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridChiTietMoi.Location = new System.Drawing.Point(0, 280);
+            this.gridChiTietMoi.Location = new System.Drawing.Point(0, 0);
             this.gridChiTietMoi.MainView = this.gridViewChiTietMoi;
-            this.gridChiTietMoi.Size = new System.Drawing.Size(450, 420);
+            this.gridChiTietMoi.Name = "gridChiTietMoi";
+            this.gridChiTietMoi.Size = new System.Drawing.Size(449, 700);
+            this.gridChiTietMoi.TabIndex = 1;
+            this.gridChiTietMoi.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridViewChiTietMoi});
             // 
             // gridViewChiTietMoi
             // 
             this.gridViewChiTietMoi.GridControl = this.gridChiTietMoi;
+            this.gridViewChiTietMoi.Name = "gridViewChiTietMoi";
             this.gridViewChiTietMoi.OptionsView.ShowGroupPanel = false;
             // 
             // gridMaster
@@ -213,27 +275,39 @@ namespace cosmetics_store.Forms
             this.gridMaster.Dock = System.Windows.Forms.DockStyle.Top;
             this.gridMaster.Location = new System.Drawing.Point(0, 0);
             this.gridMaster.MainView = this.gridViewMaster;
-            this.gridMaster.Size = new System.Drawing.Size(646, 300);
-            this.splitContainer.Panel2.Controls.Add(this.gridMaster);
-            this.splitContainer.Panel2.Controls.Add(this.gridDetail);
+            this.gridMaster.Name = "gridMaster";
+            this.gridMaster.Size = new System.Drawing.Size(647, 300);
+            this.gridMaster.TabIndex = 0;
+            this.gridMaster.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridViewMaster});
             // 
             // gridViewMaster
             // 
             this.gridViewMaster.GridControl = this.gridMaster;
+            this.gridViewMaster.Name = "gridViewMaster";
             this.gridViewMaster.OptionsView.ShowGroupPanel = false;
             this.gridViewMaster.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.gridViewMaster_FocusedRowChanged);
             // 
             // gridDetail
             // 
             this.gridDetail.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridDetail.Location = new System.Drawing.Point(0, 300);
+            this.gridDetail.Location = new System.Drawing.Point(0, 0);
             this.gridDetail.MainView = this.gridViewDetail;
-            this.gridDetail.Size = new System.Drawing.Size(646, 400);
+            this.gridDetail.Name = "gridDetail";
+            this.gridDetail.Size = new System.Drawing.Size(647, 700);
+            this.gridDetail.TabIndex = 1;
+            this.gridDetail.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridViewDetail});
             // 
             // gridViewDetail
             // 
             this.gridViewDetail.GridControl = this.gridDetail;
+            this.gridViewDetail.Name = "gridViewDetail";
             this.gridViewDetail.OptionsView.ShowGroupPanel = false;
+            // 
+            // repoLookupSP
+            // 
+            this.repoLookupSP.Name = "repoLookupSP";
             // 
             // NhapHangForm
             // 
@@ -242,10 +316,10 @@ namespace cosmetics_store.Forms
             this.ClientSize = new System.Drawing.Size(1100, 700);
             this.Controls.Add(this.splitContainer);
             this.Name = "NhapHangForm";
-            this.Text = "Nhap hang";
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer)).EndInit();
+            this.Text = "Nhập hàng";
             this.splitContainer.Panel1.ResumeLayout(false);
             this.splitContainer.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer)).EndInit();
             this.splitContainer.ResumeLayout(false);
             this.pnlLeft.ResumeLayout(false);
             this.pnlLeft.PerformLayout();
@@ -265,6 +339,7 @@ namespace cosmetics_store.Forms
             ((System.ComponentModel.ISupportInitialize)(this.gridViewDetail)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repoLookupSP)).EndInit();
             this.ResumeLayout(false);
+
         }
     }
 }

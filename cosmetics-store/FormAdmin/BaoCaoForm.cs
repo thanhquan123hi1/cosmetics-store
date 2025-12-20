@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Data.Entity;
 using System.Linq;
 using System.Windows.Forms;
@@ -21,7 +21,7 @@ namespace cosmetics_store.Forms
 
         private void BaoCaoForm_Load(object sender, EventArgs e)
         {
-            // M?c �?nh: 30 ng�y g?n nh?t
+            // Mặc định: 30 ngày gần nhất
             dateFrom.EditValue = DateTime.Now.AddDays(-30);
             dateTo.EditValue = DateTime.Now;
             
@@ -48,34 +48,34 @@ namespace cosmetics_store.Forms
             }
             catch (Exception ex)
             {
-                XtraMessageBox.Show($"L?i t?i b�o c�o: {ex.Message}", "L?i",
+                XtraMessageBox.Show($"Lỗi tải báo cáo: {ex.Message}", "Lỗi",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void LoadThongKeTongQuan(DateTime tuNgay, DateTime denNgay)
         {
-            // T?ng doanh thu
+            // Tổng doanh thu
             var tongDoanhThu = _context.HoaDons
-                .Where(hd => hd.NgayLap >= tuNgay && hd.NgayLap < denNgay && hd.TrangThai == "Ho�n th�nh")
+                .Where(hd => hd.NgayLap >= tuNgay && hd.NgayLap < denNgay && hd.TrangThai == "Hoàn thành")
                 .Sum(hd => (decimal?)hd.TongTien) ?? 0;
 
-            // S? ��n h�ng
+            // Số đơn hàng
             var soDon = _context.HoaDons
                 .Count(hd => hd.NgayLap >= tuNgay && hd.NgayLap < denNgay);
 
-            // S? SP �? b�n
+            // Số SP đã bán
             var soSPBan = _context.CT_HoaDons
                 .Where(ct => ct.HoaDon.NgayLap >= tuNgay && ct.HoaDon.NgayLap < denNgay)
                 .Sum(ct => (int?)ct.SoLuong) ?? 0;
 
-            // SP t?n kho th?p
+            // SP tồn kho thấp
             var tonKhoThap = _context.SanPhams.Count(sp => sp.SoLuongTon <= 10);
 
-            lblTongDoanhThu.Text = $"?? T?ng doanh thu: {tongDoanhThu:N0} �";
-            lblSoDon.Text = $"?? S? ��n h�ng: {soDon}";
-            lblSoSPBan.Text = $"?? SP �? b�n: {soSPBan}";
-            lblTonKhoThap.Text = $"?? SP t?n th?p: {tonKhoThap}";
+            lblTongDoanhThu.Text = $"💰 Tổng doanh thu: {tongDoanhThu:N0} đ";
+            lblSoDon.Text = $"📋 Số đơn hàng: {soDon}";
+            lblSoSPBan.Text = $"📦 SP đã bán: {soSPBan}";
+            lblTonKhoThap.Text = $"⚠️ SP tồn thấp: {tonKhoThap}";
         }
 
         private void LoadBieuDoDoanhThu(DateTime tuNgay, DateTime denNgay)
@@ -88,9 +88,9 @@ namespace cosmetics_store.Forms
                 Color = System.Drawing.Color.FromArgb(52, 152, 219)
             };
 
-            // Doanh thu theo ng�y
+            // Doanh thu theo ngày
             var doanhThuTheoNgay = _context.HoaDons
-                .Where(hd => hd.NgayLap >= tuNgay && hd.NgayLap < denNgay && hd.TrangThai == "Ho�n th�nh")
+                .Where(hd => hd.NgayLap >= tuNgay && hd.NgayLap < denNgay && hd.TrangThai == "Hoàn thành")
                 .GroupBy(hd => DbFunctions.TruncateTime(hd.NgayLap))
                 .Select(g => new
                 {
@@ -109,8 +109,8 @@ namespace cosmetics_store.Forms
             }
 
             chartDoanhThu.Series.Add(series);
-            chartDoanhThu.ChartAreas[0].AxisX.Title = "Ng�y";
-            chartDoanhThu.ChartAreas[0].AxisY.Title = "Doanh thu (�)";
+            chartDoanhThu.ChartAreas[0].AxisX.Title = "Ngày";
+            chartDoanhThu.ChartAreas[0].AxisY.Title = "Doanh thu (đ)";
             chartDoanhThu.ChartAreas[0].AxisY.LabelStyle.Format = "#,##0";
         }
 
@@ -133,19 +133,19 @@ namespace cosmetics_store.Forms
             gridSPBanChay.DataSource = spBanChay;
 
             gridViewSPBanChay.Columns.Clear();
-            gridViewSPBanChay.Columns.AddVisible("MaSP", "M? SP");
-            gridViewSPBanChay.Columns.AddVisible("TenSP", "T�n s?n ph?m");
-            gridViewSPBanChay.Columns.AddVisible("SoLuongBan", "S? l�?ng b�n");
+            gridViewSPBanChay.Columns.AddVisible("MaSP", "Mã SP");
+            gridViewSPBanChay.Columns.AddVisible("TenSP", "Tên sản phẩm");
+            gridViewSPBanChay.Columns.AddVisible("SoLuongBan", "Số lượng bán");
             gridViewSPBanChay.Columns.AddVisible("DoanhThu", "Doanh thu");
 
             gridViewSPBanChay.Columns["DoanhThu"].DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            gridViewSPBanChay.Columns["DoanhThu"].DisplayFormat.FormatString = "#,##0 �";
+            gridViewSPBanChay.Columns["DoanhThu"].DisplayFormat.FormatString = "#,##0 đ";
         }
 
         private void LoadTopKhachHang(DateTime tuNgay, DateTime denNgay)
         {
             var topKH = _context.HoaDons
-                .Where(hd => hd.NgayLap >= tuNgay && hd.NgayLap < denNgay && hd.TrangThai == "Ho�n th�nh")
+                .Where(hd => hd.NgayLap >= tuNgay && hd.NgayLap < denNgay && hd.TrangThai == "Hoàn thành")
                 .GroupBy(hd => new { hd.MaKH, hd.KhachHang.HoTen, hd.KhachHang.SDT })
                 .Select(g => new
                 {
@@ -162,14 +162,14 @@ namespace cosmetics_store.Forms
             gridTopKH.DataSource = topKH;
 
             gridViewTopKH.Columns.Clear();
-            gridViewTopKH.Columns.AddVisible("MaKH", "M? KH");
-            gridViewTopKH.Columns.AddVisible("HoTen", "H? t�n");
-            gridViewTopKH.Columns.AddVisible("SDT", "�i?n tho?i");
-            gridViewTopKH.Columns.AddVisible("SoDon", "S? ��n");
-            gridViewTopKH.Columns.AddVisible("TongMua", "T?ng mua");
+            gridViewTopKH.Columns.AddVisible("MaKH", "Mã KH");
+            gridViewTopKH.Columns.AddVisible("HoTen", "Họ tên");
+            gridViewTopKH.Columns.AddVisible("SDT", "Điện thoại");
+            gridViewTopKH.Columns.AddVisible("SoDon", "Số đơn");
+            gridViewTopKH.Columns.AddVisible("TongMua", "Tổng mua");
 
             gridViewTopKH.Columns["TongMua"].DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            gridViewTopKH.Columns["TongMua"].DisplayFormat.FormatString = "#,##0 �";
+            gridViewTopKH.Columns["TongMua"].DisplayFormat.FormatString = "#,##0 đ";
         }
 
         private void LoadTonKhoThap()
@@ -184,7 +184,7 @@ namespace cosmetics_store.Forms
                     TenLoai = sp.LoaiSP.TenLoai,
                     sp.SoLuongTon,
                     sp.DonGia,
-                    TrangThai = sp.SoLuongTon == 0 ? "H?t h�ng" : "S?p h?t"
+                    TrangThai = sp.SoLuongTon == 0 ? "Hết hàng" : "Sắp hết"
                 })
                 .OrderBy(sp => sp.SoLuongTon)
                 .ToList();
@@ -192,15 +192,15 @@ namespace cosmetics_store.Forms
             gridTonKhoThap.DataSource = tonKhoThap;
 
             gridViewTonKhoThap.Columns.Clear();
-            gridViewTonKhoThap.Columns.AddVisible("MaSP", "M? SP");
-            gridViewTonKhoThap.Columns.AddVisible("TenSP", "T�n s?n ph?m");
-            gridViewTonKhoThap.Columns.AddVisible("TenLoai", "Lo?i");
-            gridViewTonKhoThap.Columns.AddVisible("SoLuongTon", "T?n kho");
-            gridViewTonKhoThap.Columns.AddVisible("DonGia", "��n gi�");
-            gridViewTonKhoThap.Columns.AddVisible("TrangThai", "Tr?ng th�i");
+            gridViewTonKhoThap.Columns.AddVisible("MaSP", "Mã SP");
+            gridViewTonKhoThap.Columns.AddVisible("TenSP", "Tên sản phẩm");
+            gridViewTonKhoThap.Columns.AddVisible("TenLoai", "Loại");
+            gridViewTonKhoThap.Columns.AddVisible("SoLuongTon", "Tồn kho");
+            gridViewTonKhoThap.Columns.AddVisible("DonGia", "Đơn giá");
+            gridViewTonKhoThap.Columns.AddVisible("TrangThai", "Trạng thái");
 
             gridViewTonKhoThap.Columns["DonGia"].DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            gridViewTonKhoThap.Columns["DonGia"].DisplayFormat.FormatString = "#,##0 �";
+            gridViewTonKhoThap.Columns["DonGia"].DisplayFormat.FormatString = "#,##0 đ";
 
             // Highlight
             gridViewTonKhoThap.RowStyle += (s, e) =>
@@ -208,12 +208,12 @@ namespace cosmetics_store.Forms
                 if (e.RowHandle >= 0)
                 {
                     var trangThai = gridViewTonKhoThap.GetRowCellValue(e.RowHandle, "TrangThai")?.ToString();
-                    if (trangThai == "H?t h�ng")
+                    if (trangThai == "Hết hàng")
                     {
                         e.Appearance.BackColor = System.Drawing.Color.FromArgb(255, 200, 200);
                         e.Appearance.ForeColor = System.Drawing.Color.DarkRed;
                     }
-                    else if (trangThai == "S?p h?t")
+                    else if (trangThai == "Sắp hết")
                     {
                         e.Appearance.BackColor = System.Drawing.Color.FromArgb(255, 255, 200);
                         e.Appearance.ForeColor = System.Drawing.Color.DarkOrange;
@@ -224,6 +224,11 @@ namespace cosmetics_store.Forms
 
         private void chartDoanhThu_Click(object sender, EventArgs e)
         {
+        }
+
+        private void pnlTop_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

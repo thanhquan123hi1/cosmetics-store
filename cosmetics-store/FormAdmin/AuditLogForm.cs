@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Data.Entity;
 using System.Linq;
 using System.Windows.Forms;
@@ -29,13 +29,13 @@ namespace cosmetics_store.Forms
         {
             gridView.Columns.Clear();
 
-            gridView.Columns.AddVisible("MaLog", "M? Log");
-            gridView.Columns.AddVisible("ThoiGian", "Th?i gian");
-            gridView.Columns.AddVisible("TenNhanVien", "Ng�?i th?c hi?n");
-            gridView.Columns.AddVisible("HanhDong", "H�nh �?ng");
-            gridView.Columns.AddVisible("MaBanGhi", "M? b?n ghi");
-            gridView.Columns.AddVisible("DuLieuCu", "D? li?u c?");
-            gridView.Columns.AddVisible("DuLieuMoi", "D? li?u m?i");
+            gridView.Columns.AddVisible("MaLog", "Mã Log");
+            gridView.Columns.AddVisible("ThoiGian", "Thời gian");
+            gridView.Columns.AddVisible("TenNhanVien", "Người thực hiện");
+            gridView.Columns.AddVisible("HanhDong", "Hành động");
+            gridView.Columns.AddVisible("MaBanGhi", "Mã bản ghi");
+            gridView.Columns.AddVisible("DuLieuCu", "Dữ liệu cũ");
+            gridView.Columns.AddVisible("DuLieuMoi", "Dữ liệu mới");
 
             gridView.Columns["MaLog"].Width = 60;
             gridView.Columns["ThoiGian"].Width = 130;
@@ -54,13 +54,13 @@ namespace cosmetics_store.Forms
 
         private void SetupFilters()
         {
-            // Thi?t l?p ng�y m?c �?nh
+            // Thiết lập ngày mặc định
             dateFrom.EditValue = DateTime.Today.AddDays(-7);
             dateTo.EditValue = DateTime.Today;
 
-            // Thi?t l?p combo h�nh �?ng
+            // Thiết lập combo hành động
             cboHanhDong.Properties.Items.Clear();
-            cboHanhDong.Properties.Items.Add("T?t c?");
+            cboHanhDong.Properties.Items.Add("Tất cả");
             cboHanhDong.Properties.Items.Add("CREATE");
             cboHanhDong.Properties.Items.Add("UPDATE");
             cboHanhDong.Properties.Items.Add("DELETE");
@@ -82,8 +82,8 @@ namespace cosmetics_store.Forms
                     .Include(a => a.NhanVien)
                     .Where(a => a.ThoiGian >= fromDate && a.ThoiGian < toDate);
 
-                // L?c theo h�nh �?ng
-                if (!string.IsNullOrEmpty(hanhDong) && hanhDong != "T?t c?")
+                // Lọc theo hành động
+                if (!string.IsNullOrEmpty(hanhDong) && hanhDong != "Tất cả")
                 {
                     query = query.Where(a => a.HanhDong.Contains(hanhDong));
                 }
@@ -94,7 +94,7 @@ namespace cosmetics_store.Forms
                     {
                         a.MaLog,
                         a.ThoiGian,
-                        TenNhanVien = a.NhanVien != null ? a.NhanVien.HoTen : "H? th?ng",
+                        TenNhanVien = a.NhanVien != null ? a.NhanVien.HoTen : "Hệ thống",
                         a.HanhDong,
                         a.MaBanGhi,
                         a.DuLieuCu,
@@ -102,7 +102,7 @@ namespace cosmetics_store.Forms
                     })
                     .ToList();
 
-                // L?c th�m theo t? kh�a n?u c�
+                // Lọc thêm theo từ khóa nếu có
                 if (!string.IsNullOrEmpty(keyword))
                 {
                     data = data.Where(d =>
@@ -114,11 +114,11 @@ namespace cosmetics_store.Forms
                 }
 
                 grid.DataSource = data;
-                lblTotalRecords.Text = $"T?ng s?: {data.Count} b?n ghi";
+                lblTotalRecords.Text = $"Tổng số: {data.Count} bản ghi";
             }
             catch (Exception ex)
             {
-                XtraMessageBox.Show($"L?i t?i d? li?u: {ex.Message}", "L?i",
+                XtraMessageBox.Show($"Lỗi tải dữ liệu: {ex.Message}", "Lỗi",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -149,14 +149,14 @@ namespace cosmetics_store.Forms
                     if (saveDialog.ShowDialog() == DialogResult.OK)
                     {
                         grid.ExportToXlsx(saveDialog.FileName);
-                        XtraMessageBox.Show("Xu?t file th�nh c�ng!", "Th�ng b�o",
+                        XtraMessageBox.Show("Xuất file thành công!", "Thông báo",
                             MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
             }
             catch (Exception ex)
             {
-                XtraMessageBox.Show($"L?i xu?t file: {ex.Message}", "L?i",
+                XtraMessageBox.Show($"Lỗi xuất file: {ex.Message}", "Lỗi",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }

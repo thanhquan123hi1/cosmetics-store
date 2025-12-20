@@ -96,7 +96,7 @@
             this.btnOk.Size = new System.Drawing.Size(317, 28);
             this.btnOk.StyleController = this.layoutControl;
             this.btnOk.TabIndex = 5;
-            this.btnOk.Text = "?? Lưu";
+            this.btnOk.Text = "Lưu";
             this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
             // 
             // btnCancel
@@ -108,7 +108,7 @@
             this.btnCancel.Size = new System.Drawing.Size(101, 28);
             this.btnCancel.StyleController = this.layoutControl;
             this.btnCancel.TabIndex = 6;
-            this.btnCancel.Text = "H?y";
+            this.btnCancel.Text = "Hủy ";
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // layoutControlGroup1
@@ -218,6 +218,7 @@
             this.cboQuyen.Size = new System.Drawing.Size(289, 30);
             this.cboQuyen.StyleController = this.layoutControl;
             this.cboQuyen.TabIndex = 4;
+            this.cboQuyen.SelectedIndexChanged += new System.EventHandler(this.cboQuyen_SelectedIndexChanged);
             // 
             // layoutItemNhanVien
             // 
@@ -250,7 +251,7 @@
             this.layoutItemMatKhau.Location = new System.Drawing.Point(0, 68);
             this.layoutItemMatKhau.Name = "layoutItemMatKhau";
             this.layoutItemMatKhau.Size = new System.Drawing.Size(426, 34);
-            this.layoutItemMatKhau.Text = "M?t kh?u:";
+            this.layoutItemMatKhau.Text = "Mật Khẩu: ";
             this.layoutItemMatKhau.TextSize = new System.Drawing.Size(118, 23);
             // 
             // layoutItemEmail
@@ -272,7 +273,7 @@
             this.layoutItemQuyen.Location = new System.Drawing.Point(0, 136);
             this.layoutItemQuyen.Name = "layoutItemQuyen";
             this.layoutItemQuyen.Size = new System.Drawing.Size(426, 34);
-            this.layoutItemQuyen.Text = "Quy?n:";
+            this.layoutItemQuyen.Text = "Quyền : ";
             this.layoutItemQuyen.TextSize = new System.Drawing.Size(118, 23);
             // 
             // TaiKhoanEdit

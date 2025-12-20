@@ -29,5 +29,10 @@ namespace cosmetics_store.Forms
         {
 
         }
+
+        private void LoaiSPFormDx_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

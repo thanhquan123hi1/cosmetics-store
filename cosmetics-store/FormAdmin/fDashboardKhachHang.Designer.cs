@@ -1,4 +1,4 @@
-namespace cosmetics_store.Forms
+Ôªønamespace cosmetics_store.Forms
 {
     partial class fDashboardKhachHang
     {
@@ -48,7 +48,7 @@ namespace cosmetics_store.Forms
             this.pnlHeader.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlHeader.Location = new System.Drawing.Point(0, 0);
             this.pnlHeader.Name = "pnlHeader";
-            this.pnlHeader.Size = new System.Drawing.Size(1200, 50);
+            this.pnlHeader.Size = new System.Drawing.Size(1200, 56);
             this.pnlHeader.TabIndex = 0;
             // 
             // lblTitle
@@ -57,11 +57,11 @@ namespace cosmetics_store.Forms
             this.lblTitle.Appearance.ForeColor = System.Drawing.Color.White;
             this.lblTitle.Appearance.Options.UseFont = true;
             this.lblTitle.Appearance.Options.UseForeColor = true;
-            this.lblTitle.Location = new System.Drawing.Point(15, 13);
+            this.lblTitle.Location = new System.Drawing.Point(16, 15);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(200, 25);
+            this.lblTitle.Size = new System.Drawing.Size(171, 31);
             this.lblTitle.TabIndex = 0;
-            this.lblTitle.Text = "??? Cosmetics Store";
+            this.lblTitle.Text = "Cosmetics Store";
             // 
             // lblUserName
             // 
@@ -70,11 +70,11 @@ namespace cosmetics_store.Forms
             this.lblUserName.Appearance.ForeColor = System.Drawing.Color.White;
             this.lblUserName.Appearance.Options.UseFont = true;
             this.lblUserName.Appearance.Options.UseForeColor = true;
-            this.lblUserName.Location = new System.Drawing.Point(900, 15);
+            this.lblUserName.Location = new System.Drawing.Point(880, 17);
             this.lblUserName.Name = "lblUserName";
-            this.lblUserName.Size = new System.Drawing.Size(150, 19);
+            this.lblUserName.Size = new System.Drawing.Size(171, 23);
             this.lblUserName.TabIndex = 1;
-            this.lblUserName.Text = "Xin ch‡o, Kh·ch h‡ng!";
+            this.lblUserName.Text = "Xin ch√†o, Kh√°ch h√†ng!";
             // 
             // btnDangXuat
             // 
@@ -85,24 +85,26 @@ namespace cosmetics_store.Forms
             this.btnDangXuat.Appearance.Options.UseBackColor = true;
             this.btnDangXuat.Appearance.Options.UseFont = true;
             this.btnDangXuat.Appearance.Options.UseForeColor = true;
-            this.btnDangXuat.Location = new System.Drawing.Point(1090, 10);
+            this.btnDangXuat.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.btnDangXuat.Location = new System.Drawing.Point(1084, 13);
             this.btnDangXuat.Name = "btnDangXuat";
-            this.btnDangXuat.Size = new System.Drawing.Size(100, 30);
+            this.btnDangXuat.Size = new System.Drawing.Size(104, 30);
             this.btnDangXuat.TabIndex = 2;
-            this.btnDangXuat.Text = "–„ng xu?t";
+            this.btnDangXuat.Text = "ƒêƒÉng xu·∫•t";
             this.btnDangXuat.Click += new System.EventHandler(this.OnDangXuatClick);
             // 
             // accordionMenu
             // 
             this.accordionMenu.Appearance.AccordionControl.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(68)))), ((int)(((byte)(173)))));
             this.accordionMenu.Appearance.AccordionControl.Options.UseBackColor = true;
+            this.accordionMenu.ScrollBarMode = DevExpress.XtraBars.Navigation.ScrollBarMode.Hidden;
             this.accordionMenu.Dock = System.Windows.Forms.DockStyle.Left;
             this.accordionMenu.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
             this.aceDashboard,
             this.aceSanPham,
             this.aceDonHang,
             this.aceThongTin});
-            this.accordionMenu.Location = new System.Drawing.Point(0, 50);
+            this.accordionMenu.Location = new System.Drawing.Point(0, 56);
             this.accordionMenu.Name = "accordionMenu";
             this.accordionMenu.Size = new System.Drawing.Size(220, 650);
             this.accordionMenu.TabIndex = 1;
@@ -111,35 +113,35 @@ namespace cosmetics_store.Forms
             // 
             this.aceDashboard.Name = "aceDashboard";
             this.aceDashboard.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.aceDashboard.Text = "?? Trang ch?";
+            this.aceDashboard.Text = "Trang ch·ªß";
             this.aceDashboard.Click += new System.EventHandler(this.OnDashboardClick);
             // 
             // aceSanPham
             // 
             this.aceSanPham.Name = "aceSanPham";
             this.aceSanPham.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.aceSanPham.Text = "??? S?n ph?m";
+            this.aceSanPham.Text = "S·∫£n Ph·∫©m";
             this.aceSanPham.Click += new System.EventHandler(this.OnSanPhamClick);
             // 
             // aceDonHang
             // 
             this.aceDonHang.Name = "aceDonHang";
             this.aceDonHang.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.aceDonHang.Text = "?? –ın h‡ng c?a tÙi";
+            this.aceDonHang.Text = "ƒê∆°n h√†ng c·ªßa t√¥i";
             this.aceDonHang.Click += new System.EventHandler(this.OnDonHangClick);
             // 
             // aceThongTin
             // 
             this.aceThongTin.Name = "aceThongTin";
             this.aceThongTin.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.aceThongTin.Text = "?? ThÙng tin c· nh‚n";
+            this.aceThongTin.Text = "Th√¥ng tin c√° nh√¢n";
             this.aceThongTin.Click += new System.EventHandler(this.OnThongTinCaNhanClick);
             // 
             // pnlMainContent
             // 
             this.pnlMainContent.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(245)))), ((int)(((byte)(255)))));
             this.pnlMainContent.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlMainContent.Location = new System.Drawing.Point(220, 50);
+            this.pnlMainContent.Location = new System.Drawing.Point(220, 56);
             this.pnlMainContent.Name = "pnlMainContent";
             this.pnlMainContent.Size = new System.Drawing.Size(980, 650);
             this.pnlMainContent.TabIndex = 2;
@@ -154,13 +156,14 @@ namespace cosmetics_store.Forms
             this.Controls.Add(this.pnlHeader);
             this.Name = "fDashboardKhachHang";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Cosmetics Store - Kh·ch h‡ng";
+            this.Text = "Cosmetics Store - Kh√°ch h√†ng";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)(this.pnlHeader)).EndInit();
             this.pnlHeader.ResumeLayout(false);
             this.pnlHeader.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.accordionMenu)).EndInit();
             this.ResumeLayout(false);
+
         }
     }
 }

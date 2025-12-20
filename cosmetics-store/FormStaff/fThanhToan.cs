@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Windows.Forms;
 using DataAccessLayer.EntityClass;
 using DevExpress.XtraEditors;
@@ -21,24 +21,24 @@ namespace cosmetics_store.FormStaff
 
         private void fThanhToan_Load(object sender, EventArgs e)
         {
-            lblKhachHang.Text = $"Kh�ch h�ng: {_khachHang.HoTen}";
-            lblTongTien.Text = $"T?ng ti?n: {_tongTien:N0} VND";
+            lblKhachHang.Text = $"Khách hàng: {_khachHang.HoTen}";
+            lblTongTien.Text = $"Tổng tiền: {_tongTien:N0} VND";
 
-            // M?c �?nh ch?n ti?n m?t
+            // Mặc định chọn tiền mặt
             rdTienMat.Checked = true;
         }
 
         private void btnXacNhan_Click(object sender, EventArgs e)
         {
             if (rdTienMat.Checked)
-                PhuongThucTT = "Ti?n m?t";
+                PhuongThucTT = "Tiền mặt";
             else if (rdChuyenKhoan.Checked)
-                PhuongThucTT = "Chuy?n kho?n";
+                PhuongThucTT = "Chuyển khoản";
             else if (rdViDienTu.Checked)
-                PhuongThucTT = "V� �i?n t?";
+                PhuongThucTT = "Ví điện tử";
             else
             {
-                XtraMessageBox.Show("Vui l?ng ch?n ph��ng th?c thanh to�n!", "Th�ng b�o",
+                XtraMessageBox.Show("Vui lòng chọn phương thức thanh toán!", "Thông báo",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }

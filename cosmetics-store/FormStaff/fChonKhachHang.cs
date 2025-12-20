@@ -1,4 +1,4 @@
-using System;
+Ôªøusing System;
 using System.Linq;
 using System.Windows.Forms;
 using DataAccessLayer;
@@ -47,10 +47,10 @@ namespace cosmetics_store.FormStaff
 
                 gridKhachHang.DataSource = data;
 
-                gridViewKH.Columns["MaKH"].Caption = "M? KH";
-                gridViewKH.Columns["HoTen"].Caption = "H? tÍn";
-                gridViewKH.Columns["SDT"].Caption = "S–T";
-                gridViewKH.Columns["GhiChu"].Caption = "Ghi ch˙";
+                gridViewKH.Columns["MaKH"].Caption = "M√£ KH";
+                gridViewKH.Columns["HoTen"].Caption = "H·ªç t√™n";
+                gridViewKH.Columns["SDT"].Caption = "SƒêT";
+                gridViewKH.Columns["GhiChu"].Caption = "Ghi ch√∫";
 
                 gridViewKH.Columns["MaKH"].Width = 60;
                 gridViewKH.Columns["HoTen"].Width = 150;
@@ -77,7 +77,7 @@ namespace cosmetics_store.FormStaff
         {
             if (gridViewKH.FocusedRowHandle < 0)
             {
-                XtraMessageBox.Show("Vui l?ng ch?n kh·ch h‡ng!", "ThÙng b·o",
+                XtraMessageBox.Show("Vui l√≤ng ch·ªçn kh√°ch h√†ng!", "Th√¥ng b√°o",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
@@ -108,12 +108,12 @@ namespace cosmetics_store.FormStaff
 
                         LoadKhachHang();
 
-                        XtraMessageBox.Show("–? thÍm kh·ch h‡ng m?i!", "ThÙng b·o",
+                        XtraMessageBox.Show("ƒê√£ th√™m kh√°ch h√†ng m·ªõi!", "Th√¥ng b√°o",
                             MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     catch (Exception ex)
                     {
-                        XtraMessageBox.Show($"L?i: {ex.Message}", "L?i",
+                        XtraMessageBox.Show($"L·ªói: {ex.Message}", "L·ªói",
                             MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }

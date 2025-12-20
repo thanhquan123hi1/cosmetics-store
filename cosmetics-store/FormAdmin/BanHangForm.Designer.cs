@@ -1,4 +1,4 @@
-namespace cosmetics_store.Forms
+Ôªønamespace cosmetics_store.Forms
 {
     partial class BanHangForm
     {
@@ -36,7 +36,6 @@ namespace cosmetics_store.Forms
         private void InitializeComponent()
         {
             this.pnlMain = new DevExpress.XtraEditors.PanelControl();
-            this.lblTitle = new DevExpress.XtraEditors.LabelControl();
             this.splitContainer = new System.Windows.Forms.SplitContainer();
             this.grpSanPham = new DevExpress.XtraEditors.GroupControl();
             this.searchSanPham = new DevExpress.XtraEditors.SearchControl();
@@ -58,6 +57,7 @@ namespace cosmetics_store.Forms
             this.cboPhuongThuc = new DevExpress.XtraEditors.ComboBoxEdit();
             this.btnThanhToan = new DevExpress.XtraEditors.SimpleButton();
             this.btnHuy = new DevExpress.XtraEditors.SimpleButton();
+            this.lblTitle = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.pnlMain)).BeginInit();
             this.pnlMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer)).BeginInit();
@@ -93,26 +93,13 @@ namespace cosmetics_store.Forms
             this.pnlMain.Size = new System.Drawing.Size(1000, 650);
             this.pnlMain.TabIndex = 0;
             // 
-            // lblTitle
-            // 
-            this.lblTitle.Appearance.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold);
-            this.lblTitle.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
-            this.lblTitle.Appearance.Options.UseFont = true;
-            this.lblTitle.Appearance.Options.UseForeColor = true;
-            this.lblTitle.Location = new System.Drawing.Point(20, 15);
-            this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(180, 32);
-            this.lblTitle.TabIndex = 0;
-            this.lblTitle.Text = "?? B·n h‡ng";
-            // 
             // splitContainer
             // 
-            this.splitContainer.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
+            this.splitContainer.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.splitContainer.Location = new System.Drawing.Point(20, 55);
             this.splitContainer.Name = "splitContainer";
-            this.splitContainer.Size = new System.Drawing.Size(960, 580);
-            this.splitContainer.SplitterDistance = 550;
-            this.splitContainer.TabIndex = 1;
             // 
             // splitContainer.Panel1
             // 
@@ -122,6 +109,9 @@ namespace cosmetics_store.Forms
             // 
             this.splitContainer.Panel2.Controls.Add(this.grpGioHang);
             this.splitContainer.Panel2.Controls.Add(this.grpThanhToan);
+            this.splitContainer.Size = new System.Drawing.Size(960, 580);
+            this.splitContainer.SplitterDistance = 480;
+            this.splitContainer.TabIndex = 1;
             // 
             // grpSanPham
             // 
@@ -135,29 +125,37 @@ namespace cosmetics_store.Forms
             this.grpSanPham.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grpSanPham.Location = new System.Drawing.Point(0, 0);
             this.grpSanPham.Name = "grpSanPham";
-            this.grpSanPham.Size = new System.Drawing.Size(550, 580);
+            this.grpSanPham.Size = new System.Drawing.Size(480, 580);
             this.grpSanPham.TabIndex = 0;
-            this.grpSanPham.Text = "?? Danh s·ch s?n ph?m";
+            this.grpSanPham.Text = "Danh s√°ch s·∫£n ph·∫©m";
             // 
             // searchSanPham
             // 
-            this.searchSanPham.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
+            this.searchSanPham.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.searchSanPham.Location = new System.Drawing.Point(10, 35);
             this.searchSanPham.Name = "searchSanPham";
             this.searchSanPham.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.searchSanPham.Properties.Appearance.Options.UseFont = true;
             this.searchSanPham.Properties.NullValuePrompt = "T?m s?n ph?m...";
-            this.searchSanPham.Size = new System.Drawing.Size(530, 26);
+            this.searchSanPham.Properties.ShowClearButton = false;
+            this.searchSanPham.Properties.ShowSearchButton = false;
+            this.searchSanPham.Size = new System.Drawing.Size(460, 30);
             this.searchSanPham.TabIndex = 0;
             // 
             // gridSanPham
             // 
-            this.gridSanPham.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
-            this.gridSanPham.Location = new System.Drawing.Point(10, 70);
+            this.gridSanPham.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.gridSanPham.Location = new System.Drawing.Point(5, 71);
             this.gridSanPham.MainView = this.gridViewSanPham;
             this.gridSanPham.Name = "gridSanPham";
-            this.gridSanPham.Size = new System.Drawing.Size(530, 450);
+            this.gridSanPham.Size = new System.Drawing.Size(465, 450);
             this.gridSanPham.TabIndex = 1;
+            this.gridSanPham.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridViewSanPham});
+            this.gridSanPham.Click += new System.EventHandler(this.gridSanPham_Click);
             // 
             // gridViewSanPham
             // 
@@ -173,22 +171,36 @@ namespace cosmetics_store.Forms
             this.lblSoLuong.Appearance.Options.UseFont = true;
             this.lblSoLuong.Location = new System.Drawing.Point(10, 535);
             this.lblSoLuong.Name = "lblSoLuong";
-            this.lblSoLuong.Size = new System.Drawing.Size(60, 19);
+            this.lblSoLuong.Size = new System.Drawing.Size(77, 23);
             this.lblSoLuong.TabIndex = 2;
-            this.lblSoLuong.Text = "S? l˝?ng:";
+            this.lblSoLuong.Text = "S·ªë l∆∞·ª£ng: ";
             // 
             // spinSoLuong
             // 
             this.spinSoLuong.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.spinSoLuong.EditValue = new decimal(new int[] { 1, 0, 0, 0 });
+            this.spinSoLuong.EditValue = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.spinSoLuong.Location = new System.Drawing.Point(80, 532);
             this.spinSoLuong.Name = "spinSoLuong";
             this.spinSoLuong.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.spinSoLuong.Properties.Appearance.Options.UseFont = true;
-            this.spinSoLuong.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] { new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo) });
+            this.spinSoLuong.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.spinSoLuong.Properties.IsFloatValue = false;
-            this.spinSoLuong.Properties.MinValue = new decimal(new int[] { 1, 0, 0, 0 });
-            this.spinSoLuong.Size = new System.Drawing.Size(80, 26);
+            this.spinSoLuong.Properties.MaxValue = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.spinSoLuong.Properties.MinValue = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.spinSoLuong.Size = new System.Drawing.Size(80, 30);
             this.spinSoLuong.TabIndex = 3;
             // 
             // btnThemVaoGio
@@ -204,7 +216,7 @@ namespace cosmetics_store.Forms
             this.btnThemVaoGio.Name = "btnThemVaoGio";
             this.btnThemVaoGio.Size = new System.Drawing.Size(150, 30);
             this.btnThemVaoGio.TabIndex = 4;
-            this.btnThemVaoGio.Text = "?? ThÍm v‡o gi?";
+            this.btnThemVaoGio.Text = "Th√™m v√†o gi·ªè";
             this.btnThemVaoGio.Click += new System.EventHandler(this.btnThemVaoGio_Click);
             // 
             // grpGioHang
@@ -216,18 +228,22 @@ namespace cosmetics_store.Forms
             this.grpGioHang.Dock = System.Windows.Forms.DockStyle.Top;
             this.grpGioHang.Location = new System.Drawing.Point(0, 0);
             this.grpGioHang.Name = "grpGioHang";
-            this.grpGioHang.Size = new System.Drawing.Size(400, 300);
+            this.grpGioHang.Size = new System.Drawing.Size(476, 300);
             this.grpGioHang.TabIndex = 0;
-            this.grpGioHang.Text = "?? Gi? h‡ng";
+            this.grpGioHang.Text = "Gi·ªè h√†ng";
             // 
             // gridGioHang
             // 
-            this.gridGioHang.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
-            this.gridGioHang.Location = new System.Drawing.Point(10, 35);
+            this.gridGioHang.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.gridGioHang.Location = new System.Drawing.Point(15, 40);
             this.gridGioHang.MainView = this.gridViewGioHang;
             this.gridGioHang.Name = "gridGioHang";
-            this.gridGioHang.Size = new System.Drawing.Size(380, 220);
+            this.gridGioHang.Size = new System.Drawing.Size(456, 220);
             this.gridGioHang.TabIndex = 0;
+            this.gridGioHang.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridViewGioHang});
             // 
             // gridViewGioHang
             // 
@@ -249,7 +265,7 @@ namespace cosmetics_store.Forms
             this.btnXoaKhoiGio.Name = "btnXoaKhoiGio";
             this.btnXoaKhoiGio.Size = new System.Drawing.Size(100, 28);
             this.btnXoaKhoiGio.TabIndex = 1;
-            this.btnXoaKhoiGio.Text = "??? XÛa";
+            this.btnXoaKhoiGio.Text = "X√≥a";
             this.btnXoaKhoiGio.Click += new System.EventHandler(this.btnXoaKhoiGio_Click);
             // 
             // grpThanhToan
@@ -265,11 +281,11 @@ namespace cosmetics_store.Forms
             this.grpThanhToan.Controls.Add(this.btnThanhToan);
             this.grpThanhToan.Controls.Add(this.btnHuy);
             this.grpThanhToan.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.grpThanhToan.Location = new System.Drawing.Point(0, 300);
+            this.grpThanhToan.Location = new System.Drawing.Point(0, 0);
             this.grpThanhToan.Name = "grpThanhToan";
-            this.grpThanhToan.Size = new System.Drawing.Size(400, 280);
+            this.grpThanhToan.Size = new System.Drawing.Size(476, 580);
             this.grpThanhToan.TabIndex = 1;
-            this.grpThanhToan.Text = "?? Thanh to·n";
+            this.grpThanhToan.Text = "?? Thanh to√°n";
             // 
             // lblKhachHang
             // 
@@ -277,9 +293,9 @@ namespace cosmetics_store.Forms
             this.lblKhachHang.Appearance.Options.UseFont = true;
             this.lblKhachHang.Location = new System.Drawing.Point(15, 40);
             this.lblKhachHang.Name = "lblKhachHang";
-            this.lblKhachHang.Size = new System.Drawing.Size(75, 19);
+            this.lblKhachHang.Size = new System.Drawing.Size(95, 23);
             this.lblKhachHang.TabIndex = 0;
-            this.lblKhachHang.Text = "Kh·ch h‡ng:";
+            this.lblKhachHang.Text = "Kh√°ch h√†ng:";
             // 
             // lookupKhachHang
             // 
@@ -287,9 +303,10 @@ namespace cosmetics_store.Forms
             this.lookupKhachHang.Name = "lookupKhachHang";
             this.lookupKhachHang.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.lookupKhachHang.Properties.Appearance.Options.UseFont = true;
-            this.lookupKhachHang.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] { new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo) });
-            this.lookupKhachHang.Properties.NullText = "-- Ch?n kh·ch h‡ng --";
-            this.lookupKhachHang.Size = new System.Drawing.Size(280, 26);
+            this.lookupKhachHang.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.lookupKhachHang.Properties.NullText = "-- Ch?n kh√°ch h√†ng --";
+            this.lookupKhachHang.Size = new System.Drawing.Size(280, 30);
             this.lookupKhachHang.TabIndex = 1;
             // 
             // lblTongTien
@@ -298,7 +315,7 @@ namespace cosmetics_store.Forms
             this.lblTongTien.Appearance.Options.UseFont = true;
             this.lblTongTien.Location = new System.Drawing.Point(15, 80);
             this.lblTongTien.Name = "lblTongTien";
-            this.lblTongTien.Size = new System.Drawing.Size(80, 21);
+            this.lblTongTien.Size = new System.Drawing.Size(105, 28);
             this.lblTongTien.TabIndex = 2;
             this.lblTongTien.Text = "T?NG TI?N:";
             // 
@@ -310,9 +327,9 @@ namespace cosmetics_store.Forms
             this.lblTongTienValue.Appearance.Options.UseForeColor = true;
             this.lblTongTienValue.Location = new System.Drawing.Point(15, 110);
             this.lblTongTienValue.Name = "lblTongTienValue";
-            this.lblTongTienValue.Size = new System.Drawing.Size(50, 32);
+            this.lblTongTienValue.Size = new System.Drawing.Size(43, 41);
             this.lblTongTienValue.TabIndex = 3;
-            this.lblTongTienValue.Text = "0 ";
+            this.lblTongTienValue.Text = "0 √∞";
             // 
             // lblPhuongThuc
             // 
@@ -320,9 +337,9 @@ namespace cosmetics_store.Forms
             this.lblPhuongThuc.Appearance.Options.UseFont = true;
             this.lblPhuongThuc.Location = new System.Drawing.Point(15, 160);
             this.lblPhuongThuc.Name = "lblPhuongThuc";
-            this.lblPhuongThuc.Size = new System.Drawing.Size(124, 19);
+            this.lblPhuongThuc.Size = new System.Drawing.Size(122, 23);
             this.lblPhuongThuc.TabIndex = 4;
-            this.lblPhuongThuc.Text = "Ph˝ıng th?c TT:";
+            this.lblPhuongThuc.Text = "Ph√Ω√µng th?c TT:";
             // 
             // cboPhuongThuc
             // 
@@ -331,10 +348,14 @@ namespace cosmetics_store.Forms
             this.cboPhuongThuc.Name = "cboPhuongThuc";
             this.cboPhuongThuc.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cboPhuongThuc.Properties.Appearance.Options.UseFont = true;
-            this.cboPhuongThuc.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] { new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo) });
-            this.cboPhuongThuc.Properties.Items.AddRange(new object[] { "Ti?n m?t", "Chuy?n kho?n", "Th? tÌn d?ng" });
+            this.cboPhuongThuc.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cboPhuongThuc.Properties.Items.AddRange(new object[] {
+            "Ti?n m?t",
+            "Chuy?n kho?n",
+            "Th? t√≠n d?ng"});
             this.cboPhuongThuc.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-            this.cboPhuongThuc.Size = new System.Drawing.Size(150, 26);
+            this.cboPhuongThuc.Size = new System.Drawing.Size(150, 30);
             this.cboPhuongThuc.TabIndex = 5;
             // 
             // btnThanhToan
@@ -349,7 +370,7 @@ namespace cosmetics_store.Forms
             this.btnThanhToan.Name = "btnThanhToan";
             this.btnThanhToan.Size = new System.Drawing.Size(180, 45);
             this.btnThanhToan.TabIndex = 6;
-            this.btnThanhToan.Text = "?? THANH TO¡N";
+            this.btnThanhToan.Text = "?? THANH TO√ÅN";
             this.btnThanhToan.Click += new System.EventHandler(this.btnThanhToan_Click);
             // 
             // btnHuy
@@ -363,6 +384,18 @@ namespace cosmetics_store.Forms
             this.btnHuy.Text = "H?y";
             this.btnHuy.Click += new System.EventHandler(this.btnHuy_Click);
             // 
+            // lblTitle
+            // 
+            this.lblTitle.Appearance.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold);
+            this.lblTitle.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
+            this.lblTitle.Appearance.Options.UseFont = true;
+            this.lblTitle.Appearance.Options.UseForeColor = true;
+            this.lblTitle.Location = new System.Drawing.Point(20, 15);
+            this.lblTitle.Name = "lblTitle";
+            this.lblTitle.Size = new System.Drawing.Size(132, 41);
+            this.lblTitle.TabIndex = 0;
+            this.lblTitle.Text = "B√°n h√†ng";
+            // 
             // BanHangForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -371,7 +404,7 @@ namespace cosmetics_store.Forms
             this.Controls.Add(this.pnlMain);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "BanHangForm";
-            this.Text = "B·n h‡ng";
+            this.Text = "B√°n h√†ng";
             ((System.ComponentModel.ISupportInitialize)(this.pnlMain)).EndInit();
             this.pnlMain.ResumeLayout(false);
             this.pnlMain.PerformLayout();
@@ -396,6 +429,7 @@ namespace cosmetics_store.Forms
             ((System.ComponentModel.ISupportInitialize)(this.lookupKhachHang.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboPhuongThuc.Properties)).EndInit();
             this.ResumeLayout(false);
+
         }
     }
 }

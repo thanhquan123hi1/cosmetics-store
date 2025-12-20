@@ -1,4 +1,4 @@
-namespace cosmetics_store.Forms
+﻿namespace cosmetics_store.Forms
 {
     partial class BanHangFormDx
     {
@@ -27,6 +27,7 @@ namespace cosmetics_store.Forms
 
         private void InitializeComponent()
         {
+            DevExpress.XtraGrid.GridLevelNode gridLevelNode1 = new DevExpress.XtraGrid.GridLevelNode();
             this.splitContainer = new System.Windows.Forms.SplitContainer();
             this.txtSearch = new DevExpress.XtraEditors.SearchControl();
             this.gridSanPham = new DevExpress.XtraGrid.GridControl();
@@ -78,6 +79,7 @@ namespace cosmetics_store.Forms
             this.splitContainer.Panel2.Controls.Add(this.lblTongTien);
             this.splitContainer.Panel2.Controls.Add(this.btnThanhToan);
             this.splitContainer.Panel2.Controls.Add(this.btnHuyDon);
+            this.splitContainer.Panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.splitContainer_Panel2_Paint);
             this.splitContainer.Size = new System.Drawing.Size(1200, 700);
             this.splitContainer.SplitterDistance = 600;
             this.splitContainer.TabIndex = 0;
@@ -86,7 +88,7 @@ namespace cosmetics_store.Forms
             // 
             this.txtSearch.Location = new System.Drawing.Point(12, 12);
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Properties.NullValuePrompt = "Tim san pham...";
+            this.txtSearch.Properties.NullValuePrompt = "Tìm sản phẩm...";
             this.txtSearch.Properties.ShowClearButton = false;
             this.txtSearch.Properties.ShowSearchButton = false;
             this.txtSearch.Size = new System.Drawing.Size(400, 22);
@@ -114,13 +116,16 @@ namespace cosmetics_store.Forms
             // 
             this.btnThemVaoGio.Location = new System.Drawing.Point(12, 570);
             this.btnThemVaoGio.Name = "btnThemVaoGio";
-            this.btnThemVaoGio.Size = new System.Drawing.Size(200, 40);
+            this.btnThemVaoGio.Size = new System.Drawing.Size(217, 35);
             this.btnThemVaoGio.TabIndex = 2;
-            this.btnThemVaoGio.Text = "THEM ";
+            this.btnThemVaoGio.Text = "➕ Thêm vào giỏ";
             this.btnThemVaoGio.Click += new System.EventHandler(this.btnThemVaoGio_Click);
             // 
             // gridGioHang
             // 
+            gridLevelNode1.RelationName = "Level1";
+            this.gridGioHang.LevelTree.Nodes.AddRange(new DevExpress.XtraGrid.GridLevelNode[] {
+            gridLevelNode1});
             this.gridGioHang.Location = new System.Drawing.Point(12, 12);
             this.gridGioHang.MainView = this.gridViewGioHang;
             this.gridGioHang.Name = "gridGioHang";
@@ -141,7 +146,7 @@ namespace cosmetics_store.Forms
             this.btnXoaKhoiGio.Name = "btnXoaKhoiGio";
             this.btnXoaKhoiGio.Size = new System.Drawing.Size(150, 29);
             this.btnXoaKhoiGio.TabIndex = 1;
-            this.btnXoaKhoiGio.Text = "Xoa khoi gio";
+            this.btnXoaKhoiGio.Text = "❌ Xóa khỏi giỏ";
             this.btnXoaKhoiGio.Click += new System.EventHandler(this.btnXoaKhoiGio_Click);
             // 
             // lblKhachHang
@@ -150,7 +155,7 @@ namespace cosmetics_store.Forms
             this.lblKhachHang.Name = "lblKhachHang";
             this.lblKhachHang.Size = new System.Drawing.Size(71, 16);
             this.lblKhachHang.TabIndex = 2;
-            this.lblKhachHang.Text = "Khach hang:";
+            this.lblKhachHang.Text = "Khách hàng:";
             // 
             // lookupKhachHang
             // 
@@ -163,18 +168,18 @@ namespace cosmetics_store.Forms
             // 
             this.lblPhuongThuc.Location = new System.Drawing.Point(320, 470);
             this.lblPhuongThuc.Name = "lblPhuongThuc";
-            this.lblPhuongThuc.Size = new System.Drawing.Size(75, 16);
+            this.lblPhuongThuc.Size = new System.Drawing.Size(77, 16);
             this.lblPhuongThuc.TabIndex = 4;
-            this.lblPhuongThuc.Text = "Phuong thuc:";
+            this.lblPhuongThuc.Text = "Phương thức:";
             // 
             // cboPhuongThuc
             // 
             this.cboPhuongThuc.Location = new System.Drawing.Point(410, 467);
             this.cboPhuongThuc.Name = "cboPhuongThuc";
             this.cboPhuongThuc.Properties.Items.AddRange(new object[] {
-            "Tien mat",
-            "Chuyen khoan",
-            "The"});
+            "Tiền mặt",
+            "Chuyển khoản",
+            "Thẻ"});
             this.cboPhuongThuc.Size = new System.Drawing.Size(150, 22);
             this.cboPhuongThuc.TabIndex = 5;
             // 
@@ -184,26 +189,26 @@ namespace cosmetics_store.Forms
             this.lblTongTien.Appearance.Options.UseFont = true;
             this.lblTongTien.Location = new System.Drawing.Point(12, 520);
             this.lblTongTien.Name = "lblTongTien";
-            this.lblTongTien.Size = new System.Drawing.Size(146, 28);
+            this.lblTongTien.Size = new System.Drawing.Size(147, 29);
             this.lblTongTien.TabIndex = 6;
-            this.lblTongTien.Text = "TONG TIEN: ";
+            this.lblTongTien.Text = "TỔNG TIỀN:";
             // 
             // btnThanhToan
             // 
             this.btnThanhToan.Location = new System.Drawing.Point(12, 570);
             this.btnThanhToan.Name = "btnThanhToan";
-            this.btnThanhToan.Size = new System.Drawing.Size(250, 50);
+            this.btnThanhToan.Size = new System.Drawing.Size(238, 50);
             this.btnThanhToan.TabIndex = 7;
-            this.btnThanhToan.Text = "THANH TOAN";
+            this.btnThanhToan.Text = "💳 THANH TOÁN";
             this.btnThanhToan.Click += new System.EventHandler(this.btnThanhToan_Click);
             // 
             // btnHuyDon
             // 
-            this.btnHuyDon.Location = new System.Drawing.Point(280, 570);
+            this.btnHuyDon.Location = new System.Drawing.Point(351, 570);
             this.btnHuyDon.Name = "btnHuyDon";
-            this.btnHuyDon.Size = new System.Drawing.Size(150, 50);
+            this.btnHuyDon.Size = new System.Drawing.Size(175, 50);
             this.btnHuyDon.TabIndex = 8;
-            this.btnHuyDon.Text = "HUY DON";
+            this.btnHuyDon.Text = "❌ HỦY ĐƠN";
             this.btnHuyDon.Click += new System.EventHandler(this.btnHuyDon_Click);
             // 
             // BanHangFormDx
@@ -213,7 +218,7 @@ namespace cosmetics_store.Forms
             this.ClientSize = new System.Drawing.Size(1200, 700);
             this.Controls.Add(this.splitContainer);
             this.Name = "BanHangFormDx";
-            this.Text = "Ban hang (POS)";
+            this.Text = "Bán hàng (POS)";
             this.splitContainer.Panel1.ResumeLayout(false);
             this.splitContainer.Panel2.ResumeLayout(false);
             this.splitContainer.Panel2.PerformLayout();

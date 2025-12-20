@@ -24,5 +24,10 @@ namespace cosmetics_store.Forms
         {
 
         }
+
+        private void grid_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

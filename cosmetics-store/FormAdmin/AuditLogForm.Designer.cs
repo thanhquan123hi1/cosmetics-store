@@ -1,4 +1,4 @@
-namespace cosmetics_store.Forms
+﻿namespace cosmetics_store.Forms
 {
     partial class AuditLogForm
     {
@@ -76,9 +76,9 @@ namespace cosmetics_store.Forms
             // 
             this.lblFrom.Location = new System.Drawing.Point(12, 20);
             this.lblFrom.Name = "lblFrom";
-            this.lblFrom.Size = new System.Drawing.Size(45, 16);
+            this.lblFrom.Size = new System.Drawing.Size(60, 16);
             this.lblFrom.TabIndex = 0;
-            this.lblFrom.Text = "T? ng�y:";
+            this.lblFrom.Text = "Từ ngày : ";
             // 
             // dateFrom
             // 
@@ -101,9 +101,9 @@ namespace cosmetics_store.Forms
             // 
             this.lblTo.Location = new System.Drawing.Point(175, 20);
             this.lblTo.Name = "lblTo";
-            this.lblTo.Size = new System.Drawing.Size(55, 16);
+            this.lblTo.Size = new System.Drawing.Size(63, 16);
             this.lblTo.TabIndex = 2;
-            this.lblTo.Text = "�?n ng�y:";
+            this.lblTo.Text = "Đến ngày: ";
             // 
             // dateTo
             // 
@@ -126,9 +126,9 @@ namespace cosmetics_store.Forms
             // 
             this.lblHanhDong.Location = new System.Drawing.Point(350, 20);
             this.lblHanhDong.Name = "lblHanhDong";
-            this.lblHanhDong.Size = new System.Drawing.Size(62, 16);
+            this.lblHanhDong.Size = new System.Drawing.Size(70, 16);
             this.lblHanhDong.TabIndex = 4;
-            this.lblHanhDong.Text = "H�nh �?ng:";
+            this.lblHanhDong.Text = "Hành động: ";
             // 
             // cboHanhDong
             // 
@@ -144,7 +144,9 @@ namespace cosmetics_store.Forms
             // 
             this.searchControl.Location = new System.Drawing.Point(550, 17);
             this.searchControl.Name = "searchControl";
-            this.searchControl.Properties.NullValuePrompt = "T?m ki?m...";
+            this.searchControl.Properties.NullValuePrompt = "Tìm kiếm...";
+            this.searchControl.Properties.ShowClearButton = false;
+            this.searchControl.Properties.ShowSearchButton = false;
             this.searchControl.Size = new System.Drawing.Size(180, 22);
             this.searchControl.TabIndex = 6;
             // 
@@ -154,20 +156,20 @@ namespace cosmetics_store.Forms
             this.btnSearch.Appearance.ForeColor = System.Drawing.Color.White;
             this.btnSearch.Appearance.Options.UseBackColor = true;
             this.btnSearch.Appearance.Options.UseForeColor = true;
-            this.btnSearch.Location = new System.Drawing.Point(740, 14);
+            this.btnSearch.Location = new System.Drawing.Point(736, 14);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(80, 29);
+            this.btnSearch.Size = new System.Drawing.Size(84, 29);
             this.btnSearch.TabIndex = 7;
-            this.btnSearch.Text = "T?m ki?m";
+            this.btnSearch.Text = "🔍 Tìm kiếm";
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // btnRefresh
             // 
-            this.btnRefresh.Location = new System.Drawing.Point(825, 14);
+            this.btnRefresh.Location = new System.Drawing.Point(824, 14);
             this.btnRefresh.Name = "btnRefresh";
             this.btnRefresh.Size = new System.Drawing.Size(80, 29);
             this.btnRefresh.TabIndex = 8;
-            this.btnRefresh.Text = "L�m m?i";
+            this.btnRefresh.Text = "🔄 Làm mới";
             this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
             // btnExport
@@ -180,7 +182,7 @@ namespace cosmetics_store.Forms
             this.btnExport.Name = "btnExport";
             this.btnExport.Size = new System.Drawing.Size(80, 29);
             this.btnExport.TabIndex = 9;
-            this.btnExport.Text = "Xu?t Excel";
+            this.btnExport.Text = "📄 Xuất Excel";
             this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
             // 
             // grid
@@ -191,7 +193,8 @@ namespace cosmetics_store.Forms
             this.grid.Name = "grid";
             this.grid.Size = new System.Drawing.Size(1000, 490);
             this.grid.TabIndex = 1;
-            this.grid.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] { this.gridView });
+            this.grid.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridView});
             // 
             // gridView
             // 
@@ -216,9 +219,9 @@ namespace cosmetics_store.Forms
             this.lblTotalRecords.Appearance.Options.UseFont = true;
             this.lblTotalRecords.Location = new System.Drawing.Point(12, 7);
             this.lblTotalRecords.Name = "lblTotalRecords";
-            this.lblTotalRecords.Size = new System.Drawing.Size(100, 17);
+            this.lblTotalRecords.Size = new System.Drawing.Size(149, 23);
             this.lblTotalRecords.TabIndex = 0;
-            this.lblTotalRecords.Text = "T?ng s?: 0 b?n ghi";
+            this.lblTotalRecords.Text = "Tổng số: 0 bản ghi";
             // 
             // AuditLogForm
             // 
@@ -229,7 +232,7 @@ namespace cosmetics_store.Forms
             this.Controls.Add(this.pnlBottom);
             this.Controls.Add(this.pnlTop);
             this.Name = "AuditLogForm";
-            this.Text = "Nh?t k? h? th?ng";
+            this.Text = "Nhật kí hệ thống";
             this.pnlTop.ResumeLayout(false);
             this.pnlTop.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dateFrom.Properties.CalendarTimeProperties)).EndInit();
@@ -243,6 +246,7 @@ namespace cosmetics_store.Forms
             this.pnlBottom.ResumeLayout(false);
             this.pnlBottom.PerformLayout();
             this.ResumeLayout(false);
+
         }
     }
 }

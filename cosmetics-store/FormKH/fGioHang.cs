@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
@@ -21,7 +21,7 @@ namespace cosmetics_store.FormKH
         // Payment state
         private string _selectedPaymentMethod = "COD";
         private decimal _discountAmount = 0;
-        private decimal _shippingFee = 30000; // Ph� ship m?c ??nh
+        private decimal _shippingFee = 30000; // Phí ship mặc định
         private string _appliedVoucher = "";
 
         // UI Colors
@@ -54,7 +54,7 @@ namespace cosmetics_store.FormKH
         private void SetupUI()
         {
             // Set form properties
-            this.Text = "?? Gi? h�ng & Thanh to�n";
+            this.Text = "🛒 Giỏ hàng & Thanh toán";
             this.BackColor = Color.FromArgb(250, 248, 255);
         }
 
@@ -64,10 +64,10 @@ namespace cosmetics_store.FormKH
 
             var methods = new Tuple<string, string, string> []
             {
-                Tuple.Create("COD", "?? Thanh to�n khi nh?n h�ng (COD)", "Thanh to�n b?ng ti?n m?t khi nh?n h�ng"),
-                Tuple.Create("BANK", "?? Chuy?n kho?n ng�n h�ng", "Chuy?n kho?n qua t�i kho?n ng�n h�ng"),
-                Tuple.Create("MOMO", "?? V� MoMo", "Thanh to�n qua v� ?i?n t? MoMo"),
-                Tuple.Create("ZALOPAY", "?? ZaloPay", "Thanh to�n qua ZaloPay")
+                Tuple.Create("COD", "💵 Thanh toán khi nhận hàng (COD)", "Thanh toán bằng tiền mặt khi nhận hàng"),
+                Tuple.Create("BANK", "🏦 Chuyển khoản ngân hàng", "Chuyển khoản qua tài khoản ngân hàng"),
+                Tuple.Create("MOMO", "📱 Ví MoMo", "Thanh toán qua ví điện tử MoMo"),
+                Tuple.Create("ZALOPAY", "💳 ZaloPay", "Thanh toán qua ZaloPay")
             };
 
             int yPos = 10;
@@ -135,7 +135,7 @@ namespace cosmetics_store.FormKH
         private void SetupVoucherSection()
         {
             // Voucher hints
-            lblVoucherHint.Text = "?? Nh?p FREESHIP ?? mi?n ph� v?n chuy?n, GIAM10 ?? gi?m 10%";
+            lblVoucherHint.Text = "💡 Nhập FREESHIP để miễn phí vận chuyển, GIAM10 để giảm 10%";
         }
 
         #endregion
@@ -160,10 +160,10 @@ namespace cosmetics_store.FormKH
             if (gridViewGH.Columns.Count > 0)
             {
                 gridViewGH.Columns["MaSP"].Visible = false;
-                gridViewGH.Columns["TenSP"].Caption = "S?n ph?m";
+                gridViewGH.Columns["TenSP"].Caption = "Sản phẩm";
                 gridViewGH.Columns["SoLuong"].Caption = "SL";
-                gridViewGH.Columns["DonGia"].Caption = "??n gi�";
-                gridViewGH.Columns["ThanhTien"].Caption = "Th�nh ti?n";
+                gridViewGH.Columns["DonGia"].Caption = "Đơn giá";
+                gridViewGH.Columns["ThanhTien"].Caption = "Thành tiền";
 
                 gridViewGH.Columns["TenSP"].Width = 280;
                 gridViewGH.Columns["SoLuong"].Width = 60;
@@ -171,9 +171,9 @@ namespace cosmetics_store.FormKH
                 gridViewGH.Columns["ThanhTien"].Width = 130;
 
                 gridViewGH.Columns["DonGia"].DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-                gridViewGH.Columns["DonGia"].DisplayFormat.FormatString = "#,##0 ?";
+                gridViewGH.Columns["DonGia"].DisplayFormat.FormatString = "#,##0 đ";
                 gridViewGH.Columns["ThanhTien"].DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-                gridViewGH.Columns["ThanhTien"].DisplayFormat.FormatString = "#,##0 ?";
+                gridViewGH.Columns["ThanhTien"].DisplayFormat.FormatString = "#,##0 đ";
             }
         }
 
@@ -182,11 +182,11 @@ namespace cosmetics_store.FormKH
             decimal subtotal = _cart.Sum(c => c.ThanhTien);
             decimal total = GetFinalTotal();
 
-            lblSubtotal.Text = $"{subtotal:N0}?";
-            lblShipping.Text = _shippingFee == 0 ? "Mi?n ph�" : $"{_shippingFee:N0}?";
-            lblDiscount.Text = _discountAmount > 0 ? $"-{_discountAmount:N0}?" : "0?";
+            lblSubtotal.Text = $"{subtotal:N0}đ";
+            lblShipping.Text = _shippingFee == 0 ? "Miễn phí" : $"{_shippingFee:N0}đ";
+            lblDiscount.Text = _discountAmount > 0 ? $"-{_discountAmount:N0}đ" : "0đ";
             lblDiscount.ForeColor = _discountAmount > 0 ? _accentGreen : Color.Gray;
-            lblTotal.Text = $"{total:N0}?";
+            lblTotal.Text = $"{total:N0}đ";
 
             // Update QR if online payment
             if (_selectedPaymentMethod != "COD")
@@ -210,8 +210,8 @@ namespace cosmetics_store.FormKH
             if (item != null)
             {
                 var result = XtraMessageBox.Show(
-                    $"X�a '{item.TenSP}' kh?i gi? h�ng?",
-                    "X�c nh?n",
+                    $"Xóa '{item.TenSP}' khỏi giỏ hàng?",
+                    "Xác nhận",
                     MessageBoxButtons.YesNo,
                     MessageBoxIcon.Question);
 
@@ -260,41 +260,41 @@ namespace cosmetics_store.FormKH
             
             if (string.IsNullOrEmpty(voucher))
             {
-                XtraMessageBox.Show("Vui l�ng nh?p m� voucher!", "Th�ng b�o",
+                XtraMessageBox.Show("Vui lòng nhập mã voucher!", "Thông báo",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
             decimal subtotal = _cart.Sum(c => c.ThanhTien);
             
-            // X? l� c�c voucher
+            // X? lý các voucher
             switch (voucher)
             {
                 case "FREESHIP":
                     _shippingFee = 0;
                     _appliedVoucher = voucher;
-                    lblVoucherStatus.Text = "? ?� �p d?ng: Mi?n ph� v?n chuy?n";
+                    lblVoucherStatus.Text = "✅ Đã áp dụng: Miễn phí vận chuyển";
                     lblVoucherStatus.ForeColor = _accentGreen;
                     break;
 
                 case "GIAM10":
                     _discountAmount = subtotal * 0.1m;
                     _appliedVoucher = voucher;
-                    lblVoucherStatus.Text = $"? ?� �p d?ng: Gi?m 10% (-{_discountAmount:N0}?)";
+                    lblVoucherStatus.Text = $"✅ Đã áp dụng: Giảm 10% (-{_discountAmount:N0}đ)";
                     lblVoucherStatus.ForeColor = _accentGreen;
                     break;
 
                 case "GIAM20":
                     _discountAmount = subtotal * 0.2m;
                     _appliedVoucher = voucher;
-                    lblVoucherStatus.Text = $"? ?� �p d?ng: Gi?m 20% (-{_discountAmount:N0}?)";
+                    lblVoucherStatus.Text = $"✅ Đã áp dụng: Giảm 20% (-{_discountAmount:N0}đ)";
                     lblVoucherStatus.ForeColor = _accentGreen;
                     break;
 
                 case "GIAM50K":
                     _discountAmount = 50000;
                     _appliedVoucher = voucher;
-                    lblVoucherStatus.Text = "? ?� �p d?ng: Gi?m 50.000?";
+                    lblVoucherStatus.Text = "✅ Đã áp dụng: Giảm 50.000đ";
                     lblVoucherStatus.ForeColor = _accentGreen;
                     break;
 
@@ -302,12 +302,12 @@ namespace cosmetics_store.FormKH
                     _discountAmount = 30000;
                     _shippingFee = 0;
                     _appliedVoucher = voucher;
-                    lblVoucherStatus.Text = "? ?� �p d?ng: Gi?m 30K + Freeship";
+                    lblVoucherStatus.Text = "✅ Đã áp dụng: Giảm 30K + Freeship";
                     lblVoucherStatus.ForeColor = _accentGreen;
                     break;
 
                 default:
-                    lblVoucherStatus.Text = "? M� voucher kh�ng h?p l?";
+                    lblVoucherStatus.Text = "❌ Mã voucher không hợp lệ";
                     lblVoucherStatus.ForeColor = _accentRed;
                     _discountAmount = 0;
                     _shippingFee = 30000;
@@ -327,7 +327,7 @@ namespace cosmetics_store.FormKH
             
             if (_selectedPaymentMethod == "COD")
             {
-                lblPaymentInstructions.Text = "?? B?n s? thanh to�n khi nh?n h�ng.";
+                lblPaymentInstructions.Text = "💵 Bạn sẽ thanh toán khi nhận hàng.";
                 return;
             }
 
@@ -337,48 +337,48 @@ namespace cosmetics_store.FormKH
             {
                 case "BANK":
                     GenerateBankQR(total);
-                    lblPaymentInstructions.Text = "?? Qu�t m� QR ?? chuy?n kho?n ng�n h�ng\n" +
-                        "Ng�n h�ng: Vietcombank\n" +
+                    lblPaymentInstructions.Text = "🏦 Quét mã QR để chuyển khoản ngân hàng\n" +
+                        "Ngân hàng: Vietcombank\n" +
                         "STK: 1234567890\n" +
-                        "Ch? TK: BEAUTY BOX COSMETICS\n" +
-                        $"S? ti?n: {total:N0}?\n" +
-                        $"N?i dung: DH{DateTime.Now:yyyyMMddHHmm}";
+                        "Chủ TK: BEAUTY BOX COSMETICS\n" +
+                        $"Số tiền: {total:N0}đ\n" +
+                        $"Nội dung: DH{DateTime.Now:yyyyMMddHHmm}";
                     break;
 
                 case "MOMO":
                     GenerateMoMoQR(total);
-                    lblPaymentInstructions.Text = "?? Qu�t m� QR b?ng ?ng d?ng MoMo\n" +
-                        "S? ?i?n tho?i: 0901234567\n" +
-                        $"S? ti?n: {total:N0}?\n" +
-                        $"N?i dung: DH{DateTime.Now:yyyyMMddHHmm}";
+                    lblPaymentInstructions.Text = "📱 Quét mã QR bằng ứng dụng MoMo\n" +
+                        "Số điện thoại: 0901234567\n" +
+                        $"Số tiền: {total:N0}đ\n" +
+                        $"Nội dung: DH{DateTime.Now:yyyyMMddHHmm}";
                     break;
 
                 case "ZALOPAY":
                     GenerateZaloPayQR(total);
-                    lblPaymentInstructions.Text = "?? Qu�t m� QR b?ng ZaloPay\n" +
-                        $"S? ti?n: {total:N0}?\n" +
-                        $"N?i dung: DH{DateTime.Now:yyyyMMddHHmm}";
+                    lblPaymentInstructions.Text = "💳 Quét mã QR bằng ZaloPay\n" +
+                        $"Số tiền: {total:N0}đ\n" +
+                        $"Nội dung: DH{DateTime.Now:yyyyMMddHHmm}";
                     break;
             }
         }
 
         /// <summary>
-        /// T?o QR Code cho chuy?n kho?n ng�n h�ng theo chu?n VietQR
+        /// T?o QR Code cho chuy?n kho?n ngân hàng theo chu?n VietQR
         /// </summary>
         private void GenerateBankQR(decimal amount)
         {
             try
             {
                 // VietQR format: https://img.vietqr.io/image/{BANK_ID}-{ACCOUNT_NO}-{TEMPLATE}.png?amount={AMOUNT}&addInfo={INFO}
-                // C�c Bank ID ph? bi?n: VCB, TCB, MB, VPB, ACB, BIDV, VTB...
+                // Các Bank ID ph? bi?n: VCB, TCB, MB, VPB, ACB, BIDV, VTB...
                 
-                string bankId = "VCB"; // Vietcombank - c� th? c?u h�nh
-                string accountNo = "1234567890"; // S? t�i kho?n - c� th? c?u h�nh
+                string bankId = "VCB"; // Vietcombank - có th? c?u hình
+                string accountNo = "1234567890"; // S? tài kho?n - có th? c?u hình
                 string template = "compact2"; // compact, compact2, qr_only, print
                 string orderInfo = $"DH{DateTime.Now:yyyyMMddHHmm}";
                 string accountName = "BEAUTY BOX COSMETICS";
                 
-                // URL VietQR API (mi?n ph�)
+                // URL VietQR API (mi?n phí)
                 string qrUrl = $"https://img.vietqr.io/image/{bankId}-{accountNo}-{template}.png" +
                     $"?amount={amount:0}" +
                     $"&addInfo={Uri.EscapeDataString(orderInfo)}" +
@@ -404,7 +404,7 @@ namespace cosmetics_store.FormKH
                 string phone = "0901234567"; // S? ?i?n tho?i nh?n ti?n
                 string orderInfo = $"DH{DateTime.Now:yyyyMMddHHmm}";
                 
-                // MoMo QR format (simplified - th?c t? c?n t�ch h?p MoMo API)
+                // MoMo QR format (simplified - th?c t? c?n tích h?p MoMo API)
                 // S? d?ng QR code generator API
                 string content = $"2|99|{phone}|BEAUTY BOX|{orderInfo}|0|0|{amount:0}";
                 string qrUrl = $"https://api.qrserver.com/v1/create-qr-code/?size=200x200&data={Uri.EscapeDataString(content)}";
@@ -456,7 +456,7 @@ namespace cosmetics_store.FormKH
 
         private void GenerateFallbackQR(string content)
         {
-            // T?o placeholder QR khi kh�ng t?i ???c
+            // T?o placeholder QR khi không t?i ???c
             var bmp = new Bitmap(200, 200);
             using (var g = Graphics.FromImage(bmp))
             {
@@ -484,7 +484,7 @@ namespace cosmetics_store.FormKH
         {
             if (_cart.Count == 0)
             {
-                XtraMessageBox.Show("Gi? h�ng tr?ng!", "Th�ng b�o",
+                XtraMessageBox.Show("Giỏ hàng trống!", "Thông báo",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
@@ -492,7 +492,7 @@ namespace cosmetics_store.FormKH
             // Validate shipping info
             if (string.IsNullOrWhiteSpace(txtHoTen.Text))
             {
-                XtraMessageBox.Show("Vui l�ng nh?p h? t�n ng??i nh?n!", "Th�ng b�o",
+                XtraMessageBox.Show("Vui lòng nhập họ tên người nhận!", "Thông báo",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtHoTen.Focus();
                 return;
@@ -500,7 +500,7 @@ namespace cosmetics_store.FormKH
 
             if (string.IsNullOrWhiteSpace(txtSDT.Text))
             {
-                XtraMessageBox.Show("Vui l�ng nh?p s? ?i?n tho?i!", "Th�ng b�o",
+                XtraMessageBox.Show("Vui lòng nhập số điện thoại!", "Thông báo",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtSDT.Focus();
                 return;
@@ -508,7 +508,7 @@ namespace cosmetics_store.FormKH
 
             if (string.IsNullOrWhiteSpace(txtDiaChi.Text))
             {
-                XtraMessageBox.Show("Vui l�ng nh?p ??a ch? giao h�ng!", "Th�ng b�o",
+                XtraMessageBox.Show("Vui lòng nhập địa chỉ giao hàng!", "Thông báo",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtDiaChi.Focus();
                 return;
@@ -519,15 +519,15 @@ namespace cosmetics_store.FormKH
             string paymentMethodName = GetPaymentMethodName();
             
             var result = XtraMessageBox.Show(
-                $"??? X�C NH?N ??T H�NG ???\n\n" +
-                $"?? Ng??i nh?n: {txtHoTen.Text}\n" +
-                $"?? S?T: {txtSDT.Text}\n" +
-                $"?? ??a ch?: {txtDiaChi.Text}\n\n" +
-                $"?? Thanh to�n: {paymentMethodName}\n" +
-                $"?? T?ng ti?n: {total:N0}?\n\n" +
-                (_appliedVoucher != "" ? $"?? Voucher: {_appliedVoucher}\n\n" : "") +
-                "X�c nh?n ??t h�ng?",
-                "X�c nh?n ??n h�ng",
+                $"🛒 XÁC NHẬN ĐẶT HÀNG 🛒\n\n" +
+                $"👤 Người nhận: {txtHoTen.Text}\n" +
+                $"📞 SĐT: {txtSDT.Text}\n" +
+                $"📍 Địa chỉ: {txtDiaChi.Text}\n\n" +
+                $"💳 Thanh toán: {paymentMethodName}\n" +
+                $"💵 Tổng tiền: {total:N0}đ\n\n" +
+                (_appliedVoucher != "" ? $"🎟️ Voucher: {_appliedVoucher}\n\n" : "") +
+                "Xác nhận đặt hàng?",
+                "Xác nhận đơn hàng",
                 MessageBoxButtons.YesNo,
                 MessageBoxIcon.Question);
 
@@ -541,9 +541,9 @@ namespace cosmetics_store.FormKH
         {
             switch (_selectedPaymentMethod)
             {
-                case "COD": return "Thanh to�n khi nh?n h�ng";
-                case "BANK": return "Chuy?n kho?n ng�n h�ng";
-                case "MOMO": return "V� MoMo";
+                case "COD": return "Thanh toán khi nhận hàng";
+                case "BANK": return "Chuyển khoản ngân hàng";
+                case "MOMO": return "Ví MoMo";
                 case "ZALOPAY": return "ZaloPay";
                 default: return _selectedPaymentMethod;
             }
@@ -556,13 +556,13 @@ namespace cosmetics_store.FormKH
                 decimal subtotal = _cart.Sum(c => c.ThanhTien);
                 decimal total = GetFinalTotal();
 
-                // T?o ho?c l?y kh�ch h�ng
+                // T?o ho?c l?y khách hàng
                 int maKH = GetOrCreateKhachHang();
 
-                // X�c ??nh tr?ng th�i ??n h�ng
-                string trangThai = _selectedPaymentMethod == "COD" ? "Ch? giao h�ng" : "Ch? x�c nh?n thanh to�n";
+                // Xác ??nh tr?ng thái ??n hàng
+                string trangThai = _selectedPaymentMethod == "COD" ? "Chờ giao hàng" : "Chờ xác nhận thanh toán";
 
-                // T?o h�a ??n
+                // T?o hóa ??n
                 var hoaDon = new HoaDon
                 {
                     MaKH = maKH,
@@ -576,7 +576,7 @@ namespace cosmetics_store.FormKH
                 _context.HoaDons.Add(hoaDon);
                 _context.SaveChanges();
 
-                // Chi ti?t h�a ??n
+                // Chi ti?t hóa ??n
                 int stt = 1;
                 foreach (var item in _cart)
                 {
@@ -600,23 +600,23 @@ namespace cosmetics_store.FormKH
 
                 _context.SaveChanges();
 
-                // Th�ng b�o th�nh c�ng
-                string successMsg = $"? ??T H�NG TH�NH C�NG!\n\n" +
-                    $"?? M� ??n h�ng: #{hoaDon.MaHD}\n" +
-                    $"?? T?ng ti?n: {total:N0}?\n" +
-                    $"?? Ph??ng th?c: {GetPaymentMethodName()}\n\n";
+                // Thông báo thành công
+                string successMsg = $"✅ ĐẶT HÀNG THÀNH CÔNG!\n\n" +
+                    $"📝 Mã đơn hàng: #{hoaDon.MaHD}\n" +
+                    $"💵 Tổng tiền: {total:N0}đ\n" +
+                    $"💳 Phương thức: {GetPaymentMethodName()}\n\n";
 
                 if (_selectedPaymentMethod != "COD")
                 {
-                    successMsg += "?? Vui l�ng ho�n t?t thanh to�n ?? ??n h�ng ???c x? l�.\n" +
-                                  "??n h�ng s? ???c x�c nh?n sau khi nh?n ???c thanh to�n.";
+                    successMsg += "💳 Vui lòng hoàn tất thanh toán để đơn hàng được xử lý.\n" +
+                                  "Đơn hàng sẽ được xác nhận sau khi nhận được thanh toán.";
                 }
                 else
                 {
-                    successMsg += "?? Nh�n vi�n s? li�n h? x�c nh?n ??n h�ng trong th?i gian s?m nh?t.";
+                    successMsg += "📦 Nhân viên sẽ liên hệ xác nhận đơn hàng trong thời gian sớm nhất.";
                 }
 
-                XtraMessageBox.Show(successMsg, "??t h�ng th�nh c�ng",
+                XtraMessageBox.Show(successMsg, "Đặt hàng thành công",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 this.DialogResult = DialogResult.OK;
@@ -624,7 +624,7 @@ namespace cosmetics_store.FormKH
             }
             catch (Exception ex)
             {
-                XtraMessageBox.Show($"L?i ??t h�ng: {ex.Message}", "L?i",
+                XtraMessageBox.Show($"Lỗi đặt hàng: {ex.Message}", "Lỗi",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -648,13 +648,13 @@ namespace cosmetics_store.FormKH
                 }
             }
 
-            // T?o m?i kh�ch h�ng
+            // T?o m?i khách hàng
             var newKH = new KhachHang
             {
                 HoTen = txtHoTen.Text,
                 SDT = txtSDT.Text,
                 DiaChi = txtDiaChi.Text,
-                GioiTinh = "Kh�c"
+                GioiTinh = "Khác"
             };
             _context.KhachHangs.Add(newKH);
             _context.SaveChanges();

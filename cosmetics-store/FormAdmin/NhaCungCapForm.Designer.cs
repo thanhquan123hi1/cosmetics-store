@@ -1,4 +1,4 @@
-namespace cosmetics_store.Forms
+﻿namespace cosmetics_store.Forms
 {
     partial class NhaCungCapForm
     {
@@ -48,11 +48,12 @@ namespace cosmetics_store.Forms
             // 
             this.searchControl.Location = new System.Drawing.Point(12, 12);
             this.searchControl.Name = "searchControl";
-            this.searchControl.Properties.NullValuePrompt = "Tim nha cung cap...";
+            this.searchControl.Properties.NullValuePrompt = "Tìm nhà cung cấp...";
             this.searchControl.Properties.ShowClearButton = false;
             this.searchControl.Properties.ShowSearchButton = false;
             this.searchControl.Size = new System.Drawing.Size(300, 22);
             this.searchControl.TabIndex = 0;
+            this.searchControl.SelectedIndexChanged += new System.EventHandler(this.searchControl_SelectedIndexChanged);
             this.searchControl.TextChanged += new System.EventHandler(this.searchControl_TextChanged);
             // 
             // btnAdd
@@ -61,7 +62,7 @@ namespace cosmetics_store.Forms
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(94, 29);
             this.btnAdd.TabIndex = 1;
-            this.btnAdd.Text = "Them";
+            this.btnAdd.Text = "➕ Thêm";
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // btnEdit
@@ -70,7 +71,7 @@ namespace cosmetics_store.Forms
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(94, 29);
             this.btnEdit.TabIndex = 2;
-            this.btnEdit.Text = "Sua";
+            this.btnEdit.Text = "✏️ Sửa";
             this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // btnDelete
@@ -79,7 +80,7 @@ namespace cosmetics_store.Forms
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(94, 29);
             this.btnDelete.TabIndex = 3;
-            this.btnDelete.Text = "Xoa";
+            this.btnDelete.Text = "🗑️ Xóa";
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // gridControl1
@@ -109,7 +110,7 @@ namespace cosmetics_store.Forms
             this.Controls.Add(this.gridControl1);
             this.Controls.Add(this.pnlTop);
             this.Name = "NhaCungCapForm";
-            this.Text = "Quan ly nha cung cap";
+            this.Text = "Quản lý nhà cung cấp";
             this.pnlTop.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.searchControl.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();

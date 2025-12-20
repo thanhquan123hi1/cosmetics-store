@@ -1,4 +1,4 @@
-namespace cosmetics_store.FormStaff
+﻿namespace cosmetics_store.FormStaff
 {
     partial class fThemKhachHangNhanh
     {
@@ -79,7 +79,7 @@ namespace cosmetics_store.FormStaff
             this.btnLuu.Size = new System.Drawing.Size(273, 28);
             this.btnLuu.StyleController = this.layoutControl;
             this.btnLuu.TabIndex = 3;
-            this.btnLuu.Text = "Luu";
+            this.btnLuu.Text = "💾 Lưu";
             this.btnLuu.Click += new System.EventHandler(this.btnLuu_Click);
             // 
             // btnHuy
@@ -91,7 +91,7 @@ namespace cosmetics_store.FormStaff
             this.btnHuy.Size = new System.Drawing.Size(95, 28);
             this.btnHuy.StyleController = this.layoutControl;
             this.btnHuy.TabIndex = 4;
-            this.btnHuy.Text = "Huy";
+            this.btnHuy.Text = "❌ Hủy";
             this.btnHuy.Click += new System.EventHandler(this.btnHuy_Click);
             // 
             // layoutControlGroup1
@@ -169,7 +169,7 @@ namespace cosmetics_store.FormStaff
             this.layoutItemHoTen.Location = new System.Drawing.Point(0, 0);
             this.layoutItemHoTen.Name = "layoutItemHoTen";
             this.layoutItemHoTen.Size = new System.Drawing.Size(376, 34);
-            this.layoutItemHoTen.Text = "Ho ten:";
+            this.layoutItemHoTen.Text = "Họ tên:";
             this.layoutItemHoTen.TextSize = new System.Drawing.Size(56, 23);
             // 
             // layoutItemSDT
@@ -180,7 +180,7 @@ namespace cosmetics_store.FormStaff
             this.layoutItemSDT.Location = new System.Drawing.Point(0, 34);
             this.layoutItemSDT.Name = "layoutItemSDT";
             this.layoutItemSDT.Size = new System.Drawing.Size(376, 34);
-            this.layoutItemSDT.Text = "S�T:";
+            this.layoutItemSDT.Text = "SĐT:";
             this.layoutItemSDT.TextSize = new System.Drawing.Size(56, 23);
             // 
             // layoutItemDiaChi
@@ -191,7 +191,7 @@ namespace cosmetics_store.FormStaff
             this.layoutItemDiaChi.Location = new System.Drawing.Point(0, 68);
             this.layoutItemDiaChi.Name = "layoutItemDiaChi";
             this.layoutItemDiaChi.Size = new System.Drawing.Size(376, 34);
-            this.layoutItemDiaChi.Text = "Dia chi:";
+            this.layoutItemDiaChi.Text = "Địa chỉ:";
             this.layoutItemDiaChi.TextSize = new System.Drawing.Size(56, 23);
             // 
             // fThemKhachHangNhanh
@@ -205,7 +205,7 @@ namespace cosmetics_store.FormStaff
             this.MinimizeBox = false;
             this.Name = "fThemKhachHangNhanh";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Th�m kh�ch h�ng nhanh";
+            this.Text = "Thêm khách hàng nhanh";
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl)).EndInit();
             this.layoutControl.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();

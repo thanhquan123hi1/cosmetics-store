@@ -30,5 +30,10 @@ namespace cosmetics_store.Forms
         {
 
         }
+
+        private void searchControl_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

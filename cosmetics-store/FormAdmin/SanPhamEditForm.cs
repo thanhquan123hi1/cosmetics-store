@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -37,7 +37,7 @@ namespace cosmetics_store.Forms
 
         private void InitializeForm()
         {
-            // T?o th� m?c l�u h?nh ?nh n?u ch�a c�
+            // Tạo thư mục lưu hình ảnh nếu chưa có
             _imagesFolder = Path.Combine(Application.StartupPath, "Images", "Products");
             if (!Directory.Exists(_imagesFolder))
             {
@@ -67,8 +67,8 @@ namespace cosmetics_store.Forms
                 lookupLoai.Properties.DisplayMember = "TenLoai";
                 lookupLoai.Properties.ValueMember = "MaLoai";
                 lookupLoai.Properties.Columns.Clear();
-                lookupLoai.Properties.Columns.Add(new DevExpress.XtraEditors.Controls.LookUpColumnInfo("TenLoai", "Lo?i s?n ph?m"));
-                lookupLoai.Properties.NullText = "-- Ch?n lo?i s?n ph?m --";
+                lookupLoai.Properties.Columns.Add(new DevExpress.XtraEditors.Controls.LookUpColumnInfo("TenLoai", "Loại sản phẩm"));
+                lookupLoai.Properties.NullText = "-- Chọn loại sản phẩm --";
             }
             catch { }
         }
@@ -85,8 +85,8 @@ namespace cosmetics_store.Forms
                 lookupThuong.Properties.DisplayMember = "TenThuongHieu";
                 lookupThuong.Properties.ValueMember = "MaThuongHieu";
                 lookupThuong.Properties.Columns.Clear();
-                lookupThuong.Properties.Columns.Add(new DevExpress.XtraEditors.Controls.LookUpColumnInfo("TenThuongHieu", "Th��ng hi?u"));
-                lookupThuong.Properties.NullText = "-- Ch?n th��ng hi?u --";
+                lookupThuong.Properties.Columns.Add(new DevExpress.XtraEditors.Controls.LookUpColumnInfo("TenThuongHieu", "Thương hiệu"));
+                lookupThuong.Properties.NullText = "-- Chọn thương hiệu --";
             }
             catch { }
         }
@@ -103,7 +103,7 @@ namespace cosmetics_store.Forms
             spinDonGia.Value = _sanPham.DonGia;
             _selectedImagePath = _sanPham.HinhAnh ?? "";
 
-            // Load h?nh ?nh n?u c�
+            // Load hình ảnh nếu có
             LoadImage(_selectedImagePath);
         }
 
@@ -115,7 +115,7 @@ namespace cosmetics_store.Forms
                 {
                     string fullPath = imagePath;
 
-                    // N?u l� ��?ng d?n t��ng �?i, gh�p v?i th� m?c ?ng d?ng
+                    // Nếu là đường dẫn tương đối, ghép với thư mục ứng dụng
                     if (!Path.IsPathRooted(imagePath))
                     {
                         fullPath = Path.Combine(Application.StartupPath, imagePath);
@@ -123,7 +123,7 @@ namespace cosmetics_store.Forms
 
                     if (File.Exists(fullPath))
                     {
-                        // Load image t? stream �? tr�nh lock file
+                        // Load image t? stream ð? tránh lock file
                         using (var stream = new FileStream(fullPath, FileMode.Open, FileAccess.Read))
                         {
                             picHinhAnh.Image = Image.FromStream(stream);
@@ -154,28 +154,28 @@ namespace cosmetics_store.Forms
                     string sourceFile = openFileDialog.FileName;
                     string fileName = Path.GetFileName(sourceFile);
                     
-                    // T?o t�n file unique �? tr�nh tr�ng
+                    // Tạo tên file unique để tránh trùng
                     string uniqueFileName = $"{DateTime.Now:yyyyMMddHHmmss}_{fileName}";
                     string destPath = Path.Combine(_imagesFolder, uniqueFileName);
 
-                    // Copy file v�o th� m?c Images/Products
+                    // Copy file vào thư mục Images/Products
                     File.Copy(sourceFile, destPath, true);
 
-                    // L�u ��?ng d?n t��ng �?i
+                    // Lưu đường dẫn tương đối
                     _selectedImagePath = Path.Combine("Images", "Products", uniqueFileName);
 
-                    // Hi?n th? ?nh preview
+                    // Hiển thị ảnh preview
                     using (var stream = new FileStream(destPath, FileMode.Open, FileAccess.Read))
                     {
                         picHinhAnh.Image = Image.FromStream(stream);
                     }
 
-                    XtraMessageBox.Show("�? upload h?nh ?nh th�nh c�ng!", "Th�ng b�o",
+                    XtraMessageBox.Show("Đã upload hình ảnh thành công!", "Thông báo",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 catch (Exception ex)
                 {
-                    XtraMessageBox.Show($"L?i upload h?nh ?nh: {ex.Message}", "L?i",
+                    XtraMessageBox.Show($"Lỗi upload hình ảnh: {ex.Message}", "Lỗi",
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
@@ -210,7 +210,7 @@ namespace cosmetics_store.Forms
         {
             if (string.IsNullOrWhiteSpace(txtTen.Text))
             {
-                XtraMessageBox.Show("Vui l?ng nh?p t�n s?n ph?m!", "Th�ng b�o",
+                XtraMessageBox.Show("Vui lòng nhập tên sản phẩm!", "Thông báo",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtTen.Focus();
                 return false;
@@ -218,7 +218,7 @@ namespace cosmetics_store.Forms
 
             if (lookupLoai.EditValue == null)
             {
-                XtraMessageBox.Show("Vui l?ng ch?n lo?i s?n ph?m!", "Th�ng b�o",
+                XtraMessageBox.Show("Vui lòng chọn loại sản phẩm!", "Thông báo",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 lookupLoai.Focus();
                 return false;
@@ -226,7 +226,7 @@ namespace cosmetics_store.Forms
 
             if (lookupThuong.EditValue == null)
             {
-                XtraMessageBox.Show("Vui l?ng ch?n th��ng hi?u!", "Th�ng b�o",
+                XtraMessageBox.Show("Vui lòng chọn thương hiệu!", "Thông báo",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 lookupThuong.Focus();
                 return false;
@@ -234,7 +234,7 @@ namespace cosmetics_store.Forms
 
             if (spinDonGia.Value <= 0)
             {
-                XtraMessageBox.Show("��n gi� ph?i > 0!", "Th�ng b�o",
+                XtraMessageBox.Show("Đơn giá phải > 0!", "Thông báo",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 spinDonGia.Focus();
                 return false;
@@ -242,7 +242,7 @@ namespace cosmetics_store.Forms
 
             if (spinSoLuong.Value < 0)
             {
-                XtraMessageBox.Show("S? l�?ng t?n kh�ng ��?c �m!", "Th�ng b�o",
+                XtraMessageBox.Show("Số lượng tồn không được âm!", "Thông báo",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 spinSoLuong.Focus();
                 return false;

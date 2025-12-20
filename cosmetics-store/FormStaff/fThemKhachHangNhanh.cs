@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 
@@ -19,7 +19,7 @@ namespace cosmetics_store.FormStaff
         {
             if (string.IsNullOrWhiteSpace(txtHoTen.Text))
             {
-                XtraMessageBox.Show("Vui l?ng nh?p h? t�n!", "Th�ng b�o",
+                XtraMessageBox.Show("Vui lòng nhập họ tên!", "Thông báo",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtHoTen.Focus();
                 return;
@@ -27,7 +27,7 @@ namespace cosmetics_store.FormStaff
 
             if (string.IsNullOrWhiteSpace(txtSDT.Text))
             {
-                XtraMessageBox.Show("Vui l?ng nh?p s? �i?n tho?i!", "Th�ng b�o",
+                XtraMessageBox.Show("Vui lòng nhập số điện thoại!", "Thông báo",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtSDT.Focus();
                 return;

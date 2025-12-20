@@ -1,4 +1,4 @@
-namespace cosmetics_store.Forms
+Ôªønamespace cosmetics_store.Forms
 {
     partial class fDashboardNhanVien
     {
@@ -46,7 +46,6 @@ namespace cosmetics_store.Forms
             // pnlHeader
             // 
             this.pnlHeader.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
-
             this.pnlHeader.Appearance.Options.UseBackColor = true;
             this.pnlHeader.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.pnlHeader.Controls.Add(this.lblTitle);
@@ -66,9 +65,9 @@ namespace cosmetics_store.Forms
             this.lblTitle.Appearance.Options.UseForeColor = true;
             this.lblTitle.Location = new System.Drawing.Point(15, 13);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(200, 25);
+            this.lblTitle.Size = new System.Drawing.Size(301, 31);
             this.lblTitle.TabIndex = 0;
-            this.lblTitle.Text = "Cosmetics Store - Nh‚n viÍn";
+            this.lblTitle.Text = "Cosmetics Store - Nh√¢n vi√™n";
             // 
             // lblUserName
             // 
@@ -79,9 +78,9 @@ namespace cosmetics_store.Forms
             this.lblUserName.Appearance.Options.UseForeColor = true;
             this.lblUserName.Location = new System.Drawing.Point(900, 15);
             this.lblUserName.Name = "lblUserName";
-            this.lblUserName.Size = new System.Drawing.Size(150, 19);
+            this.lblUserName.Size = new System.Drawing.Size(114, 23);
             this.lblUserName.TabIndex = 1;
-            this.lblUserName.Text = "Xin ch‡o, User!";
+            this.lblUserName.Text = "Xin ch√†o, User!";
             // 
             // btnDangXuat
             // 
@@ -96,13 +95,41 @@ namespace cosmetics_store.Forms
             this.btnDangXuat.Name = "btnDangXuat";
             this.btnDangXuat.Size = new System.Drawing.Size(100, 30);
             this.btnDangXuat.TabIndex = 2;
-            this.btnDangXuat.Text = "–„ng xu?t";
+            this.btnDangXuat.Text = "ƒêƒÉng xu·∫•t";
             this.btnDangXuat.Click += new System.EventHandler(this.OnDangXuatClick);
             // 
             // accordionMenu
             // 
-            this.accordionMenu.Appearance.AccordionControl.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
+            this.accordionMenu.Appearance.AccordionControl.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(73)))), ((int)(((byte)(94)))));
+            this.accordionMenu.Appearance.AccordionControl.ForeColor = System.Drawing.Color.White;
+            this.accordionMenu.Appearance.AccordionControl.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.accordionMenu.Appearance.AccordionControl.Options.UseBackColor = true;
+            this.accordionMenu.Appearance.AccordionControl.Options.UseForeColor = true;
+            this.accordionMenu.Appearance.AccordionControl.Options.UseFont = true;
+            this.accordionMenu.Appearance.Item.Normal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(73)))), ((int)(((byte)(94)))));
+            this.accordionMenu.Appearance.Item.Normal.ForeColor = System.Drawing.Color.White;
+            this.accordionMenu.Appearance.Item.Normal.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.accordionMenu.Appearance.Item.Normal.Options.UseBackColor = true;
+            this.accordionMenu.Appearance.Item.Normal.Options.UseForeColor = true;
+            this.accordionMenu.Appearance.Item.Normal.Options.UseFont = true;
+            this.accordionMenu.Appearance.Item.Hovered.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
+            this.accordionMenu.Appearance.Item.Hovered.ForeColor = System.Drawing.Color.White;
+            this.accordionMenu.Appearance.Item.Hovered.Options.UseBackColor = true;
+            this.accordionMenu.Appearance.Item.Hovered.Options.UseForeColor = true;
+            this.accordionMenu.Appearance.Item.Pressed.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(97)))), ((int)(((byte)(141)))));
+            this.accordionMenu.Appearance.Item.Pressed.ForeColor = System.Drawing.Color.White;
+            this.accordionMenu.Appearance.Item.Pressed.Options.UseBackColor = true;
+            this.accordionMenu.Appearance.Item.Pressed.Options.UseForeColor = true;
+            this.accordionMenu.Appearance.Group.Normal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
+            this.accordionMenu.Appearance.Group.Normal.ForeColor = System.Drawing.Color.White;
+            this.accordionMenu.Appearance.Group.Normal.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.accordionMenu.Appearance.Group.Normal.Options.UseBackColor = true;
+            this.accordionMenu.Appearance.Group.Normal.Options.UseForeColor = true;
+            this.accordionMenu.Appearance.Group.Normal.Options.UseFont = true;
+            this.accordionMenu.Appearance.Group.Hovered.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
+            this.accordionMenu.Appearance.Group.Hovered.ForeColor = System.Drawing.Color.White;
+            this.accordionMenu.Appearance.Group.Hovered.Options.UseBackColor = true;
+            this.accordionMenu.Appearance.Group.Hovered.Options.UseForeColor = true;
             this.accordionMenu.Dock = System.Windows.Forms.DockStyle.Left;
             this.accordionMenu.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
             this.aceDashboard,
@@ -115,55 +142,69 @@ namespace cosmetics_store.Forms
             // 
             // aceDashboard
             // 
+            this.aceDashboard.Appearance.Normal.ForeColor = System.Drawing.Color.White;
+            this.aceDashboard.Appearance.Normal.Options.UseForeColor = true;
             this.aceDashboard.Name = "aceDashboard";
             this.aceDashboard.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.aceDashboard.Text = "?? DASHBOARD";
+            this.aceDashboard.Text = "DASHBOARD";
             this.aceDashboard.Click += new System.EventHandler(this.OnDashboardClick);
             // 
             // aceKinhDoanh
             // 
+            this.aceKinhDoanh.Appearance.Normal.ForeColor = System.Drawing.Color.White;
+            this.aceKinhDoanh.Appearance.Normal.Options.UseForeColor = true;
             this.aceKinhDoanh.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
             this.aceBanHang,
             this.aceKhachHang});
             this.aceKinhDoanh.Expanded = true;
             this.aceKinhDoanh.Name = "aceKinhDoanh";
-            this.aceKinhDoanh.Text = "?? KINH DOANH";
+            this.aceKinhDoanh.Text = "KINH DOANH";
             // 
             // aceBanHang
             // 
+            this.aceBanHang.Appearance.Normal.ForeColor = System.Drawing.Color.White;
+            this.aceBanHang.Appearance.Normal.Options.UseForeColor = true;
             this.aceBanHang.Name = "aceBanHang";
             this.aceBanHang.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.aceBanHang.Text = "+ B·n h‡ng";
+            this.aceBanHang.Text = "B√°n h√†ng";
             this.aceBanHang.Click += new System.EventHandler(this.OnBanHangClick);
             // 
             // aceKhachHang
             // 
+            this.aceKhachHang.Appearance.Normal.ForeColor = System.Drawing.Color.White;
+            this.aceKhachHang.Appearance.Normal.Options.UseForeColor = true;
             this.aceKhachHang.Name = "aceKhachHang";
             this.aceKhachHang.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.aceKhachHang.Text = "+ Kh·ch h‡ng";
+            this.aceKhachHang.Text = "Kh√°ch h√†ng";
             this.aceKhachHang.Click += new System.EventHandler(this.OnKhachHangClick);
             // 
             // aceHangHoa
             // 
+            this.aceHangHoa.Appearance.Normal.ForeColor = System.Drawing.Color.White;
+            this.aceHangHoa.Appearance.Normal.Options.UseForeColor = true;
             this.aceHangHoa.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
             this.aceSanPham,
             this.aceTonKho});
             this.aceHangHoa.Expanded = true;
             this.aceHangHoa.Name = "aceHangHoa";
-            this.aceHangHoa.Text = "?? H¿NG H”A";
+            this.aceHangHoa.Text = "H√ÄNG H√ìA";
             // 
             // aceSanPham
             // 
+            this.aceSanPham.Appearance.Normal.ForeColor = System.Drawing.Color.White;
+            this.aceSanPham.Appearance.Normal.Options.UseForeColor = true;
             this.aceSanPham.Name = "aceSanPham";
             this.aceSanPham.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.aceSanPham.Text = "+ S?n ph?m";
+            this.aceSanPham.Text = "S·∫£n ph·∫©m";
             this.aceSanPham.Click += new System.EventHandler(this.OnSanPhamClick);
             // 
             // aceTonKho
             // 
+            this.aceTonKho.Appearance.Normal.ForeColor = System.Drawing.Color.White;
+            this.aceTonKho.Appearance.Normal.Options.UseForeColor = true;
             this.aceTonKho.Name = "aceTonKho";
             this.aceTonKho.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.aceTonKho.Text = "+ T?n kho";
+            this.aceTonKho.Text = "T·ªìn kho";
             this.aceTonKho.Click += new System.EventHandler(this.OnTonKhoClick);
             // 
             // pnlMainContent
@@ -185,13 +226,14 @@ namespace cosmetics_store.Forms
             this.Controls.Add(this.pnlHeader);
             this.Name = "fDashboardNhanVien";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Cosmetics Store - Nh‚n viÍn";
+            this.Text = "Cosmetics Store - Nh√¢n vi√™n";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)(this.pnlHeader)).EndInit();
             this.pnlHeader.ResumeLayout(false);
             this.pnlHeader.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.accordionMenu)).EndInit();
             this.ResumeLayout(false);
+
         }
     }
 }
