@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Data.Entity;
 using System.Linq;
 using System.Windows.Forms;
@@ -53,12 +53,12 @@ namespace cosmetics_store.FormStaff
 
                 gridSanPham.DataSource = data;
 
-                gridViewSP.Columns["MaSP"].Caption = "M? SP";
-                gridViewSP.Columns["TenSP"].Caption = "T�n SP";
-                gridViewSP.Columns["DonGia"].Caption = "Gi�";
-                gridViewSP.Columns["TonKho"].Caption = "T?n kho";
-                gridViewSP.Columns["ThuongHieu"].Caption = "Th��ng hi?u";
-                gridViewSP.Columns["LoaiSP"].Caption = "Lo?i";
+                gridViewSP.Columns["MaSP"].Caption = "Mã SP";
+                gridViewSP.Columns["TenSP"].Caption = "Tên SP";
+                gridViewSP.Columns["DonGia"].Caption = "Giá";
+                gridViewSP.Columns["TonKho"].Caption = "Tồn kho";
+                gridViewSP.Columns["ThuongHieu"].Caption = "Thương hiệu";
+                gridViewSP.Columns["LoaiSP"].Caption = "Loại";
 
                 gridViewSP.Columns["MaSP"].Width = 60;
                 gridViewSP.Columns["TenSP"].Width = 200;
@@ -70,7 +70,7 @@ namespace cosmetics_store.FormStaff
                 gridViewSP.Columns["DonGia"].DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
                 gridViewSP.Columns["DonGia"].DisplayFormat.FormatString = "#,##0";
 
-                // Highlight s?n ph?m h?t h�ng
+                // Highlight sản phẩm hết hàng
                 gridViewSP.RowStyle += (s, e) =>
                 {
                     if (e.RowHandle >= 0)
@@ -110,6 +110,11 @@ namespace cosmetics_store.FormStaff
                 _context?.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        private void txtTimKiem_EditValueChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

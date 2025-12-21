@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Data.Entity;
 using System.Drawing;
 using System.Linq;
@@ -33,14 +33,14 @@ namespace cosmetics_store.Forms
         {
             gridView.Columns.Clear();
 
-            gridView.Columns.AddVisible("MaSP", "M? SP");
-            gridView.Columns.AddVisible("TenSP", "T�n s?n ph?m");
-            gridView.Columns.AddVisible("TenLoai", "Lo?i SP");
-            gridView.Columns.AddVisible("TenThuongHieu", "Th��ng hi?u");
-            gridView.Columns.AddVisible("SoLuongTon", "S? l�?ng t?n");
-            gridView.Columns.AddVisible("DonGia", "��n gi�");
-            gridView.Columns.AddVisible("GiaTriTon", "Gi� tr? t?n");
-            gridView.Columns.AddVisible("TrangThai", "Tr?ng th�i");
+            gridView.Columns.AddVisible("MaSP", "Mã SP");
+            gridView.Columns.AddVisible("TenSP", "Tên sản phẩm");
+            gridView.Columns.AddVisible("TenLoai", "Loại SP");
+            gridView.Columns.AddVisible("TenThuongHieu", "Thương hiệu");
+            gridView.Columns.AddVisible("SoLuongTon", "Số lượng tồn");
+            gridView.Columns.AddVisible("DonGia", "Đơn giá");
+            gridView.Columns.AddVisible("GiaTriTon", "Giá trị tồn");
+            gridView.Columns.AddVisible("TrangThai", "Trạng thái");
 
             gridView.Columns["MaSP"].Width = 60;
             gridView.Columns["TenSP"].Width = 200;
@@ -52,11 +52,11 @@ namespace cosmetics_store.Forms
             gridView.Columns["TrangThai"].Width = 100;
 
             gridView.Columns["DonGia"].DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            gridView.Columns["DonGia"].DisplayFormat.FormatString = "#,##0 �";
+            gridView.Columns["DonGia"].DisplayFormat.FormatString = "#,##0 đ";
             gridView.Columns["GiaTriTon"].DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            gridView.Columns["GiaTriTon"].DisplayFormat.FormatString = "#,##0 �";
+            gridView.Columns["GiaTriTon"].DisplayFormat.FormatString = "#,##0 đ";
 
-            // Highlight theo tr?ng th�i
+            // Highlight theo trạng thái
             gridView.RowStyle += GridView_RowStyle;
 
             gridView.BestFitColumns();
@@ -67,12 +67,12 @@ namespace cosmetics_store.Forms
             if (e.RowHandle >= 0)
             {
                 var trangThai = gridView.GetRowCellValue(e.RowHandle, "TrangThai")?.ToString();
-                if (trangThai == "H?t h�ng")
+                if (trangThai == "Hết hàng")
                 {
                     e.Appearance.BackColor = Color.FromArgb(255, 200, 200);
                     e.Appearance.ForeColor = Color.DarkRed;
                 }
-                else if (trangThai == "S?p h?t")
+                else if (trangThai == "Sắp hết")
                 {
                     e.Appearance.BackColor = Color.FromArgb(255, 255, 200);
                     e.Appearance.ForeColor = Color.DarkOrange;
@@ -88,14 +88,14 @@ namespace cosmetics_store.Forms
                     .Select(l => new { l.MaLoai, l.TenLoai })
                     .ToList();
 
-                loaiList.Insert(0, new { MaLoai = 0, TenLoai = "-- T?t c? lo?i --" });
+                loaiList.Insert(0, new { MaLoai = 0, TenLoai = "-- Tất cả loại --" });
 
                 cboLoai.Properties.DataSource = loaiList;
                 cboLoai.Properties.DisplayMember = "TenLoai";
                 cboLoai.Properties.ValueMember = "MaLoai";
                 cboLoai.Properties.Columns.Clear();
-                cboLoai.Properties.Columns.Add(new DevExpress.XtraEditors.Controls.LookUpColumnInfo("TenLoai", "Lo?i s?n ph?m"));
-                cboLoai.Properties.NullText = "-- T?t c? lo?i --";
+                cboLoai.Properties.Columns.Add(new DevExpress.XtraEditors.Controls.LookUpColumnInfo("TenLoai", "Loại sản phẩm"));
+                cboLoai.Properties.NullText = "-- Tất cả loại --";
                 cboLoai.EditValue = 0;
             }
             catch { }
@@ -112,11 +112,11 @@ namespace cosmetics_store.Forms
                 var lowStockCount = allProducts.Count(sp => sp.SoLuongTon > 0 && sp.SoLuongTon <= _lowStockThreshold);
                 var outOfStockCount = allProducts.Count(sp => sp.SoLuongTon == 0);
 
-                lblTotalProducts.Text = $"T?ng s?n ph?m: {totalProducts}";
-                lblTotalStock.Text = $"T?ng t?n kho: {totalStock:N0}";
-                lblTotalValue.Text = $"T?ng gi� tr?: {totalValue:N0} �";
-                lblLowStock.Text = $"S?p h?t: {lowStockCount}";
-                lblOutOfStock.Text = $"H?t h�ng: {outOfStockCount}";
+                lblTotalProducts.Text = $"Tổng sản phẩm: {totalProducts}";
+                lblTotalStock.Text = $"Tổng tồn kho: {totalStock:N0}";
+                lblTotalValue.Text = $"Tổng giá trị: {totalValue:N0} đ";
+                lblLowStock.Text = $"Sắp hết: {lowStockCount}";
+                lblOutOfStock.Text = $"Hết hàng: {outOfStockCount}";
             }
             catch { }
         }
@@ -140,13 +140,13 @@ namespace cosmetics_store.Forms
                     .Include(sp => sp.ThuongHieu)
                     .AsQueryable();
 
-                // L?c theo lo?i
+                // Lọc theo loại
                 if (selectedLoai.HasValue)
                 {
                     query = query.Where(sp => sp.MaLoai == selectedLoai.Value);
                 }
 
-                // T?m ki?m
+                // Tìm kiếm
                 if (!string.IsNullOrEmpty(keyword))
                 {
                     query = query.Where(sp => sp.TenSP.ToLower().Contains(keyword) ||
@@ -172,12 +172,12 @@ namespace cosmetics_store.Forms
                     sp.SoLuongTon,
                     sp.DonGia,
                     sp.GiaTriTon,
-                    TrangThai = sp.SoLuongTon == 0 ? "H?t h�ng" : 
-                                sp.SoLuongTon <= _lowStockThreshold ? "S?p h?t" : "C?n h�ng"
+                    TrangThai = sp.SoLuongTon == 0 ? "Hết hàng" : 
+                                sp.SoLuongTon <= _lowStockThreshold ? "Sắp hết" : "Còn hàng"
                 }).ToList();
 
-                // L?c theo tr?ng th�i
-                if (!string.IsNullOrEmpty(filterStatus) && filterStatus != "T?t c?")
+                // Lọc theo trạng thái
+                if (!string.IsNullOrEmpty(filterStatus) && filterStatus != "Tất cả")
                 {
                     data = data.Where(d => d.TrangThai == filterStatus).ToList();
                 }
@@ -186,7 +186,7 @@ namespace cosmetics_store.Forms
             }
             catch (Exception ex)
             {
-                XtraMessageBox.Show($"L?i t?i d? li?u: {ex.Message}", "L?i",
+                XtraMessageBox.Show($"Lỗi tải dữ liệu: {ex.Message}", "Lỗi",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -210,7 +210,7 @@ namespace cosmetics_store.Forms
         {
             searchControl.Text = "";
             cboLoai.EditValue = 0;
-            cboTrangThai.EditValue = "T?t c?";
+            cboTrangThai.EditValue = "Tất cả";
             LoadStatistics();
             LoadData();
         }
@@ -227,14 +227,14 @@ namespace cosmetics_store.Forms
                     if (saveDialog.ShowDialog() == DialogResult.OK)
                     {
                         grid.ExportToXlsx(saveDialog.FileName);
-                        XtraMessageBox.Show("Xu?t file th�nh c�ng!", "Th�ng b�o",
+                        XtraMessageBox.Show("Xuất file thành công!", "Thông báo",
                             MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
             }
             catch (Exception ex)
             {
-                XtraMessageBox.Show($"L?i xu?t file: {ex.Message}", "L?i",
+                XtraMessageBox.Show($"Lỗi xuất file: {ex.Message}", "Lỗi",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }

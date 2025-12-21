@@ -46,7 +46,7 @@
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(384, 37);
             this.lblTitle.TabIndex = 0;
-            this.lblTitle.Text = "LICH SU GIAO DICH CA NHAN";
+            this.lblTitle.Text = "LỊCH SỬ GIAO DỊCH CÁ NHÂN";
             // 
             // lblNhanVien
             // 
@@ -54,9 +54,9 @@
             this.lblNhanVien.Appearance.Options.UseFont = true;
             this.lblNhanVien.Location = new System.Drawing.Point(20, 55);
             this.lblNhanVien.Name = "lblNhanVien";
-            this.lblNhanVien.Size = new System.Drawing.Size(201, 25);
+            this.lblNhanVien.Size = new System.Drawing.Size(93, 25);
             this.lblNhanVien.TabIndex = 1;
-            this.lblNhanVien.Text = "Nhan vien: Nguyen Van A";
+            this.lblNhanVien.Text = "Nhân viên : ";
             // 
             // gridHoaDon
             // 

@@ -1,4 +1,4 @@
-namespace cosmetics_store.FormStaff
+﻿namespace cosmetics_store.FormStaff
 {
     partial class fTraCuuSanPham
     {
@@ -51,9 +51,9 @@ namespace cosmetics_store.FormStaff
             this.lblTitle.Appearance.Options.UseForeColor = true;
             this.lblTitle.Location = new System.Drawing.Point(20, 15);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(200, 30);
+            this.lblTitle.Size = new System.Drawing.Size(315, 37);
             this.lblTitle.TabIndex = 0;
-            this.lblTitle.Text = "TRA CUU SAN PHAM";
+            this.lblTitle.Text = "🔍 TRA CỨU SẢN PHẨM";
             // 
             // lblTimKiem
             // 
@@ -61,18 +61,19 @@ namespace cosmetics_store.FormStaff
             this.lblTimKiem.Appearance.Options.UseFont = true;
             this.lblTimKiem.Location = new System.Drawing.Point(20, 60);
             this.lblTimKiem.Name = "lblTimKiem";
-            this.lblTimKiem.Size = new System.Drawing.Size(260, 19);
+            this.lblTimKiem.Size = new System.Drawing.Size(309, 23);
             this.lblTimKiem.TabIndex = 1;
-            this.lblTimKiem.Text = "Tim theo: [ Ten SP / Loai / Thuong hieu";
+            this.lblTimKiem.Text = "Tìm theo: [ Tên SP / Loại / Thương hiệu ]";
             // 
             // txtTimKiem
             // 
-            this.txtTimKiem.Location = new System.Drawing.Point(290, 57);
+            this.txtTimKiem.Location = new System.Drawing.Point(359, 57);
             this.txtTimKiem.Name = "txtTimKiem";
             this.txtTimKiem.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.txtTimKiem.Properties.Appearance.Options.UseFont = true;
-            this.txtTimKiem.Size = new System.Drawing.Size(300, 26);
+            this.txtTimKiem.Size = new System.Drawing.Size(300, 30);
             this.txtTimKiem.TabIndex = 2;
+            this.txtTimKiem.EditValueChanged += new System.EventHandler(this.txtTimKiem_EditValueChanged);
             this.txtTimKiem.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTimKiem_KeyPress);
             // 
             // btnLoc
@@ -83,21 +84,25 @@ namespace cosmetics_store.FormStaff
             this.btnLoc.Appearance.Options.UseBackColor = true;
             this.btnLoc.Appearance.Options.UseFont = true;
             this.btnLoc.Appearance.Options.UseForeColor = true;
-            this.btnLoc.Location = new System.Drawing.Point(600, 55);
+            this.btnLoc.Location = new System.Drawing.Point(701, 57);
             this.btnLoc.Name = "btnLoc";
-            this.btnLoc.Size = new System.Drawing.Size(80, 30);
+            this.btnLoc.Size = new System.Drawing.Size(106, 30);
             this.btnLoc.TabIndex = 3;
-            this.btnLoc.Text = "[ Loc ]";
+            this.btnLoc.Text = "🔎 Lọc";
             this.btnLoc.Click += new System.EventHandler(this.btnLoc_Click);
             // 
             // gridSanPham
             // 
-            this.gridSanPham.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
+            this.gridSanPham.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.gridSanPham.Location = new System.Drawing.Point(20, 100);
             this.gridSanPham.MainView = this.gridViewSP;
             this.gridSanPham.Name = "gridSanPham";
             this.gridSanPham.Size = new System.Drawing.Size(860, 430);
             this.gridSanPham.TabIndex = 4;
+            this.gridSanPham.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridViewSP});
             // 
             // gridViewSP
             // 
@@ -114,7 +119,7 @@ namespace cosmetics_store.FormStaff
             this.Controls.Add(this.pnlMain);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "fTraCuuSanPham";
-            this.Text = "Tra cuu san pham";
+            this.Text = "Tra cứu sản phẩm";
             ((System.ComponentModel.ISupportInitialize)(this.pnlMain)).EndInit();
             this.pnlMain.ResumeLayout(false);
             this.pnlMain.PerformLayout();
@@ -122,6 +127,7 @@ namespace cosmetics_store.FormStaff
             ((System.ComponentModel.ISupportInitialize)(this.gridSanPham)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewSP)).EndInit();
             this.ResumeLayout(false);
+
         }
     }
 }

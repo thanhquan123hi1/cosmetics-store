@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
 using cosmetics_store.Helpers;
@@ -15,33 +15,33 @@ namespace cosmetics_store.Forms
 
         private void ApplyVietnameseFont()
         {
-            // �p d?ng font h? tr? ti?ng Vi?t
+            // Áp d?ng font h? tr? ti?ng Vi?t
             this.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            this.Text = "Qu?n l? kh�ch h�ng";
+            this.Text = "Quản lý khách hàng";
 
             // Search control
-            searchControl.Properties.NullValuePrompt = "T?m kh�ch h�ng theo t�n ho?c S�T...";
+            searchControl.Properties.NullValuePrompt = "Tìm khách hàng theo tên hoặc SĐT...";
             searchControl.Font = new Font("Segoe UI", 9.75F);
 
             // Radio buttons
             rdoAll.Font = new Font("Segoe UI", 9.75F);
-            rdoAll.Text = "T?t c?";
+            rdoAll.Text = "Tất cả";
 
             rdoMale.Font = new Font("Segoe UI", 9.75F);
             rdoMale.Text = "Nam";
 
             rdoFemale.Font = new Font("Segoe UI", 9.75F);
-            rdoFemale.Text = "N?";
+            rdoFemale.Text = "Nữ";
 
             // Buttons
             btnAdd.Font = new Font("Segoe UI", 9.75F);
-            btnAdd.Text = "Th�m";
+            btnAdd.Text = "Thêm";
 
             btnEdit.Font = new Font("Segoe UI", 9.75F);
-            btnEdit.Text = "S?a";
+            btnEdit.Text = "Sửa";
 
             btnDelete.Font = new Font("Segoe UI", 9.75F);
-            btnDelete.Text = "X�a";
+            btnDelete.Text = "Xóa";
 
             // Grid
             gridView1.Appearance.Row.Font = new Font("Segoe UI", 9.75F);

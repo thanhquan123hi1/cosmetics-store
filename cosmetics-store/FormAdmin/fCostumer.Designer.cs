@@ -57,7 +57,7 @@ namespace cosmetics_store.Forms
             // 
             this.searchControl.Location = new System.Drawing.Point(12, 12);
             this.searchControl.Name = "searchControl";
-            this.searchControl.Properties.NullValuePrompt = "Tim khach hang theo ten hoac SDT...";
+            this.searchControl.Properties.NullValuePrompt = "Tìm khách hàng theo tên ho?c S?T...";
             this.searchControl.Properties.ShowClearButton = false;
             this.searchControl.Properties.ShowSearchButton = false;
             this.searchControl.Size = new System.Drawing.Size(200, 22);
@@ -70,7 +70,7 @@ namespace cosmetics_store.Forms
             this.rdoAll.Name = "rdoAll";
             this.rdoAll.Size = new System.Drawing.Size(60, 24);
             this.rdoAll.TabIndex = 1;
-            this.rdoAll.Text = "Tat ca";
+            this.rdoAll.Text = "T?t c?";
             this.rdoAll.CheckedChanged += new System.EventHandler(this.rdoAll_CheckedChanged);
             // 
             // rdoMale
@@ -88,7 +88,7 @@ namespace cosmetics_store.Forms
             this.rdoFemale.Name = "rdoFemale";
             this.rdoFemale.Size = new System.Drawing.Size(60, 24);
             this.rdoFemale.TabIndex = 3;
-            this.rdoFemale.Text = "Nu";
+            this.rdoFemale.Text = "N?";
             this.rdoFemale.CheckedChanged += new System.EventHandler(this.rdoFemale_CheckedChanged);
             // 
             // btnAdd
@@ -97,7 +97,7 @@ namespace cosmetics_store.Forms
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(94, 29);
             this.btnAdd.TabIndex = 4;
-            this.btnAdd.Text = "Them";
+            this.btnAdd.Text = "? Thêm";
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // btnEdit
@@ -106,7 +106,7 @@ namespace cosmetics_store.Forms
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(94, 29);
             this.btnEdit.TabIndex = 5;
-            this.btnEdit.Text = "Sua";
+            this.btnEdit.Text = "?? S?a";
             this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // btnDelete
@@ -115,7 +115,7 @@ namespace cosmetics_store.Forms
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(94, 29);
             this.btnDelete.TabIndex = 6;
-            this.btnDelete.Text = "Xoa";
+            this.btnDelete.Text = "??? Xóa";
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // gridControl1
@@ -145,7 +145,7 @@ namespace cosmetics_store.Forms
             this.Controls.Add(this.gridControl1);
             this.Controls.Add(this.pnlTop);
             this.Name = "KhachHangForm";
-            this.Text = "Quan ly khach hang";
+            this.Text = "Qu?n lý khách hàng";
             this.pnlTop.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.searchControl.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();

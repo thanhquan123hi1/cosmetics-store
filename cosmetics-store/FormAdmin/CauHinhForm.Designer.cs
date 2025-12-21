@@ -1,4 +1,4 @@
-namespace cosmetics_store.Forms
+﻿namespace cosmetics_store.Forms
 {
     partial class CauHinhForm
     {
@@ -103,13 +103,14 @@ namespace cosmetics_store.Forms
             this.lblTitle.Appearance.Options.UseForeColor = true;
             this.lblTitle.Location = new System.Drawing.Point(25, 15);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(200, 32);
+            this.lblTitle.Size = new System.Drawing.Size(259, 41);
             this.lblTitle.TabIndex = 0;
-            this.lblTitle.Text = "?? C?u h?nh h? th?ng";
+            this.lblTitle.Text = "Cấu hình hệ thống";
             // 
             // grpStore
             // 
-            this.grpStore.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
+            this.grpStore.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.grpStore.AppearanceCaption.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
             this.grpStore.AppearanceCaption.Options.UseFont = true;
             this.grpStore.Controls.Add(this.lblStoreName);
@@ -124,7 +125,7 @@ namespace cosmetics_store.Forms
             this.grpStore.Name = "grpStore";
             this.grpStore.Size = new System.Drawing.Size(750, 155);
             this.grpStore.TabIndex = 1;
-            this.grpStore.Text = "Th�ng tin c?a h�ng";
+            this.grpStore.Text = "Thông tin cửa hàng";
             // 
             // lblStoreName
             // 
@@ -132,18 +133,19 @@ namespace cosmetics_store.Forms
             this.lblStoreName.Appearance.Options.UseFont = true;
             this.lblStoreName.Location = new System.Drawing.Point(20, 35);
             this.lblStoreName.Name = "lblStoreName";
-            this.lblStoreName.Size = new System.Drawing.Size(95, 19);
+            this.lblStoreName.Size = new System.Drawing.Size(106, 23);
             this.lblStoreName.TabIndex = 0;
-            this.lblStoreName.Text = "T�n c?a h�ng:";
+            this.lblStoreName.Text = "Tên cửa hàng:";
             // 
             // txtStoreName
             // 
-            this.txtStoreName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtStoreName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtStoreName.Location = new System.Drawing.Point(130, 32);
             this.txtStoreName.Name = "txtStoreName";
             this.txtStoreName.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.txtStoreName.Properties.Appearance.Options.UseFont = true;
-            this.txtStoreName.Size = new System.Drawing.Size(600, 26);
+            this.txtStoreName.Size = new System.Drawing.Size(600, 30);
             this.txtStoreName.TabIndex = 1;
             // 
             // lblStoreAddress
@@ -152,18 +154,19 @@ namespace cosmetics_store.Forms
             this.lblStoreAddress.Appearance.Options.UseFont = true;
             this.lblStoreAddress.Location = new System.Drawing.Point(20, 65);
             this.lblStoreAddress.Name = "lblStoreAddress";
-            this.lblStoreAddress.Size = new System.Drawing.Size(50, 19);
+            this.lblStoreAddress.Size = new System.Drawing.Size(56, 23);
             this.lblStoreAddress.TabIndex = 2;
-            this.lblStoreAddress.Text = "�?a ch?:";
+            this.lblStoreAddress.Text = "Địa chỉ:";
             // 
             // txtStoreAddress
             // 
-            this.txtStoreAddress.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtStoreAddress.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtStoreAddress.Location = new System.Drawing.Point(130, 62);
             this.txtStoreAddress.Name = "txtStoreAddress";
             this.txtStoreAddress.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.txtStoreAddress.Properties.Appearance.Options.UseFont = true;
-            this.txtStoreAddress.Size = new System.Drawing.Size(600, 26);
+            this.txtStoreAddress.Size = new System.Drawing.Size(600, 30);
             this.txtStoreAddress.TabIndex = 3;
             // 
             // lblStorePhone
@@ -172,9 +175,9 @@ namespace cosmetics_store.Forms
             this.lblStorePhone.Appearance.Options.UseFont = true;
             this.lblStorePhone.Location = new System.Drawing.Point(20, 95);
             this.lblStorePhone.Name = "lblStorePhone";
-            this.lblStorePhone.Size = new System.Drawing.Size(90, 19);
+            this.lblStorePhone.Size = new System.Drawing.Size(105, 23);
             this.lblStorePhone.TabIndex = 4;
-            this.lblStorePhone.Text = "S? �i?n tho?i:";
+            this.lblStorePhone.Text = "Số điện thoại:";
             // 
             // txtStorePhone
             // 
@@ -182,7 +185,7 @@ namespace cosmetics_store.Forms
             this.txtStorePhone.Name = "txtStorePhone";
             this.txtStorePhone.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.txtStorePhone.Properties.Appearance.Options.UseFont = true;
-            this.txtStorePhone.Size = new System.Drawing.Size(180, 26);
+            this.txtStorePhone.Size = new System.Drawing.Size(180, 30);
             this.txtStorePhone.TabIndex = 5;
             // 
             // lblStoreEmail
@@ -191,23 +194,25 @@ namespace cosmetics_store.Forms
             this.lblStoreEmail.Appearance.Options.UseFont = true;
             this.lblStoreEmail.Location = new System.Drawing.Point(20, 125);
             this.lblStoreEmail.Name = "lblStoreEmail";
-            this.lblStoreEmail.Size = new System.Drawing.Size(37, 19);
+            this.lblStoreEmail.Size = new System.Drawing.Size(45, 23);
             this.lblStoreEmail.TabIndex = 6;
             this.lblStoreEmail.Text = "Email:";
             // 
             // txtStoreEmail
             // 
-            this.txtStoreEmail.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtStoreEmail.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtStoreEmail.Location = new System.Drawing.Point(130, 122);
             this.txtStoreEmail.Name = "txtStoreEmail";
             this.txtStoreEmail.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.txtStoreEmail.Properties.Appearance.Options.UseFont = true;
-            this.txtStoreEmail.Size = new System.Drawing.Size(400, 26);
+            this.txtStoreEmail.Size = new System.Drawing.Size(400, 30);
             this.txtStoreEmail.TabIndex = 7;
             // 
             // grpInventory
             // 
-            this.grpInventory.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
+            this.grpInventory.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.grpInventory.AppearanceCaption.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
             this.grpInventory.AppearanceCaption.Options.UseFont = true;
             this.grpInventory.Controls.Add(this.lblLowStock);
@@ -217,7 +222,8 @@ namespace cosmetics_store.Forms
             this.grpInventory.Name = "grpInventory";
             this.grpInventory.Size = new System.Drawing.Size(750, 95);
             this.grpInventory.TabIndex = 2;
-            this.grpInventory.Text = "C?u h?nh t?n kho";
+            this.grpInventory.Text = "Cấu hình tồn kho";
+            this.grpInventory.Paint += new System.Windows.Forms.PaintEventHandler(this.grpInventory_Paint);
             // 
             // lblLowStock
             // 
@@ -225,22 +231,29 @@ namespace cosmetics_store.Forms
             this.lblLowStock.Appearance.Options.UseFont = true;
             this.lblLowStock.Location = new System.Drawing.Point(20, 38);
             this.lblLowStock.Name = "lblLowStock";
-            this.lblLowStock.Size = new System.Drawing.Size(143, 19);
+            this.lblLowStock.Size = new System.Drawing.Size(174, 23);
             this.lblLowStock.TabIndex = 0;
-            this.lblLowStock.Text = "Ng�?ng c?nh b�o t?n:";
+            this.lblLowStock.Text = "Ngưỡng cảnh báo tồn:";
             // 
             // spinLowStock
             // 
-            this.spinLowStock.EditValue = new decimal(new int[] { 10, 0, 0, 0 });
-            this.spinLowStock.Location = new System.Drawing.Point(180, 35);
+            this.spinLowStock.EditValue = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.spinLowStock.Location = new System.Drawing.Point(200, 35);
             this.spinLowStock.Name = "spinLowStock";
             this.spinLowStock.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.spinLowStock.Properties.Appearance.Options.UseFont = true;
             this.spinLowStock.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.spinLowStock.Properties.MaxValue = new decimal(new int[] { 1000, 0, 0, 0 });
-            this.spinLowStock.Properties.MinValue = new decimal(new int[] { 0, 0, 0, 0 });
-            this.spinLowStock.Size = new System.Drawing.Size(100, 26);
+            this.spinLowStock.Properties.MaxValue = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.spinLowStock.Size = new System.Drawing.Size(100, 30);
             this.spinLowStock.TabIndex = 1;
             // 
             // lblLowStockNote
@@ -251,13 +264,14 @@ namespace cosmetics_store.Forms
             this.lblLowStockNote.Appearance.Options.UseForeColor = true;
             this.lblLowStockNote.Location = new System.Drawing.Point(20, 67);
             this.lblLowStockNote.Name = "lblLowStockNote";
-            this.lblLowStockNote.Size = new System.Drawing.Size(365, 15);
+            this.lblLowStockNote.Size = new System.Drawing.Size(440, 20);
             this.lblLowStockNote.TabIndex = 2;
-            this.lblLowStockNote.Text = "S?n ph?m c� s? l�?ng t?n <= ng�?ng n�y s? ��?c c?nh b�o m�u �?";
+            this.lblLowStockNote.Text = "Sản phẩm có số lượng tồn <= ngưỡng này sẽ được cảnh báo màu đỏ";
             // 
             // grpEmail
             // 
-            this.grpEmail.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
+            this.grpEmail.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.grpEmail.AppearanceCaption.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
             this.grpEmail.AppearanceCaption.Options.UseFont = true;
             this.grpEmail.Controls.Add(this.lblSmtpEmail);
@@ -268,7 +282,7 @@ namespace cosmetics_store.Forms
             this.grpEmail.Name = "grpEmail";
             this.grpEmail.Size = new System.Drawing.Size(750, 100);
             this.grpEmail.TabIndex = 3;
-            this.grpEmail.Text = "C?u h?nh Email (SMTP)";
+            this.grpEmail.Text = "Cấu hình Email ( SMTP )";
             // 
             // lblSmtpEmail
             // 
@@ -276,19 +290,20 @@ namespace cosmetics_store.Forms
             this.lblSmtpEmail.Appearance.Options.UseFont = true;
             this.lblSmtpEmail.Location = new System.Drawing.Point(20, 35);
             this.lblSmtpEmail.Name = "lblSmtpEmail";
-            this.lblSmtpEmail.Size = new System.Drawing.Size(77, 19);
+            this.lblSmtpEmail.Size = new System.Drawing.Size(93, 23);
             this.lblSmtpEmail.TabIndex = 0;
             this.lblSmtpEmail.Text = "Email SMTP:";
             // 
             // txtSmtpEmail
             // 
-            this.txtSmtpEmail.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtSmtpEmail.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtSmtpEmail.Location = new System.Drawing.Point(130, 32);
             this.txtSmtpEmail.Name = "txtSmtpEmail";
             this.txtSmtpEmail.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.txtSmtpEmail.Properties.Appearance.Options.UseFont = true;
             this.txtSmtpEmail.Properties.ReadOnly = true;
-            this.txtSmtpEmail.Size = new System.Drawing.Size(400, 26);
+            this.txtSmtpEmail.Size = new System.Drawing.Size(400, 30);
             this.txtSmtpEmail.TabIndex = 1;
             // 
             // lblSmtpDisplayName
@@ -297,18 +312,19 @@ namespace cosmetics_store.Forms
             this.lblSmtpDisplayName.Appearance.Options.UseFont = true;
             this.lblSmtpDisplayName.Location = new System.Drawing.Point(20, 67);
             this.lblSmtpDisplayName.Name = "lblSmtpDisplayName";
-            this.lblSmtpDisplayName.Size = new System.Drawing.Size(79, 19);
+            this.lblSmtpDisplayName.Size = new System.Drawing.Size(103, 23);
             this.lblSmtpDisplayName.TabIndex = 2;
-            this.lblSmtpDisplayName.Text = "T�n hi?n th?:";
+            this.lblSmtpDisplayName.Text = "Tên hiển thị : ";
             // 
             // txtSmtpDisplayName
             // 
-            this.txtSmtpDisplayName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtSmtpDisplayName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtSmtpDisplayName.Location = new System.Drawing.Point(130, 64);
             this.txtSmtpDisplayName.Name = "txtSmtpDisplayName";
             this.txtSmtpDisplayName.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.txtSmtpDisplayName.Properties.Appearance.Options.UseFont = true;
-            this.txtSmtpDisplayName.Size = new System.Drawing.Size(400, 26);
+            this.txtSmtpDisplayName.Size = new System.Drawing.Size(400, 30);
             this.txtSmtpDisplayName.TabIndex = 3;
             // 
             // pnlBottom
@@ -318,9 +334,9 @@ namespace cosmetics_store.Forms
             this.pnlBottom.Controls.Add(this.btnCancel);
             this.pnlBottom.Controls.Add(this.btnResetDefault);
             this.pnlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnlBottom.Location = new System.Drawing.Point(0, 495);
+            this.pnlBottom.Location = new System.Drawing.Point(20, 475);
             this.pnlBottom.Name = "pnlBottom";
-            this.pnlBottom.Size = new System.Drawing.Size(800, 55);
+            this.pnlBottom.Size = new System.Drawing.Size(760, 55);
             this.pnlBottom.TabIndex = 4;
             // 
             // btnSave
@@ -332,11 +348,11 @@ namespace cosmetics_store.Forms
             this.btnSave.Appearance.Options.UseBackColor = true;
             this.btnSave.Appearance.Options.UseFont = true;
             this.btnSave.Appearance.Options.UseForeColor = true;
-            this.btnSave.Location = new System.Drawing.Point(555, 12);
+            this.btnSave.Location = new System.Drawing.Point(425, 12);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(110, 32);
+            this.btnSave.Size = new System.Drawing.Size(165, 32);
             this.btnSave.TabIndex = 0;
-            this.btnSave.Text = "?? L�u c?u h?nh";
+            this.btnSave.Text = "✅ Lưu cấu hình";
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnCancel
@@ -344,11 +360,11 @@ namespace cosmetics_store.Forms
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCancel.Appearance.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.btnCancel.Appearance.Options.UseFont = true;
-            this.btnCancel.Location = new System.Drawing.Point(675, 12);
+            this.btnCancel.Location = new System.Drawing.Point(613, 12);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(100, 32);
+            this.btnCancel.Size = new System.Drawing.Size(122, 32);
             this.btnCancel.TabIndex = 1;
-            this.btnCancel.Text = "Ho�n t�c";
+            this.btnCancel.Text = "Hoàn tác";
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnResetDefault
@@ -361,9 +377,9 @@ namespace cosmetics_store.Forms
             this.btnResetDefault.Appearance.Options.UseForeColor = true;
             this.btnResetDefault.Location = new System.Drawing.Point(25, 12);
             this.btnResetDefault.Name = "btnResetDefault";
-            this.btnResetDefault.Size = new System.Drawing.Size(140, 32);
+            this.btnResetDefault.Size = new System.Drawing.Size(213, 32);
             this.btnResetDefault.TabIndex = 2;
-            this.btnResetDefault.Text = "?? Kh�i ph?c m?c �?nh";
+            this.btnResetDefault.Text = "♻️ Khôi phục mặc định";
             this.btnResetDefault.Click += new System.EventHandler(this.btnResetDefault_Click);
             // 
             // CauHinhForm
@@ -374,7 +390,7 @@ namespace cosmetics_store.Forms
             this.Controls.Add(this.pnlMain);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "CauHinhForm";
-            this.Text = "C?u h?nh h? th?ng";
+            this.Text = "Cấu hình hệ thống";
             ((System.ComponentModel.ISupportInitialize)(this.pnlMain)).EndInit();
             this.pnlMain.ResumeLayout(false);
             this.pnlMain.PerformLayout();
@@ -396,6 +412,7 @@ namespace cosmetics_store.Forms
             ((System.ComponentModel.ISupportInitialize)(this.txtSmtpDisplayName.Properties)).EndInit();
             this.pnlBottom.ResumeLayout(false);
             this.ResumeLayout(false);
+
         }
     }
 }

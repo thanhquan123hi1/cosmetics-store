@@ -1,4 +1,4 @@
-namespace cosmetics_store.Forms
+﻿namespace cosmetics_store.Forms
 {
     partial class NhaCungCapEditForm
     {
@@ -41,55 +41,79 @@ namespace cosmetics_store.Forms
             // lblTenNCC
             // 
             this.lblTenNCC.Location = new System.Drawing.Point(20, 23);
-            this.lblTenNCC.Text = "Ten nha cung cap:";
+            this.lblTenNCC.Name = "lblTenNCC";
+            this.lblTenNCC.Size = new System.Drawing.Size(107, 16);
+            this.lblTenNCC.TabIndex = 0;
+            this.lblTenNCC.Text = "Tên nhà cung cấp:";
             // 
             // txtTenNCC
             // 
             this.txtTenNCC.Location = new System.Drawing.Point(140, 20);
+            this.txtTenNCC.Name = "txtTenNCC";
             this.txtTenNCC.Size = new System.Drawing.Size(300, 22);
+            this.txtTenNCC.TabIndex = 1;
             // 
             // lblDiaChi
             // 
             this.lblDiaChi.Location = new System.Drawing.Point(20, 63);
-            this.lblDiaChi.Text = "Dia chi:";
+            this.lblDiaChi.Name = "lblDiaChi";
+            this.lblDiaChi.Size = new System.Drawing.Size(44, 16);
+            this.lblDiaChi.TabIndex = 2;
+            this.lblDiaChi.Text = "Địa chỉ:";
             // 
             // txtDiaChi
             // 
             this.txtDiaChi.Location = new System.Drawing.Point(140, 60);
+            this.txtDiaChi.Name = "txtDiaChi";
             this.txtDiaChi.Size = new System.Drawing.Size(300, 22);
+            this.txtDiaChi.TabIndex = 3;
             // 
             // lblSDT
             // 
             this.lblSDT.Location = new System.Drawing.Point(20, 103);
-            this.lblSDT.Text = "So dien thoai:";
+            this.lblSDT.Name = "lblSDT";
+            this.lblSDT.Size = new System.Drawing.Size(80, 16);
+            this.lblSDT.TabIndex = 4;
+            this.lblSDT.Text = "Số điện thoại:";
             // 
             // txtSDT
             // 
             this.txtSDT.Location = new System.Drawing.Point(140, 100);
+            this.txtSDT.Name = "txtSDT";
             this.txtSDT.Size = new System.Drawing.Size(150, 22);
+            this.txtSDT.TabIndex = 5;
             // 
             // lblEmail
             // 
             this.lblEmail.Location = new System.Drawing.Point(20, 143);
+            this.lblEmail.Name = "lblEmail";
+            this.lblEmail.Size = new System.Drawing.Size(36, 16);
+            this.lblEmail.TabIndex = 6;
             this.lblEmail.Text = "Email:";
             // 
             // txtEmail
             // 
             this.txtEmail.Location = new System.Drawing.Point(140, 140);
+            this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(300, 22);
+            this.txtEmail.TabIndex = 7;
             // 
             // btnOk
             // 
             this.btnOk.Location = new System.Drawing.Point(240, 190);
+            this.btnOk.Name = "btnOk";
             this.btnOk.Size = new System.Drawing.Size(94, 29);
-            this.btnOk.Text = "Luu";
+            this.btnOk.TabIndex = 8;
+            this.btnOk.Text = "💾 Lưu";
             this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
             // 
             // btnCancel
             // 
             this.btnCancel.Location = new System.Drawing.Point(346, 190);
+            this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(94, 29);
-            this.btnCancel.Text = "Huy";
+            this.btnCancel.TabIndex = 9;
+            this.btnCancel.Text = "❌ Hủy";
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // NhaCungCapEditForm
@@ -112,13 +136,15 @@ namespace cosmetics_store.Forms
             this.MinimizeBox = false;
             this.Name = "NhaCungCapEditForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Thong tin nha cung cap";
+            this.Text = "Thông tin nhà cung cấp";
+            this.Load += new System.EventHandler(this.NhaCungCapEditForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.txtTenNCC.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDiaChi.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSDT.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtEmail.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
+
         }
     }
 }

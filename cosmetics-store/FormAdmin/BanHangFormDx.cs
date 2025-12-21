@@ -34,5 +34,10 @@ namespace cosmetics_store.Forms
         {
 
         }
+
+        private void splitContainer_Panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

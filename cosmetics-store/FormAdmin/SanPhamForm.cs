@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Data.Entity;
 using System.Drawing;
 using System.Linq;
@@ -33,12 +33,12 @@ namespace cosmetics_store.Forms
         {
             gridView1.Columns.Clear();
 
-            gridView1.Columns.AddVisible("MaSP", "M? SP");
-            gridView1.Columns.AddVisible("TenSP", "T�n s?n ph?m");
-            gridView1.Columns.AddVisible("TenLoai", "Lo?i SP");
-            gridView1.Columns.AddVisible("TenThuongHieu", "Th��ng hi?u");
-            gridView1.Columns.AddVisible("SoLuongTon", "S? l�?ng t?n");
-            gridView1.Columns.AddVisible("DonGia", "��n gi�");
+            gridView1.Columns.AddVisible("MaSP", "Mã SP");
+            gridView1.Columns.AddVisible("TenSP", "Tên sản phẩm");
+            gridView1.Columns.AddVisible("TenLoai", "Loại SP");
+            gridView1.Columns.AddVisible("TenThuongHieu", "Thương hiệu");
+            gridView1.Columns.AddVisible("SoLuongTon", "Số lượng tồn");
+            gridView1.Columns.AddVisible("DonGia", "Đơn giá");
 
             gridView1.Columns["MaSP"].Width = 60;
             gridView1.Columns["TenSP"].Width = 200;
@@ -48,9 +48,9 @@ namespace cosmetics_store.Forms
             gridView1.Columns["DonGia"].Width = 120;
 
             gridView1.Columns["DonGia"].DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            gridView1.Columns["DonGia"].DisplayFormat.FormatString = "#,##0 �";
+            gridView1.Columns["DonGia"].DisplayFormat.FormatString = "#,##0 đ";
 
-            // Highlight s?n ph?m h?t h�ng
+            // Highlight sản phẩm hết hàng
             gridView1.RowStyle += GridView1_RowStyle;
 
             gridView1.BestFitColumns();
@@ -77,19 +77,19 @@ namespace cosmetics_store.Forms
                     .Select(l => new { l.MaLoai, l.TenLoai })
                     .ToList();
 
-                loaiList.Insert(0, new { MaLoai = 0, TenLoai = "-- T?t c? lo?i --" });
+                loaiList.Insert(0, new { MaLoai = 0, TenLoai = "-- Tất cả loại --" });
 
                 lookupLoai.Properties.DataSource = loaiList;
                 lookupLoai.Properties.DisplayMember = "TenLoai";
                 lookupLoai.Properties.ValueMember = "MaLoai";
                 lookupLoai.Properties.Columns.Clear();
-                lookupLoai.Properties.Columns.Add(new DevExpress.XtraEditors.Controls.LookUpColumnInfo("TenLoai", "Lo?i s?n ph?m"));
-                lookupLoai.Properties.NullText = "-- T?t c? lo?i --";
+                lookupLoai.Properties.Columns.Add(new DevExpress.XtraEditors.Controls.LookUpColumnInfo("TenLoai", "Loại sản phẩm"));
+                lookupLoai.Properties.NullText = "-- Tất cả loại --";
                 lookupLoai.EditValue = 0;
             }
             catch (Exception ex)
             {
-                XtraMessageBox.Show($"L?i t?i lo?i SP: {ex.Message}", "L?i",
+                XtraMessageBox.Show($"Lỗi tải loại SP: {ex.Message}", "Lỗi",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -105,13 +105,13 @@ namespace cosmetics_store.Forms
                     .Include(sp => sp.ThuongHieu)
                     .AsQueryable();
 
-                // L?c theo lo?i
+                // Lọc theo loại
                 if (_selectedLoaiId.HasValue && _selectedLoaiId.Value > 0)
                 {
                     query = query.Where(sp => sp.MaLoai == _selectedLoaiId.Value);
                 }
 
-                // T?m ki?m
+                // Tìm kiếm
                 if (!string.IsNullOrEmpty(keyword))
                 {
                     query = query.Where(sp => sp.TenSP.ToLower().Contains(keyword) ||
@@ -132,7 +132,7 @@ namespace cosmetics_store.Forms
             }
             catch (Exception ex)
             {
-                XtraMessageBox.Show($"L?i t?i d? li?u: {ex.Message}", "L?i",
+                XtraMessageBox.Show($"Lỗi tải dữ liệu: {ex.Message}", "Lỗi",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -160,7 +160,7 @@ namespace cosmetics_store.Forms
         {
             using (var editForm = new SanPhamEditForm(_context))
             {
-                editForm.Text = "Th�m s?n ph?m m?i";
+                editForm.Text = "Thêm sản phẩm mới";
                 if (editForm.ShowDialog() == DialogResult.OK)
                 {
                     try
@@ -170,15 +170,15 @@ namespace cosmetics_store.Forms
                         _context.SaveChanges();
 
                         LogAction("CREATE", "SanPham", sanPham.MaSP.ToString(), null,
-                            $"Th�m s?n ph?m: {sanPham.TenSP}");
+                            $"Thêm sản phẩm: {sanPham.TenSP}");
 
-                        XtraMessageBox.Show("Th�m s?n ph?m th�nh c�ng!", "Th�ng b�o",
+                        XtraMessageBox.Show("Thêm sản phẩm thành công!", "Thông báo",
                             MessageBoxButtons.OK, MessageBoxIcon.Information);
                         LoadData();
                     }
                     catch (Exception ex)
                     {
-                        XtraMessageBox.Show($"L?i th�m s?n ph?m: {ex.Message}", "L?i",
+                        XtraMessageBox.Show($"Lỗi thêm sản phẩm: {ex.Message}", "Lỗi",
                             MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
@@ -189,7 +189,7 @@ namespace cosmetics_store.Forms
         {
             if (gridView1.FocusedRowHandle < 0)
             {
-                XtraMessageBox.Show("Vui l?ng ch?n s?n ph?m c?n s?a!", "Th�ng b�o",
+                XtraMessageBox.Show("Vui lòng chọn sản phẩm cần sửa!", "Thông báo",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
@@ -199,33 +199,33 @@ namespace cosmetics_store.Forms
 
             if (sanPham == null)
             {
-                XtraMessageBox.Show("Kh�ng t?m th?y s?n ph?m!", "L?i",
+                XtraMessageBox.Show("Không tìm thấy sản phẩm!", "Lỗi",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
             using (var editForm = new SanPhamEditForm(_context, sanPham))
             {
-                editForm.Text = "S?a th�ng tin s?n ph?m";
+                editForm.Text = "Sửa thông tin sản phẩm";
                 if (editForm.ShowDialog() == DialogResult.OK)
                 {
                     try
                     {
-                        string oldData = $"T�n: {sanPham.TenSP}, Gi�: {sanPham.DonGia}";
+                        string oldData = $"Tên: {sanPham.TenSP}, Giá: {sanPham.DonGia}";
 
                         editForm.UpdateSanPham(sanPham);
                         _context.SaveChanges();
 
-                        string newData = $"T�n: {sanPham.TenSP}, Gi�: {sanPham.DonGia}";
+                        string newData = $"Tên: {sanPham.TenSP}, Giá: {sanPham.DonGia}";
                         LogAction("UPDATE", "SanPham", sanPham.MaSP.ToString(), oldData, newData);
 
-                        XtraMessageBox.Show("C?p nh?t th�nh c�ng!", "Th�ng b�o",
+                        XtraMessageBox.Show("Cập nhật thành công!", "Thông báo",
                             MessageBoxButtons.OK, MessageBoxIcon.Information);
                         LoadData();
                     }
                     catch (Exception ex)
                     {
-                        XtraMessageBox.Show($"L?i c?p nh?t: {ex.Message}", "L?i",
+                        XtraMessageBox.Show($"Lỗi cập nhật: {ex.Message}", "Lỗi",
                             MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
@@ -236,7 +236,7 @@ namespace cosmetics_store.Forms
         {
             if (gridView1.FocusedRowHandle < 0)
             {
-                XtraMessageBox.Show("Vui l?ng ch?n s?n ph?m c?n x�a!", "Th�ng b�o",
+                XtraMessageBox.Show("Vui lòng chọn sản phẩm cần xóa!", "Thông báo",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
@@ -244,8 +244,8 @@ namespace cosmetics_store.Forms
             int maSP = Convert.ToInt32(gridView1.GetFocusedRowCellValue("MaSP"));
             string tenSP = gridView1.GetFocusedRowCellValue("TenSP")?.ToString();
 
-            var result = XtraMessageBox.Show($"B?n c� ch?c ch?n mu?n x�a s?n ph?m '{tenSP}'?",
-                "X�c nh?n x�a", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            var result = XtraMessageBox.Show($"Bạn có chắc chắn muốn xóa sản phẩm '{tenSP}'?",
+                "Xác nhận xóa", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             if (result == DialogResult.Yes)
             {
@@ -254,21 +254,21 @@ namespace cosmetics_store.Forms
                     var sanPham = _context.SanPhams.Find(maSP);
                     if (sanPham != null)
                     {
-                        // Ki?m tra c� CT_HoaDon kh�ng
+                        // Kiểm tra có CT_HoaDon không
                         var ctHoaDon = _context.CT_HoaDons.FirstOrDefault(ct => ct.MaSP == maSP);
                         if (ctHoaDon != null)
                         {
-                            XtraMessageBox.Show("Kh�ng th? x�a s?n ph?m �? c� trong h�a ��n!",
-                                "C?nh b�o", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            XtraMessageBox.Show("Không thể xóa sản phẩm đã có trong hóa đơn!",
+                                "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                             return;
                         }
 
-                        // Ki?m tra c� CT_PhieuNhap kh�ng
+                        // Kiểm tra có CT_PhieuNhap không
                         var ctPhieuNhap = _context.CT_PhieuNhaps.FirstOrDefault(ct => ct.MaSP == maSP);
                         if (ctPhieuNhap != null)
                         {
-                            XtraMessageBox.Show("Kh�ng th? x�a s?n ph?m �? c� trong phi?u nh?p!",
-                                "C?nh b�o", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            XtraMessageBox.Show("Không thể xóa sản phẩm đã có trong phiếu nhập!",
+                                "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                             return;
                         }
 
@@ -276,16 +276,16 @@ namespace cosmetics_store.Forms
                         _context.SaveChanges();
 
                         LogAction("DELETE", "SanPham", maSP.ToString(),
-                            $"X�a s?n ph?m: {tenSP}", null);
+                            $"Xóa sản phẩm: {tenSP}", null);
 
-                        XtraMessageBox.Show("X�a s?n ph?m th�nh c�ng!", "Th�ng b�o",
+                        XtraMessageBox.Show("Xóa sản phẩm thành công!", "Thông báo",
                             MessageBoxButtons.OK, MessageBoxIcon.Information);
                         LoadData();
                     }
                 }
                 catch (Exception ex)
                 {
-                    XtraMessageBox.Show($"L?i x�a s?n ph?m: {ex.Message}", "L?i",
+                    XtraMessageBox.Show($"Lỗi xóa sản phẩm: {ex.Message}", "Lỗi",
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
@@ -308,6 +308,11 @@ namespace cosmetics_store.Forms
                 _context.SaveChanges();
             }
             catch { }
+        }
+
+        private void gridControl1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

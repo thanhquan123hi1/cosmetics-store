@@ -1,4 +1,4 @@
-namespace cosmetics_store.Forms
+﻿namespace cosmetics_store.Forms
 {
     partial class SanPhamForm
     {
@@ -52,7 +52,9 @@ namespace cosmetics_store.Forms
             // 
             this.searchControl.Location = new System.Drawing.Point(12, 12);
             this.searchControl.Name = "searchControl";
-            this.searchControl.Properties.NullValuePrompt = "Tim san pham theo ten hoac ma...";
+            this.searchControl.Properties.NullValuePrompt = "Tìm sản phẩm theo tên hoặc mã...";
+            this.searchControl.Properties.ShowClearButton = false;
+            this.searchControl.Properties.ShowSearchButton = false;
             this.searchControl.Size = new System.Drawing.Size(300, 22);
             this.searchControl.TabIndex = 0;
             this.searchControl.TextChanged += new System.EventHandler(this.searchControl_TextChanged);
@@ -71,7 +73,7 @@ namespace cosmetics_store.Forms
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(94, 29);
             this.btnAdd.TabIndex = 2;
-            this.btnAdd.Text = "Them";
+            this.btnAdd.Text = "➕ Thêm";
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // btnEdit
@@ -80,7 +82,7 @@ namespace cosmetics_store.Forms
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(94, 29);
             this.btnEdit.TabIndex = 3;
-            this.btnEdit.Text = "Sua";
+            this.btnEdit.Text = "✏️ Sửa";
             this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // btnDelete
@@ -89,7 +91,7 @@ namespace cosmetics_store.Forms
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(94, 29);
             this.btnDelete.TabIndex = 4;
-            this.btnDelete.Text = "Xoa";
+            this.btnDelete.Text = "🗑️ Xóa";
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // gridControl1
@@ -100,7 +102,9 @@ namespace cosmetics_store.Forms
             this.gridControl1.Name = "gridControl1";
             this.gridControl1.Size = new System.Drawing.Size(900, 552);
             this.gridControl1.TabIndex = 1;
-            this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] { this.gridView1 });
+            this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridView1});
+            this.gridControl1.Click += new System.EventHandler(this.gridControl1_Click);
             // 
             // gridView1
             // 
@@ -117,13 +121,14 @@ namespace cosmetics_store.Forms
             this.Controls.Add(this.gridControl1);
             this.Controls.Add(this.pnlTop);
             this.Name = "SanPhamForm";
-            this.Text = "Quan ly san pham";
+            this.Text = "Quản lý sản phẩm";
             this.pnlTop.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.searchControl.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lookupLoai.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             this.ResumeLayout(false);
+
         }
     }
 }

@@ -1,4 +1,4 @@
-using System;
+Ôªøusing System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -41,8 +41,8 @@ namespace cosmetics_store.Forms
                 lookupKhachHang.Properties.DisplayMember = "HoTen";
                 lookupKhachHang.Properties.ValueMember = "MaKH";
                 lookupKhachHang.Properties.Columns.Clear();
-                lookupKhachHang.Properties.Columns.Add(new DevExpress.XtraEditors.Controls.LookUpColumnInfo("HoTen", "H? tÍn", 150));
-                lookupKhachHang.Properties.Columns.Add(new DevExpress.XtraEditors.Controls.LookUpColumnInfo("SDT", "S–T", 100));
+                lookupKhachHang.Properties.Columns.Add(new DevExpress.XtraEditors.Controls.LookUpColumnInfo("HoTen", "H·ªç t√™n", 150));
+                lookupKhachHang.Properties.Columns.Add(new DevExpress.XtraEditors.Controls.LookUpColumnInfo("SDT", "SƒêT", 100));
             }
             catch { }
         }
@@ -74,11 +74,11 @@ namespace cosmetics_store.Forms
                 gridSanPham.DataSource = data;
 
                 gridViewSanPham.Columns.Clear();
-                gridViewSanPham.Columns.AddVisible("MaSP", "M? SP");
-                gridViewSanPham.Columns.AddVisible("TenSP", "TÍn s?n ph?m");
-                gridViewSanPham.Columns.AddVisible("TenLoai", "Lo?i");
-                gridViewSanPham.Columns.AddVisible("DonGia", "–ın gi·");
-                gridViewSanPham.Columns.AddVisible("SoLuongTon", "T?n kho");
+                gridViewSanPham.Columns.AddVisible("MaSP", "M√£ SP");
+                gridViewSanPham.Columns.AddVisible("TenSP", "T√™n s·∫£n ph·∫©m");
+                gridViewSanPham.Columns.AddVisible("TenLoai", "Lo·∫°i");
+                gridViewSanPham.Columns.AddVisible("DonGia", "ƒê∆°n gi√°");
+                gridViewSanPham.Columns.AddVisible("SoLuongTon", "T·ªìn kho");
 
                 gridViewSanPham.Columns["MaSP"].Width = 60;
                 gridViewSanPham.Columns["TenSP"].Width = 180;
@@ -87,7 +87,7 @@ namespace cosmetics_store.Forms
                 gridViewSanPham.Columns["SoLuongTon"].Width = 70;
 
                 gridViewSanPham.Columns["DonGia"].DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-                gridViewSanPham.Columns["DonGia"].DisplayFormat.FormatString = "#,##0 ";
+                gridViewSanPham.Columns["DonGia"].DisplayFormat.FormatString = "#,##0 ƒë";
             }
             catch { }
         }
@@ -95,10 +95,10 @@ namespace cosmetics_store.Forms
         private void SetupGridGioHang()
         {
             gridViewGioHang.Columns.Clear();
-            gridViewGioHang.Columns.AddVisible("TenSP", "S?n ph?m");
+            gridViewGioHang.Columns.AddVisible("TenSP", "S·∫£n ph·∫©m");
             gridViewGioHang.Columns.AddVisible("SoLuong", "SL");
-            gridViewGioHang.Columns.AddVisible("DonGia", "–ın gi·");
-            gridViewGioHang.Columns.AddVisible("ThanhTien", "Th‡nh ti?n");
+            gridViewGioHang.Columns.AddVisible("DonGia", "ƒê∆°n gi√°");
+            gridViewGioHang.Columns.AddVisible("ThanhTien", "Th√†nh ti·ªÅn");
 
             gridViewGioHang.Columns["TenSP"].Width = 120;
             gridViewGioHang.Columns["SoLuong"].Width = 40;
@@ -120,7 +120,7 @@ namespace cosmetics_store.Forms
         {
             if (gridViewSanPham.FocusedRowHandle < 0)
             {
-                XtraMessageBox.Show("Vui l?ng ch?n s?n ph?m!", "ThÙng b·o",
+                XtraMessageBox.Show("Vui l√≤ng ch·ªçn s·∫£n ph·∫©m!", "Th√¥ng b√°o",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
@@ -131,13 +131,13 @@ namespace cosmetics_store.Forms
             int tonKho = Convert.ToInt32(gridViewSanPham.GetFocusedRowCellValue("SoLuongTon"));
             int soLuong = Convert.ToInt32(spinSoLuong.Value);
 
-            // Ki?m tra t?n kho
+            // Ki·ªÉm tra t·ªìn kho
             var existing = _gioHang.FirstOrDefault(g => g.MaSP == maSP);
             int totalInCart = existing != null ? existing.SoLuong + soLuong : soLuong;
 
             if (totalInCart > tonKho)
             {
-                XtraMessageBox.Show($"S? l˝?ng yÍu c?u v˝?t qu· t?n kho! (T?n: {tonKho})", "ThÙng b·o",
+                XtraMessageBox.Show($"S·ªë l∆∞·ª£ng y√™u c·∫ßu v∆∞·ª£t qu√° t·ªìn kho! (T·ªìn: {tonKho})", "Th√¥ng b√°o",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
@@ -166,7 +166,7 @@ namespace cosmetics_store.Forms
         {
             if (gridViewGioHang.FocusedRowHandle < 0)
             {
-                XtraMessageBox.Show("Vui l?ng ch?n s?n ph?m c?n xÛa!", "ThÙng b·o",
+                XtraMessageBox.Show("Vui l√≤ng ch·ªçn s·∫£n ph·∫©m c·∫ßn x√≥a!", "Th√¥ng b√°o",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
@@ -185,21 +185,21 @@ namespace cosmetics_store.Forms
             gridGioHang.DataSource = _gioHang;
 
             decimal tongTien = _gioHang.Sum(g => g.ThanhTien);
-            lblTongTienValue.Text = $"{tongTien:N0} ";
+            lblTongTienValue.Text = $"{tongTien:N0} ƒë";
         }
 
         private void btnThanhToan_Click(object sender, EventArgs e)
         {
             if (_gioHang.Count == 0)
             {
-                XtraMessageBox.Show("Gi? h‡ng tr?ng!", "ThÙng b·o",
+                XtraMessageBox.Show("Gi·ªè h√†ng tr·ªëng!", "Th√¥ng b√°o",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
             if (lookupKhachHang.EditValue == null)
             {
-                XtraMessageBox.Show("Vui l?ng ch?n kh·ch h‡ng!", "ThÙng b·o",
+                XtraMessageBox.Show("Vui l√≤ng ch·ªçn kh√°ch h√†ng!", "Th√¥ng b√°o",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
@@ -208,21 +208,21 @@ namespace cosmetics_store.Forms
             {
                 decimal tongTien = _gioHang.Sum(g => g.ThanhTien);
 
-                // T?o hÛa ın
+                // T·∫°o h√≥a ƒë∆°n
                 var hoaDon = new HoaDon
                 {
                     MaKH = Convert.ToInt32(lookupKhachHang.EditValue),
                     MaNV = CurrentUser.IsLoggedIn ? CurrentUser.User.MaNV : 1,
                     NgayLap = DateTime.Now,
                     TongTien = tongTien,
-                    TrangThai = "Ho‡n th‡nh",
-                    PhuongThucTT = cboPhuongThuc.EditValue?.ToString() ?? "Ti?n m?t"
+                    TrangThai = "Ho√†n th√†nh",
+                    PhuongThucTT = cboPhuongThuc.EditValue?.ToString() ?? "Ti·ªÅn m·∫∑t"
                 };
 
                 _context.HoaDons.Add(hoaDon);
                 _context.SaveChanges();
 
-                // T?o chi ti?t v‡ tr? t?n kho
+                // T·∫°o chi ti·∫øt v√† tr·ª´ t·ªìn kho
                 int stt = 1;
                 foreach (var item in _gioHang)
                 {
@@ -236,7 +236,7 @@ namespace cosmetics_store.Forms
                     };
                     _context.CT_HoaDons.Add(chiTiet);
 
-                    // Tr? t?n kho
+                    // Tr·ª´ t·ªìn kho
                     var sanPham = _context.SanPhams.Find(item.MaSP);
                     if (sanPham != null)
                     {
@@ -252,14 +252,14 @@ namespace cosmetics_store.Forms
                     ThoiGian = DateTime.Now,
                     HanhDong = "CREATE_HoaDon",
                     MaBanGhi = hoaDon.MaHD.ToString(),
-                    DuLieuMoi = $"HÛa ın #{hoaDon.MaHD}, T?ng: {tongTien:N0}",
+                    DuLieuMoi = $"H√≥a ƒë∆°n #{hoaDon.MaHD}, T·ªïng: {tongTien:N0}ƒë",
                     MaNV = CurrentUser.IsLoggedIn ? CurrentUser.User.MaNV : (int?)null
                 };
                 _context.AuditLogs.Add(log);
                 _context.SaveChanges();
 
-                XtraMessageBox.Show($"Thanh to·n th‡nh cÙng!\nHÛa ın #{hoaDon.MaHD}\nT?ng ti?n: {tongTien:N0} ",
-                    "Th‡nh cÙng", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                XtraMessageBox.Show($"Thanh to√°n th√†nh c√¥ng!\nH√≥a ƒë∆°n #{hoaDon.MaHD}\nT·ªïng ti·ªÅn: {tongTien:N0} ƒë",
+                    "Th√†nh c√¥ng", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 // Reset
                 _gioHang.Clear();
@@ -269,7 +269,7 @@ namespace cosmetics_store.Forms
             }
             catch (Exception ex)
             {
-                XtraMessageBox.Show($"L?i thanh to·n: {ex.Message}", "L?i",
+                XtraMessageBox.Show($"L·ªói thanh to√°n: {ex.Message}", "L·ªói",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -278,7 +278,7 @@ namespace cosmetics_store.Forms
         {
             if (_gioHang.Count > 0)
             {
-                var result = XtraMessageBox.Show("B?n cÛ ch?c mu?n h?y gi? h‡ng?", "X·c nh?n",
+                var result = XtraMessageBox.Show("B·∫°n c√≥ ch·∫Øc mu·ªën h·ªßy gi·ªè h√†ng?", "X√°c nh·∫≠n",
                     MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (result == DialogResult.Yes)
                 {
@@ -286,6 +286,11 @@ namespace cosmetics_store.Forms
                     RefreshGioHang();
                 }
             }
+        }
+
+        private void gridSanPham_Click(object sender, EventArgs e)
+        {
+
         }
     }
 

@@ -48,10 +48,10 @@
             // 
             this.searchControl.Location = new System.Drawing.Point(12, 12);
             this.searchControl.Name = "searchControl";
-            this.searchControl.Properties.NullValuePrompt = "Tim nhan vien theo ten, SDT hoac chuc vu...";
+            this.searchControl.Properties.NullValuePrompt = "Tìm nhân viên theo tên, SĐT hoặc chức vụ...";
             this.searchControl.Properties.ShowClearButton = false;
             this.searchControl.Properties.ShowSearchButton = false;
-            this.searchControl.Size = new System.Drawing.Size(350, 22);
+            this.searchControl.Size = new System.Drawing.Size(359, 22);
             this.searchControl.TabIndex = 0;
             this.searchControl.TextChanged += new System.EventHandler(this.searchControl_TextChanged);
             // 
@@ -61,7 +61,7 @@
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(94, 29);
             this.btnAdd.TabIndex = 1;
-            this.btnAdd.Text = "Thêm";
+            this.btnAdd.Text = "➕ Thêm";
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // btnEdit
@@ -70,7 +70,7 @@
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(94, 29);
             this.btnEdit.TabIndex = 2;
-            this.btnEdit.Text = "Sửa";
+            this.btnEdit.Text = "✏️ Sửa";
             this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // btnDelete
@@ -79,7 +79,7 @@
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(94, 29);
             this.btnDelete.TabIndex = 3;
-            this.btnDelete.Text = "Xóa";
+            this.btnDelete.Text = "🗑️ Xóa";
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // gridControl1
@@ -92,6 +92,7 @@
             this.gridControl1.TabIndex = 0;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
+            this.gridControl1.Click += new System.EventHandler(this.gridControl1_Click);
             // 
             // gridView1
             // 
@@ -100,15 +101,15 @@
             this.gridView1.OptionsBehavior.Editable = false;
             this.gridView1.OptionsView.ShowGroupPanel = false;
             // 
-            // NhanVienForm
+            // fNhanVien
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(900, 550);
             this.Controls.Add(this.gridControl1);
             this.Controls.Add(this.pnlTop);
-            this.Name = "NhanVienForm";
-            this.Text = "Quan ly nhan vien";
+            this.Name = "fNhanVien";
+            this.Text = "Quản lý nhân viên";
             this.pnlTop.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.searchControl.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();

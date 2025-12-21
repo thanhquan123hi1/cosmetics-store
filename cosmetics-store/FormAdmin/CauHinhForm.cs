@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 
@@ -19,7 +19,7 @@ namespace cosmetics_store.Forms
 
         private void LoadSettings()
         {
-            // Load c?u h?nh m?c �?nh
+            // Load cấu hình mặc định
             txtStoreName.Text = "Cosmetics Store";
             txtStoreAddress.Text = "";
             txtStorePhone.Text = "";
@@ -34,7 +34,7 @@ namespace cosmetics_store.Forms
             // Validate
             if (string.IsNullOrWhiteSpace(txtStoreName.Text))
             {
-                XtraMessageBox.Show("Vui l?ng nh?p t�n c?a h�ng!", "Th�ng b�o",
+                XtraMessageBox.Show("Vui lòng nhập tên cửa hàng!", "Thông báo",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtStoreName.Focus();
                 return;
@@ -42,15 +42,15 @@ namespace cosmetics_store.Forms
 
             if (spinLowStock.Value < 0)
             {
-                XtraMessageBox.Show("Ng�?ng c?nh b�o t?n kho ph?i >= 0!", "Th�ng b�o",
+                XtraMessageBox.Show("Ngưỡng cảnh báo tồn kho phải >= 0!", "Thông báo",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 spinLowStock.Focus();
                 return;
             }
 
             // TODO: Implement save to database or config file
-            XtraMessageBox.Show("L�u c?u h?nh th�nh c�ng!\n(Ch?c n�ng l�u c?u h?nh �ang ��?c ph�t tri?n)",
-                "Th�ng b�o", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            XtraMessageBox.Show("Lưu cấu hình thành công!\n(Chức năng lưu cấu hình đang được phát triển)",
+                "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -60,8 +60,8 @@ namespace cosmetics_store.Forms
 
         private void btnResetDefault_Click(object sender, EventArgs e)
         {
-            var result = XtraMessageBox.Show("B?n c� ch?c ch?n mu?n kh�i ph?c c?u h?nh m?c �?nh?",
-                "X�c nh?n", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            var result = XtraMessageBox.Show("Bạn có chắc chắn muốn khôi phục cấu hình mặc định?",
+                "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             if (result == DialogResult.Yes)
             {
@@ -72,6 +72,11 @@ namespace cosmetics_store.Forms
                 spinLowStock.Value = 10;
                 txtSmtpDisplayName.Text = "Cosmetics Store";
             }
+        }
+
+        private void grpInventory_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

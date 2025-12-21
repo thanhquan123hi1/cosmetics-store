@@ -1,4 +1,4 @@
-namespace cosmetics_store.FormKH
+﻿namespace cosmetics_store.FormKH
 {
     partial class fSanPhamDetail
     {
@@ -76,7 +76,7 @@ namespace cosmetics_store.FormKH
             this.lblTenSP.Name = "lblTenSP";
             this.lblTenSP.Size = new System.Drawing.Size(290, 60);
             this.lblTenSP.TabIndex = 1;
-            this.lblTenSP.Text = "Ten san pham";
+            this.lblTenSP.Text = "Tên sản phẩm";
             // 
             // lblThuongHieu
             // 
@@ -86,9 +86,9 @@ namespace cosmetics_store.FormKH
             this.lblThuongHieu.Appearance.Options.UseForeColor = true;
             this.lblThuongHieu.Location = new System.Drawing.Point(290, 85);
             this.lblThuongHieu.Name = "lblThuongHieu";
-            this.lblThuongHieu.Size = new System.Drawing.Size(100, 19);
+            this.lblThuongHieu.Size = new System.Drawing.Size(97, 23);
             this.lblThuongHieu.TabIndex = 2;
-            this.lblThuongHieu.Text = "Thuong hieu";
+            this.lblThuongHieu.Text = "Thương hiệu";
             // 
             // lblGia
             // 
@@ -98,7 +98,7 @@ namespace cosmetics_store.FormKH
             this.lblGia.Appearance.Options.UseForeColor = true;
             this.lblGia.Location = new System.Drawing.Point(290, 120);
             this.lblGia.Name = "lblGia";
-            this.lblGia.Size = new System.Drawing.Size(150, 32);
+            this.lblGia.Size = new System.Drawing.Size(91, 41);
             this.lblGia.TabIndex = 3;
             this.lblGia.Text = "0 VND";
             // 
@@ -111,7 +111,7 @@ namespace cosmetics_store.FormKH
             this.lblMoTa.Name = "lblMoTa";
             this.lblMoTa.Size = new System.Drawing.Size(290, 80);
             this.lblMoTa.TabIndex = 4;
-            this.lblMoTa.Text = "Mo ta san pham";
+            this.lblMoTa.Text = "Mô tả sản phẩm";
             // 
             // lblTonKho
             // 
@@ -121,13 +121,17 @@ namespace cosmetics_store.FormKH
             this.lblTonKho.Appearance.Options.UseForeColor = true;
             this.lblTonKho.Location = new System.Drawing.Point(290, 260);
             this.lblTonKho.Name = "lblTonKho";
-            this.lblTonKho.Size = new System.Drawing.Size(100, 19);
+            this.lblTonKho.Size = new System.Drawing.Size(76, 23);
             this.lblTonKho.TabIndex = 5;
-            this.lblTonKho.Text = "Con hang";
+            this.lblTonKho.Text = "Còn hàng";
             // 
             // spinSoLuong
             // 
-            this.spinSoLuong.EditValue = new decimal(new int[] { 1, 0, 0, 0 });
+            this.spinSoLuong.EditValue = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.spinSoLuong.Location = new System.Drawing.Point(290, 300);
             this.spinSoLuong.Name = "spinSoLuong";
             this.spinSoLuong.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F);
@@ -135,8 +139,17 @@ namespace cosmetics_store.FormKH
             this.spinSoLuong.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.spinSoLuong.Properties.IsFloatValue = false;
-            this.spinSoLuong.Properties.MinValue = new decimal(new int[] { 1, 0, 0, 0 });
-            this.spinSoLuong.Size = new System.Drawing.Size(80, 30);
+            this.spinSoLuong.Properties.MaxValue = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.spinSoLuong.Properties.MinValue = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.spinSoLuong.Size = new System.Drawing.Size(80, 34);
             this.spinSoLuong.TabIndex = 6;
             // 
             // btnThemGio
@@ -147,22 +160,22 @@ namespace cosmetics_store.FormKH
             this.btnThemGio.Appearance.Options.UseBackColor = true;
             this.btnThemGio.Appearance.Options.UseFont = true;
             this.btnThemGio.Appearance.Options.UseForeColor = true;
-            this.btnThemGio.Location = new System.Drawing.Point(290, 350);
+            this.btnThemGio.Location = new System.Drawing.Point(247, 350);
             this.btnThemGio.Name = "btnThemGio";
-            this.btnThemGio.Size = new System.Drawing.Size(180, 45);
+            this.btnThemGio.Size = new System.Drawing.Size(223, 45);
             this.btnThemGio.TabIndex = 7;
-            this.btnThemGio.Text = "THEM VAO GIO";
+            this.btnThemGio.Text = "🛒 THÊM VÀO GIỮ";
             this.btnThemGio.Click += new System.EventHandler(this.btnThemGio_Click);
             // 
             // btnDong
             // 
             this.btnDong.Appearance.Font = new System.Drawing.Font("Segoe UI", 11F);
             this.btnDong.Appearance.Options.UseFont = true;
-            this.btnDong.Location = new System.Drawing.Point(490, 350);
+            this.btnDong.Location = new System.Drawing.Point(490, 352);
             this.btnDong.Name = "btnDong";
             this.btnDong.Size = new System.Drawing.Size(90, 45);
             this.btnDong.TabIndex = 8;
-            this.btnDong.Text = "Dong";
+            this.btnDong.Text = "Đóng";
             this.btnDong.Click += new System.EventHandler(this.btnDong_Click);
             // 
             // fSanPhamDetail
@@ -176,13 +189,14 @@ namespace cosmetics_store.FormKH
             this.MinimizeBox = false;
             this.Name = "fSanPhamDetail";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Chi tiet san pham";
+            this.Text = "Chi tiết sản phẩm";
             ((System.ComponentModel.ISupportInitialize)(this.pnlMain)).EndInit();
             this.pnlMain.ResumeLayout(false);
             this.pnlMain.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picSanPham.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.spinSoLuong.Properties)).EndInit();
             this.ResumeLayout(false);
+
         }
     }
 }

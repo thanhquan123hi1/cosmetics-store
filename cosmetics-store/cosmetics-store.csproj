@@ -319,10 +319,25 @@
     <EmbeddedResource Include="FormAdmin\fDashboardAdmin.resx">
       <DependentUpon>fDashboardAdmin.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormAdmin\fDashboardKhachHang.resx">
+      <DependentUpon>fDashboardKhachHang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormAdmin\fDashboardNhanVien.resx">
+      <DependentUpon>fDashboardNhanVien.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormAdmin\fForgotPassword.resx">
       <DependentUpon>fForgotPassword.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormAdmin\fRegister.resx" />
+    <EmbeddedResource Include="FormAdmin\NhaCungCapEditForm.resx">
+      <DependentUpon>NhaCungCapEditForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormAdmin\NhapHangForm.resx">
+      <DependentUpon>NhapHangForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormAdmin\SanPhamForm.resx">
+      <DependentUpon>SanPhamForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormAdmin\TaiKhoanEdit.resx">
       <DependentUpon>TaiKhoanEdit.cs</DependentUpon>
     </EmbeddedResource>
@@ -362,8 +377,20 @@
     <EmbeddedResource Include="FormKH\fDashboardKH.resx">
       <DependentUpon>fDashboardKH.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormKH\fGioHang.resx">
+      <DependentUpon>fGioHang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormKH\fSanPhamDetail.resx">
+      <DependentUpon>fSanPhamDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormStaff\fChonKhachHang.resx">
+      <DependentUpon>fChonKhachHang.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormStaff\fDashboardStaff.resx">
       <DependentUpon>fDashboardStaff.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormStaff\fLapHoaDon.resx">
+      <DependentUpon>fLapHoaDon.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormStaff\fLichSuGiaoDich.resx">
       <DependentUpon>fLichSuGiaoDich.cs</DependentUpon>
@@ -373,6 +400,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormStaff\fThemKhachHangNhanh.resx">
       <DependentUpon>fThemKhachHangNhanh.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormStaff\fTraCuuSanPham.resx">
+      <DependentUpon>fTraCuuSanPham.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

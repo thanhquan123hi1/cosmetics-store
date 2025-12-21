@@ -222,5 +222,10 @@ namespace cosmetics_store.Forms
             this.DialogResult = DialogResult.Cancel;
             this.Close();
         }
+
+        private void cboQuyen_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

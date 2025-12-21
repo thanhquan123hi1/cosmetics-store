@@ -53,7 +53,7 @@ namespace cosmetics_store.Forms
 
         private void OnDangXuatClick(object sender, EventArgs e)
         {
-            var result = XtraMessageBox.Show("B?n có ch?c ch?n mu?n ðãng xu?t?", "Xác nh?n",
+            var result = XtraMessageBox.Show("B?n có ch?c ch?n mu?n ??ng xu?t?", "Xác nh?n",
                 MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             if (result == DialogResult.Yes)
@@ -81,38 +81,55 @@ namespace cosmetics_store.Forms
                 Padding = new Padding(30)
             };
 
+            var layout = new TableLayoutPanel
+            {
+                Dock = DockStyle.Fill,
+                ColumnCount = 1,
+                RowCount = 3,
+                BackColor = Color.Transparent
+            };
+            layout.RowStyles.Add(new RowStyle(SizeType.AutoSize));
+            layout.RowStyles.Add(new RowStyle(SizeType.AutoSize));
+            layout.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            panel.Controls.Add(layout);
+
             var lblTitle = new LabelControl
             {
-                Text = "?? TRANG CH? KHÁCH HÀNG",
+                Text = "TRANG CH? KHÁCH HÀNG",
                 Font = new Font("Segoe UI", 20F, FontStyle.Bold),
-                Location = new Point(30, 30),
                 ForeColor = Color.FromArgb(45, 45, 48)
             };
-            panel.Controls.Add(lblTitle);
+            lblTitle.Margin = new Padding(0, 0, 0, 8);
+            layout.Controls.Add(lblTitle, 0, 0);
 
             var lblWelcome = new LabelControl
             {
-                Text = $"Chào m?ng {CurrentUser.User?.HoTen ?? "b?n"} ð?n v?i Cosmetics Store!\n\nKhám phá các s?n ph?m m? ph?m ch?t lý?ng cao.",
+                Text = $"Chào m?ng {CurrentUser.User?.HoTen ?? "b?n"} ??n v?i Cosmetics Store!\n\nKhám phá các s?n ph?m m? ph?m ch?t l??ng cao.",
                 Font = new Font("Segoe UI", 12F),
-                Location = new Point(30, 80),
                 AutoSizeMode = LabelAutoSizeMode.None,
-                Size = new Size(600, 80)
+                Size = new Size(0, 80)
             };
-            panel.Controls.Add(lblWelcome);
+            lblWelcome.Appearance.ForeColor = Color.FromArgb(85, 85, 85);
+            lblWelcome.Margin = new Padding(0, 0, 0, 18);
+            lblWelcome.Dock = DockStyle.Top;
+            layout.Controls.Add(lblWelcome, 0, 1);
 
             // Stats
             var statsPanel = new FlowLayoutPanel
             {
-                Location = new Point(30, 180),
-                Size = new Size(800, 120),
-                FlowDirection = FlowDirection.LeftToRight
+                Dock = DockStyle.Top,
+                AutoSize = true,
+                WrapContents = true,
+                FlowDirection = FlowDirection.LeftToRight,
+                Padding = new Padding(0),
+                Margin = new Padding(0)
             };
 
             statsPanel.Controls.Add(CreateStatCard("T?ng s?n ph?m", GetTotalProducts().ToString(), Color.FromArgb(52, 152, 219)));
-            statsPanel.Controls.Add(CreateStatCard("Ðõn hàng c?a b?n", GetMyOrders().ToString(), Color.FromArgb(46, 204, 113)));
-            statsPanel.Controls.Add(CreateStatCard("Ði?m tích l?y", "0", Color.FromArgb(155, 89, 182)));
+            statsPanel.Controls.Add(CreateStatCard("??n hàng c?a b?n", GetMyOrders().ToString(), Color.FromArgb(46, 204, 113)));
+            statsPanel.Controls.Add(CreateStatCard("?i?m tích l?y", "0", Color.FromArgb(155, 89, 182)));
 
-            panel.Controls.Add(statsPanel);
+            layout.Controls.Add(statsPanel, 0, 2);
 
             pnlMainContent.Controls.Add(panel);
         }
@@ -130,7 +147,7 @@ namespace cosmetics_store.Forms
 
             var lblTitle = new LabelControl
             {
-                Text = "??? DANH SÁCH S?N PH?M",
+                Text = "DANH SÁCH S?N PH?M",
                 Font = new Font("Segoe UI", 18F, FontStyle.Bold),
                 Location = new Point(20, 20),
                 ForeColor = Color.FromArgb(45, 45, 48)
@@ -149,6 +166,13 @@ namespace cosmetics_store.Forms
             grid.MainView = gridView;
             gridView.OptionsBehavior.Editable = false;
             gridView.OptionsView.ShowGroupPanel = false;
+            gridView.OptionsView.EnableAppearanceEvenRow = true;
+            gridView.OptionsView.ShowAutoFilterRow = true;
+            gridView.Appearance.HeaderPanel.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            gridView.Appearance.Row.Font = new Font("Segoe UI", 10F);
+            gridView.Appearance.EvenRow.BackColor = Color.FromArgb(250, 250, 252);
+            gridView.Appearance.EvenRow.Options.UseBackColor = true;
+            gridView.OptionsSelection.EnableAppearanceFocusedCell = false;
 
             try
             {
@@ -163,20 +187,22 @@ namespace cosmetics_store.Forms
                             Loai = sp.LoaiSP.TenLoai,
                             ThuongHieu = sp.ThuongHieu.TenThuongHieu,
                             sp.DonGia,
-                            TrangThai = sp.SoLuongTon > 0 ? "C?n hàng" : "H?t hàng"
+                            TrangThai = sp.SoLuongTon > 0 ? "Còn hàng" : "H?t hàng"
                         })
                         .ToList();
 
                     grid.DataSource = products;
 
-                    gridView.Columns["MaSP"].Caption = "M? SP";
+                    gridView.Columns["MaSP"].Caption = "Mã SP";
                     gridView.Columns["TenSP"].Caption = "Tên s?n ph?m";
                     gridView.Columns["Loai"].Caption = "Lo?i";
-                    gridView.Columns["ThuongHieu"].Caption = "Thýõng hi?u";
+                    gridView.Columns["ThuongHieu"].Caption = "Th??ng hi?u";
                     gridView.Columns["DonGia"].Caption = "Giá";
                     gridView.Columns["DonGia"].DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-                    gridView.Columns["DonGia"].DisplayFormat.FormatString = "#,##0 ð";
+                    gridView.Columns["DonGia"].DisplayFormat.FormatString = "#,##0 ?";
                     gridView.Columns["TrangThai"].Caption = "Tr?ng thái";
+
+                    gridView.BestFitColumns();
                 }
             }
             catch { }
@@ -198,7 +224,7 @@ namespace cosmetics_store.Forms
 
             var lblTitle = new LabelControl
             {
-                Text = "?? ÐÕN HÀNG C?A TÔI",
+                Text = "??N HÀNG C?A TÔI",
                 Font = new Font("Segoe UI", 18F, FontStyle.Bold),
                 Location = new Point(20, 20),
                 ForeColor = Color.FromArgb(45, 45, 48)
@@ -207,7 +233,7 @@ namespace cosmetics_store.Forms
 
             var lblNote = new LabelControl
             {
-                Text = "Hi?n t?i b?n chýa có ðõn hàng nào.\nH?y khám phá s?n ph?m và ð?t hàng ngay!",
+                Text = "Hi?n t?i b?n ch?a có ??n hàng nào.\nHãy khám phá s?n ph?m và ??t hàng ngay!",
                 Font = new Font("Segoe UI", 11F),
                 ForeColor = Color.Gray,
                 Location = new Point(20, 80)
@@ -230,7 +256,7 @@ namespace cosmetics_store.Forms
 
             var lblTitle = new LabelControl
             {
-                Text = "?? THÔNG TIN CÁ NHÂN",
+                Text = "THÔNG TIN CÁ NHÂN",
                 Font = new Font("Segoe UI", 18F, FontStyle.Bold),
                 Location = new Point(20, 20),
                 ForeColor = Color.FromArgb(45, 45, 48)
@@ -270,18 +296,19 @@ namespace cosmetics_store.Forms
         {
             var card = new Panel
             {
-                Size = new Size(180, 100),
+                Size = new Size(220, 110),
                 BackColor = color,
-                Margin = new Padding(0, 0, 15, 0)
+                Margin = new Padding(0, 0, 16, 16)
             };
+
+            card.Padding = new Padding(10, 8, 10, 8);
 
             var lblValue = new Label
             {
                 Text = value,
-                Font = new Font("Segoe UI", 28F, FontStyle.Bold),
+                Font = new Font("Segoe UI", 26F, FontStyle.Bold),
                 ForeColor = Color.White,
-                Dock = DockStyle.Top,
-                Height = 55,
+                Dock = DockStyle.Fill,
                 TextAlign = ContentAlignment.MiddleCenter
             };
 
@@ -291,7 +318,7 @@ namespace cosmetics_store.Forms
                 Font = new Font("Segoe UI", 10F),
                 ForeColor = Color.White,
                 Dock = DockStyle.Bottom,
-                Height = 35,
+                Height = 32,
                 TextAlign = ContentAlignment.MiddleCenter
             };
 
@@ -338,7 +365,7 @@ namespace cosmetics_store.Forms
         {
             if (CurrentUser.IsLoggedIn)
             {
-                var result = XtraMessageBox.Show("B?n có mu?n ðãng xu?t?", "Xác nh?n",
+                var result = XtraMessageBox.Show("B?n có mu?n ??ng xu?t?", "Xác nh?n",
                     MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                 if (result == DialogResult.Yes)
@@ -351,6 +378,11 @@ namespace cosmetics_store.Forms
                 }
             }
             base.OnFormClosing(e);
+        }
+
+        private void accordionMenu_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -34,3 +34,15 @@ C:\GitHub\cosmetics-store\DataAccessLayer\obj\Debug\DataAccessLayer.csproj.CoreC
 C:\GitHub\cosmetics-store\DataAccessLayer\obj\Debug\DataAcce.E67BD773.Up2Date
 C:\GitHub\cosmetics-store\DataAccessLayer\obj\Debug\DataAccessLayer.dll
 C:\GitHub\cosmetics-store\DataAccessLayer\obj\Debug\DataAccessLayer.pdb
+C:\Users\LENOVO\OneDrive\Documents\cosmetics-store\DataAccessLayer\bin\Debug\DataAccessLayer.dll.config
+C:\Users\LENOVO\OneDrive\Documents\cosmetics-store\DataAccessLayer\bin\Debug\DataAccessLayer.dll
+C:\Users\LENOVO\OneDrive\Documents\cosmetics-store\DataAccessLayer\bin\Debug\DataAccessLayer.pdb
+C:\Users\LENOVO\OneDrive\Documents\cosmetics-store\DataAccessLayer\bin\Debug\EntityFramework.dll
+C:\Users\LENOVO\OneDrive\Documents\cosmetics-store\DataAccessLayer\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\LENOVO\OneDrive\Documents\cosmetics-store\DataAccessLayer\bin\Debug\EntityFramework.xml
+C:\Users\LENOVO\OneDrive\Documents\cosmetics-store\DataAccessLayer\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\LENOVO\OneDrive\Documents\cosmetics-store\DataAccessLayer\obj\Debug\DataAccessLayer.csproj.AssemblyReference.cache
+C:\Users\LENOVO\OneDrive\Documents\cosmetics-store\DataAccessLayer\obj\Debug\DataAccessLayer.csproj.CoreCompileInputs.cache
+C:\Users\LENOVO\OneDrive\Documents\cosmetics-store\DataAccessLayer\obj\Debug\DataAcce.E67BD773.Up2Date
+C:\Users\LENOVO\OneDrive\Documents\cosmetics-store\DataAccessLayer\obj\Debug\DataAccessLayer.dll
+C:\Users\LENOVO\OneDrive\Documents\cosmetics-store\DataAccessLayer\obj\Debug\DataAccessLayer.pdb

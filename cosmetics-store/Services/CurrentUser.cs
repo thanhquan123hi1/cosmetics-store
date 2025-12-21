@@ -3,7 +3,7 @@ using BusinessAccessLayer.DTOs;
 namespace cosmetics_store
 {
     /// <summary>
-    /// Static class ð? lýu tr? thông tin ngý?i dùng ðang ðãng nh?p
+    /// Static class ?? l?u tr? thông tin ng??i dùng ?ang ??ng nh?p
     /// </summary>
     public static class CurrentUser
     {

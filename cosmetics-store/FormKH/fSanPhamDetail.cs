@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
 using DataAccessLayer;
@@ -32,11 +32,11 @@ namespace cosmetics_store.FormKH
             lblTenSP.Text = _sanPham.TenSP;
             lblThuongHieu.Text = _sanPham.ThuongHieu?.TenThuongHieu ?? "N/A";
             lblGia.Text = $"{_sanPham.DonGia:N0} VND";
-            lblMoTa.Text = _sanPham.MoTa ?? "Chua co mo ta";
-            lblTonKho.Text = _sanPham.SoLuongTon > 0 ? $"Con hang ({_sanPham.SoLuongTon})" : "Het hang";
+            lblMoTa.Text = _sanPham.MoTa ?? "Chưa có mô tả";
+            lblTonKho.Text = _sanPham.SoLuongTon > 0 ? $"Còn hàng ({_sanPham.SoLuongTon})" : "Hết hàng";
             lblTonKho.ForeColor = _sanPham.SoLuongTon > 0 ? Color.Green : Color.Red;
 
-            // Load hinh anh
+            // Load hình ảnh
             try
             {
                 if (!string.IsNullOrEmpty(_sanPham.HinhAnh))
@@ -55,7 +55,7 @@ namespace cosmetics_store.FormKH
         {
             if (_sanPham.SoLuongTon <= 0)
             {
-                XtraMessageBox.Show("San pham da het hang!", "Thong bao",
+                XtraMessageBox.Show("Sản phẩm đã hết hàng!", "Thông báo",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }

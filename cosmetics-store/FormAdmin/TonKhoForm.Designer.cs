@@ -110,12 +110,12 @@
             this.searchControl.Name = "searchControl";
             this.searchControl.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.searchControl.Properties.Appearance.Options.UseFont = true;
-            this.searchControl.Properties.NullValuePrompt = "T?m theo tên, m? s?n ph?m...";
+            this.searchControl.Properties.NullValuePrompt = "Tìm theo tên, mã sản phẩm...";
             this.searchControl.Properties.ShowClearButton = false;
             this.searchControl.Properties.ShowSearchButton = false;
             this.searchControl.Size = new System.Drawing.Size(250, 30);
             this.searchControl.TabIndex = 0;
-            this.searchControl.TextChanged += new System.EventHandler(this.searchControl_TextChanged);
+            this.searchControl.EditValueChanged += new System.EventHandler(this.searchControl_TextChanged);
             // 
             // cboLoai
             // 
@@ -139,10 +139,10 @@
             this.cboTrangThai.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.cboTrangThai.Properties.Items.AddRange(new object[] {
-            "T?t c?",
-            "C?n hàng",
-            "S?p h?t",
-            "H?t hàng"});
+            "Tất cả",
+            "Còn hàng",
+            "Sắp hết",
+            "Hết hàng"});
             this.cboTrangThai.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             this.cboTrangThai.Size = new System.Drawing.Size(120, 30);
             this.cboTrangThai.TabIndex = 2;
@@ -152,11 +152,11 @@
             // 
             this.btnRefresh.Appearance.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.btnRefresh.Appearance.Options.UseFont = true;
-            this.btnRefresh.Location = new System.Drawing.Point(610, 8);
+            this.btnRefresh.Location = new System.Drawing.Point(591, 8);
             this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(100, 30);
+            this.btnRefresh.Size = new System.Drawing.Size(123, 30);
             this.btnRefresh.TabIndex = 3;
-            this.btnRefresh.Text = "Làm mới";
+            this.btnRefresh.Text = "🔄 Làm mới";
             this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
             // btnExport
@@ -171,7 +171,7 @@
             this.btnExport.Name = "btnExport";
             this.btnExport.Size = new System.Drawing.Size(130, 30);
             this.btnExport.TabIndex = 4;
-            this.btnExport.Text = "Xuất Excel";
+            this.btnExport.Text = "📄 Xuất Excel";
             this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
             // 
             // pnlStats
@@ -229,7 +229,7 @@
             this.lblLowStock.Appearance.ForeColor = System.Drawing.Color.DarkOrange;
             this.lblLowStock.Appearance.Options.UseFont = true;
             this.lblLowStock.Appearance.Options.UseForeColor = true;
-            this.lblLowStock.Location = new System.Drawing.Point(560, 15);
+            this.lblLowStock.Location = new System.Drawing.Point(544, 15);
             this.lblLowStock.Name = "lblLowStock";
             this.lblLowStock.Size = new System.Drawing.Size(100, 23);
             this.lblLowStock.TabIndex = 3;
@@ -267,7 +267,7 @@
             this.Controls.Add(this.pnlMain);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "TonKhoForm";
-            this.Text = "Qu?n l? t?n kho";
+            this.Text = "Quản lý tồn kho";
             ((System.ComponentModel.ISupportInitialize)(this.pnlMain)).EndInit();
             this.pnlMain.ResumeLayout(false);
             this.pnlMain.PerformLayout();

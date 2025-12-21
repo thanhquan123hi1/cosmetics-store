@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -44,8 +44,8 @@ namespace cosmetics_store.Forms
                 lookupNCC.Properties.DisplayMember = "TenNCC";
                 lookupNCC.Properties.ValueMember = "MaNCC";
                 lookupNCC.Properties.Columns.Clear();
-                lookupNCC.Properties.Columns.Add(new DevExpress.XtraEditors.Controls.LookUpColumnInfo("TenNCC", "Nh� cung c?p"));
-                lookupNCC.Properties.NullText = "-- Ch?n NCC --";
+                lookupNCC.Properties.Columns.Add(new DevExpress.XtraEditors.Controls.LookUpColumnInfo("TenNCC", "Nhà cung cấp"));
+                lookupNCC.Properties.NullText = "-- Chọn NCC --";
             }
             catch { }
         }
@@ -62,9 +62,9 @@ namespace cosmetics_store.Forms
                 lookupSPMoi.Properties.DisplayMember = "TenSP";
                 lookupSPMoi.Properties.ValueMember = "MaSP";
                 lookupSPMoi.Properties.Columns.Clear();
-                lookupSPMoi.Properties.Columns.Add(new DevExpress.XtraEditors.Controls.LookUpColumnInfo("MaSP", "M? SP", 60));
-                lookupSPMoi.Properties.Columns.Add(new DevExpress.XtraEditors.Controls.LookUpColumnInfo("TenSP", "T�n s?n ph?m", 200));
-                lookupSPMoi.Properties.NullText = "-- Ch?n s?n ph?m --";
+                lookupSPMoi.Properties.Columns.Add(new DevExpress.XtraEditors.Controls.LookUpColumnInfo("MaSP", "Mã SP", 60));
+                lookupSPMoi.Properties.Columns.Add(new DevExpress.XtraEditors.Controls.LookUpColumnInfo("TenSP", "Tên sản phẩm", 200));
+                lookupSPMoi.Properties.NullText = "-- Chọn sản phẩm --";
 
                 lookupSPMoi.EditValueChanged += (s, ev) =>
                 {
@@ -81,15 +81,15 @@ namespace cosmetics_store.Forms
         private void SetupGridChiTietMoi()
         {
             gridViewChiTietMoi.Columns.Clear();
-            gridViewChiTietMoi.Columns.AddVisible("TenSP", "T�n s?n ph?m");
-            gridViewChiTietMoi.Columns.AddVisible("SoLuong", "S? l�?ng");
-            gridViewChiTietMoi.Columns.AddVisible("DonGiaNhap", "��n gi�");
-            gridViewChiTietMoi.Columns.AddVisible("ThanhTien", "Th�nh ti?n");
+            gridViewChiTietMoi.Columns.AddVisible("TenSP", "Tên sản phẩm");
+            gridViewChiTietMoi.Columns.AddVisible("SoLuong", "Số lượng");
+            gridViewChiTietMoi.Columns.AddVisible("DonGiaNhap", "Đơn giá");
+            gridViewChiTietMoi.Columns.AddVisible("ThanhTien", "Thành tiền");
 
             gridViewChiTietMoi.Columns["DonGiaNhap"].DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            gridViewChiTietMoi.Columns["DonGiaNhap"].DisplayFormat.FormatString = "#,##0 �";
+            gridViewChiTietMoi.Columns["DonGiaNhap"].DisplayFormat.FormatString = "#,##0 đ";
             gridViewChiTietMoi.Columns["ThanhTien"].DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            gridViewChiTietMoi.Columns["ThanhTien"].DisplayFormat.FormatString = "#,##0 �";
+            gridViewChiTietMoi.Columns["ThanhTien"].DisplayFormat.FormatString = "#,##0 đ";
         }
 
         private void LoadPhieuNhapHistory()
@@ -111,9 +111,9 @@ namespace cosmetics_store.Forms
                 gridMaster.DataSource = phieuNhaps;
 
                 gridViewMaster.Columns.Clear();
-                gridViewMaster.Columns.AddVisible("MaPN", "M? PN");
-                gridViewMaster.Columns.AddVisible("NgayNhap", "Ng�y nh?p");
-                gridViewMaster.Columns.AddVisible("TenNCC", "Nh� cung c?p");
+                gridViewMaster.Columns.AddVisible("MaPN", "Mã PN");
+                gridViewMaster.Columns.AddVisible("NgayNhap", "Ngày nhập");
+                gridViewMaster.Columns.AddVisible("TenNCC", "Nhà cung cấp");
 
                 gridViewMaster.Columns["NgayNhap"].DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
                 gridViewMaster.Columns["NgayNhap"].DisplayFormat.FormatString = "dd/MM/yyyy";
@@ -153,16 +153,16 @@ namespace cosmetics_store.Forms
                 gridDetail.DataSource = chiTiet;
 
                 gridViewDetail.Columns.Clear();
-                gridViewDetail.Columns.AddVisible("TenSP", "T�n s?n ph?m");
-                gridViewDetail.Columns.AddVisible("SoLuong", "S? l�?ng");
-                gridViewDetail.Columns.AddVisible("DonGiaNhap", "��n gi�");
-                gridViewDetail.Columns.AddVisible("ThanhTien", "Th�nh ti?n");
-                gridViewDetail.Columns.AddVisible("HanSuDung", "H?n SD");
+                gridViewDetail.Columns.AddVisible("TenSP", "Tên sản phẩm");
+                gridViewDetail.Columns.AddVisible("SoLuong", "Số lượng");
+                gridViewDetail.Columns.AddVisible("DonGiaNhap", "Đơn giá");
+                gridViewDetail.Columns.AddVisible("ThanhTien", "Thành tiền");
+                gridViewDetail.Columns.AddVisible("HanSuDung", "Hạn SD");
 
                 gridViewDetail.Columns["DonGiaNhap"].DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-                gridViewDetail.Columns["DonGiaNhap"].DisplayFormat.FormatString = "#,##0 �";
+                gridViewDetail.Columns["DonGiaNhap"].DisplayFormat.FormatString = "#,##0 đ";
                 gridViewDetail.Columns["ThanhTien"].DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-                gridViewDetail.Columns["ThanhTien"].DisplayFormat.FormatString = "#,##0 �";
+                gridViewDetail.Columns["ThanhTien"].DisplayFormat.FormatString = "#,##0 đ";
             }
             catch { }
         }
@@ -171,21 +171,21 @@ namespace cosmetics_store.Forms
         {
             if (lookupSPMoi.EditValue == null)
             {
-                XtraMessageBox.Show("Vui l?ng ch?n s?n ph?m!", "Th�ng b�o",
+                XtraMessageBox.Show("Vui lòng chọn sản phẩm!", "Thông báo",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
             if (spinSoLuong.Value <= 0)
             {
-                XtraMessageBox.Show("S? l�?ng ph?i > 0!", "Th�ng b�o",
+                XtraMessageBox.Show("Số lượng phải > 0!", "Thông báo",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
             if (spinDonGia.Value <= 0)
             {
-                XtraMessageBox.Show("��n gi� ph?i > 0!", "Th�ng b�o",
+                XtraMessageBox.Show("Đơn giá phải > 0!", "Thông báo",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
@@ -194,7 +194,7 @@ namespace cosmetics_store.Forms
             var row = lookupSPMoi.GetSelectedDataRow();
             string tenSP = ((dynamic)row).TenSP;
 
-            // Ki?m tra �? t?n t?i ch�a
+            // Kiểm tra đã tồn tại chưa
             var existing = _chiTietMoi.FirstOrDefault(ct => ct.MaSP == maSP);
             if (existing != null)
             {
@@ -226,7 +226,7 @@ namespace cosmetics_store.Forms
         {
             if (gridViewChiTietMoi.FocusedRowHandle < 0)
             {
-                XtraMessageBox.Show("Vui l?ng ch?n s?n ph?m c?n x�a!", "Th�ng b�o",
+                XtraMessageBox.Show("Vui lòng chọn sản phẩm cần xóa!", "Thông báo",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
@@ -249,24 +249,24 @@ namespace cosmetics_store.Forms
         {
             if (lookupNCC.EditValue == null)
             {
-                XtraMessageBox.Show("Vui l?ng ch?n nh� cung c?p!", "Th�ng b�o",
+                XtraMessageBox.Show("Vui lòng chọn nhà cung cấp!", "Thông báo",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
             if (_chiTietMoi.Count == 0)
             {
-                XtraMessageBox.Show("Vui l?ng th�m �t nh?t 1 s?n ph?m!", "Th�ng b�o",
+                XtraMessageBox.Show("Vui lòng thêm ít nhất 1 sản phẩm!", "Thông báo",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
             try
             {
-                // T�nh t?ng ti?n
+                // Tính tổng tiền
                 decimal tongTien = _chiTietMoi.Sum(ct => ct.ThanhTien);
 
-                // T?o phi?u nh?p
+                // Tạo phiếu nhập
                 var phieuNhap = new PhieuNhap
                 {
                     MaNCC = Convert.ToInt32(lookupNCC.EditValue),
@@ -276,7 +276,7 @@ namespace cosmetics_store.Forms
                 _context.PhieuNhaps.Add(phieuNhap);
                 _context.SaveChanges();
 
-                // T?o chi ti?t v� c?p nh?t t?n kho
+                // Tạo chi tiết và cập nhật tồn kho
                 int stt = 1;
                 foreach (var ct in _chiTietMoi)
                 {
@@ -291,7 +291,7 @@ namespace cosmetics_store.Forms
                     };
                     _context.CT_PhieuNhaps.Add(chiTiet);
 
-                    // C?p nh?t t?n kho
+                    // Cập nhật tồn kho
                     var sanPham = _context.SanPhams.Find(ct.MaSP);
                     if (sanPham != null)
                     {
@@ -307,14 +307,14 @@ namespace cosmetics_store.Forms
                     ThoiGian = DateTime.Now,
                     HanhDong = "CREATE_PhieuNhap",
                     MaBanGhi = phieuNhap.MaPN.ToString(),
-                    DuLieuMoi = $"Phi?u nh?p #{phieuNhap.MaPN}, T?ng: {tongTien:N0}�",
+                    DuLieuMoi = $"Phiếu nhập #{phieuNhap.MaPN}, Tổng: {tongTien:N0}đ",
                     MaNV = CurrentUser.IsLoggedIn ? CurrentUser.User.MaNV : (int?)null
                 };
                 _context.AuditLogs.Add(log);
                 _context.SaveChanges();
 
-                XtraMessageBox.Show($"T?o phi?u nh?p #{phieuNhap.MaPN} th�nh c�ng!\nT?ng ti?n: {tongTien:N0} �",
-                    "Th�nh c�ng", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                XtraMessageBox.Show($"Tạo phiếu nhập #{phieuNhap.MaPN} thành công!\nTổng tiền: {tongTien:N0} đ",
+                    "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 // Reset
                 _chiTietMoi.Clear();
@@ -324,13 +324,13 @@ namespace cosmetics_store.Forms
             }
             catch (Exception ex)
             {
-                XtraMessageBox.Show($"L?i t?o phi?u nh?p: {ex.Message}", "L?i",
+                XtraMessageBox.Show($"Lỗi tạo phiếu nhập: {ex.Message}", "Lỗi",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }
 
-    // Class t?m �? l�u chi ti?t phi?u nh?p m?i
+    // Class tạm để lưu chi tiết phiếu nhập mới
     public class CT_PhieuNhapTemp
     {
         public int MaSP { get; set; }

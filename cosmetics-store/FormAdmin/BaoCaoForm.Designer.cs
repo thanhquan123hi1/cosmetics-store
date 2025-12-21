@@ -1,4 +1,4 @@
-namespace cosmetics_store.Forms
+﻿namespace cosmetics_store.Forms
 {
     partial class BaoCaoForm
     {
@@ -92,14 +92,15 @@ namespace cosmetics_store.Forms
             this.pnlTop.Name = "pnlTop";
             this.pnlTop.Size = new System.Drawing.Size(1100, 80);
             this.pnlTop.TabIndex = 1;
+            this.pnlTop.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlTop_Paint);
             // 
             // lblTuNgay
             // 
             this.lblTuNgay.Location = new System.Drawing.Point(12, 15);
             this.lblTuNgay.Name = "lblTuNgay";
-            this.lblTuNgay.Size = new System.Drawing.Size(51, 16);
+            this.lblTuNgay.Size = new System.Drawing.Size(52, 16);
             this.lblTuNgay.TabIndex = 0;
-            this.lblTuNgay.Text = "Tu ngay:";
+            this.lblTuNgay.Text = "Từ ngày:";
             // 
             // dateFrom
             // 
@@ -113,9 +114,9 @@ namespace cosmetics_store.Forms
             // 
             this.lblDenNgay.Location = new System.Drawing.Point(210, 15);
             this.lblDenNgay.Name = "lblDenNgay";
-            this.lblDenNgay.Size = new System.Drawing.Size(58, 16);
+            this.lblDenNgay.Size = new System.Drawing.Size(59, 16);
             this.lblDenNgay.TabIndex = 2;
-            this.lblDenNgay.Text = "Den ngay:";
+            this.lblDenNgay.Text = "Đến ngày:";
             // 
             // dateTo
             // 
@@ -131,7 +132,7 @@ namespace cosmetics_store.Forms
             this.btnXemBaoCao.Name = "btnXemBaoCao";
             this.btnXemBaoCao.Size = new System.Drawing.Size(120, 29);
             this.btnXemBaoCao.TabIndex = 4;
-            this.btnXemBaoCao.Text = "Xem bao cao";
+            this.btnXemBaoCao.Text = "📈 Xem báo cáo";
             this.btnXemBaoCao.Click += new System.EventHandler(this.btnXemBaoCao_Click);
             // 
             // lblTongDoanhThu
@@ -142,7 +143,7 @@ namespace cosmetics_store.Forms
             this.lblTongDoanhThu.Name = "lblTongDoanhThu";
             this.lblTongDoanhThu.Size = new System.Drawing.Size(147, 21);
             this.lblTongDoanhThu.TabIndex = 5;
-            this.lblTongDoanhThu.Text = "Tong doanh thu: ";
+            this.lblTongDoanhThu.Text = "Tổng doanh thu: ";
             // 
             // lblSoDon
             // 
@@ -150,7 +151,7 @@ namespace cosmetics_store.Forms
             this.lblSoDon.Name = "lblSoDon";
             this.lblSoDon.Size = new System.Drawing.Size(81, 16);
             this.lblSoDon.TabIndex = 6;
-            this.lblSoDon.Text = "So don hang: ";
+            this.lblSoDon.Text = "Số đơn hàng: ";
             // 
             // lblSoSPBan
             // 
@@ -158,7 +159,7 @@ namespace cosmetics_store.Forms
             this.lblSoSPBan.Name = "lblSoSPBan";
             this.lblSoSPBan.Size = new System.Drawing.Size(86, 16);
             this.lblSoSPBan.TabIndex = 7;
-            this.lblSoSPBan.Text = "So SP da ban: ";
+            this.lblSoSPBan.Text = "Số SP đã bán: ";
             // 
             // lblTonKhoThap
             // 
@@ -166,7 +167,7 @@ namespace cosmetics_store.Forms
             this.lblTonKhoThap.Name = "lblTonKhoThap";
             this.lblTonKhoThap.Size = new System.Drawing.Size(99, 16);
             this.lblTonKhoThap.TabIndex = 8;
-            this.lblTonKhoThap.Text = "SP ton kho thap: ";
+            this.lblTonKhoThap.Text = "SP tồn kho thấp: ";
             // 
             // tabControl
             // 
@@ -188,7 +189,7 @@ namespace cosmetics_store.Forms
             this.tabDoanhThu.Name = "tabDoanhThu";
             this.tabDoanhThu.Size = new System.Drawing.Size(1092, 491);
             this.tabDoanhThu.TabIndex = 0;
-            this.tabDoanhThu.Text = "Doanh thu";
+            this.tabDoanhThu.Text = "📊 Doanh thu";
             // 
             // chartDoanhThu
             // 
@@ -208,7 +209,7 @@ namespace cosmetics_store.Forms
             this.tabSPBanChay.Name = "tabSPBanChay";
             this.tabSPBanChay.Size = new System.Drawing.Size(1092, 491);
             this.tabSPBanChay.TabIndex = 1;
-            this.tabSPBanChay.Text = "SP ban chay";
+            this.tabSPBanChay.Text = "🔥 SP bán chạy";
             // 
             // gridSPBanChay
             // 
@@ -234,7 +235,7 @@ namespace cosmetics_store.Forms
             this.tabTopKH.Name = "tabTopKH";
             this.tabTopKH.Size = new System.Drawing.Size(1092, 491);
             this.tabTopKH.TabIndex = 2;
-            this.tabTopKH.Text = "Top khach hang";
+            this.tabTopKH.Text = "🏆 Top khách hàng";
             // 
             // gridTopKH
             // 
@@ -260,7 +261,7 @@ namespace cosmetics_store.Forms
             this.tabTonKho.Name = "tabTonKho";
             this.tabTonKho.Size = new System.Drawing.Size(1092, 491);
             this.tabTonKho.TabIndex = 3;
-            this.tabTonKho.Text = "Ton kho thap";
+            this.tabTonKho.Text = "⚠️ Tồn kho thấp";
             // 
             // gridTonKhoThap
             // 
@@ -287,7 +288,7 @@ namespace cosmetics_store.Forms
             this.Controls.Add(this.tabControl);
             this.Controls.Add(this.pnlTop);
             this.Name = "BaoCaoForm";
-            this.Text = "Bao cao thong ke";
+            this.Text = "Báo cáo thống kê";
             this.pnlTop.ResumeLayout(false);
             this.pnlTop.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dateFrom.Properties.CalendarTimeProperties)).EndInit();

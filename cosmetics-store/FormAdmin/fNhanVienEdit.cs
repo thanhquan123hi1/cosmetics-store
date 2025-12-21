@@ -128,5 +128,10 @@ namespace cosmetics_store.Forms
         private void txtDiaChi_EditValueChanged(object sender, EventArgs e)
         {
         }
+
+        private void fNhanVienEdit_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

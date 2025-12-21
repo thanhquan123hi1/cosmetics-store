@@ -1,4 +1,4 @@
-using System;
+Ôªøusing System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Drawing;
@@ -39,14 +39,14 @@ namespace cosmetics_store.FormStaff
             {
                 var maxHD = _context.HoaDons.Max(h => (int?)h.MaHD) ?? 0;
                 _currentMaHD = maxHD + 1;
-                lblMaHD.Text = $"M? H–: HD{_currentMaHD:D4}";
+                lblMaHD.Text = $"M√£ Hƒê: HD{_currentMaHD:D4}";
                 lblNV.Text = $"NV: {(CurrentUser.IsLoggedIn ? CurrentUser.User.HoTen : "N/A")}";
-                lblNgay.Text = $"Ng‡y: {DateTime.Now:dd/MM}";
+                lblNgay.Text = $"Ng√†y: {DateTime.Now:dd/MM}";
             }
             catch
             {
                 _currentMaHD = 1;
-                lblMaHD.Text = "M? H–: HD0001";
+                lblMaHD.Text = "M√£ Hƒê: HD0001";
             }
         }
 
@@ -69,11 +69,11 @@ namespace cosmetics_store.FormStaff
 
                 gridSanPham.DataSource = sanPhams;
 
-                gridViewSanPham.Columns["MaSP"].Caption = "M? SP";
-                gridViewSanPham.Columns["TenSP"].Caption = "TÍn SP";
-                gridViewSanPham.Columns["DonGia"].Caption = "–ın gi·";
-                gridViewSanPham.Columns["SoLuongTon"].Caption = "T?n kho";
-                gridViewSanPham.Columns["ThuongHieu"].Caption = "Th˝ıng hi?u";
+                gridViewSanPham.Columns["MaSP"].Caption = "M√£ SP";
+                gridViewSanPham.Columns["TenSP"].Caption = "T√™n SP";
+                gridViewSanPham.Columns["DonGia"].Caption = "ƒê∆°n gi√°";
+                gridViewSanPham.Columns["SoLuongTon"].Caption = "T·ªìn kho";
+                gridViewSanPham.Columns["ThuongHieu"].Caption = "Th∆∞∆°ng hi·ªáu";
 
                 gridViewSanPham.Columns["MaSP"].Width = 60;
                 gridViewSanPham.Columns["TenSP"].Width = 150;
@@ -97,7 +97,7 @@ namespace cosmetics_store.FormStaff
         {
             if (gridViewSanPham.FocusedRowHandle < 0)
             {
-                XtraMessageBox.Show("Vui l?ng ch?n s?n ph?m!", "ThÙng b·o",
+                XtraMessageBox.Show("Vui l√≤ng ch·ªçn s·∫£n ph·∫©m!", "Th√¥ng b√°o",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
@@ -110,18 +110,18 @@ namespace cosmetics_store.FormStaff
 
             if (soLuong <= 0)
             {
-                XtraMessageBox.Show("S? l˝?ng ph?i > 0!", "ThÙng b·o",
+                XtraMessageBox.Show("S·ªë l∆∞·ª£ng ph·∫£i > 0!", "Th√¥ng b√°o",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            // Ki?m tra ? cÛ trong list ch˝a
+            // Ki·ªÉm tra ƒë√£ c√≥ trong list ch∆∞a
             var existing = _chiTietList.FirstOrDefault(c => c.MaSP == maSP);
             int totalQty = existing != null ? existing.SoLuong + soLuong : soLuong;
 
             if (totalQty > tonKho)
             {
-                XtraMessageBox.Show($"V˝?t qu· t?n kho! (T?n: {tonKho})", "ThÙng b·o",
+                XtraMessageBox.Show($"V∆∞·ª£t qu√° t·ªìn kho! (T·ªìn: {tonKho})", "Th√¥ng b√°o",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
@@ -158,10 +158,10 @@ namespace cosmetics_store.FormStaff
             {
                 gridViewChiTiet.Columns["STT"].Caption = "STT";
                 gridViewChiTiet.Columns["MaSP"].Visible = false;
-                gridViewChiTiet.Columns["TenSP"].Caption = "TÍn SP";
+                gridViewChiTiet.Columns["TenSP"].Caption = "T√™n SP";
                 gridViewChiTiet.Columns["SoLuong"].Caption = "SL";
-                gridViewChiTiet.Columns["DonGia"].Caption = "–ın gi·";
-                gridViewChiTiet.Columns["ThanhTien"].Caption = "Th‡nh ti?n";
+                gridViewChiTiet.Columns["DonGia"].Caption = "ƒê∆°n gi√°";
+                gridViewChiTiet.Columns["ThanhTien"].Caption = "Th√†nh ti·ªÅn";
 
                 gridViewChiTiet.Columns["STT"].Width = 40;
                 gridViewChiTiet.Columns["TenSP"].Width = 150;
@@ -179,7 +179,7 @@ namespace cosmetics_store.FormStaff
         private void UpdateTongTien()
         {
             decimal tongTien = _chiTietList.Sum(c => c.ThanhTien);
-            lblTongTien.Text = $"T?ng ti?n: {tongTien:N0} VND";
+            lblTongTien.Text = $"T·ªïng ti·ªÅn: {tongTien:N0} VND";
         }
 
         private void btnChonKH_Click(object sender, EventArgs e)
@@ -191,7 +191,7 @@ namespace cosmetics_store.FormStaff
                     _selectedKhachHang = form.SelectedKhachHang;
                     if (_selectedKhachHang != null)
                     {
-                        lblKhachHang.Text = $"Kh·ch h‡ng: {_selectedKhachHang.HoTen}";
+                        lblKhachHang.Text = $"Kh√°ch h√†ng: {_selectedKhachHang.HoTen}";
                     }
                 }
             }
@@ -201,14 +201,14 @@ namespace cosmetics_store.FormStaff
         {
             if (_chiTietList.Count == 0)
             {
-                XtraMessageBox.Show("Ch˝a cÛ s?n ph?m trong hÛa ın!", "ThÙng b·o",
+                XtraMessageBox.Show("Ch∆∞a c√≥ s·∫£n ph·∫©m trong h√≥a ƒë∆°n!", "Th√¥ng b√°o",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
             if (_selectedKhachHang == null)
             {
-                XtraMessageBox.Show("Vui l?ng ch?n kh·ch h‡ng!", "ThÙng b·o",
+                XtraMessageBox.Show("Vui l√≤ng ch·ªçn kh√°ch h√†ng!", "Th√¥ng b√°o",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
@@ -236,14 +236,14 @@ namespace cosmetics_store.FormStaff
                     MaNV = CurrentUser.IsLoggedIn ? CurrentUser.User.MaNV : 1,
                     NgayLap = DateTime.Now,
                     TongTien = tongTien,
-                    TrangThai = "Ho‡n th‡nh",
+                    TrangThai = "Ho√†n th√†nh",
                     PhuongThucTT = phuongThuc
                 };
 
                 _context.HoaDons.Add(hoaDon);
                 _context.SaveChanges();
 
-                // Chi ti?t hÛa ın
+                // Chi ti·∫øt h√≥a ƒë∆°n
                 foreach (var item in _chiTietList)
                 {
                     var ct = new CT_HoaDon
@@ -256,7 +256,7 @@ namespace cosmetics_store.FormStaff
                     };
                     _context.CT_HoaDons.Add(ct);
 
-                    // Tr? t?n kho
+                    // Tr·ª´ t·ªìn kho
                     var sp = _context.SanPhams.Find(item.MaSP);
                     if (sp != null) sp.SoLuongTon -= item.SoLuong;
                 }
@@ -269,21 +269,21 @@ namespace cosmetics_store.FormStaff
                     ThoiGian = DateTime.Now,
                     HanhDong = "CREATE_HoaDon",
                     MaBanGhi = hoaDon.MaHD.ToString(),
-                    DuLieuMoi = $"H– #{hoaDon.MaHD}, T?ng: {tongTien:N0}",
+                    DuLieuMoi = $"Hƒê #{hoaDon.MaHD}, T·ªïng: {tongTien:N0}ƒë",
                     MaNV = CurrentUser.IsLoggedIn ? CurrentUser.User.MaNV : (int?)null
                 };
                 _context.AuditLogs.Add(log);
                 _context.SaveChanges();
 
-                XtraMessageBox.Show($"Thanh to·n th‡nh cÙng!\nHÛa ın: HD{hoaDon.MaHD:D4}\nT?ng ti?n: {tongTien:N0} VND",
-                    "Th‡nh cÙng", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                XtraMessageBox.Show($"Thanh to√°n th√†nh c√¥ng!\nH√≥a ƒë∆°n: HD{hoaDon.MaHD:D4}\nT·ªïng ti·ªÅn: {tongTien:N0} VND",
+                    "Th√†nh c√¥ng", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 // Reset
                 ResetForm();
             }
             catch (Exception ex)
             {
-                XtraMessageBox.Show($"L?i: {ex.Message}", "L?i",
+                XtraMessageBox.Show($"L·ªói: {ex.Message}", "L·ªói",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -295,14 +295,14 @@ namespace cosmetics_store.FormStaff
             RefreshChiTietGrid();
             UpdateTongTien();
             GenerateMaHD();
-            lblKhachHang.Text = "Kh·ch h‡ng: (Ch˝a ch?n)";
+            lblKhachHang.Text = "Kh√°ch h√†ng: (Ch∆∞a ch·ªçn)";
             LoadSanPham();
         }
 
         private void btnLuu_Click(object sender, EventArgs e)
         {
-            // L˝u hÛa ın t?m (ch˝a thanh to·n)
-            XtraMessageBox.Show("–? l˝u hÛa ın t?m!", "ThÙng b·o",
+            // L∆∞u h√≥a ƒë∆°n t·∫°m (ch∆∞a thanh to√°n)
+            XtraMessageBox.Show("ƒê√£ l∆∞u h√≥a ƒë∆°n t·∫°m!", "Th√¥ng b√°o",
                 MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
