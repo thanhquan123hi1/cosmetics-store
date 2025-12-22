@@ -32,9 +32,15 @@
             this.aceDonHang = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.aceThongTin = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.pnlMainContent = new System.Windows.Forms.Panel();
+            this.pictureEdit1 = new DevExpress.XtraEditors.PictureEdit();
+            this.accordionControlElement1 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.accordionControlElement2 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.accordionControlElement3 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.accordionControlElement4 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             ((System.ComponentModel.ISupportInitialize)(this.pnlHeader)).BeginInit();
             this.pnlHeader.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.accordionMenu)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureEdit1.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlHeader
@@ -70,9 +76,10 @@
             this.lblUserName.Appearance.ForeColor = System.Drawing.Color.White;
             this.lblUserName.Appearance.Options.UseFont = true;
             this.lblUserName.Appearance.Options.UseForeColor = true;
-            this.lblUserName.Location = new System.Drawing.Point(880, 17);
+            this.lblUserName.ImageOptions.Image = global::cosmetics_store.Properties.Resources.role_tag1;
+            this.lblUserName.Location = new System.Drawing.Point(907, 8);
             this.lblUserName.Name = "lblUserName";
-            this.lblUserName.Size = new System.Drawing.Size(171, 23);
+            this.lblUserName.Size = new System.Drawing.Size(171, 42);
             this.lblUserName.TabIndex = 1;
             this.lblUserName.Text = "Xin chào, Khách hàng!";
             // 
@@ -97,16 +104,20 @@
             // 
             this.accordionMenu.Appearance.AccordionControl.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(68)))), ((int)(((byte)(173)))));
             this.accordionMenu.Appearance.AccordionControl.Options.UseBackColor = true;
-            this.accordionMenu.ScrollBarMode = DevExpress.XtraBars.Navigation.ScrollBarMode.Hidden;
             this.accordionMenu.Dock = System.Windows.Forms.DockStyle.Left;
             this.accordionMenu.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
             this.aceDashboard,
             this.aceSanPham,
             this.aceDonHang,
-            this.aceThongTin});
+            this.aceThongTin,
+            this.accordionControlElement1,
+            this.accordionControlElement2,
+            this.accordionControlElement3,
+            this.accordionControlElement4});
             this.accordionMenu.Location = new System.Drawing.Point(0, 56);
             this.accordionMenu.Name = "accordionMenu";
-            this.accordionMenu.Size = new System.Drawing.Size(220, 650);
+            this.accordionMenu.ScrollBarMode = DevExpress.XtraBars.Navigation.ScrollBarMode.Hidden;
+            this.accordionMenu.Size = new System.Drawing.Size(220, 644);
             this.accordionMenu.TabIndex = 1;
             // 
             // aceDashboard
@@ -143,14 +154,51 @@
             this.pnlMainContent.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlMainContent.Location = new System.Drawing.Point(220, 56);
             this.pnlMainContent.Name = "pnlMainContent";
-            this.pnlMainContent.Size = new System.Drawing.Size(980, 650);
+            this.pnlMainContent.Size = new System.Drawing.Size(980, 644);
             this.pnlMainContent.TabIndex = 2;
+            // 
+            // pictureEdit1
+            // 
+            this.pictureEdit1.EditValue = global::cosmetics_store.Properties.Resources.picKhachHang;
+            this.pictureEdit1.Location = new System.Drawing.Point(0, 223);
+            this.pictureEdit1.Name = "pictureEdit1";
+            this.pictureEdit1.Properties.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.pictureEdit1.Properties.Appearance.Options.UseBackColor = true;
+            this.pictureEdit1.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
+            this.pictureEdit1.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Stretch;
+            this.pictureEdit1.Size = new System.Drawing.Size(200, 477);
+            this.pictureEdit1.TabIndex = 3;
+            // 
+            // accordionControlElement1
+            // 
+            this.accordionControlElement1.Name = "accordionControlElement1";
+            this.accordionControlElement1.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.accordionControlElement1.Text = "Element1";
+            // 
+            // accordionControlElement2
+            // 
+            this.accordionControlElement2.Name = "accordionControlElement2";
+            this.accordionControlElement2.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.accordionControlElement2.Text = "Element2";
+            // 
+            // accordionControlElement3
+            // 
+            this.accordionControlElement3.Name = "accordionControlElement3";
+            this.accordionControlElement3.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.accordionControlElement3.Text = "Element3";
+            // 
+            // accordionControlElement4
+            // 
+            this.accordionControlElement4.Name = "accordionControlElement4";
+            this.accordionControlElement4.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.accordionControlElement4.Text = "Element4";
             // 
             // fDashboardKhachHang
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1200, 700);
+            this.Controls.Add(this.pictureEdit1);
             this.Controls.Add(this.pnlMainContent);
             this.Controls.Add(this.accordionMenu);
             this.Controls.Add(this.pnlHeader);
@@ -162,8 +210,15 @@
             this.pnlHeader.ResumeLayout(false);
             this.pnlHeader.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.accordionMenu)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureEdit1.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
+
+        private DevExpress.XtraEditors.PictureEdit pictureEdit1;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement1;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement2;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement3;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement4;
     }
 }

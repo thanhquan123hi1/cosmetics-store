@@ -287,7 +287,7 @@
             this.MinimizeBox = false;
             this.Name = "TaiKhoanEdit";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Thông tin tài kho?n";
+            this.Text = "Thông tin tài khoản";
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl)).EndInit();
             this.layoutControl.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();

@@ -105,9 +105,9 @@
             this.btnOk.AppearanceHovered.Options.UseBackColor = true;
             this.btnOk.AppearancePressed.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(97)))), ((int)(((byte)(141)))));
             this.btnOk.AppearancePressed.Options.UseBackColor = true;
-            this.btnOk.Location = new System.Drawing.Point(33, 773);
+            this.btnOk.Location = new System.Drawing.Point(41, 20401);
             this.btnOk.Name = "btnOk";
-            this.btnOk.Size = new System.Drawing.Size(339, 30);
+            this.btnOk.Size = new System.Drawing.Size(2856, 30);
             this.btnOk.StyleController = this.layoutControl;
             this.btnOk.TabIndex = 6;
             this.btnOk.Text = "Lưu";
@@ -125,9 +125,9 @@
             this.btnCancel.AppearanceHovered.Options.UseBackColor = true;
             this.btnCancel.AppearancePressed.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(108)))), ((int)(((byte)(117)))), ((int)(((byte)(125)))));
             this.btnCancel.AppearancePressed.Options.UseBackColor = true;
-            this.btnCancel.Location = new System.Drawing.Point(386, 773);
+            this.btnCancel.Location = new System.Drawing.Point(2915, 20401);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(110, 30);
+            this.btnCancel.Size = new System.Drawing.Size(988, 30);
             this.btnCancel.StyleController = this.layoutControl;
             this.btnCancel.TabIndex = 7;
             this.btnCancel.Text = "Hủy";
@@ -152,50 +152,50 @@
             this.layoutItemBtnOk,
             this.layoutItemBtnCancel});
             this.layoutControlGroup1.Name = "Root";
-            this.layoutControlGroup1.Padding = new DevExpress.XtraLayout.Utils.Padding(26, 26, 26, 26);
-            this.layoutControlGroup1.Size = new System.Drawing.Size(529, 836);
+            this.layoutControlGroup1.Padding = new DevExpress.XtraLayout.Utils.Padding(32, 32, 32, 32);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(3944, 20472);
             this.layoutControlGroup1.TextVisible = false;
             // 
             // emptySpaceItem1
             // 
-            this.emptySpaceItem1.Location = new System.Drawing.Point(0, 730);
+            this.emptySpaceItem1.Location = new System.Drawing.Point(0, 20350);
             this.emptySpaceItem1.Name = "emptySpaceItem1";
-            this.emptySpaceItem1.Size = new System.Drawing.Size(477, 10);
+            this.emptySpaceItem1.Size = new System.Drawing.Size(3880, 10);
             // 
             // layoutItemBtnOk
             // 
             this.layoutItemBtnOk.Control = this.btnOk;
-            this.layoutItemBtnOk.Location = new System.Drawing.Point(0, 740);
+            this.layoutItemBtnOk.Location = new System.Drawing.Point(0, 20360);
             this.layoutItemBtnOk.Name = "layoutItemBtnOk";
-            this.layoutItemBtnOk.Padding = new DevExpress.XtraLayout.Utils.Padding(7, 7, 7, 7);
-            this.layoutItemBtnOk.Size = new System.Drawing.Size(353, 44);
+            this.layoutItemBtnOk.Padding = new DevExpress.XtraLayout.Utils.Padding(9, 9, 9, 9);
+            this.layoutItemBtnOk.Size = new System.Drawing.Size(2874, 48);
             this.layoutItemBtnOk.TextVisible = false;
             // 
             // layoutItemBtnCancel
             // 
             this.layoutItemBtnCancel.Control = this.btnCancel;
-            this.layoutItemBtnCancel.Location = new System.Drawing.Point(353, 740);
+            this.layoutItemBtnCancel.Location = new System.Drawing.Point(2874, 20360);
             this.layoutItemBtnCancel.Name = "layoutItemBtnCancel";
-            this.layoutItemBtnCancel.Padding = new DevExpress.XtraLayout.Utils.Padding(7, 7, 7, 7);
-            this.layoutItemBtnCancel.Size = new System.Drawing.Size(124, 44);
+            this.layoutItemBtnCancel.Padding = new DevExpress.XtraLayout.Utils.Padding(9, 9, 9, 9);
+            this.layoutItemBtnCancel.Size = new System.Drawing.Size(1006, 48);
             this.layoutItemBtnCancel.TextVisible = false;
             // 
             // txtHoTen
             // 
-            this.txtHoTen.Location = new System.Drawing.Point(150, 83);
+            this.txtHoTen.Location = new System.Drawing.Point(1020, 2051);
             this.txtHoTen.Name = "txtHoTen";
             this.txtHoTen.Properties.Appearance.BackColor = System.Drawing.Color.White;
             this.txtHoTen.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 11F);
             this.txtHoTen.Properties.Appearance.Options.UseBackColor = true;
             this.txtHoTen.Properties.Appearance.Options.UseFont = true;
-            this.txtHoTen.Size = new System.Drawing.Size(327, 32);
+            this.txtHoTen.Size = new System.Drawing.Size(2002, 32);
             this.txtHoTen.StyleController = this.layoutControl;
             this.txtHoTen.TabIndex = 0;
             // 
             // dateNgaySinh
             // 
             this.dateNgaySinh.EditValue = null;
-            this.dateNgaySinh.Location = new System.Drawing.Point(150, 229);
+            this.dateNgaySinh.Location = new System.Drawing.Point(1020, 6121);
             this.dateNgaySinh.Name = "dateNgaySinh";
             this.dateNgaySinh.Properties.Appearance.BackColor = System.Drawing.Color.White;
             this.dateNgaySinh.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 11F);
@@ -210,13 +210,13 @@
             this.dateNgaySinh.Properties.EditFormat.FormatString = "dd/MM/yyyy";
             this.dateNgaySinh.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.dateNgaySinh.Properties.MaskSettings.Set("mask", "dd/MM/yyyy");
-            this.dateNgaySinh.Size = new System.Drawing.Size(115, 32);
+            this.dateNgaySinh.Size = new System.Drawing.Size(62, 32);
             this.dateNgaySinh.StyleController = this.layoutControl;
             this.dateNgaySinh.TabIndex = 1;
             // 
             // cboGioiTinh
             // 
-            this.cboGioiTinh.Location = new System.Drawing.Point(415, 229);
+            this.cboGioiTinh.Location = new System.Drawing.Point(2960, 6121);
             this.cboGioiTinh.Name = "cboGioiTinh";
             this.cboGioiTinh.Properties.Appearance.BackColor = System.Drawing.Color.White;
             this.cboGioiTinh.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 11F);
@@ -238,19 +238,19 @@
             // 
             // txtDiaChi
             // 
-            this.txtDiaChi.Location = new System.Drawing.Point(150, 375);
+            this.txtDiaChi.Location = new System.Drawing.Point(1020, 10191);
             this.txtDiaChi.Name = "txtDiaChi";
             this.txtDiaChi.Properties.Appearance.BackColor = System.Drawing.Color.White;
             this.txtDiaChi.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 11F);
             this.txtDiaChi.Properties.Appearance.Options.UseBackColor = true;
             this.txtDiaChi.Properties.Appearance.Options.UseFont = true;
-            this.txtDiaChi.Size = new System.Drawing.Size(327, 32);
+            this.txtDiaChi.Size = new System.Drawing.Size(2002, 32);
             this.txtDiaChi.StyleController = this.layoutControl;
             this.txtDiaChi.TabIndex = 3;
             // 
             // cboChucVu
             // 
-            this.cboChucVu.Location = new System.Drawing.Point(150, 521);
+            this.cboChucVu.Location = new System.Drawing.Point(1020, 14261);
             this.cboChucVu.Name = "cboChucVu";
             this.cboChucVu.Properties.Appearance.BackColor = System.Drawing.Color.White;
             this.cboChucVu.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 11F);
@@ -270,13 +270,13 @@
             "Nhân viên kho",
             "Kế toán"});
             this.cboChucVu.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-            this.cboChucVu.Size = new System.Drawing.Size(327, 32);
+            this.cboChucVu.Size = new System.Drawing.Size(2002, 32);
             this.cboChucVu.StyleController = this.layoutControl;
             this.cboChucVu.TabIndex = 4;
             // 
             // txtSDT
             // 
-            this.txtSDT.Location = new System.Drawing.Point(150, 667);
+            this.txtSDT.Location = new System.Drawing.Point(1020, 18331);
             this.txtSDT.Name = "txtSDT";
             this.txtSDT.Properties.Appearance.BackColor = System.Drawing.Color.White;
             this.txtSDT.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 11F);
@@ -285,7 +285,7 @@
             this.txtSDT.Properties.MaskSettings.Set("MaskManagerType", typeof(DevExpress.Data.Mask.RegExpMaskManager));
             this.txtSDT.Properties.MaskSettings.Set("allowBlankInput", true);
             this.txtSDT.Properties.MaskSettings.Set("mask", "\\d{0,11}");
-            this.txtSDT.Size = new System.Drawing.Size(327, 32);
+            this.txtSDT.Size = new System.Drawing.Size(2002, 32);
             this.txtSDT.StyleController = this.layoutControl;
             this.txtSDT.TabIndex = 5;
             // 
@@ -298,8 +298,8 @@
             this.layoutItemHoTen.Control = this.txtHoTen;
             this.layoutItemHoTen.Location = new System.Drawing.Point(0, 0);
             this.layoutItemHoTen.Name = "layoutItemHoTen";
-            this.layoutItemHoTen.Padding = new DevExpress.XtraLayout.Utils.Padding(26, 26, 57, 57);
-            this.layoutItemHoTen.Size = new System.Drawing.Size(477, 146);
+            this.layoutItemHoTen.Padding = new DevExpress.XtraLayout.Utils.Padding(890, 890, 2019, 2019);
+            this.layoutItemHoTen.Size = new System.Drawing.Size(3880, 4070);
             this.layoutItemHoTen.Text = "Họ tên:";
             this.layoutItemHoTen.TextSize = new System.Drawing.Size(83, 23);
             // 
@@ -310,10 +310,10 @@
             this.layoutItemNgaySinh.AppearanceItemCaption.Options.UseFont = true;
             this.layoutItemNgaySinh.AppearanceItemCaption.Options.UseForeColor = true;
             this.layoutItemNgaySinh.Control = this.dateNgaySinh;
-            this.layoutItemNgaySinh.Location = new System.Drawing.Point(0, 146);
+            this.layoutItemNgaySinh.Location = new System.Drawing.Point(0, 4070);
             this.layoutItemNgaySinh.Name = "layoutItemNgaySinh";
-            this.layoutItemNgaySinh.Padding = new DevExpress.XtraLayout.Utils.Padding(26, 26, 57, 57);
-            this.layoutItemNgaySinh.Size = new System.Drawing.Size(265, 146);
+            this.layoutItemNgaySinh.Padding = new DevExpress.XtraLayout.Utils.Padding(890, 890, 2019, 2019);
+            this.layoutItemNgaySinh.Size = new System.Drawing.Size(1940, 4070);
             this.layoutItemNgaySinh.Text = "Ngày sinh:";
             this.layoutItemNgaySinh.TextSize = new System.Drawing.Size(83, 23);
             // 
@@ -324,10 +324,10 @@
             this.layoutItemGioiTinh.AppearanceItemCaption.Options.UseFont = true;
             this.layoutItemGioiTinh.AppearanceItemCaption.Options.UseForeColor = true;
             this.layoutItemGioiTinh.Control = this.cboGioiTinh;
-            this.layoutItemGioiTinh.Location = new System.Drawing.Point(265, 146);
+            this.layoutItemGioiTinh.Location = new System.Drawing.Point(1940, 4070);
             this.layoutItemGioiTinh.Name = "layoutItemGioiTinh";
-            this.layoutItemGioiTinh.Padding = new DevExpress.XtraLayout.Utils.Padding(26, 26, 57, 57);
-            this.layoutItemGioiTinh.Size = new System.Drawing.Size(212, 146);
+            this.layoutItemGioiTinh.Padding = new DevExpress.XtraLayout.Utils.Padding(890, 890, 2019, 2019);
+            this.layoutItemGioiTinh.Size = new System.Drawing.Size(1940, 4070);
             this.layoutItemGioiTinh.Text = "Giới tính:";
             this.layoutItemGioiTinh.TextSize = new System.Drawing.Size(83, 23);
             // 
@@ -338,10 +338,10 @@
             this.layoutItemDiaChi.AppearanceItemCaption.Options.UseFont = true;
             this.layoutItemDiaChi.AppearanceItemCaption.Options.UseForeColor = true;
             this.layoutItemDiaChi.Control = this.txtDiaChi;
-            this.layoutItemDiaChi.Location = new System.Drawing.Point(0, 292);
+            this.layoutItemDiaChi.Location = new System.Drawing.Point(0, 8140);
             this.layoutItemDiaChi.Name = "layoutItemDiaChi";
-            this.layoutItemDiaChi.Padding = new DevExpress.XtraLayout.Utils.Padding(26, 26, 57, 57);
-            this.layoutItemDiaChi.Size = new System.Drawing.Size(477, 146);
+            this.layoutItemDiaChi.Padding = new DevExpress.XtraLayout.Utils.Padding(890, 890, 2019, 2019);
+            this.layoutItemDiaChi.Size = new System.Drawing.Size(3880, 4070);
             this.layoutItemDiaChi.Text = "Địa chỉ:";
             this.layoutItemDiaChi.TextSize = new System.Drawing.Size(83, 23);
             // 
@@ -352,10 +352,10 @@
             this.layoutItemChucVu.AppearanceItemCaption.Options.UseFont = true;
             this.layoutItemChucVu.AppearanceItemCaption.Options.UseForeColor = true;
             this.layoutItemChucVu.Control = this.cboChucVu;
-            this.layoutItemChucVu.Location = new System.Drawing.Point(0, 438);
+            this.layoutItemChucVu.Location = new System.Drawing.Point(0, 12210);
             this.layoutItemChucVu.Name = "layoutItemChucVu";
-            this.layoutItemChucVu.Padding = new DevExpress.XtraLayout.Utils.Padding(26, 26, 57, 57);
-            this.layoutItemChucVu.Size = new System.Drawing.Size(477, 146);
+            this.layoutItemChucVu.Padding = new DevExpress.XtraLayout.Utils.Padding(890, 890, 2019, 2019);
+            this.layoutItemChucVu.Size = new System.Drawing.Size(3880, 4070);
             this.layoutItemChucVu.Text = "Chức vụ:";
             this.layoutItemChucVu.TextSize = new System.Drawing.Size(83, 23);
             // 
@@ -366,10 +366,10 @@
             this.layoutItemSDT.AppearanceItemCaption.Options.UseFont = true;
             this.layoutItemSDT.AppearanceItemCaption.Options.UseForeColor = true;
             this.layoutItemSDT.Control = this.txtSDT;
-            this.layoutItemSDT.Location = new System.Drawing.Point(0, 584);
+            this.layoutItemSDT.Location = new System.Drawing.Point(0, 16280);
             this.layoutItemSDT.Name = "layoutItemSDT";
-            this.layoutItemSDT.Padding = new DevExpress.XtraLayout.Utils.Padding(26, 26, 57, 57);
-            this.layoutItemSDT.Size = new System.Drawing.Size(477, 146);
+            this.layoutItemSDT.Padding = new DevExpress.XtraLayout.Utils.Padding(890, 890, 2019, 2019);
+            this.layoutItemSDT.Size = new System.Drawing.Size(3880, 4070);
             this.layoutItemSDT.Text = "Điện thoại:";
             this.layoutItemSDT.TextSize = new System.Drawing.Size(83, 23);
             // 

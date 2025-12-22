@@ -231,5 +231,15 @@ namespace cosmetics_store.Forms
         {
 
         }
+
+        private void pnlRight_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void pictureEdit1_EditValueChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

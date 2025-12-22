@@ -30,7 +30,7 @@ namespace BusinessAccessLayer.Services
                     return new LoginResult
                     {
                         Success = false,
-                        Message = "Tên đăng nh?p và m?t kh?u không đư?c đ? tr?ng"
+                        Message = "Tên đăng nhập và mật khẩu không được để trống"
                     };
                 }
 
@@ -44,7 +44,7 @@ namespace BusinessAccessLayer.Services
                     return new LoginResult
                     {
                         Success = false,
-                        Message = "Tên đăng nh?p không t?n t?i"
+                        Message = "Tên đăng nhập không tồn tại"
                     };
                 }
 
@@ -54,7 +54,7 @@ namespace BusinessAccessLayer.Services
                     return new LoginResult
                     {
                         Success = false,
-                        Message = "Tài kho?n đ? b? khóa. Vui l?ng liên h? qu?n tr? viên"
+                        Message = "Tài khoản đã bị khóa. Vui lòng liên hệ quản trị viên"
                     };
                 }
 
@@ -84,7 +84,7 @@ namespace BusinessAccessLayer.Services
                     return new LoginResult
                     {
                         Success = false,
-                        Message = "M?t kh?u không chính xác"
+                        Message = "Mật khẩu không chính xác"
                     };
                 }
 
@@ -92,7 +92,7 @@ namespace BusinessAccessLayer.Services
                 return new LoginResult
                 {
                     Success = true,
-                    Message = "Đăng nh?p thành công",
+                    Message = "Đăng nhập thành công",
                     UserInfo = new UserInfo
                     {
                         MaNV = taiKhoan.MaNV,
@@ -109,7 +109,7 @@ namespace BusinessAccessLayer.Services
                 return new LoginResult
                 {
                     Success = false,
-                    Message = "L?i h? th?ng: " + ex.Message
+                    Message = "Lỗi hệ thống: " + ex.Message
                 };
             }
         }
@@ -269,7 +269,7 @@ namespace BusinessAccessLayer.Services
 
                 if (newPassword.Length < 6)
                 {
-                    throw new Exception("M?t kh?u m?i ph?i có ít nh?t 6 k? t?");
+                    throw new Exception("Mật khẩu mới phải có ít nhất 6 ký tự");
                 }
 
                 var taiKhoan = _context.TaiKhoans.FirstOrDefault(tk => tk.TenDN == username);
@@ -290,7 +290,7 @@ namespace BusinessAccessLayer.Services
 
                 if (!isOldPasswordValid)
                 {
-                    throw new Exception("M?t kh?u c? không chính xác");
+                    throw new Exception("Mật khẩu cũ không chính xác");
                 }
 
                 // Update to new hashed password

@@ -328,6 +328,11 @@ namespace cosmetics_store.Forms
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void lblDonGia_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 
     // Class tạm để lưu chi tiết phiếu nhập mới

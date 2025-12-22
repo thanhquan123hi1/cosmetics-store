@@ -45,23 +45,23 @@
             // 
             // lblTitle
             // 
-            this.lblTitle.Appearance.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold);
+            this.lblTitle.Appearance.Font = new System.Drawing.Font("Segoe UI Black", 16.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitle.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(76)))), ((int)(((byte)(60)))));
             this.lblTitle.Appearance.Options.UseFont = true;
             this.lblTitle.Appearance.Options.UseForeColor = true;
             this.lblTitle.Location = new System.Drawing.Point(20, 15);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(315, 37);
+            this.lblTitle.Size = new System.Drawing.Size(343, 38);
             this.lblTitle.TabIndex = 0;
             this.lblTitle.Text = "🔍 TRA CỨU SẢN PHẨM";
             // 
             // lblTimKiem
             // 
-            this.lblTimKiem.Appearance.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.lblTimKiem.Appearance.Font = new System.Drawing.Font("Bernard MT Condensed", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTimKiem.Appearance.Options.UseFont = true;
             this.lblTimKiem.Location = new System.Drawing.Point(20, 60);
             this.lblTimKiem.Name = "lblTimKiem";
-            this.lblTimKiem.Size = new System.Drawing.Size(309, 23);
+            this.lblTimKiem.Size = new System.Drawing.Size(288, 18);
             this.lblTimKiem.TabIndex = 1;
             this.lblTimKiem.Text = "Tìm theo: [ Tên SP / Loại / Thương hiệu ]";
             // 
@@ -79,7 +79,7 @@
             // btnLoc
             // 
             this.btnLoc.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
-            this.btnLoc.Appearance.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.btnLoc.Appearance.Font = new System.Drawing.Font("Times New Roman", 10.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLoc.Appearance.ForeColor = System.Drawing.Color.White;
             this.btnLoc.Appearance.Options.UseBackColor = true;
             this.btnLoc.Appearance.Options.UseFont = true;

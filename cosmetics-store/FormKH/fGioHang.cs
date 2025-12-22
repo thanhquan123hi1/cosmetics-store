@@ -55,7 +55,130 @@ namespace cosmetics_store.FormKH
         {
             // Set form properties
             this.Text = "🛒 Giỏ hàng & Thanh toán";
-            this.BackColor = Color.FromArgb(250, 248, 255);
+            ApplyModernTheme();
+        }
+
+        private void ApplyModernTheme()
+        {
+            var bg = Color.FromArgb(12, 19, 52);           // nền ngoài
+            var card = Color.FromArgb(22, 35, 70);         // nền panel
+            var panelInner = Color.FromArgb(18, 29, 61);   // nền input
+            var border = Color.FromArgb(62, 80, 120);
+            var accent = Color.FromArgb(14, 165, 233);     // xanh dương
+            var accentWarn = Color.FromArgb(193, 38, 38);  // đỏ
+            var accentOk = Color.FromArgb(46, 204, 113);   // xanh lá
+
+            this.BackColor = bg;
+
+            StylePanel(pnlMain, bg, DevExpress.XtraEditors.Controls.BorderStyles.NoBorder);
+            StylePanel(pnlLeft, card, DevExpress.XtraEditors.Controls.BorderStyles.NoBorder);
+            StylePanel(pnlRight, card, DevExpress.XtraEditors.Controls.BorderStyles.NoBorder);
+            StylePanel(pnlPaymentMethods, panelInner, DevExpress.XtraEditors.Controls.BorderStyles.NoBorder);
+            StylePanel(pnlQRCode, panelInner, DevExpress.XtraEditors.Controls.BorderStyles.Simple);
+
+            // Tiêu đề & section
+            StyleLabel(lblTitle, new Font("Segoe UI", 20f, FontStyle.Bold), Color.FromArgb(255, 190, 92));
+            StyleLabel(lblShippingTitle, new Font("Segoe UI", 13.5f, FontStyle.Bold), Color.White);
+            StyleLabel(lblVoucherTitle, new Font("Segoe UI", 12f, FontStyle.Bold), Color.White);
+            StyleLabel(lblPaymentTitle, new Font("Segoe UI", 12f, FontStyle.Bold), Color.White);
+            StyleLabel(lblSummaryTitle, new Font("Segoe UI", 12f, FontStyle.Bold), Color.White);
+
+            // Nhãn phụ
+            StyleLabel(lblVoucherHint, new Font("Segoe UI", 8.5f), Color.Silver);
+            StyleLabel(lblVoucherStatus, new Font("Segoe UI", 9.5f, FontStyle.Bold), Color.White);
+            StyleLabel(lblSubtotalLabel, new Font("Segoe UI", 10f), Color.Gainsboro);
+            StyleLabel(lblShippingLabel, new Font("Segoe UI", 10f), Color.Gainsboro);
+            StyleLabel(lblDiscountLabel, new Font("Segoe UI", 10f), Color.Gainsboro);
+            StyleLabel(lblSubtotal, new Font("Segoe UI", 10f, FontStyle.Bold), Color.White);
+            StyleLabel(lblShipping, new Font("Segoe UI", 10f), Color.White);
+            StyleLabel(lblDiscount, new Font("Segoe UI", 10f, FontStyle.Bold), accentOk);
+            StyleLabel(lblTotalLabel, new Font("Segoe UI", 14f, FontStyle.Bold), Color.White);
+            StyleLabel(lblTotal, new Font("Segoe UI", 18f, FontStyle.Bold), accentWarn);
+            StyleLabel(lblPaymentInstructions, new Font("Segoe UI", 9f), Color.Gainsboro);
+
+            // Input
+            StyleTextEdit(txtHoTen, panelInner, border, Color.White, new Font("Segoe UI", 11f));
+            StyleTextEdit(txtSDT, panelInner, border, Color.White, new Font("Segoe UI", 11f));
+            StyleMemoEdit(txtDiaChi, panelInner, border, Color.White, new Font("Segoe UI", 11f));
+            StyleMemoEdit(txtGhiChu, panelInner, border, Color.White, new Font("Segoe UI", 10f));
+            StyleTextEdit(txtVoucher, panelInner, border, Color.White, new Font("Segoe UI", 11f));
+
+            // Grid style
+            gridGioHang.LookAndFeel.UseDefaultLookAndFeel = false;
+            gridGioHang.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Flat;
+            gridGioHang.BackColor = panelInner;
+            gridViewGH.Appearance.Row.BackColor = Color.FromArgb(28, 44, 84);
+            gridViewGH.Appearance.Row.ForeColor = Color.White;
+            gridViewGH.Appearance.Row.Font = new Font("Segoe UI", 10f);
+            gridViewGH.Appearance.HeaderPanel.BackColor = Color.FromArgb(46, 99, 190);
+            gridViewGH.Appearance.HeaderPanel.ForeColor = Color.White;
+            gridViewGH.Appearance.HeaderPanel.Font = new Font("Segoe UI Semibold", 10f);
+            gridViewGH.Appearance.HeaderPanel.Options.UseBackColor = true;
+            gridViewGH.Appearance.HeaderPanel.Options.UseForeColor = true;
+            gridViewGH.Appearance.HeaderPanel.Options.UseFont = true;
+            gridViewGH.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+
+            // Buttons
+            StyleButton(btnApVoucher, accent, Color.White);
+            StyleButton(btnXoa, accentWarn, Color.White);
+            StyleButton(btnTangSL, Color.FromArgb(34, 197, 94), Color.White);
+            StyleButton(btnGiamSL, Color.FromArgb(59, 130, 246), Color.White);
+            StyleButton(btnThanhToan, Color.FromArgb(255, 153, 51), Color.FromArgb(28, 31, 53), 16f, FontStyle.Bold);
+            StyleButton(btnTiepTuc, Color.FromArgb(55, 65, 81), Color.White);
+        }
+
+        private void StylePanel(DevExpress.XtraEditors.PanelControl panel, Color back, DevExpress.XtraEditors.Controls.BorderStyles border)
+        {
+            panel.Appearance.BackColor = back;
+            panel.Appearance.Options.UseBackColor = true;
+            panel.BorderStyle = border;
+        }
+
+        private void StyleLabel(DevExpress.XtraEditors.LabelControl label, Font font, Color fore)
+        {
+            label.Appearance.Font = font;
+            label.Appearance.ForeColor = fore;
+            label.Appearance.Options.UseFont = true;
+            label.Appearance.Options.UseForeColor = true;
+        }
+
+        private void StyleTextEdit(DevExpress.XtraEditors.TextEdit edit, Color back, Color border, Color fore, Font font)
+        {
+            edit.Properties.Appearance.BackColor = back;
+            edit.Properties.Appearance.ForeColor = fore;
+            edit.Properties.Appearance.Options.UseBackColor = true;
+            edit.Properties.Appearance.Options.UseForeColor = true;
+            edit.Properties.Appearance.Options.UseFont = true;
+            edit.Properties.Appearance.Font = font;
+            edit.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
+            edit.Properties.Appearance.BorderColor = border;
+        }
+
+        private void StyleMemoEdit(DevExpress.XtraEditors.MemoEdit edit, Color back, Color border, Color fore, Font font)
+        {
+            edit.Properties.Appearance.BackColor = back;
+            edit.Properties.Appearance.ForeColor = fore;
+            edit.Properties.Appearance.Options.UseBackColor = true;
+            edit.Properties.Appearance.Options.UseForeColor = true;
+            edit.Properties.Appearance.Options.UseFont = true;
+            edit.Properties.Appearance.Font = font;
+            edit.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
+            edit.Properties.Appearance.BorderColor = border;
+        }
+
+        private void StyleButton(DevExpress.XtraEditors.SimpleButton button, Color back, Color fore, float fontSize = 11f, FontStyle style = FontStyle.Bold)
+        {
+            button.LookAndFeel.UseDefaultLookAndFeel = false;
+            button.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat;
+            button.Appearance.BackColor = back;
+            button.Appearance.ForeColor = fore;
+            button.Appearance.Font = new Font("Segoe UI", fontSize, style);
+            button.Appearance.Options.UseBackColor = true;
+            button.Appearance.Options.UseForeColor = true;
+            button.Appearance.Options.UseFont = true;
+            button.Padding = new Padding(6, 4, 6, 4);
+            button.Height = Math.Max(button.Height, 34);
+            button.Width = Math.Max(button.Width, 80);
         }
 
         private void SetupPaymentMethods()
@@ -267,7 +390,7 @@ namespace cosmetics_store.FormKH
 
             decimal subtotal = _cart.Sum(c => c.ThanhTien);
             
-            // X? lý các voucher
+            // Xử lý các voucher
             switch (voucher)
             {
                 case "FREESHIP":
@@ -363,14 +486,14 @@ namespace cosmetics_store.FormKH
         }
 
         /// <summary>
-        /// T?o QR Code cho chuy?n kho?n ngân hàng theo chu?n VietQR
+        /// Tạo QR Code cho chuyển khoản ngân hàng theo chuẩn VietQR
         /// </summary>
         private void GenerateBankQR(decimal amount)
         {
             try
             {
                 // VietQR format: https://img.vietqr.io/image/{BANK_ID}-{ACCOUNT_NO}-{TEMPLATE}.png?amount={AMOUNT}&addInfo={INFO}
-                // Các Bank ID ph? bi?n: VCB, TCB, MB, VPB, ACB, BIDV, VTB...
+                // Các Bank ID phổ biến: VCB, TCB, MB, VPB, ACB, BIDV, VTB...
                 
                 string bankId = "VCB"; // Vietcombank - có th? c?u hình
                 string accountNo = "1234567890"; // S? tài kho?n - có th? c?u hình
@@ -394,18 +517,18 @@ namespace cosmetics_store.FormKH
         }
 
         /// <summary>
-        /// T?o QR Code cho MoMo
+        /// Tạo QR Code cho MoMo
         /// </summary>
         private void GenerateMoMoQR(decimal amount)
         {
             try
             {
                 // MoMo deeplink format
-                string phone = "0901234567"; // S? ?i?n tho?i nh?n ti?n
+                string phone = "0901234567"; // Số điện thoại nhận tiền
                 string orderInfo = $"DH{DateTime.Now:yyyyMMddHHmm}";
                 
-                // MoMo QR format (simplified - th?c t? c?n tích h?p MoMo API)
-                // S? d?ng QR code generator API
+                // MoMo QR format (simplified - thực tế cần tích hợp MoMo API)
+                // Sử dụng QR code generator API
                 string content = $"2|99|{phone}|BEAUTY BOX|{orderInfo}|0|0|{amount:0}";
                 string qrUrl = $"https://api.qrserver.com/v1/create-qr-code/?size=200x200&data={Uri.EscapeDataString(content)}";
                 
@@ -418,7 +541,7 @@ namespace cosmetics_store.FormKH
         }
 
         /// <summary>
-        /// T?o QR Code cho ZaloPay
+        /// Tạo QR Code cho ZaloPay
         /// </summary>
         private void GenerateZaloPayQR(decimal amount)
         {
@@ -456,7 +579,7 @@ namespace cosmetics_store.FormKH
 
         private void GenerateFallbackQR(string content)
         {
-            // T?o placeholder QR khi không t?i ???c
+            // Tạo placeholder QR khi không tải được
             var bmp = new Bitmap(200, 200);
             using (var g = Graphics.FromImage(bmp))
             {
@@ -470,7 +593,7 @@ namespace cosmetics_store.FormKH
                         Alignment = StringAlignment.Center,
                         LineAlignment = StringAlignment.Center
                     };
-                    g.DrawString("QR Code\n(?ang t?i...)", font, Brushes.Gray, new RectangleF(10, 70, 180, 60), sf);
+                    g.DrawString("QR Code\n(Đang tải...)", font, Brushes.Gray, new RectangleF(10, 70, 180, 60), sf);
                 }
             }
             picQRCode.Image = bmp;
@@ -576,7 +699,7 @@ namespace cosmetics_store.FormKH
                 _context.HoaDons.Add(hoaDon);
                 _context.SaveChanges();
 
-                // Chi ti?t hóa ??n
+                // Chi tiết hóa đơn
                 int stt = 1;
                 foreach (var item in _cart)
                 {
@@ -590,7 +713,7 @@ namespace cosmetics_store.FormKH
                     };
                     _context.CT_HoaDons.Add(ct);
 
-                    // Tr? t?n kho
+                    // Trừ tồn kho
                     var sp = _context.SanPhams.Find(item.MaSP);
                     if (sp != null)
                     {
@@ -648,7 +771,7 @@ namespace cosmetics_store.FormKH
                 }
             }
 
-            // T?o m?i khách hàng
+            // Tạo mới khách hàng
             var newKH = new KhachHang
             {
                 HoTen = txtHoTen.Text,

@@ -142,6 +142,7 @@
             this.searchSanPham.Properties.ShowSearchButton = false;
             this.searchSanPham.Size = new System.Drawing.Size(460, 30);
             this.searchSanPham.TabIndex = 0;
+            this.searchSanPham.SelectedIndexChanged += new System.EventHandler(this.searchSanPham_SelectedIndexChanged);
             // 
             // gridSanPham
             // 
@@ -386,13 +387,13 @@
             // 
             // lblTitle
             // 
-            this.lblTitle.Appearance.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold);
+            this.lblTitle.Appearance.Font = new System.Drawing.Font("Segoe UI Black", 18F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitle.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
             this.lblTitle.Appearance.Options.UseFont = true;
             this.lblTitle.Appearance.Options.UseForeColor = true;
             this.lblTitle.Location = new System.Drawing.Point(20, 15);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(132, 41);
+            this.lblTitle.Size = new System.Drawing.Size(143, 41);
             this.lblTitle.TabIndex = 0;
             this.lblTitle.Text = "Bán hàng";
             // 

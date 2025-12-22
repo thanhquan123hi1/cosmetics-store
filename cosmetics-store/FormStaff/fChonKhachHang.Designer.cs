@@ -60,23 +60,23 @@
             // 
             // lblTitle
             // 
-            this.lblTitle.Appearance.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
+            this.lblTitle.Appearance.Font = new System.Drawing.Font("Segoe UI Black", 13.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitle.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(76)))), ((int)(((byte)(60)))));
             this.lblTitle.Appearance.Options.UseFont = true;
             this.lblTitle.Appearance.Options.UseForeColor = true;
             this.lblTitle.Location = new System.Drawing.Point(20, 3);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(280, 32);
+            this.lblTitle.Size = new System.Drawing.Size(274, 31);
             this.lblTitle.TabIndex = 0;
             this.lblTitle.Text = "👥 CHỌN KHÁCH HÀNG";
             // 
             // lblTimKiem
             // 
-            this.lblTimKiem.Appearance.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.lblTimKiem.Appearance.Font = new System.Drawing.Font("Times New Roman", 10.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTimKiem.Appearance.Options.UseFont = true;
             this.lblTimKiem.Location = new System.Drawing.Point(12, 56);
             this.lblTimKiem.Name = "lblTimKiem";
-            this.lblTimKiem.Size = new System.Drawing.Size(255, 23);
+            this.lblTimKiem.Size = new System.Drawing.Size(249, 20);
             this.lblTimKiem.TabIndex = 1;
             this.lblTimKiem.Text = "Tìm kiếm: [ SĐT/Tên khách hàng ]";
             // 
@@ -92,7 +92,7 @@
             // 
             // btnTim
             // 
-            this.btnTim.Appearance.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.btnTim.Appearance.Font = new System.Drawing.Font("Times New Roman", 10.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTim.Appearance.Options.UseFont = true;
             this.btnTim.Location = new System.Drawing.Point(440, 50);
             this.btnTim.Name = "btnTim";
@@ -125,7 +125,7 @@
             // 
             this.btnChon.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnChon.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(204)))), ((int)(((byte)(113)))));
-            this.btnChon.Appearance.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.btnChon.Appearance.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold);
             this.btnChon.Appearance.ForeColor = System.Drawing.Color.White;
             this.btnChon.Appearance.Options.UseBackColor = true;
             this.btnChon.Appearance.Options.UseFont = true;
@@ -140,7 +140,7 @@
             // btnThemNhanh
             // 
             this.btnThemNhanh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnThemNhanh.Appearance.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.btnThemNhanh.Appearance.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold);
             this.btnThemNhanh.Appearance.Options.UseFont = true;
             this.btnThemNhanh.Location = new System.Drawing.Point(141, 351);
             this.btnThemNhanh.Name = "btnThemNhanh";
@@ -152,7 +152,7 @@
             // btnHuy
             // 
             this.btnHuy.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnHuy.Appearance.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.btnHuy.Appearance.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold);
             this.btnHuy.Appearance.Options.UseFont = true;
             this.btnHuy.Location = new System.Drawing.Point(440, 355);
             this.btnHuy.Name = "btnHuy";

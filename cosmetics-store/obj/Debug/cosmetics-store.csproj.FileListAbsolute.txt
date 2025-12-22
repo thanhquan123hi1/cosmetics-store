@@ -21,10 +21,10 @@ C:\Users\LENOVO\OneDrive\Documents\cosmetics-store\cosmetics-store\bin\Debug\Dev
 C:\Users\LENOVO\OneDrive\Documents\cosmetics-store\cosmetics-store\bin\Debug\DevExpress.RichEdit.v25.1.Core.dll
 C:\Users\LENOVO\OneDrive\Documents\cosmetics-store\cosmetics-store\bin\Debug\DevExpress.XtraTreeList.v25.1.dll
 C:\Users\LENOVO\OneDrive\Documents\cosmetics-store\cosmetics-store\bin\Debug\DevExpress.Office.v25.1.Core.dll
-C:\Users\LENOVO\OneDrive\Documents\cosmetics-store\cosmetics-store\bin\Debug\BusinessAccessLayer.pdb
-C:\Users\LENOVO\OneDrive\Documents\cosmetics-store\cosmetics-store\bin\Debug\BusinessAccessLayer.dll.config
 C:\Users\LENOVO\OneDrive\Documents\cosmetics-store\cosmetics-store\bin\Debug\DataAccessLayer.pdb
 C:\Users\LENOVO\OneDrive\Documents\cosmetics-store\cosmetics-store\bin\Debug\DataAccessLayer.dll.config
+C:\Users\LENOVO\OneDrive\Documents\cosmetics-store\cosmetics-store\bin\Debug\BusinessAccessLayer.pdb
+C:\Users\LENOVO\OneDrive\Documents\cosmetics-store\cosmetics-store\bin\Debug\BusinessAccessLayer.dll.config
 C:\Users\LENOVO\OneDrive\Documents\cosmetics-store\cosmetics-store\bin\Debug\DevExpress.Data.Desktop.v25.1.xml
 C:\Users\LENOVO\OneDrive\Documents\cosmetics-store\cosmetics-store\bin\Debug\DevExpress.Data.v25.1.xml
 C:\Users\LENOVO\OneDrive\Documents\cosmetics-store\cosmetics-store\bin\Debug\DevExpress.Drawing.v25.1.xml
@@ -54,7 +54,11 @@ C:\Users\LENOVO\OneDrive\Documents\cosmetics-store\cosmetics-store\obj\Debug\cos
 C:\Users\LENOVO\OneDrive\Documents\cosmetics-store\cosmetics-store\obj\Debug\cosmetics_store.Forms.fDashboardKhachHang.resources
 C:\Users\LENOVO\OneDrive\Documents\cosmetics-store\cosmetics-store\obj\Debug\cosmetics_store.Forms.fDashboardNhanVien.resources
 C:\Users\LENOVO\OneDrive\Documents\cosmetics-store\cosmetics-store\obj\Debug\cosmetics_store.Forms.fForgotPassword.resources
+C:\Users\LENOVO\OneDrive\Documents\cosmetics-store\cosmetics-store\obj\Debug\cosmetics_store.Forms.fKhachHangEdit.resources
 C:\Users\LENOVO\OneDrive\Documents\cosmetics-store\cosmetics-store\obj\Debug\cosmetics_store.FormAdmin.fRegister.resources
+C:\Users\LENOVO\OneDrive\Documents\cosmetics-store\cosmetics-store\obj\Debug\cosmetics_store.Forms.NhaCungCapEditForm.resources
+C:\Users\LENOVO\OneDrive\Documents\cosmetics-store\cosmetics-store\obj\Debug\cosmetics_store.Forms.NhapHangForm.resources
+C:\Users\LENOVO\OneDrive\Documents\cosmetics-store\cosmetics-store\obj\Debug\cosmetics_store.Forms.SanPhamForm.resources
 C:\Users\LENOVO\OneDrive\Documents\cosmetics-store\cosmetics-store\obj\Debug\cosmetics_store.Forms.TaiKhoanEdit.resources
 C:\Users\LENOVO\OneDrive\Documents\cosmetics-store\cosmetics-store\obj\Debug\cosmetics_store.Forms.LoaiSPFormDx.resources
 C:\Users\LENOVO\OneDrive\Documents\cosmetics-store\cosmetics-store\obj\Debug\cosmetics_store.Forms.fLogin.resources
@@ -70,6 +74,7 @@ C:\Users\LENOVO\OneDrive\Documents\cosmetics-store\cosmetics-store\obj\Debug\cos
 C:\Users\LENOVO\OneDrive\Documents\cosmetics-store\cosmetics-store\obj\Debug\cosmetics_store.FormKH.fDashboardKH.resources
 C:\Users\LENOVO\OneDrive\Documents\cosmetics-store\cosmetics-store\obj\Debug\cosmetics_store.FormKH.fGioHang.resources
 C:\Users\LENOVO\OneDrive\Documents\cosmetics-store\cosmetics-store\obj\Debug\cosmetics_store.FormKH.fSanPhamDetail.resources
+C:\Users\LENOVO\OneDrive\Documents\cosmetics-store\cosmetics-store\obj\Debug\cosmetics_store.FormKH.fThanhToanThanhCong.resources
 C:\Users\LENOVO\OneDrive\Documents\cosmetics-store\cosmetics-store\obj\Debug\cosmetics_store.FormStaff.fChonKhachHang.resources
 C:\Users\LENOVO\OneDrive\Documents\cosmetics-store\cosmetics-store\obj\Debug\cosmetics_store.FormStaff.fDashboardStaff.resources
 C:\Users\LENOVO\OneDrive\Documents\cosmetics-store\cosmetics-store\obj\Debug\cosmetics_store.FormStaff.fLapHoaDon.resources
@@ -84,6 +89,3 @@ C:\Users\LENOVO\OneDrive\Documents\cosmetics-store\cosmetics-store\obj\Debug\cos
 C:\Users\LENOVO\OneDrive\Documents\cosmetics-store\cosmetics-store\obj\Debug\cosmetics-store.exe
 C:\Users\LENOVO\OneDrive\Documents\cosmetics-store\cosmetics-store\obj\Debug\cosmetics-store.pdb
 C:\Users\LENOVO\OneDrive\Documents\cosmetics-store\cosmetics-store\obj\Debug\cosmetics-store.exe.config
-C:\Users\LENOVO\OneDrive\Documents\cosmetics-store\cosmetics-store\obj\Debug\cosmetics_store.Forms.NhapHangForm.resources
-C:\Users\LENOVO\OneDrive\Documents\cosmetics-store\cosmetics-store\obj\Debug\cosmetics_store.Forms.NhaCungCapEditForm.resources
-C:\Users\LENOVO\OneDrive\Documents\cosmetics-store\cosmetics-store\obj\Debug\cosmetics_store.Forms.SanPhamForm.resources

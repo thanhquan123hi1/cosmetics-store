@@ -44,6 +44,9 @@ namespace cosmetics_store.Forms
                 Directory.CreateDirectory(_imagesFolder);
             }
 
+            // Seed dữ liệu mẫu nếu chưa có
+            SeedData();
+
             LoadLoaiSP();
             LoadThuongHieu();
 
@@ -52,6 +55,61 @@ namespace cosmetics_store.Forms
                 spinSoLuong.Value = 0;
                 spinDonGia.Value = 0;
                 _selectedImagePath = "";
+            }
+        }
+
+        private void SeedData()
+        {
+            try
+            {
+                // Seed Loại sản phẩm
+                var loaiSPData = new[]
+                {
+                    new { TenLoai = "Skincare", MoTa = "Sản phẩm chăm sóc da" },
+                    new { TenLoai = "Makeup", MoTa = "Sản phẩm trang điểm" },
+                    new { TenLoai = "Hương thơm", MoTa = "Nước hoa và các sản phẩm hương thơm" },
+                    new { TenLoai = "Bodycare", MoTa = "Sản phẩm chăm sóc cơ thể" }
+                };
+
+                foreach (var loai in loaiSPData)
+                {
+                    if (!_context.LoaiSPs.Any(l => l.TenLoai == loai.TenLoai))
+                    {
+                        _context.LoaiSPs.Add(new LoaiSP
+                        {
+                            TenLoai = loai.TenLoai,
+                            MoTa = loai.MoTa
+                        });
+                    }
+                }
+
+                // Seed Thương hiệu
+                var thuongHieuData = new[]
+                {
+                    new { TenThuongHieu = "Medicube", QuocGia = "Hàn Quốc" },
+                    new { TenThuongHieu = "Laneige", QuocGia = "Hàn Quốc" },
+                    new { TenThuongHieu = "Chanel", QuocGia = "Pháp" },
+                    new { TenThuongHieu = "Ofelia", QuocGia = "Việt Nam" },
+                    new { TenThuongHieu = "Dior", QuocGia = "Pháp" }
+                };
+
+                foreach (var thuongHieu in thuongHieuData)
+                {
+                    if (!_context.ThuongHieus.Any(t => t.TenThuongHieu == thuongHieu.TenThuongHieu))
+                    {
+                        _context.ThuongHieus.Add(new ThuongHieu
+                        {
+                            TenThuongHieu = thuongHieu.TenThuongHieu,
+                            QuocGia = thuongHieu.QuocGia
+                        });
+                    }
+                }
+
+                _context.SaveChanges();
+            }
+            catch
+            {
+                // Nếu có lỗi thì bỏ qua, có thể dữ liệu đã tồn tại
             }
         }
 
@@ -264,6 +322,16 @@ namespace cosmetics_store.Forms
         {
             this.DialogResult = DialogResult.Cancel;
             this.Close();
+        }
+
+        private void lookupLoai_EditValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lookupThuong_EditValueChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -38,9 +38,11 @@
             this.aceSanPham = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.aceTonKho = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.pnlMainContent = new System.Windows.Forms.Panel();
+            this.pictureEdit1 = new DevExpress.XtraEditors.PictureEdit();
             ((System.ComponentModel.ISupportInitialize)(this.pnlHeader)).BeginInit();
             this.pnlHeader.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.accordionMenu)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureEdit1.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlHeader
@@ -101,35 +103,35 @@
             // accordionMenu
             // 
             this.accordionMenu.Appearance.AccordionControl.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(73)))), ((int)(((byte)(94)))));
-            this.accordionMenu.Appearance.AccordionControl.ForeColor = System.Drawing.Color.White;
             this.accordionMenu.Appearance.AccordionControl.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.accordionMenu.Appearance.AccordionControl.ForeColor = System.Drawing.Color.White;
             this.accordionMenu.Appearance.AccordionControl.Options.UseBackColor = true;
-            this.accordionMenu.Appearance.AccordionControl.Options.UseForeColor = true;
             this.accordionMenu.Appearance.AccordionControl.Options.UseFont = true;
-            this.accordionMenu.Appearance.Item.Normal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(73)))), ((int)(((byte)(94)))));
-            this.accordionMenu.Appearance.Item.Normal.ForeColor = System.Drawing.Color.White;
-            this.accordionMenu.Appearance.Item.Normal.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.accordionMenu.Appearance.Item.Normal.Options.UseBackColor = true;
-            this.accordionMenu.Appearance.Item.Normal.Options.UseForeColor = true;
-            this.accordionMenu.Appearance.Item.Normal.Options.UseFont = true;
-            this.accordionMenu.Appearance.Item.Hovered.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
-            this.accordionMenu.Appearance.Item.Hovered.ForeColor = System.Drawing.Color.White;
-            this.accordionMenu.Appearance.Item.Hovered.Options.UseBackColor = true;
-            this.accordionMenu.Appearance.Item.Hovered.Options.UseForeColor = true;
-            this.accordionMenu.Appearance.Item.Pressed.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(97)))), ((int)(((byte)(141)))));
-            this.accordionMenu.Appearance.Item.Pressed.ForeColor = System.Drawing.Color.White;
-            this.accordionMenu.Appearance.Item.Pressed.Options.UseBackColor = true;
-            this.accordionMenu.Appearance.Item.Pressed.Options.UseForeColor = true;
-            this.accordionMenu.Appearance.Group.Normal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
-            this.accordionMenu.Appearance.Group.Normal.ForeColor = System.Drawing.Color.White;
-            this.accordionMenu.Appearance.Group.Normal.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.accordionMenu.Appearance.Group.Normal.Options.UseBackColor = true;
-            this.accordionMenu.Appearance.Group.Normal.Options.UseForeColor = true;
-            this.accordionMenu.Appearance.Group.Normal.Options.UseFont = true;
+            this.accordionMenu.Appearance.AccordionControl.Options.UseForeColor = true;
             this.accordionMenu.Appearance.Group.Hovered.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
             this.accordionMenu.Appearance.Group.Hovered.ForeColor = System.Drawing.Color.White;
             this.accordionMenu.Appearance.Group.Hovered.Options.UseBackColor = true;
             this.accordionMenu.Appearance.Group.Hovered.Options.UseForeColor = true;
+            this.accordionMenu.Appearance.Group.Normal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
+            this.accordionMenu.Appearance.Group.Normal.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.accordionMenu.Appearance.Group.Normal.ForeColor = System.Drawing.Color.White;
+            this.accordionMenu.Appearance.Group.Normal.Options.UseBackColor = true;
+            this.accordionMenu.Appearance.Group.Normal.Options.UseFont = true;
+            this.accordionMenu.Appearance.Group.Normal.Options.UseForeColor = true;
+            this.accordionMenu.Appearance.Item.Hovered.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
+            this.accordionMenu.Appearance.Item.Hovered.ForeColor = System.Drawing.Color.White;
+            this.accordionMenu.Appearance.Item.Hovered.Options.UseBackColor = true;
+            this.accordionMenu.Appearance.Item.Hovered.Options.UseForeColor = true;
+            this.accordionMenu.Appearance.Item.Normal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(73)))), ((int)(((byte)(94)))));
+            this.accordionMenu.Appearance.Item.Normal.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.accordionMenu.Appearance.Item.Normal.ForeColor = System.Drawing.Color.White;
+            this.accordionMenu.Appearance.Item.Normal.Options.UseBackColor = true;
+            this.accordionMenu.Appearance.Item.Normal.Options.UseFont = true;
+            this.accordionMenu.Appearance.Item.Normal.Options.UseForeColor = true;
+            this.accordionMenu.Appearance.Item.Pressed.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(97)))), ((int)(((byte)(141)))));
+            this.accordionMenu.Appearance.Item.Pressed.ForeColor = System.Drawing.Color.White;
+            this.accordionMenu.Appearance.Item.Pressed.Options.UseBackColor = true;
+            this.accordionMenu.Appearance.Item.Pressed.Options.UseForeColor = true;
             this.accordionMenu.Dock = System.Windows.Forms.DockStyle.Left;
             this.accordionMenu.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
             this.aceDashboard,
@@ -216,11 +218,23 @@
             this.pnlMainContent.Size = new System.Drawing.Size(980, 650);
             this.pnlMainContent.TabIndex = 2;
             // 
+            // pictureEdit1
+            // 
+            this.pictureEdit1.EditValue = global::cosmetics_store.Properties.Resources.picNhanVien;
+            this.pictureEdit1.Location = new System.Drawing.Point(0, 299);
+            this.pictureEdit1.Name = "pictureEdit1";
+            this.pictureEdit1.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
+            this.pictureEdit1.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Stretch;
+            this.pictureEdit1.Size = new System.Drawing.Size(197, 401);
+            this.pictureEdit1.TabIndex = 3;
+            this.pictureEdit1.EditValueChanged += new System.EventHandler(this.pictureEdit1_EditValueChanged);
+            // 
             // fDashboardNhanVien
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1200, 700);
+            this.Controls.Add(this.pictureEdit1);
             this.Controls.Add(this.pnlMainContent);
             this.Controls.Add(this.accordionMenu);
             this.Controls.Add(this.pnlHeader);
@@ -232,8 +246,11 @@
             this.pnlHeader.ResumeLayout(false);
             this.pnlHeader.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.accordionMenu)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureEdit1.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
+
+        private DevExpress.XtraEditors.PictureEdit pictureEdit1;
     }
 }
