@@ -10,35 +10,12 @@ namespace cosmetics_store.Forms
     {
         private readonly AuthService _authService;
         private readonly string _email;
-        private Button btnClose;
 
         public fResetPassword(string email = "")
         {
             InitializeComponent();
             _authService = new AuthService();
             _email = email;
-            CreateCloseButton();
-        }
-
-        private void CreateCloseButton()
-        {
-            btnClose = new Button();
-            btnClose.Text = "✕";
-            btnClose.Font = new Font("Arial", 12F, FontStyle.Bold);
-            btnClose.Size = new Size(30, 30);
-            btnClose.Location = new Point(this.Width - 40, 10);
-            btnClose.FlatStyle = FlatStyle.Flat;
-            btnClose.FlatAppearance.BorderSize = 0;
-            btnClose.BackColor = Color.Transparent;
-            btnClose.ForeColor = Color.Gray;
-            btnClose.Cursor = Cursors.Hand;
-            btnClose.Click += (s, e) => this.Close();
-
-            btnClose.MouseEnter += (s, e) => { btnClose.BackColor = Color.FromArgb(232, 17, 35); btnClose.ForeColor = Color.White; };
-            btnClose.MouseLeave += (s, e) => { btnClose.BackColor = Color.Transparent; btnClose.ForeColor = Color.Gray; };
-
-            this.Controls.Add(btnClose);
-            btnClose.BringToFront();
         }
 
         private void btnReset_Click(object sender, EventArgs e)

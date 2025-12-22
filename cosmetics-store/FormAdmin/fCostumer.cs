@@ -23,7 +23,6 @@ namespace cosmetics_store.Forms
             InitializeComponent();
             _context = new CosmeticsContext();
             this.Load += FCostumer_Load;
-            ApplyVietnameseFont();
             SetupGridView();
         }
 

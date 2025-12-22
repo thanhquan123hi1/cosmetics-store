@@ -27,17 +27,17 @@
         private void InitializeComponent()
         {
             this.pnlRight = new System.Windows.Forms.Panel();
+            this.pictureEdit2 = new DevExpress.XtraEditors.PictureEdit();
+            this.pictureEdit1 = new DevExpress.XtraEditors.PictureEdit();
             this.lblTitle = new DevExpress.XtraEditors.LabelControl();
             this.lblUsername = new DevExpress.XtraEditors.LabelControl();
+            this.txtUsername = new DevExpress.XtraEditors.TextEdit();
             this.lblPassword = new DevExpress.XtraEditors.LabelControl();
+            this.txtPassword = new DevExpress.XtraEditors.TextEdit();
             this.btnLogin = new DevExpress.XtraEditors.SimpleButton();
             this.btnExit = new DevExpress.XtraEditors.SimpleButton();
             this.lnkForgot = new System.Windows.Forms.LinkLabel();
             this.lnkRegister = new System.Windows.Forms.LinkLabel();
-            this.pictureEdit2 = new DevExpress.XtraEditors.PictureEdit();
-            this.pictureEdit1 = new DevExpress.XtraEditors.PictureEdit();
-            this.txtUsername = new DevExpress.XtraEditors.TextEdit();
-            this.txtPassword = new DevExpress.XtraEditors.TextEdit();
             this.pnlLeft = new System.Windows.Forms.Panel();
             this.lblWelcome = new DevExpress.XtraEditors.LabelControl();
             this.lblSystemName = new DevExpress.XtraEditors.LabelControl();
@@ -71,6 +71,27 @@
             this.pnlRight.TabIndex = 1;
             this.pnlRight.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlRight_Paint);
             // 
+            // pictureEdit2
+            // 
+            this.pictureEdit2.EditValue = global::cosmetics_store.Properties.Resources.lock_icon;
+            this.pictureEdit2.Location = new System.Drawing.Point(13, 298);
+            this.pictureEdit2.Name = "pictureEdit2";
+            this.pictureEdit2.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
+            this.pictureEdit2.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Zoom;
+            this.pictureEdit2.Size = new System.Drawing.Size(51, 42);
+            this.pictureEdit2.TabIndex = 10;
+            // 
+            // pictureEdit1
+            // 
+            this.pictureEdit1.EditValue = global::cosmetics_store.Properties.Resources.user_icon;
+            this.pictureEdit1.Location = new System.Drawing.Point(13, 208);
+            this.pictureEdit1.Name = "pictureEdit1";
+            this.pictureEdit1.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
+            this.pictureEdit1.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Zoom;
+            this.pictureEdit1.Size = new System.Drawing.Size(51, 42);
+            this.pictureEdit1.TabIndex = 9;
+            this.pictureEdit1.EditValueChanged += new System.EventHandler(this.pictureEdit1_EditValueChanged);
+            // 
             // lblTitle
             // 
             this.lblTitle.Appearance.Font = new System.Drawing.Font("Vivaldi", 24F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -94,6 +115,17 @@
             this.lblUsername.TabIndex = 1;
             this.lblUsername.Text = "Tên Đăng Nhập";
             // 
+            // txtUsername
+            // 
+            this.txtUsername.Location = new System.Drawing.Point(70, 210);
+            this.txtUsername.Name = "txtUsername";
+            this.txtUsername.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 11F);
+            this.txtUsername.Properties.Appearance.Options.UseFont = true;
+            this.txtUsername.Properties.AutoHeight = false;
+            this.txtUsername.Size = new System.Drawing.Size(310, 40);
+            this.txtUsername.TabIndex = 2;
+            this.txtUsername.EditValueChanged += new System.EventHandler(this.txtUsername_EditValueChanged);
+            // 
             // lblPassword
             // 
             this.lblPassword.Appearance.Font = new System.Drawing.Font("Showcard Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -103,6 +135,18 @@
             this.lblPassword.Size = new System.Drawing.Size(91, 21);
             this.lblPassword.TabIndex = 3;
             this.lblPassword.Text = "Mật Khẩu";
+            // 
+            // txtPassword
+            // 
+            this.txtPassword.Location = new System.Drawing.Point(70, 300);
+            this.txtPassword.Name = "txtPassword";
+            this.txtPassword.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 11F);
+            this.txtPassword.Properties.Appearance.Options.UseFont = true;
+            this.txtPassword.Properties.AutoHeight = false;
+            this.txtPassword.Properties.PasswordChar = '*';
+            this.txtPassword.Size = new System.Drawing.Size(310, 40);
+            this.txtPassword.TabIndex = 4;
+            this.txtPassword.EditValueChanged += new System.EventHandler(this.txtPassword_EditValueChanged);
             // 
             // btnLogin
             // 
@@ -162,50 +206,6 @@
             this.lnkRegister.Text = "Chưa có tài khoản? Đăng ký";
             this.lnkRegister.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkRegister_LinkClicked);
             // 
-            // pictureEdit2
-            // 
-            this.pictureEdit2.EditValue = global::cosmetics_store.Properties.Resources.lock_icon;
-            this.pictureEdit2.Location = new System.Drawing.Point(13, 298);
-            this.pictureEdit2.Name = "pictureEdit2";
-            this.pictureEdit2.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
-            this.pictureEdit2.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Zoom;
-            this.pictureEdit2.Size = new System.Drawing.Size(51, 42);
-            this.pictureEdit2.TabIndex = 10;
-            // 
-            // pictureEdit1
-            // 
-            this.pictureEdit1.EditValue = global::cosmetics_store.Properties.Resources.user_icon;
-            this.pictureEdit1.Location = new System.Drawing.Point(13, 208);
-            this.pictureEdit1.Name = "pictureEdit1";
-            this.pictureEdit1.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
-            this.pictureEdit1.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Zoom;
-            this.pictureEdit1.Size = new System.Drawing.Size(51, 42);
-            this.pictureEdit1.TabIndex = 9;
-            this.pictureEdit1.EditValueChanged += new System.EventHandler(this.pictureEdit1_EditValueChanged);
-            // 
-            // txtUsername
-            // 
-            this.txtUsername.Location = new System.Drawing.Point(70, 210);
-            this.txtUsername.Name = "txtUsername";
-            this.txtUsername.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.txtUsername.Properties.Appearance.Options.UseFont = true;
-            this.txtUsername.Properties.AutoHeight = false;
-            this.txtUsername.Size = new System.Drawing.Size(310, 40);
-            this.txtUsername.TabIndex = 2;
-            this.txtUsername.EditValueChanged += new System.EventHandler(this.txtUsername_EditValueChanged);
-            // 
-            // txtPassword
-            // 
-            this.txtPassword.Location = new System.Drawing.Point(70, 300);
-            this.txtPassword.Name = "txtPassword";
-            this.txtPassword.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.txtPassword.Properties.Appearance.Options.UseFont = true;
-            this.txtPassword.Properties.AutoHeight = false;
-            this.txtPassword.Properties.PasswordChar = '*';
-            this.txtPassword.Size = new System.Drawing.Size(310, 40);
-            this.txtPassword.TabIndex = 4;
-            this.txtPassword.EditValueChanged += new System.EventHandler(this.txtPassword_EditValueChanged);
-            // 
             // pnlLeft
             // 
             this.pnlLeft.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
@@ -226,7 +226,7 @@
             this.lblWelcome.Appearance.ForeColor = System.Drawing.Color.Navy;
             this.lblWelcome.Appearance.Options.UseFont = true;
             this.lblWelcome.Appearance.Options.UseForeColor = true;
-            this.lblWelcome.Location = new System.Drawing.Point(22, 32);
+            this.lblWelcome.Location = new System.Drawing.Point(65, 34);
             this.lblWelcome.Name = "lblWelcome";
             this.lblWelcome.Size = new System.Drawing.Size(245, 55);
             this.lblWelcome.TabIndex = 0;
@@ -239,7 +239,7 @@
             this.lblSystemName.Appearance.Options.UseFont = true;
             this.lblSystemName.Appearance.Options.UseForeColor = true;
             this.lblSystemName.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.Vertical;
-            this.lblSystemName.Location = new System.Drawing.Point(22, 134);
+            this.lblSystemName.Location = new System.Drawing.Point(40, 146);
             this.lblSystemName.Name = "lblSystemName";
             this.lblSystemName.Size = new System.Drawing.Size(288, 76);
             this.lblSystemName.TabIndex = 1;

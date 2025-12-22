@@ -52,26 +52,26 @@
             this.pnlRight = new System.Windows.Forms.Panel();
             this.lblTitle = new DevExpress.XtraEditors.LabelControl();
             this.lblHoTen = new DevExpress.XtraEditors.LabelControl();
+            this.txtHoTen = new DevExpress.XtraEditors.TextEdit();
             this.lblGioiTinh = new DevExpress.XtraEditors.LabelControl();
+            this.cboGioiTinh = new DevExpress.XtraEditors.ComboBoxEdit();
             this.lblNgaySinh = new DevExpress.XtraEditors.LabelControl();
+            this.dtNgaySinh = new DevExpress.XtraEditors.DateEdit();
             this.lblDiaChi = new DevExpress.XtraEditors.LabelControl();
+            this.txtDiaChi = new DevExpress.XtraEditors.TextEdit();
             this.lblSDT = new DevExpress.XtraEditors.LabelControl();
+            this.txtSDT = new DevExpress.XtraEditors.TextEdit();
             this.lblTenDN = new DevExpress.XtraEditors.LabelControl();
+            this.txtTenDN = new DevExpress.XtraEditors.TextEdit();
             this.lblEmail = new DevExpress.XtraEditors.LabelControl();
+            this.txtEmail = new DevExpress.XtraEditors.TextEdit();
             this.lblMatKhau = new DevExpress.XtraEditors.LabelControl();
+            this.txtMatKhau = new DevExpress.XtraEditors.TextEdit();
             this.lblXacNhanMK = new DevExpress.XtraEditors.LabelControl();
+            this.txtXacNhanMK = new DevExpress.XtraEditors.TextEdit();
             this.btnRegister = new DevExpress.XtraEditors.SimpleButton();
             this.btnCancel = new DevExpress.XtraEditors.SimpleButton();
             this.lnkLogin = new System.Windows.Forms.LinkLabel();
-            this.txtHoTen = new DevExpress.XtraEditors.TextEdit();
-            this.cboGioiTinh = new DevExpress.XtraEditors.ComboBoxEdit();
-            this.dtNgaySinh = new DevExpress.XtraEditors.DateEdit();
-            this.txtDiaChi = new DevExpress.XtraEditors.TextEdit();
-            this.txtSDT = new DevExpress.XtraEditors.TextEdit();
-            this.txtTenDN = new DevExpress.XtraEditors.TextEdit();
-            this.txtEmail = new DevExpress.XtraEditors.TextEdit();
-            this.txtMatKhau = new DevExpress.XtraEditors.TextEdit();
-            this.txtXacNhanMK = new DevExpress.XtraEditors.TextEdit();
             this.pnlLeft = new System.Windows.Forms.Panel();
             this.lblWelcome = new DevExpress.XtraEditors.LabelControl();
             this.lblSystemName = new DevExpress.XtraEditors.LabelControl();
@@ -130,7 +130,7 @@
             this.lblTitle.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
             this.lblTitle.Appearance.Options.UseFont = true;
             this.lblTitle.Appearance.Options.UseForeColor = true;
-            this.lblTitle.Location = new System.Drawing.Point(47, 31);
+            this.lblTitle.Location = new System.Drawing.Point(132, 34);
             this.lblTitle.Margin = new System.Windows.Forms.Padding(4);
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(284, 46);
@@ -148,6 +148,17 @@
             this.lblHoTen.TabIndex = 1;
             this.lblHoTen.Text = "Họ và tên *";
             // 
+            // txtHoTen
+            // 
+            this.txtHoTen.Location = new System.Drawing.Point(47, 123);
+            this.txtHoTen.Margin = new System.Windows.Forms.Padding(4);
+            this.txtHoTen.Name = "txtHoTen";
+            this.txtHoTen.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.txtHoTen.Properties.Appearance.Options.UseFont = true;
+            this.txtHoTen.Properties.AutoHeight = false;
+            this.txtHoTen.Size = new System.Drawing.Size(467, 39);
+            this.txtHoTen.TabIndex = 2;
+            // 
             // lblGioiTinh
             // 
             this.lblGioiTinh.Appearance.Font = new System.Drawing.Font("Segoe UI", 10.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -158,6 +169,20 @@
             this.lblGioiTinh.Size = new System.Drawing.Size(68, 23);
             this.lblGioiTinh.TabIndex = 3;
             this.lblGioiTinh.Text = "Giới tính";
+            // 
+            // cboGioiTinh
+            // 
+            this.cboGioiTinh.Location = new System.Drawing.Point(47, 197);
+            this.cboGioiTinh.Margin = new System.Windows.Forms.Padding(4);
+            this.cboGioiTinh.Name = "cboGioiTinh";
+            this.cboGioiTinh.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.cboGioiTinh.Properties.Appearance.Options.UseFont = true;
+            this.cboGioiTinh.Properties.AutoHeight = false;
+            this.cboGioiTinh.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cboGioiTinh.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+            this.cboGioiTinh.Size = new System.Drawing.Size(222, 39);
+            this.cboGioiTinh.TabIndex = 4;
             // 
             // lblNgaySinh
             // 
@@ -170,6 +195,27 @@
             this.lblNgaySinh.TabIndex = 5;
             this.lblNgaySinh.Text = "Ngày sinh";
             // 
+            // dtNgaySinh
+            // 
+            this.dtNgaySinh.EditValue = null;
+            this.dtNgaySinh.Location = new System.Drawing.Point(292, 197);
+            this.dtNgaySinh.Margin = new System.Windows.Forms.Padding(4);
+            this.dtNgaySinh.Name = "dtNgaySinh";
+            this.dtNgaySinh.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.dtNgaySinh.Properties.Appearance.Options.UseFont = true;
+            this.dtNgaySinh.Properties.AutoHeight = false;
+            this.dtNgaySinh.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dtNgaySinh.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dtNgaySinh.Properties.DisplayFormat.FormatString = "dd/MM/yyyy";
+            this.dtNgaySinh.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.dtNgaySinh.Properties.EditFormat.FormatString = "dd/MM/yyyy";
+            this.dtNgaySinh.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.dtNgaySinh.Properties.MaskSettings.Set("mask", "dd/MM/yyyy");
+            this.dtNgaySinh.Size = new System.Drawing.Size(222, 39);
+            this.dtNgaySinh.TabIndex = 6;
+            // 
             // lblDiaChi
             // 
             this.lblDiaChi.Appearance.Font = new System.Drawing.Font("Segoe UI", 10.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -180,6 +226,17 @@
             this.lblDiaChi.Size = new System.Drawing.Size(57, 23);
             this.lblDiaChi.TabIndex = 9;
             this.lblDiaChi.Text = "Địa chỉ";
+            // 
+            // txtDiaChi
+            // 
+            this.txtDiaChi.Location = new System.Drawing.Point(292, 271);
+            this.txtDiaChi.Margin = new System.Windows.Forms.Padding(4);
+            this.txtDiaChi.Name = "txtDiaChi";
+            this.txtDiaChi.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.txtDiaChi.Properties.Appearance.Options.UseFont = true;
+            this.txtDiaChi.Properties.AutoHeight = false;
+            this.txtDiaChi.Size = new System.Drawing.Size(222, 39);
+            this.txtDiaChi.TabIndex = 10;
             // 
             // lblSDT
             // 
@@ -192,6 +249,17 @@
             this.lblSDT.TabIndex = 7;
             this.lblSDT.Text = "Số điện thoại *";
             // 
+            // txtSDT
+            // 
+            this.txtSDT.Location = new System.Drawing.Point(47, 271);
+            this.txtSDT.Margin = new System.Windows.Forms.Padding(4);
+            this.txtSDT.Name = "txtSDT";
+            this.txtSDT.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.txtSDT.Properties.Appearance.Options.UseFont = true;
+            this.txtSDT.Properties.AutoHeight = false;
+            this.txtSDT.Size = new System.Drawing.Size(222, 39);
+            this.txtSDT.TabIndex = 8;
+            // 
             // lblTenDN
             // 
             this.lblTenDN.Appearance.Font = new System.Drawing.Font("Segoe UI", 10.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -202,6 +270,17 @@
             this.lblTenDN.Size = new System.Drawing.Size(132, 23);
             this.lblTenDN.TabIndex = 11;
             this.lblTenDN.Text = "Tên đăng nhập *";
+            // 
+            // txtTenDN
+            // 
+            this.txtTenDN.Location = new System.Drawing.Point(47, 351);
+            this.txtTenDN.Margin = new System.Windows.Forms.Padding(4);
+            this.txtTenDN.Name = "txtTenDN";
+            this.txtTenDN.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.txtTenDN.Properties.Appearance.Options.UseFont = true;
+            this.txtTenDN.Properties.AutoHeight = false;
+            this.txtTenDN.Size = new System.Drawing.Size(467, 39);
+            this.txtTenDN.TabIndex = 12;
             // 
             // lblEmail
             // 
@@ -214,6 +293,17 @@
             this.lblEmail.TabIndex = 13;
             this.lblEmail.Text = "Email *";
             // 
+            // txtEmail
+            // 
+            this.txtEmail.Location = new System.Drawing.Point(47, 425);
+            this.txtEmail.Margin = new System.Windows.Forms.Padding(4);
+            this.txtEmail.Name = "txtEmail";
+            this.txtEmail.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.txtEmail.Properties.Appearance.Options.UseFont = true;
+            this.txtEmail.Properties.AutoHeight = false;
+            this.txtEmail.Size = new System.Drawing.Size(467, 39);
+            this.txtEmail.TabIndex = 14;
+            // 
             // lblMatKhau
             // 
             this.lblMatKhau.Appearance.Font = new System.Drawing.Font("Segoe UI", 10.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -225,6 +315,18 @@
             this.lblMatKhau.TabIndex = 15;
             this.lblMatKhau.Text = "Mật khẩu *";
             // 
+            // txtMatKhau
+            // 
+            this.txtMatKhau.Location = new System.Drawing.Point(47, 498);
+            this.txtMatKhau.Margin = new System.Windows.Forms.Padding(4);
+            this.txtMatKhau.Name = "txtMatKhau";
+            this.txtMatKhau.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.txtMatKhau.Properties.Appearance.Options.UseFont = true;
+            this.txtMatKhau.Properties.AutoHeight = false;
+            this.txtMatKhau.Properties.PasswordChar = '*';
+            this.txtMatKhau.Size = new System.Drawing.Size(222, 39);
+            this.txtMatKhau.TabIndex = 16;
+            // 
             // lblXacNhanMK
             // 
             this.lblXacNhanMK.Appearance.Font = new System.Drawing.Font("Segoe UI", 10.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -235,6 +337,18 @@
             this.lblXacNhanMK.Size = new System.Drawing.Size(168, 23);
             this.lblXacNhanMK.TabIndex = 17;
             this.lblXacNhanMK.Text = "Xác nhận mật khẩu *";
+            // 
+            // txtXacNhanMK
+            // 
+            this.txtXacNhanMK.Location = new System.Drawing.Point(292, 498);
+            this.txtXacNhanMK.Margin = new System.Windows.Forms.Padding(4);
+            this.txtXacNhanMK.Name = "txtXacNhanMK";
+            this.txtXacNhanMK.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.txtXacNhanMK.Properties.Appearance.Options.UseFont = true;
+            this.txtXacNhanMK.Properties.AutoHeight = false;
+            this.txtXacNhanMK.Properties.PasswordChar = '*';
+            this.txtXacNhanMK.Size = new System.Drawing.Size(222, 39);
+            this.txtXacNhanMK.TabIndex = 18;
             // 
             // btnRegister
             // 
@@ -274,130 +388,16 @@
             // 
             this.lnkLogin.ActiveLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
             this.lnkLogin.AutoSize = true;
-            this.lnkLogin.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.lnkLogin.Font = new System.Drawing.Font("Segoe UI", 10.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lnkLogin.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
             this.lnkLogin.Location = new System.Drawing.Point(145, 682);
             this.lnkLogin.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lnkLogin.Name = "lnkLogin";
-            this.lnkLogin.Size = new System.Drawing.Size(228, 23);
+            this.lnkLogin.Size = new System.Drawing.Size(238, 23);
             this.lnkLogin.TabIndex = 21;
             this.lnkLogin.TabStop = true;
             this.lnkLogin.Text = "Đã có tài khoản? Đăng nhập";
             this.lnkLogin.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkLogin_LinkClicked);
-            // 
-            // txtHoTen
-            // 
-            this.txtHoTen.Location = new System.Drawing.Point(47, 123);
-            this.txtHoTen.Margin = new System.Windows.Forms.Padding(4);
-            this.txtHoTen.Name = "txtHoTen";
-            this.txtHoTen.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.txtHoTen.Properties.Appearance.Options.UseFont = true;
-            this.txtHoTen.Properties.AutoHeight = false;
-            this.txtHoTen.Size = new System.Drawing.Size(467, 39);
-            this.txtHoTen.TabIndex = 2;
-            // 
-            // cboGioiTinh
-            // 
-            this.cboGioiTinh.Location = new System.Drawing.Point(47, 197);
-            this.cboGioiTinh.Margin = new System.Windows.Forms.Padding(4);
-            this.cboGioiTinh.Name = "cboGioiTinh";
-            this.cboGioiTinh.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.cboGioiTinh.Properties.Appearance.Options.UseFont = true;
-            this.cboGioiTinh.Properties.AutoHeight = false;
-            this.cboGioiTinh.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.cboGioiTinh.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-            this.cboGioiTinh.Size = new System.Drawing.Size(222, 39);
-            this.cboGioiTinh.TabIndex = 4;
-            // 
-            // dtNgaySinh
-            // 
-            this.dtNgaySinh.EditValue = null;
-            this.dtNgaySinh.Location = new System.Drawing.Point(292, 197);
-            this.dtNgaySinh.Margin = new System.Windows.Forms.Padding(4);
-            this.dtNgaySinh.Name = "dtNgaySinh";
-            this.dtNgaySinh.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.dtNgaySinh.Properties.Appearance.Options.UseFont = true;
-            this.dtNgaySinh.Properties.AutoHeight = false;
-            this.dtNgaySinh.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dtNgaySinh.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dtNgaySinh.Properties.DisplayFormat.FormatString = "dd/MM/yyyy";
-            this.dtNgaySinh.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
-            this.dtNgaySinh.Properties.EditFormat.FormatString = "dd/MM/yyyy";
-            this.dtNgaySinh.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
-            this.dtNgaySinh.Properties.MaskSettings.Set("mask", "dd/MM/yyyy");
-            this.dtNgaySinh.Size = new System.Drawing.Size(222, 39);
-            this.dtNgaySinh.TabIndex = 6;
-            // 
-            // txtDiaChi
-            // 
-            this.txtDiaChi.Location = new System.Drawing.Point(292, 271);
-            this.txtDiaChi.Margin = new System.Windows.Forms.Padding(4);
-            this.txtDiaChi.Name = "txtDiaChi";
-            this.txtDiaChi.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.txtDiaChi.Properties.Appearance.Options.UseFont = true;
-            this.txtDiaChi.Properties.AutoHeight = false;
-            this.txtDiaChi.Size = new System.Drawing.Size(222, 39);
-            this.txtDiaChi.TabIndex = 10;
-            // 
-            // txtSDT
-            // 
-            this.txtSDT.Location = new System.Drawing.Point(47, 271);
-            this.txtSDT.Margin = new System.Windows.Forms.Padding(4);
-            this.txtSDT.Name = "txtSDT";
-            this.txtSDT.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.txtSDT.Properties.Appearance.Options.UseFont = true;
-            this.txtSDT.Properties.AutoHeight = false;
-            this.txtSDT.Size = new System.Drawing.Size(222, 39);
-            this.txtSDT.TabIndex = 8;
-            // 
-            // txtTenDN
-            // 
-            this.txtTenDN.Location = new System.Drawing.Point(47, 351);
-            this.txtTenDN.Margin = new System.Windows.Forms.Padding(4);
-            this.txtTenDN.Name = "txtTenDN";
-            this.txtTenDN.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.txtTenDN.Properties.Appearance.Options.UseFont = true;
-            this.txtTenDN.Properties.AutoHeight = false;
-            this.txtTenDN.Size = new System.Drawing.Size(467, 39);
-            this.txtTenDN.TabIndex = 12;
-            // 
-            // txtEmail
-            // 
-            this.txtEmail.Location = new System.Drawing.Point(47, 425);
-            this.txtEmail.Margin = new System.Windows.Forms.Padding(4);
-            this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.txtEmail.Properties.Appearance.Options.UseFont = true;
-            this.txtEmail.Properties.AutoHeight = false;
-            this.txtEmail.Size = new System.Drawing.Size(467, 39);
-            this.txtEmail.TabIndex = 14;
-            // 
-            // txtMatKhau
-            // 
-            this.txtMatKhau.Location = new System.Drawing.Point(47, 498);
-            this.txtMatKhau.Margin = new System.Windows.Forms.Padding(4);
-            this.txtMatKhau.Name = "txtMatKhau";
-            this.txtMatKhau.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.txtMatKhau.Properties.Appearance.Options.UseFont = true;
-            this.txtMatKhau.Properties.AutoHeight = false;
-            this.txtMatKhau.Properties.PasswordChar = '*';
-            this.txtMatKhau.Size = new System.Drawing.Size(222, 39);
-            this.txtMatKhau.TabIndex = 16;
-            // 
-            // txtXacNhanMK
-            // 
-            this.txtXacNhanMK.Location = new System.Drawing.Point(292, 498);
-            this.txtXacNhanMK.Margin = new System.Windows.Forms.Padding(4);
-            this.txtXacNhanMK.Name = "txtXacNhanMK";
-            this.txtXacNhanMK.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.txtXacNhanMK.Properties.Appearance.Options.UseFont = true;
-            this.txtXacNhanMK.Properties.AutoHeight = false;
-            this.txtXacNhanMK.Properties.PasswordChar = '*';
-            this.txtXacNhanMK.Size = new System.Drawing.Size(222, 39);
-            this.txtXacNhanMK.TabIndex = 18;
             // 
             // pnlLeft
             // 
@@ -421,7 +421,7 @@
             this.lblWelcome.Appearance.Options.UseFont = true;
             this.lblWelcome.Appearance.Options.UseForeColor = true;
             this.lblWelcome.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
-            this.lblWelcome.Location = new System.Drawing.Point(32, 210);
+            this.lblWelcome.Location = new System.Drawing.Point(59, 210);
             this.lblWelcome.Margin = new System.Windows.Forms.Padding(4);
             this.lblWelcome.Name = "lblWelcome";
             this.lblWelcome.Size = new System.Drawing.Size(303, 74);
@@ -435,7 +435,7 @@
             this.lblSystemName.Appearance.Options.UseFont = true;
             this.lblSystemName.Appearance.Options.UseForeColor = true;
             this.lblSystemName.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
-            this.lblSystemName.Location = new System.Drawing.Point(23, 292);
+            this.lblSystemName.Location = new System.Drawing.Point(32, 278);
             this.lblSystemName.Margin = new System.Windows.Forms.Padding(4);
             this.lblSystemName.Name = "lblSystemName";
             this.lblSystemName.Size = new System.Drawing.Size(303, 98);
