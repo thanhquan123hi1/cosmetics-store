@@ -92,14 +92,14 @@
             // lblUserName
             // 
             this.lblUserName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblUserName.Appearance.Font = new System.Drawing.Font("Segoe UI", 11.25F);
+            this.lblUserName.Appearance.Font = new System.Drawing.Font("Snap ITC", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUserName.Appearance.ForeColor = System.Drawing.Color.White;
             this.lblUserName.Appearance.Options.UseFont = true;
             this.lblUserName.Appearance.Options.UseForeColor = true;
-            this.lblUserName.Location = new System.Drawing.Point(992, 18);
+            this.lblUserName.Location = new System.Drawing.Point(947, 20);
             this.lblUserName.Margin = new System.Windows.Forms.Padding(4);
             this.lblUserName.Name = "lblUserName";
-            this.lblUserName.Size = new System.Drawing.Size(202, 25);
+            this.lblUserName.Size = new System.Drawing.Size(269, 23);
             this.lblUserName.TabIndex = 1;
             this.lblUserName.Text = "Xin chào, Administrator!";
             // 
@@ -179,6 +179,11 @@
             // 
             // accItemNhanVien
             // 
+            this.accItemNhanVien.HeaderTemplate.AddRange(new DevExpress.XtraBars.Navigation.HeaderElementInfo[] {
+            new DevExpress.XtraBars.Navigation.HeaderElementInfo(DevExpress.XtraBars.Navigation.HeaderElementType.Text),
+            new DevExpress.XtraBars.Navigation.HeaderElementInfo(DevExpress.XtraBars.Navigation.HeaderElementType.Image),
+            new DevExpress.XtraBars.Navigation.HeaderElementInfo(DevExpress.XtraBars.Navigation.HeaderElementType.HeaderControl),
+            new DevExpress.XtraBars.Navigation.HeaderElementInfo(DevExpress.XtraBars.Navigation.HeaderElementType.ContextButtons)});
             this.accItemNhanVien.Name = "accItemNhanVien";
             this.accItemNhanVien.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.accItemNhanVien.Text = "   + Quản lý Nhân viên";

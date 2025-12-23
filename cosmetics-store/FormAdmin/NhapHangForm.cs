@@ -24,12 +24,46 @@ namespace cosmetics_store.Forms
 
         private void NhapHangForm_Load(object sender, EventArgs e)
         {
+            EnsureDefaultSuppliers();
             LoadNhaCungCap();
             LoadSanPham();
             LoadPhieuNhapHistory();
             SetupGridChiTietMoi();
             dateNgayNhap.EditValue = DateTime.Now;
             dateHanSD.EditValue = DateTime.Now.AddYears(2);
+        }
+
+        private readonly (string Name, string Address, string Phone)[] _defaultSuppliers = new[]
+        {
+            ("Amorepacific Việt Nam", "TP. Hồ Chí Minh", ""),
+            ("Công ty TNHH Mediheal Việt Nam", "TP. Hồ Chí Minh", ""),
+            ("Chanel Việt Nam", "TP. Hồ Chí Minh", ""),
+            ("Christian Dior Vietnam", "Hà Nội", ""),
+            ("Shopee Mall Ofelia", "TP. Hồ Chí Minh", "")
+        };
+
+        private void EnsureDefaultSuppliers()
+        {
+            bool hasChanges = false;
+
+            foreach (var supplier in _defaultSuppliers)
+            {
+                if (!_context.NhaCungCaps.Any(n => n.TenNCC == supplier.Name))
+                {
+                    _context.NhaCungCaps.Add(new NhaCungCap
+                    {
+                        TenNCC = supplier.Name,
+                        DiaChi = supplier.Address,
+                        SDT = supplier.Phone
+                    });
+                    hasChanges = true;
+                }
+            }
+
+            if (hasChanges)
+            {
+                _context.SaveChanges();
+            }
         }
 
         private void LoadNhaCungCap()

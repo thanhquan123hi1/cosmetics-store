@@ -21,12 +21,14 @@
         private DevExpress.XtraLayout.LayoutControlItem layoutItemHinhAnh;
         private DevExpress.XtraEditors.SimpleButton btnChonAnh;
         private DevExpress.XtraLayout.LayoutControlItem layoutItemBtnChonAnh;
+        private DevExpress.XtraEditors.SimpleButton btnChonAnhMau;
         private DevExpress.XtraEditors.SimpleButton btnOk;
         private DevExpress.XtraEditors.SimpleButton btnCancel;
         private DevExpress.XtraLayout.LayoutControlItem layoutItemBtnOk;
         private DevExpress.XtraLayout.LayoutControlItem layoutItemBtnCancel;
         private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem1;
         private System.Windows.Forms.OpenFileDialog openFileDialog;
+        private DevExpress.XtraLayout.LayoutControlItem layoutItemBtnChonAnhMau;
 
         protected override void Dispose(bool disposing)
         {
@@ -45,6 +47,7 @@
             this.spinDonGia = new DevExpress.XtraEditors.SpinEdit();
             this.picHinhAnh = new DevExpress.XtraEditors.PictureEdit();
             this.btnChonAnh = new DevExpress.XtraEditors.SimpleButton();
+            this.btnChonAnhMau = new DevExpress.XtraEditors.SimpleButton();
             this.btnOk = new DevExpress.XtraEditors.SimpleButton();
             this.btnCancel = new DevExpress.XtraEditors.SimpleButton();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
@@ -56,6 +59,7 @@
             this.layoutItemDonGia = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutItemHinhAnh = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutItemBtnChonAnh = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutItemBtnChonAnhMau = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.layoutItemBtnOk = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutItemBtnCancel = new DevExpress.XtraLayout.LayoutControlItem();
@@ -93,6 +97,7 @@
             this.layoutControl.Controls.Add(this.spinDonGia);
             this.layoutControl.Controls.Add(this.picHinhAnh);
             this.layoutControl.Controls.Add(this.btnChonAnh);
+            this.layoutControl.Controls.Add(this.btnChonAnhMau);
             this.layoutControl.Controls.Add(this.btnOk);
             this.layoutControl.Controls.Add(this.btnCancel);
             this.layoutControl.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -234,6 +239,19 @@
             this.btnChonAnh.Text = "Chọn hình ảnh";
             this.btnChonAnh.Click += new System.EventHandler(this.btnChonAnh_Click);
             // 
+            // btnChonAnhMau
+            // 
+            this.btnChonAnhMau.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.btnChonAnhMau.Appearance.Options.UseFont = true;
+            this.btnChonAnhMau.Location = new System.Drawing.Point(66, 434);
+            this.btnChonAnhMau.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.btnChonAnhMau.Name = "btnChonAnhMau";
+            this.btnChonAnhMau.Size = new System.Drawing.Size(704, 28);
+            this.btnChonAnhMau.StyleController = this.layoutControl;
+            this.btnChonAnhMau.TabIndex = 10;
+            this.btnChonAnhMau.Text = "Chọn ảnh mẫu từ thư mục Image_Products";
+            this.btnChonAnhMau.Click += new System.EventHandler(this.btnChonAnhMau_Click);
+            // 
             // btnOk
             // 
             this.btnOk.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(204)))), ((int)(((byte)(113)))));
@@ -277,6 +295,7 @@
             this.layoutItemDonGia,
             this.layoutItemHinhAnh,
             this.layoutItemBtnChonAnh,
+            this.layoutItemBtnChonAnhMau,
             this.emptySpaceItem1,
             this.layoutItemBtnOk,
             this.layoutItemBtnCancel});
@@ -370,9 +389,17 @@
             this.layoutItemBtnChonAnh.Size = new System.Drawing.Size(708, 32);
             this.layoutItemBtnChonAnh.TextVisible = false;
             // 
+            // layoutItemBtnChonAnhMau
+            // 
+            this.layoutItemBtnChonAnhMau.Control = this.btnChonAnhMau;
+            this.layoutItemBtnChonAnhMau.Location = new System.Drawing.Point(0, 380);
+            this.layoutItemBtnChonAnhMau.Name = "layoutItemBtnChonAnhMau";
+            this.layoutItemBtnChonAnhMau.Size = new System.Drawing.Size(708, 32);
+            this.layoutItemBtnChonAnhMau.TextVisible = false;
+            // 
             // emptySpaceItem1
             // 
-            this.emptySpaceItem1.Location = new System.Drawing.Point(0, 380);
+            this.emptySpaceItem1.Location = new System.Drawing.Point(0, 412);
             this.emptySpaceItem1.Name = "emptySpaceItem1";
             this.emptySpaceItem1.Size = new System.Drawing.Size(708, 77);
             // 

@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Validation;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Net;
+using System.Text;
 using System.Windows.Forms;
 using BusinessAccessLayer.Services;
 using DataAccessLayer;
@@ -94,7 +96,7 @@ namespace cosmetics_store.FormKH
             StyleLabel(lblDiscount, new Font("Segoe UI", 10f, FontStyle.Bold), accentOk);
             StyleLabel(lblTotalLabel, new Font("Segoe UI", 14f, FontStyle.Bold), Color.White);
             StyleLabel(lblTotal, new Font("Segoe UI", 18f, FontStyle.Bold), accentWarn);
-            StyleLabel(lblPaymentInstructions, new Font("Segoe UI", 9f), Color.Gainsboro);
+            StyleLabel(lblPaymentInstructions, new Font("Segoe UI", 9f), Color.Black);
 
             // Input
             StyleTextEdit(txtHoTen, panelInner, border, Color.White, new Font("Segoe UI", 11f));
@@ -122,7 +124,9 @@ namespace cosmetics_store.FormKH
             StyleButton(btnApVoucher, accent, Color.White);
             StyleButton(btnXoa, accentWarn, Color.White);
             StyleButton(btnTangSL, Color.FromArgb(34, 197, 94), Color.White);
+            btnTangSL.Appearance.ForeColor = Color.Black;
             StyleButton(btnGiamSL, Color.FromArgb(59, 130, 246), Color.White);
+            btnGiamSL.Appearance.ForeColor = Color.Black;
             StyleButton(btnThanhToan, Color.FromArgb(255, 153, 51), Color.FromArgb(28, 31, 53), 16f, FontStyle.Bold);
             StyleButton(btnTiepTuc, Color.FromArgb(55, 65, 81), Color.White);
         }
@@ -240,13 +244,13 @@ namespace cosmetics_store.FormKH
             // Pre-fill with current user info
             if (CurrentUser.IsLoggedIn)
             {
-                txtHoTen.Text = CurrentUser.User.HoTen ?? "";
-                txtSDT.Text = CurrentUser.User.Email ?? "";
-                
+                txtHoTen.Text = CurrentUser.User.HoTen ?? string.Empty;
+                txtSDT.Text = string.Empty;
+
                 var kh = _khService.GetOrCreateKhachHang();
                 if (kh != null)
                 {
-                    txtDiaChi.Text = kh.DiaChi ?? "";
+                    txtDiaChi.Text = kh.DiaChi ?? string.Empty;
                     if (!string.IsNullOrEmpty(kh.SDT))
                     {
                         txtSDT.Text = kh.SDT;
@@ -745,6 +749,11 @@ namespace cosmetics_store.FormKH
                 this.DialogResult = DialogResult.OK;
                 this.Close();
             }
+            catch (DbEntityValidationException dbEx)
+            {
+                var detail = BuildValidationMessage(dbEx);
+                XtraMessageBox.Show("Lỗi dữ liệu: " + detail, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             catch (Exception ex)
             {
                 XtraMessageBox.Show($"Lỗi đặt hàng: {ex.Message}", "Lỗi",
@@ -754,34 +763,74 @@ namespace cosmetics_store.FormKH
 
         private int GetOrCreateKhachHang()
         {
-            if (CurrentUser.IsLoggedIn)
+            string hoTen = Truncate(txtHoTen.Text?.Trim(), 100);
+            string diaChi = Truncate(txtDiaChi.Text?.Trim(), 300);
+            string soDienThoai = NormalizePhone(txtSDT.Text);
+            txtHoTen.Text = hoTen;
+            txtDiaChi.Text = diaChi;
+            txtSDT.Text = soDienThoai;
+
+            KhachHang kh = null;
+
+            if (!string.IsNullOrEmpty(soDienThoai))
             {
-                var kh = _context.KhachHangs.FirstOrDefault(k => 
-                    k.SDT == CurrentUser.User.Email || k.HoTen == CurrentUser.User.HoTen);
-                    
-                if (kh != null)
-                {
-                    // C?p nh?t ??a ch? m?i
-                    if (!string.IsNullOrEmpty(txtDiaChi.Text))
-                    {
-                        kh.DiaChi = txtDiaChi.Text;
-                        _context.SaveChanges();
-                    }
-                    return kh.MaKH;
-                }
+                kh = _context.KhachHangs.FirstOrDefault(k => k.SDT == soDienThoai);
             }
 
-            // Tạo mới khách hàng
+            if (kh == null && CurrentUser.IsLoggedIn)
+            {
+                kh = _context.KhachHangs.FirstOrDefault(k => k.HoTen == CurrentUser.User.HoTen);
+            }
+
+            if (kh != null)
+            {
+                kh.HoTen = hoTen;
+                kh.DiaChi = diaChi;
+                if (!string.IsNullOrEmpty(soDienThoai))
+                {
+                    kh.SDT = soDienThoai;
+                }
+                _context.SaveChanges();
+                return kh.MaKH;
+            }
+
             var newKH = new KhachHang
             {
-                HoTen = txtHoTen.Text,
-                SDT = txtSDT.Text,
-                DiaChi = txtDiaChi.Text,
+                HoTen = hoTen,
+                SDT = soDienThoai,
+                DiaChi = diaChi,
                 GioiTinh = "Khác"
             };
             _context.KhachHangs.Add(newKH);
             _context.SaveChanges();
             return newKH.MaKH;
+        }
+
+        private string NormalizePhone(string input)
+        {
+            if (string.IsNullOrWhiteSpace(input)) return string.Empty;
+            var digits = new string(input.Where(c => char.IsDigit(c) || c == '+').ToArray());
+            if (string.IsNullOrEmpty(digits)) digits = input.Trim();
+            return Truncate(digits, 20);
+        }
+
+        private string Truncate(string input, int maxLength)
+        {
+            if (string.IsNullOrEmpty(input)) return string.Empty;
+            return input.Length > maxLength ? input.Substring(0, maxLength) : input;
+        }
+
+        private string BuildValidationMessage(DbEntityValidationException ex)
+        {
+            var sb = new StringBuilder();
+            foreach (var eve in ex.EntityValidationErrors)
+            {
+                foreach (var ve in eve.ValidationErrors)
+                {
+                    sb.AppendLine($"- {ve.PropertyName}: {ve.ErrorMessage}");
+                }
+            }
+            return sb.ToString();
         }
 
         #endregion

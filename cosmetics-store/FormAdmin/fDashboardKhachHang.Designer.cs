@@ -31,12 +31,12 @@
             this.aceSanPham = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.aceDonHang = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.aceThongTin = new DevExpress.XtraBars.Navigation.AccordionControlElement();
-            this.pnlMainContent = new System.Windows.Forms.Panel();
-            this.pictureEdit1 = new DevExpress.XtraEditors.PictureEdit();
             this.accordionControlElement1 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.accordionControlElement2 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.accordionControlElement3 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.accordionControlElement4 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.pnlMainContent = new System.Windows.Forms.Panel();
+            this.pictureEdit1 = new DevExpress.XtraEditors.PictureEdit();
             ((System.ComponentModel.ISupportInitialize)(this.pnlHeader)).BeginInit();
             this.pnlHeader.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.accordionMenu)).BeginInit();
@@ -59,27 +59,27 @@
             // 
             // lblTitle
             // 
-            this.lblTitle.Appearance.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
+            this.lblTitle.Appearance.Font = new System.Drawing.Font("Segoe UI Black", 13.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitle.Appearance.ForeColor = System.Drawing.Color.White;
             this.lblTitle.Appearance.Options.UseFont = true;
             this.lblTitle.Appearance.Options.UseForeColor = true;
             this.lblTitle.Location = new System.Drawing.Point(16, 15);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(171, 31);
+            this.lblTitle.Size = new System.Drawing.Size(176, 31);
             this.lblTitle.TabIndex = 0;
             this.lblTitle.Text = "Cosmetics Store";
             // 
             // lblUserName
             // 
             this.lblUserName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblUserName.Appearance.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.lblUserName.Appearance.Font = new System.Drawing.Font("Segoe UI", 10.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUserName.Appearance.ForeColor = System.Drawing.Color.White;
             this.lblUserName.Appearance.Options.UseFont = true;
             this.lblUserName.Appearance.Options.UseForeColor = true;
             this.lblUserName.ImageOptions.Image = global::cosmetics_store.Properties.Resources.role_tag1;
-            this.lblUserName.Location = new System.Drawing.Point(907, 8);
+            this.lblUserName.Location = new System.Drawing.Point(843, 8);
             this.lblUserName.Name = "lblUserName";
-            this.lblUserName.Size = new System.Drawing.Size(171, 42);
+            this.lblUserName.Size = new System.Drawing.Size(179, 42);
             this.lblUserName.TabIndex = 1;
             this.lblUserName.Text = "Xin chào, Khách hàng!";
             // 
@@ -87,7 +87,7 @@
             // 
             this.btnDangXuat.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnDangXuat.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(76)))), ((int)(((byte)(60)))));
-            this.btnDangXuat.Appearance.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnDangXuat.Appearance.Font = new System.Drawing.Font("Segoe UI", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDangXuat.Appearance.ForeColor = System.Drawing.Color.White;
             this.btnDangXuat.Appearance.Options.UseBackColor = true;
             this.btnDangXuat.Appearance.Options.UseFont = true;
@@ -148,27 +148,6 @@
             this.aceThongTin.Text = "Thông tin cá nhân";
             this.aceThongTin.Click += new System.EventHandler(this.OnThongTinCaNhanClick);
             // 
-            // pnlMainContent
-            // 
-            this.pnlMainContent.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(245)))), ((int)(((byte)(255)))));
-            this.pnlMainContent.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlMainContent.Location = new System.Drawing.Point(220, 56);
-            this.pnlMainContent.Name = "pnlMainContent";
-            this.pnlMainContent.Size = new System.Drawing.Size(980, 644);
-            this.pnlMainContent.TabIndex = 2;
-            // 
-            // pictureEdit1
-            // 
-            this.pictureEdit1.EditValue = global::cosmetics_store.Properties.Resources.picKhachHang;
-            this.pictureEdit1.Location = new System.Drawing.Point(0, 223);
-            this.pictureEdit1.Name = "pictureEdit1";
-            this.pictureEdit1.Properties.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.pictureEdit1.Properties.Appearance.Options.UseBackColor = true;
-            this.pictureEdit1.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
-            this.pictureEdit1.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Stretch;
-            this.pictureEdit1.Size = new System.Drawing.Size(200, 477);
-            this.pictureEdit1.TabIndex = 3;
-            // 
             // accordionControlElement1
             // 
             this.accordionControlElement1.Name = "accordionControlElement1";
@@ -192,6 +171,27 @@
             this.accordionControlElement4.Name = "accordionControlElement4";
             this.accordionControlElement4.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.accordionControlElement4.Text = "Element4";
+            // 
+            // pnlMainContent
+            // 
+            this.pnlMainContent.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(245)))), ((int)(((byte)(255)))));
+            this.pnlMainContent.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlMainContent.Location = new System.Drawing.Point(220, 56);
+            this.pnlMainContent.Name = "pnlMainContent";
+            this.pnlMainContent.Size = new System.Drawing.Size(980, 644);
+            this.pnlMainContent.TabIndex = 2;
+            // 
+            // pictureEdit1
+            // 
+            this.pictureEdit1.EditValue = global::cosmetics_store.Properties.Resources.picKhachHang;
+            this.pictureEdit1.Location = new System.Drawing.Point(0, 223);
+            this.pictureEdit1.Name = "pictureEdit1";
+            this.pictureEdit1.Properties.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.pictureEdit1.Properties.Appearance.Options.UseBackColor = true;
+            this.pictureEdit1.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
+            this.pictureEdit1.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Stretch;
+            this.pictureEdit1.Size = new System.Drawing.Size(200, 477);
+            this.pictureEdit1.TabIndex = 3;
             // 
             // fDashboardKhachHang
             // 

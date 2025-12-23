@@ -34,6 +34,7 @@
             // 
             // pnlTop
             // 
+            this.pnlTop.BackgroundImage = global::cosmetics_store.Properties.Resources.bg_dgvNhanVien;
             this.pnlTop.Controls.Add(this.searchControl);
             this.pnlTop.Controls.Add(this.btnAdd);
             this.pnlTop.Controls.Add(this.btnEdit);

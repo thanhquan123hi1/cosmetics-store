@@ -40,7 +40,6 @@
             // 
             // pnlTop
             // 
-            this.pnlTop.BackgroundImage = global::cosmetics_store.Properties.Resources.bg_dgvNhanVien;
             this.pnlTop.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.pnlTop.Controls.Add(this.searchControl);
             this.pnlTop.Controls.Add(this.rdoAll);
@@ -68,33 +67,38 @@
             // 
             // rdoAll
             // 
+            this.rdoAll.Font = new System.Drawing.Font("Snap ITC", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rdoAll.Location = new System.Drawing.Point(230, 12);
             this.rdoAll.Name = "rdoAll";
-            this.rdoAll.Size = new System.Drawing.Size(75, 30);
+            this.rdoAll.Size = new System.Drawing.Size(87, 30);
             this.rdoAll.TabIndex = 1;
             this.rdoAll.Text = "Tất cả";
             this.rdoAll.CheckedChanged += new System.EventHandler(this.rdoAll_CheckedChanged);
             // 
             // rdoMale
             // 
-            this.rdoMale.Location = new System.Drawing.Point(323, 12);
+            this.rdoMale.Font = new System.Drawing.Font("Snap ITC", 7.8F, System.Drawing.FontStyle.Bold);
+            this.rdoMale.Location = new System.Drawing.Point(342, 12);
             this.rdoMale.Name = "rdoMale";
-            this.rdoMale.Size = new System.Drawing.Size(60, 24);
+            this.rdoMale.Size = new System.Drawing.Size(73, 25);
             this.rdoMale.TabIndex = 2;
             this.rdoMale.Text = "Nam";
             this.rdoMale.CheckedChanged += new System.EventHandler(this.rdoMale_CheckedChanged);
             // 
             // rdoFemale
             // 
-            this.rdoFemale.Location = new System.Drawing.Point(411, 13);
+            this.rdoFemale.Font = new System.Drawing.Font("Snap ITC", 7.8F, System.Drawing.FontStyle.Bold);
+            this.rdoFemale.Location = new System.Drawing.Point(437, 13);
             this.rdoFemale.Name = "rdoFemale";
-            this.rdoFemale.Size = new System.Drawing.Size(60, 24);
+            this.rdoFemale.Size = new System.Drawing.Size(77, 24);
             this.rdoFemale.TabIndex = 3;
             this.rdoFemale.Text = "Nữ";
             this.rdoFemale.CheckedChanged += new System.EventHandler(this.rdoFemale_CheckedChanged);
             // 
             // btnAdd
             // 
+            this.btnAdd.Appearance.Font = new System.Drawing.Font("Snap ITC", 7.8F, System.Drawing.FontStyle.Bold);
+            this.btnAdd.Appearance.Options.UseFont = true;
             this.btnAdd.Location = new System.Drawing.Point(520, 8);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(94, 29);
@@ -104,6 +108,8 @@
             // 
             // btnEdit
             // 
+            this.btnEdit.Appearance.Font = new System.Drawing.Font("Snap ITC", 7.8F, System.Drawing.FontStyle.Bold);
+            this.btnEdit.Appearance.Options.UseFont = true;
             this.btnEdit.Location = new System.Drawing.Point(640, 8);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(94, 29);
@@ -113,6 +119,8 @@
             // 
             // btnDelete
             // 
+            this.btnDelete.Appearance.Font = new System.Drawing.Font("Snap ITC", 7.8F, System.Drawing.FontStyle.Bold);
+            this.btnDelete.Appearance.Options.UseFont = true;
             this.btnDelete.Location = new System.Drawing.Point(764, 8);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(94, 29);

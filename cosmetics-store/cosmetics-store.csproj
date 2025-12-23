@@ -460,6 +460,9 @@
     <None Include="Resources\Set of cosmetic products for skin care on glass background _ Premium Vector.jpg" />
     <None Include="Resources\bg_dgvNhanVien.png" />
     <None Include="Resources\bg_dangKy.png" />
+    <Content Include="Image_Products\250k_toner_dạng_nước.jpg" />
+    <Content Include="Image_Products\390k_kem_dưỡng.jpg" />
+    <Content Include="Image_Products\ofelia_má_hồng_201k.jpg" />
     <Content Include="Resources\forgotpwd.png" />
     <None Include="Resources\icn_home1.png" />
     <None Include="Resources\role_tag1.png" />
