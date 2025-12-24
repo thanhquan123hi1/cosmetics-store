@@ -1,4 +1,4 @@
-namespace cosmetics_store.Forms
+ï»¿namespace cosmetics_store.Forms
 {
     partial class fCostumer
     {
@@ -40,6 +40,7 @@ namespace cosmetics_store.Forms
             // 
             // pnlTop
             // 
+            this.pnlTop.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.pnlTop.Controls.Add(this.searchControl);
             this.pnlTop.Controls.Add(this.rdoAll);
             this.pnlTop.Controls.Add(this.rdoMale);
@@ -57,7 +58,7 @@ namespace cosmetics_store.Forms
             // 
             this.searchControl.Location = new System.Drawing.Point(12, 12);
             this.searchControl.Name = "searchControl";
-            this.searchControl.Properties.NullValuePrompt = "Tìm khách hàng theo tên ho?c S?T...";
+            this.searchControl.Properties.NullValuePrompt = "TÃ¬m khÃ¡ch hÃ ng theo tÃªn ho?c S?T...";
             this.searchControl.Properties.ShowClearButton = false;
             this.searchControl.Properties.ShowSearchButton = false;
             this.searchControl.Size = new System.Drawing.Size(200, 22);
@@ -66,56 +67,65 @@ namespace cosmetics_store.Forms
             // 
             // rdoAll
             // 
+            this.rdoAll.Font = new System.Drawing.Font("Snap ITC", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rdoAll.Location = new System.Drawing.Point(230, 12);
             this.rdoAll.Name = "rdoAll";
-            this.rdoAll.Size = new System.Drawing.Size(60, 24);
+            this.rdoAll.Size = new System.Drawing.Size(87, 30);
             this.rdoAll.TabIndex = 1;
-            this.rdoAll.Text = "T?t c?";
+            this.rdoAll.Text = "Táº¥t cáº£";
             this.rdoAll.CheckedChanged += new System.EventHandler(this.rdoAll_CheckedChanged);
             // 
             // rdoMale
             // 
-            this.rdoMale.Location = new System.Drawing.Point(300, 12);
+            this.rdoMale.Font = new System.Drawing.Font("Snap ITC", 7.8F, System.Drawing.FontStyle.Bold);
+            this.rdoMale.Location = new System.Drawing.Point(342, 12);
             this.rdoMale.Name = "rdoMale";
-            this.rdoMale.Size = new System.Drawing.Size(60, 24);
+            this.rdoMale.Size = new System.Drawing.Size(73, 25);
             this.rdoMale.TabIndex = 2;
             this.rdoMale.Text = "Nam";
             this.rdoMale.CheckedChanged += new System.EventHandler(this.rdoMale_CheckedChanged);
             // 
             // rdoFemale
             // 
-            this.rdoFemale.Location = new System.Drawing.Point(370, 12);
+            this.rdoFemale.Font = new System.Drawing.Font("Snap ITC", 7.8F, System.Drawing.FontStyle.Bold);
+            this.rdoFemale.Location = new System.Drawing.Point(437, 13);
             this.rdoFemale.Name = "rdoFemale";
-            this.rdoFemale.Size = new System.Drawing.Size(60, 24);
+            this.rdoFemale.Size = new System.Drawing.Size(77, 24);
             this.rdoFemale.TabIndex = 3;
-            this.rdoFemale.Text = "N?";
+            this.rdoFemale.Text = "Ná»¯";
             this.rdoFemale.CheckedChanged += new System.EventHandler(this.rdoFemale_CheckedChanged);
             // 
             // btnAdd
             // 
+            this.btnAdd.Appearance.Font = new System.Drawing.Font("Snap ITC", 7.8F, System.Drawing.FontStyle.Bold);
+            this.btnAdd.Appearance.Options.UseFont = true;
             this.btnAdd.Location = new System.Drawing.Point(520, 8);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(94, 29);
             this.btnAdd.TabIndex = 4;
-            this.btnAdd.Text = "? Thêm";
+            this.btnAdd.Text = "ThÃªm";
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // btnEdit
             // 
+            this.btnEdit.Appearance.Font = new System.Drawing.Font("Snap ITC", 7.8F, System.Drawing.FontStyle.Bold);
+            this.btnEdit.Appearance.Options.UseFont = true;
             this.btnEdit.Location = new System.Drawing.Point(640, 8);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(94, 29);
             this.btnEdit.TabIndex = 5;
-            this.btnEdit.Text = "?? S?a";
+            this.btnEdit.Text = "Sá»­a";
             this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // btnDelete
             // 
+            this.btnDelete.Appearance.Font = new System.Drawing.Font("Snap ITC", 7.8F, System.Drawing.FontStyle.Bold);
+            this.btnDelete.Appearance.Options.UseFont = true;
             this.btnDelete.Location = new System.Drawing.Point(764, 8);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(94, 29);
             this.btnDelete.TabIndex = 6;
-            this.btnDelete.Text = "??? Xóa";
+            this.btnDelete.Text = "XÃ³a";
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // gridControl1
@@ -137,15 +147,15 @@ namespace cosmetics_store.Forms
             this.gridView1.OptionsBehavior.Editable = false;
             this.gridView1.OptionsView.ShowGroupPanel = false;
             // 
-            // KhachHangForm
+            // fCostumer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(900, 600);
             this.Controls.Add(this.gridControl1);
             this.Controls.Add(this.pnlTop);
-            this.Name = "KhachHangForm";
-            this.Text = "Qu?n lý khách hàng";
+            this.Name = "fCostumer";
+            this.Text = "Quáº£n lÃ­ khÃ¡ch hÃ ng";
             this.pnlTop.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.searchControl.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();

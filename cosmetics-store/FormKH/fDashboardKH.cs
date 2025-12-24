@@ -979,11 +979,13 @@ namespace cosmetics_store.FormKH
                 
                 if (payResult.Success)
                 {
-                    XtraMessageBox.Show(
-                        $"✅ Thanh toán thành công!\n\nMã HĐ: #{payResult.MaHD}\nSố tiền: {payResult.TongTien:N0}đ",
-                        "Thành công",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Information);
+                    // Hiển thị form với QR code thanh toán
+                    using (var qrForm = new fThanhToanThanhCong(payResult.MaHD, payResult.TongTien, paymentMethod))
+                    {
+                        qrForm.ShowDialog(this);
+                    }
+                    
+                    // Refresh lại trang thanh toán
                     ShowPaymentPage();
                 }
                 else

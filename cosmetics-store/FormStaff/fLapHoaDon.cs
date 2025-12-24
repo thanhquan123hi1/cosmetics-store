@@ -147,6 +147,9 @@ namespace cosmetics_store.FormStaff
 
             RefreshChiTietGrid();
             UpdateTongTien();
+            
+            // Reset số lượng về 1 để sẵn sàng cho lần thêm tiếp theo
+            spinSoLuong.Value = 1;
         }
 
         private void RefreshChiTietGrid()

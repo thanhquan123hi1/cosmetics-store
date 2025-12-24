@@ -34,6 +34,7 @@
             // 
             // pnlTop
             // 
+            this.pnlTop.BackgroundImage = global::cosmetics_store.Properties.Resources.bg_dgvNhanVien;
             this.pnlTop.Controls.Add(this.searchControl);
             this.pnlTop.Controls.Add(this.btnAdd);
             this.pnlTop.Controls.Add(this.btnEdit);
@@ -58,6 +59,8 @@
             // 
             // btnAdd
             // 
+            this.btnAdd.Appearance.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold);
+            this.btnAdd.Appearance.Options.UseFont = true;
             this.btnAdd.Location = new System.Drawing.Point(520, 8);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(94, 29);
@@ -67,6 +70,8 @@
             // 
             // btnEdit
             // 
+            this.btnEdit.Appearance.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold);
+            this.btnEdit.Appearance.Options.UseFont = true;
             this.btnEdit.Location = new System.Drawing.Point(640, 8);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(94, 29);
@@ -76,6 +81,8 @@
             // 
             // btnDelete
             // 
+            this.btnDelete.Appearance.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold);
+            this.btnDelete.Appearance.Options.UseFont = true;
             this.btnDelete.Location = new System.Drawing.Point(764, 8);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(94, 29);
