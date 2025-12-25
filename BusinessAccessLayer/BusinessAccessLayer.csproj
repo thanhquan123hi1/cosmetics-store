@@ -63,12 +63,23 @@
     <Compile Include="DTOs\SanPhamDTO.cs" />
     <Compile Include="DTOs\ThongTinTaiKhoanDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\Admin\AdminDashboardService.cs" />
     <Compile Include="Services\AuthService.cs" />
+    <Compile Include="Services\Auth\LoginService.cs" />
+    <Compile Include="Services\Auth\PasswordService.cs" />
+    <Compile Include="Services\Auth\RegisterService.cs" />
+    <Compile Include="Services\Auth\ResetPasswordService.cs" />
     <Compile Include="Services\CurrentUser.cs" />
     <Compile Include="DatabaseSeeder.cs" />
+    <Compile Include="Services\Customer\CartService.cs" />
+    <Compile Include="Services\Customer\CustomerService.cs" />
     <Compile Include="Services\EmailService.cs" />
     <Compile Include="Services\HoaDonService.cs" />
     <Compile Include="Services\KHService.cs" />
+    <Compile Include="Services\Order\CustomerInvoiceService.cs" />
+    <Compile Include="Services\Order\InvoiceManagementService.cs" />
+    <Compile Include="Services\Product\ProductService.cs" />
+    <Compile Include="Services\Staff\StaffDashboardService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
