@@ -18,9 +18,7 @@ namespace BusinessAccessLayer.Services
             _emailService = new EmailService();
         }
 
-        /// <summary>
-        /// Authenticate user with username and password
-        /// </summary>
+
         public LoginResult Login(string username, string password)
         {
             try
@@ -30,7 +28,7 @@ namespace BusinessAccessLayer.Services
                     return new LoginResult
                     {
                         Success = false,
-                        Message = "Tên đăng nhập và mật khẩu không được để trống"
+                        Message = "Tên đăng nh?p và m?t kh?u không đư?c đ? tr?ng"
                     };
                 }
 
@@ -44,7 +42,7 @@ namespace BusinessAccessLayer.Services
                     return new LoginResult
                     {
                         Success = false,
-                        Message = "Tên đăng nhập không tồn tại"
+                        Message = "Tên đăng nh?p không t?n t?i"
                     };
                 }
 
@@ -54,7 +52,7 @@ namespace BusinessAccessLayer.Services
                     return new LoginResult
                     {
                         Success = false,
-                        Message = "Tài khoản đã bị khóa. Vui lòng liên hệ quản trị viên"
+                        Message = "Tài kho?n đ? b? khóa. Vui l?ng liên h? qu?n tr? viên"
                     };
                 }
 
@@ -84,7 +82,7 @@ namespace BusinessAccessLayer.Services
                     return new LoginResult
                     {
                         Success = false,
-                        Message = "Mật khẩu không chính xác"
+                        Message = "M?t kh?u không chính xác"
                     };
                 }
 
@@ -92,7 +90,7 @@ namespace BusinessAccessLayer.Services
                 return new LoginResult
                 {
                     Success = true,
-                    Message = "Đăng nhập thành công",
+                    Message = "Đăng nh?p thành công",
                     UserInfo = new UserInfo
                     {
                         MaNV = taiKhoan.MaNV,
@@ -109,7 +107,7 @@ namespace BusinessAccessLayer.Services
                 return new LoginResult
                 {
                     Success = false,
-                    Message = "Lỗi hệ thống: " + ex.Message
+                    Message = "L?i h? th?ng: " + ex.Message
                 };
             }
         }
@@ -203,9 +201,7 @@ namespace BusinessAccessLayer.Services
             }
         }
 
-        /// <summary>
-        /// Check if username is available
-        /// </summary>
+
         public bool IsUsernameAvailable(string username)
         {
             try
@@ -218,9 +214,7 @@ namespace BusinessAccessLayer.Services
             }
         }
 
-        /// <summary>
-        /// Check if email is available
-        /// </summary>
+
         public bool IsEmailAvailable(string email)
         {
             try
@@ -233,9 +227,7 @@ namespace BusinessAccessLayer.Services
             }
         }
 
-        /// <summary>
-        /// Check if current user has specific role
-        /// </summary>
+
         public bool CheckRole(string username, string requiredRole)
         {
             try
@@ -253,9 +245,6 @@ namespace BusinessAccessLayer.Services
             }
         }
 
-        /// <summary>
-        /// Change password for user
-        /// </summary>
         public bool ChangePassword(string username, string oldPassword, string newPassword)
         {
             try
@@ -269,7 +258,7 @@ namespace BusinessAccessLayer.Services
 
                 if (newPassword.Length < 6)
                 {
-                    throw new Exception("Mật khẩu mới phải có ít nhất 6 ký tự");
+                    throw new Exception("M?t kh?u m?i ph?i có ít nh?t 6 k? t?");
                 }
 
                 var taiKhoan = _context.TaiKhoans.FirstOrDefault(tk => tk.TenDN == username);
@@ -290,7 +279,7 @@ namespace BusinessAccessLayer.Services
 
                 if (!isOldPasswordValid)
                 {
-                    throw new Exception("Mật khẩu cũ không chính xác");
+                    throw new Exception("M?t kh?u c? không chính xác");
                 }
 
                 // Update to new hashed password
@@ -305,9 +294,6 @@ namespace BusinessAccessLayer.Services
             }
         }
 
-        /// <summary>
-        /// Get user information by username
-        /// </summary>
         public UserInfo GetUserInfo(string username)
         {
             try
@@ -602,12 +588,5 @@ namespace BusinessAccessLayer.Services
             _emailService?.Dispose();
             _context?.Dispose();
         }
-    }
-
-    public class ResetPasswordResult
-    {
-        public bool Success { get; set; }
-        public string Message { get; set; }
-        public string Email { get; set; }
     }
 }

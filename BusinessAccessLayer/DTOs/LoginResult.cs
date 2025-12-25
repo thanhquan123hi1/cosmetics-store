@@ -2,9 +2,6 @@ using System;
 
 namespace BusinessAccessLayer.DTOs
 {
-    /// <summary>
-    /// Data Transfer Object for login response
-    /// </summary>
     public class LoginResult
     {
         public bool Success { get; set; }
@@ -12,9 +9,6 @@ namespace BusinessAccessLayer.DTOs
         public UserInfo UserInfo { get; set; }
     }
 
-    /// <summary>
-    /// User information after successful login
-    /// </summary>
     public class UserInfo
     {
         public int MaNV { get; set; }

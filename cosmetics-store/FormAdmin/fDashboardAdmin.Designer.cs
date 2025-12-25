@@ -67,7 +67,7 @@
             this.pnlHeader.Controls.Add(this.lblAppTitle);
             this.pnlHeader.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlHeader.Location = new System.Drawing.Point(0, 0);
-            this.pnlHeader.Margin = new System.Windows.Forms.Padding(4);
+            this.pnlHeader.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pnlHeader.Name = "pnlHeader";
             this.pnlHeader.Size = new System.Drawing.Size(1400, 62);
             this.pnlHeader.TabIndex = 0;
@@ -82,7 +82,7 @@
             this.btnDangXuat.Appearance.Options.UseFont = true;
             this.btnDangXuat.Appearance.Options.UseForeColor = true;
             this.btnDangXuat.Location = new System.Drawing.Point(1272, 12);
-            this.btnDangXuat.Margin = new System.Windows.Forms.Padding(4);
+            this.btnDangXuat.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnDangXuat.Name = "btnDangXuat";
             this.btnDangXuat.Size = new System.Drawing.Size(117, 37);
             this.btnDangXuat.TabIndex = 2;
@@ -92,14 +92,14 @@
             // lblUserName
             // 
             this.lblUserName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblUserName.Appearance.Font = new System.Drawing.Font("Snap ITC", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUserName.Appearance.Font = new System.Drawing.Font("Segoe UI", 11.25F);
             this.lblUserName.Appearance.ForeColor = System.Drawing.Color.White;
             this.lblUserName.Appearance.Options.UseFont = true;
             this.lblUserName.Appearance.Options.UseForeColor = true;
-            this.lblUserName.Location = new System.Drawing.Point(947, 20);
-            this.lblUserName.Margin = new System.Windows.Forms.Padding(4);
+            this.lblUserName.Location = new System.Drawing.Point(992, 18);
+            this.lblUserName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.lblUserName.Name = "lblUserName";
-            this.lblUserName.Size = new System.Drawing.Size(269, 23);
+            this.lblUserName.Size = new System.Drawing.Size(202, 25);
             this.lblUserName.TabIndex = 1;
             this.lblUserName.Text = "Xin chào, Administrator!";
             // 
@@ -110,7 +110,7 @@
             this.lblAppTitle.Appearance.Options.UseFont = true;
             this.lblAppTitle.Appearance.Options.UseForeColor = true;
             this.lblAppTitle.Location = new System.Drawing.Point(18, 15);
-            this.lblAppTitle.Margin = new System.Windows.Forms.Padding(4);
+            this.lblAppTitle.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.lblAppTitle.Name = "lblAppTitle";
             this.lblAppTitle.Size = new System.Drawing.Size(182, 32);
             this.lblAppTitle.TabIndex = 0;
@@ -124,7 +124,7 @@
             this.pnlLeft.Controls.Add(this.accordionControl);
             this.pnlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlLeft.Location = new System.Drawing.Point(0, 62);
-            this.pnlLeft.Margin = new System.Windows.Forms.Padding(4);
+            this.pnlLeft.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pnlLeft.Name = "pnlLeft";
             this.pnlLeft.Size = new System.Drawing.Size(292, 738);
             this.pnlLeft.TabIndex = 1;
@@ -153,7 +153,7 @@
             this.accGroupHangHoa,
             this.accGroupKinhDoanh});
             this.accordionControl.Location = new System.Drawing.Point(0, 0);
-            this.accordionControl.Margin = new System.Windows.Forms.Padding(4);
+            this.accordionControl.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.accordionControl.Name = "accordionControl";
             this.accordionControl.ScrollBarMode = DevExpress.XtraBars.Navigation.ScrollBarMode.Touch;
             this.accordionControl.Size = new System.Drawing.Size(292, 738);
@@ -179,11 +179,6 @@
             // 
             // accItemNhanVien
             // 
-            this.accItemNhanVien.HeaderTemplate.AddRange(new DevExpress.XtraBars.Navigation.HeaderElementInfo[] {
-            new DevExpress.XtraBars.Navigation.HeaderElementInfo(DevExpress.XtraBars.Navigation.HeaderElementType.Text),
-            new DevExpress.XtraBars.Navigation.HeaderElementInfo(DevExpress.XtraBars.Navigation.HeaderElementType.Image),
-            new DevExpress.XtraBars.Navigation.HeaderElementInfo(DevExpress.XtraBars.Navigation.HeaderElementType.HeaderControl),
-            new DevExpress.XtraBars.Navigation.HeaderElementInfo(DevExpress.XtraBars.Navigation.HeaderElementType.ContextButtons)});
             this.accItemNhanVien.Name = "accItemNhanVien";
             this.accItemNhanVien.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.accItemNhanVien.Text = "   + Quản lý Nhân viên";
@@ -279,9 +274,9 @@
             this.pnlMainContent.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.pnlMainContent.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlMainContent.Location = new System.Drawing.Point(292, 62);
-            this.pnlMainContent.Margin = new System.Windows.Forms.Padding(4);
+            this.pnlMainContent.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pnlMainContent.Name = "pnlMainContent";
-            this.pnlMainContent.Padding = new System.Windows.Forms.Padding(12);
+            this.pnlMainContent.Padding = new System.Windows.Forms.Padding(12, 12, 12, 12);
             this.pnlMainContent.Size = new System.Drawing.Size(1108, 738);
             this.pnlMainContent.TabIndex = 2;
             // 
@@ -293,7 +288,7 @@
             this.Controls.Add(this.pnlMainContent);
             this.Controls.Add(this.pnlLeft);
             this.Controls.Add(this.pnlHeader);
-            this.Margin = new System.Windows.Forms.Padding(4);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MinimumSize = new System.Drawing.Size(1167, 738);
             this.Name = "fDashboardAdmin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

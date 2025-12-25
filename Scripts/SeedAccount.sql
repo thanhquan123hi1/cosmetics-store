@@ -1,25 +1,25 @@
--- Script tao tai khoan dang nhap mau
--- Chay script nay trong SQL Server Management Studio
+﻿-- Script tạo tài khoản đăng nhập mẫu
+-- Chạy script này trong SQL Server Management Studio
 
--- 1. Them nhan vien admin truoc
+-- 1. Thêm nhân viên admin trước
 INSERT INTO NhanViens (HoTen, GioiTinh, NgaySinh, DiaChi, ChucVu, SDT)
-VALUES (N'Quan Tri Vien', N'Nam', '1990-01-01', N'Ha Noi', N'Admin', '0901234567');
+VALUES (N'Quản Trị Viên', N'Nam', '1990-01-01', N'Hà Nội', N'Admin', '0901234567');
 
--- Lay MaNV vua tao
+-- Lấy MaNV vừa tạo
 DECLARE @MaNV INT = SCOPE_IDENTITY();
 
--- 2. Them tai khoan cho nhan vien
+-- 2. Thêm tài khoản cho nhân viên
 INSERT INTO TaiKhoans (MaNV, TenDN, MatKhau, Quyen, Email)
 VALUES (@MaNV, 'admin', '123456', 'Admin', 'admin@cosmetics.com');
 
--- Kiem tra
+-- Kiểm tra
 SELECT nv.MaNV, nv.HoTen, nv.ChucVu, tk.TenDN, tk.Quyen, tk.Email
 FROM NhanViens nv
 INNER JOIN TaiKhoans tk ON nv.MaNV = tk.MaNV;
 
 /*
-THONG TIN DANG NHAP:
-- Ten dang nhap: admin
-- Mat khau: 123456
-- Quyen: Admin
+THÔNG TIN ĐĂNG NHẬP:
+- Tên đăng nhập: admin
+- Mật khẩu: 123456
+- Quyền: Admin
 */

@@ -1,18 +1,14 @@
-using System;
+Ôªøusing System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using DataAccessLayer;
 using DataAccessLayer.EntityClass;
+using BusinessAccessLayer.DTOs;
 
 namespace BusinessAccessLayer.Services
 {
-    /// <summary>
-    /// Service qu?n l˝ nghi?p v? cho Kh·ch H‡ng (Customer)
-    /// Bao g?m: S?n ph?m, Gi? h‡ng, HÛa ??n, Thanh to·n
-    /// CH? cho phÈp: READ v‡ PAY
-    /// KH‘NG cho phÈp: CREATE/UPDATE/DELETE s?n ph?m
-    /// </summary>
+    
     public class KHService : IDisposable
     {
         private readonly CosmeticsContext _context;
@@ -28,22 +24,21 @@ namespace BusinessAccessLayer.Services
             _context = context;
         }
 
-        #region S?n ph?m (READ ONLY)
+        #region S·∫£n Ph·∫©m 
 
-        /// <summary>
-        /// L?y danh s·ch s?n ph?m b·n ch?y (cÛ t?n kho)
-        /// </summary>
+        // L·∫•y danh s√°ch s·∫£n ph·∫©m b√°n ch·∫°y nh·∫•t
         public List<SanPhamDTO> GetTopProducts(int count = 10)
         {
             try
             {
+                // L·∫•y b·∫£ng s·∫£n ph·∫©m join v·ªõi th∆∞∆°ng hi·ªáu v√† lo·∫°i s·∫£n ph·∫©m
                 return _context.SanPhams
                     .Include(sp => sp.ThuongHieu)
                     .Include(sp => sp.LoaiSP)
-                    .Where(sp => sp.SoLuongTon > 0)
-                    .OrderByDescending(sp => sp.CT_HoaDons.Count)
-                    .ThenByDescending(sp => sp.MaSP)
-                    .Take(count)
+                    .Where(sp => sp.SoLuongTon > 0)  // Ki·ªÉm tra s·ªë l∆∞·ª£ng t·ªìn kho, h√†ng c√≤n trong kho 
+                    .OrderByDescending(sp => sp.CT_HoaDons.Count) // S·∫Øp x·∫øp gi·∫£m d·∫ßn theo s·ªë l∆∞·ª£ng b√°n ƒë∆∞·ª£c
+                    .ThenByDescending(sp => sp.MaSP) // N·∫øu s·ªë l∆∞·ª£ng b√°n ƒë∆∞·ª£c b·∫±ng nhau th√¨ s·∫Øp x·∫øp theo m√£ s·∫£n ph·∫©m gi·∫£m d·∫ßn
+                    .Take(count) // L·∫•y s·ªë l∆∞·ª£ng s·∫£n ph·∫©m theo tham s·ªë count
                     .Select(sp => new SanPhamDTO
                     {
                         MaSP = sp.MaSP,
@@ -56,7 +51,7 @@ namespace BusinessAccessLayer.Services
                         TenLoai = sp.LoaiSP.TenLoai,
                         QuocGia = sp.ThuongHieu.QuocGia
                     })
-                    .ToList();
+                    .ToList(); // Tr·∫£ v·ªÅ danh s√°ch s·∫£n ph·∫©m
             }
             catch (Exception ex)
             {
@@ -65,9 +60,7 @@ namespace BusinessAccessLayer.Services
             }
         }
 
-        /// <summary>
-        /// L?y t?t c? s?n ph?m cÛ t?n kho
-        /// </summary>
+        // L·∫•y t·∫•t c·∫£ s·∫£n ph·∫©m v·ªõi ph√¢n trang
         public List<SanPhamDTO> GetAllProducts(int page = 1, int pageSize = 20)
         {
             try
@@ -76,9 +69,9 @@ namespace BusinessAccessLayer.Services
                     .Include(sp => sp.ThuongHieu)
                     .Include(sp => sp.LoaiSP)
                     .Where(sp => sp.SoLuongTon > 0)
-                    .OrderByDescending(sp => sp.MaSP)
-                    .Skip((page - 1) * pageSize)
-                    .Take(pageSize)
+                    .OrderByDescending(sp => sp.MaSP) // S·∫Øp x·∫øp gi·∫£m d·∫ßn theo m√£ s·∫£n ph·∫©m
+                    .Skip((page - 1) * pageSize) // B·ªè qua s·ªë s·∫£n ph·∫©m c·ªßa c√°c trang tr∆∞·ªõc
+                    .Take(pageSize) // L·∫•y s·ªë s·∫£n ph·∫©m c·ªßa trang hi·ªán t·∫°i
                     .Select(sp => new SanPhamDTO
                     {
                         MaSP = sp.MaSP,
@@ -100,9 +93,7 @@ namespace BusinessAccessLayer.Services
             }
         }
 
-        /// <summary>
-        /// TÏm ki?m s?n ph?m theo t? khÛa
-        /// </summary>
+        // T√¨m ki·∫øm s·∫£n ph·∫©m theo t·ª´ kh√≥a
         public List<SanPhamDTO> SearchProducts(string keyword)
         {
             try
@@ -111,7 +102,7 @@ namespace BusinessAccessLayer.Services
                     return GetAllProducts();
 
                 keyword = keyword.ToLower().Trim();
-
+                // T√¨m ki·∫øm trong t√™n s·∫£n ph·∫©m, t√™n th∆∞∆°ng hi·ªáu, t√™n lo·∫°i s·∫£n ph·∫©m v√† m√¥ t·∫£
                 return _context.SanPhams
                     .Include(sp => sp.ThuongHieu)
                     .Include(sp => sp.LoaiSP)
@@ -120,8 +111,8 @@ namespace BusinessAccessLayer.Services
                                   sp.ThuongHieu.TenThuongHieu.ToLower().Contains(keyword) ||
                                   sp.LoaiSP.TenLoai.ToLower().Contains(keyword) ||
                                   sp.MoTa.ToLower().Contains(keyword)))
-                    .OrderByDescending(sp => sp.MaSP)
-                    .Take(50)
+                    .OrderByDescending(sp => sp.MaSP) // S·∫Øp x·∫øp gi·∫£m d·∫ßn theo m√£ s·∫£n ph·∫©m
+                    .Take(50) // Gi·ªõi h·∫°n k·∫øt qu·∫£ tr·∫£ v·ªÅ t·ªëi ƒëa 50 s·∫£n ph·∫©m
                     .Select(sp => new SanPhamDTO
                     {
                         MaSP = sp.MaSP,
@@ -142,161 +133,11 @@ namespace BusinessAccessLayer.Services
                 return new List<SanPhamDTO>();
             }
         }
-
-        /// <summary>
-        /// L?c s?n ph?m theo th??ng hi?u
-        /// </summary>
-        public List<SanPhamDTO> FilterByBrand(int maThuongHieu)
-        {
-            try
-            {
-                return _context.SanPhams
-                    .Include(sp => sp.ThuongHieu)
-                    .Include(sp => sp.LoaiSP)
-                    .Where(sp => sp.SoLuongTon > 0 && sp.MaThuongHieu == maThuongHieu)
-                    .OrderByDescending(sp => sp.MaSP)
-                    .Select(sp => new SanPhamDTO
-                    {
-                        MaSP = sp.MaSP,
-                        TenSP = sp.TenSP,
-                        MoTa = sp.MoTa,
-                        DonGia = sp.DonGia,
-                        SoLuongTon = sp.SoLuongTon,
-                        HinhAnh = sp.HinhAnh,
-                        TenThuongHieu = sp.ThuongHieu.TenThuongHieu,
-                        TenLoai = sp.LoaiSP.TenLoai,
-                        QuocGia = sp.ThuongHieu.QuocGia
-                    })
-                    .ToList();
-            }
-            catch
-            {
-                return new List<SanPhamDTO>();
-            }
-        }
-
-        /// <summary>
-        /// L?c s?n ph?m theo kho?ng gi·
-        /// </summary>
-        public List<SanPhamDTO> FilterByPriceRange(decimal minPrice, decimal maxPrice)
-        {
-            try
-            {
-                return _context.SanPhams
-                    .Include(sp => sp.ThuongHieu)
-                    .Include(sp => sp.LoaiSP)
-                    .Where(sp => sp.SoLuongTon > 0 && sp.DonGia >= minPrice && sp.DonGia <= maxPrice)
-                    .OrderBy(sp => sp.DonGia)
-                    .Select(sp => new SanPhamDTO
-                    {
-                        MaSP = sp.MaSP,
-                        TenSP = sp.TenSP,
-                        MoTa = sp.MoTa,
-                        DonGia = sp.DonGia,
-                        SoLuongTon = sp.SoLuongTon,
-                        HinhAnh = sp.HinhAnh,
-                        TenThuongHieu = sp.ThuongHieu.TenThuongHieu,
-                        TenLoai = sp.LoaiSP.TenLoai,
-                        QuocGia = sp.ThuongHieu.QuocGia
-                    })
-                    .ToList();
-            }
-            catch
-            {
-                return new List<SanPhamDTO>();
-            }
-        }
-
-        /// <summary>
-        /// L?y chi ti?t s?n ph?m
-        /// </summary>
-        public SanPhamDTO GetProductDetail(int maSP)
-        {
-            try
-            {
-                var sp = _context.SanPhams
-                    .Include(s => s.ThuongHieu)
-                    .Include(s => s.LoaiSP)
-                    .FirstOrDefault(s => s.MaSP == maSP);
-
-                if (sp == null) return null;
-
-                return new SanPhamDTO
-                {
-                    MaSP = sp.MaSP,
-                    TenSP = sp.TenSP,
-                    MoTa = sp.MoTa,
-                    DonGia = sp.DonGia,
-                    SoLuongTon = sp.SoLuongTon,
-                    HinhAnh = sp.HinhAnh,
-                    TenThuongHieu = sp.ThuongHieu?.TenThuongHieu,
-                    TenLoai = sp.LoaiSP?.TenLoai,
-                    QuocGia = sp.ThuongHieu?.QuocGia
-                };
-            }
-            catch
-            {
-                return null;
-            }
-        }
-
-        /// <summary>
-        /// L?y danh s·ch th??ng hi?u
-        /// </summary>
-        public List<ThuongHieuDTO> GetAllBrands()
-        {
-            try
-            {
-                return _context.ThuongHieus
-                    .Select(th => new ThuongHieuDTO
-                    {
-                        MaThuongHieu = th.MaThuongHieu,
-                        TenThuongHieu = th.TenThuongHieu,
-                        QuocGia = th.QuocGia,
-                        SoSanPham = th.SanPhams.Count(sp => sp.SoLuongTon > 0)
-                    })
-                    .Where(th => th.SoSanPham > 0)
-                    .OrderBy(th => th.TenThuongHieu)
-                    .ToList();
-            }
-            catch
-            {
-                return new List<ThuongHieuDTO>();
-            }
-        }
-
-        /// <summary>
-        /// L?y danh s·ch lo?i s?n ph?m
-        /// </summary>
-        public List<LoaiSPDTO> GetAllCategories()
-        {
-            try
-            {
-                return _context.LoaiSPs
-                    .Select(l => new LoaiSPDTO
-                    {
-                        MaLoai = l.MaLoai,
-                        TenLoai = l.TenLoai,
-                        MoTa = l.MoTa,
-                        SoSanPham = l.SanPhams.Count(sp => sp.SoLuongTon > 0)
-                    })
-                    .Where(l => l.SoSanPham > 0)
-                    .OrderBy(l => l.TenLoai)
-                    .ToList();
-            }
-            catch
-            {
-                return new List<LoaiSPDTO>();
-            }
-        }
-
+      
         #endregion
 
-        #region Gi? h‡ng
+        #region Gi·ªè h√†ng
 
-        /// <summary>
-        /// ThÍm s?n ph?m v‡o gi? h‡ng
-        /// </summary>
         public CartResult AddToCart(int maSP, int soLuong = 1)
         {
             try
@@ -310,13 +151,13 @@ namespace BusinessAccessLayer.Services
                 // xem s·∫£n ph·∫©m c√≥ t·ªìn t·∫°i kh√¥ng
                 if (product == null)
                 {
-                    return new CartResult { Success = false, Message = "S?n ph?m khÙng t?n t?i" };
+                    return new CartResult { Success = false, Message = "S·∫£n ph·∫©m kh√¥ng t·ªìn t·∫°i" };
                 }
 
                 // xem s·ªë l∆∞·ª£ng t·ªìn kho c√≥ ƒë·ªß kh√¥ng
                 if (product.SoLuongTon < soLuong)
                 {
-                    return new CartResult { Success = false, Message = $"Ch? cÚn {product.SoLuongTon} s?n ph?m trong kho" };
+                    return new CartResult { Success = false, Message = $"Ch·ªâ c√≤n {product.SoLuongTon} s·∫£n ph·∫©m trong kho" };
                 }
 
                 // ki·ªÉm tra s·∫£n ph·∫©m ƒë√£ c√≥ trong gi·ªè h√†ng ch∆∞a
@@ -325,7 +166,7 @@ namespace BusinessAccessLayer.Services
                 {
                     if (existing.SoLuong + soLuong > product.SoLuongTon)
                     {
-                        return new CartResult { Success = false, Message = $"S? l??ng v??t qu· t?n kho ({product.SoLuongTon})" };
+                        return new CartResult { Success = false, Message = $"S·ªë l∆∞·ª£ng v∆∞·ª£t qu√° t·ªìn kho ({product.SoLuongTon})" };
                     }
                     existing.SoLuong += soLuong;
                 }
@@ -345,104 +186,32 @@ namespace BusinessAccessLayer.Services
                 return new CartResult
                 {
                     Success = true,
-                    Message = $"?„ thÍm '{product.TenSP}' v‡o gi? h‡ng",
+                    Message = $"ƒê√£ th√™m '{product.TenSP}' v√†o gi·ªè h√†ng",
                     CartCount = GetCartCount(),
                     CartTotal = GetCartTotal()
                 };
             }
             catch (Exception ex)
             {
-                return new CartResult { Success = false, Message = $"L?i: {ex.Message}" };
+                return new CartResult { Success = false, Message = $"L·ªói: {ex.Message}" };
             }
         }
 
-        /// <summary>
-        /// C?p nh?t s? l??ng s?n ph?m trong gi?
-        /// </summary>
-        public CartResult UpdateCartItem(int maSP, int soLuong)
-        {
-            try
-            {
-                var item = _cart.FirstOrDefault(c => c.MaSP == maSP);
-                if (item == null)
-                {
-                    return new CartResult { Success = false, Message = "S?n ph?m khÙng cÛ trong gi?" };
-                }
-
-                if (soLuong <= 0)
-                {
-                    return RemoveFromCart(maSP);
-                }
-
-                var product = _context.SanPhams.Find(maSP);
-                if (product != null && soLuong > product.SoLuongTon)
-                {
-                    return new CartResult { Success = false, Message = $"Ch? cÚn {product.SoLuongTon} s?n ph?m" };
-                }
-
-                item.SoLuong = soLuong;
-
-                return new CartResult
-                {
-                    Success = true,
-                    Message = "?„ c?p nh?t gi? h‡ng",
-                    CartCount = GetCartCount(),
-                    CartTotal = GetCartTotal()
-                };
-            }
-            catch (Exception ex)
-            {
-                return new CartResult { Success = false, Message = $"L?i: {ex.Message}" };
-            }
-        }
-
-        /// <summary>
-        /// XÛa s?n ph?m kh?i gi? h‡ng
-        /// </summary>
-        public CartResult RemoveFromCart(int maSP)
-        {
-            var item = _cart.FirstOrDefault(c => c.MaSP == maSP);
-            if (item != null)
-            {
-                _cart.Remove(item);
-            }
-
-            return new CartResult
-            {
-                Success = true,
-                Message = "?„ xÛa kh?i gi? h‡ng",
-                CartCount = GetCartCount(),
-                CartTotal = GetCartTotal()
-            };
-        }
-
-        /// <summary>
-        /// L?y danh s·ch s?n ph?m trong gi?
-        /// </summary>
         public List<CartItemDTO> GetCartItems()
         {
             return _cart.ToList();
         }
 
-        /// <summary>
-        /// ??m s? l??ng s?n ph?m trong gi?
-        /// </summary>
         public int GetCartCount()
         {
             return _cart.Sum(c => c.SoLuong);
         }
 
-        /// <summary>
-        /// TÌnh t?ng ti?n gi? h‡ng
-        /// </summary>
         public decimal GetCartTotal()
         {
             return _cart.Sum(c => c.ThanhTien);
         }
 
-        /// <summary>
-        /// XÛa to‡n b? gi? h‡ng
-        /// </summary>
         public void ClearCart()
         {
             _cart.Clear();
@@ -450,11 +219,8 @@ namespace BusinessAccessLayer.Services
 
         #endregion
 
-        #region HÛa ??n
+        #region H√≥a ƒê∆°n
 
-        /// <summary>
-        /// L?y hÛa ??n c?a kh·ch h‡ng ?ang ??ng nh?p
-        /// </summary>
         public List<HoaDonDTO> GetMyInvoices()
         {
             try
@@ -487,9 +253,6 @@ namespace BusinessAccessLayer.Services
             }
         }
 
-        /// <summary>
-        /// L?y hÛa ??n ch?a thanh to·n
-        /// </summary>
         public List<HoaDonDTO> GetUnpaidInvoices()
         {
             try
@@ -504,8 +267,8 @@ namespace BusinessAccessLayer.Services
                 return _context.HoaDons
                     .Include(h => h.CT_HoaDons)
                     .Where(h => h.MaKH == khachHang.MaKH &&
-                                h.TrangThai != "Ho‡n th‡nh" &&
-                                h.TrangThai != "?„ thanh to·n")
+                                h.TrangThai != "Ho√†n th√†nh" &&
+                                h.TrangThai != "ƒê√£ thanh to√°n")
                     .OrderByDescending(h => h.NgayLap)
                     .Select(h => new HoaDonDTO
                     {
@@ -524,9 +287,6 @@ namespace BusinessAccessLayer.Services
             }
         }
 
-        /// <summary>
-        /// L?y chi ti?t hÛa ??n
-        /// </summary>
         public HoaDonChiTietDTO GetInvoiceDetail(int maHD)
         {
             try
@@ -538,13 +298,13 @@ namespace BusinessAccessLayer.Services
 
                 if (hd == null) return null;
 
-                // Ki?m tra quy?n xem (ch? xem hÛa ??n c?a mÏnh)
+                // Ki·ªÉm tra quy·ªÅn xem (ch·ªâ xem h√≥a ƒë∆°n c·ªßa m√¨nh)
                 if (CurrentUser.IsLoggedIn)
                 {
                     var khachHang = GetOrCreateKhachHang();
                     if (khachHang != null && hd.MaKH != khachHang.MaKH)
                     {
-                        return null; // KhÙng cÛ quy?n xem
+                        return null; // Kh√¥ng c√≥ quy·ªÅn xem
                     }
                 }
 
@@ -574,105 +334,8 @@ namespace BusinessAccessLayer.Services
 
         #endregion
 
-        #region Thanh to·n
+        #region Thanh to√°n
 
-        /// <summary>
-        /// T?o hÛa ??n t? gi? h‡ng
-        /// </summary>
-        public CheckoutResult Checkout(string paymentMethod)
-        {
-            try
-            {
-                if (!CurrentUser.IsLoggedIn)
-                {
-                    return new CheckoutResult { Success = false, Message = "Vui lÚng ??ng nh?p ?? thanh to·n" };
-                }
-
-                if (_cart.Count == 0)
-                {
-                    return new CheckoutResult { Success = false, Message = "Gi? h‡ng tr?ng" };
-                }
-
-                // Ki?m tra t?n kho
-                foreach (var item in _cart)
-                {
-                    var product = _context.SanPhams.Find(item.MaSP);
-                    if (product == null || product.SoLuongTon < item.SoLuong)
-                    {
-                        return new CheckoutResult
-                        {
-                            Success = false,
-                            Message = $"S?n ph?m '{item.TenSP}' khÙng ?? s? l??ng (cÚn {product?.SoLuongTon ?? 0})"
-                        };
-                    }
-                }
-
-                var khachHang = GetOrCreateKhachHang();
-                if (khachHang == null)
-                {
-                    return new CheckoutResult { Success = false, Message = "KhÙng th? t?o thÙng tin kh·ch h‡ng" };
-                }
-
-                decimal tongTien = GetCartTotal();
-
-                // T?o hÛa ??n
-                var hoaDon = new HoaDon
-                {
-                    MaKH = khachHang.MaKH,
-                    MaNV = 1, // H? th?ng
-                    NgayLap = DateTime.Now,
-                    TongTien = tongTien,
-                    TrangThai = paymentMethod == "COD" ? "Ch? giao h‡ng" : "?„ thanh to·n",
-                    PhuongThucTT = paymentMethod
-                };
-
-                _context.HoaDons.Add(hoaDon);
-                _context.SaveChanges();
-
-                // T?o chi ti?t hÛa ??n v‡ tr? t?n kho
-                int stt = 1;
-                foreach (var item in _cart)
-                {
-                    var ct = new CT_HoaDon
-                    {
-                        MaHD = hoaDon.MaHD,
-                        MaSP = item.MaSP,
-                        STT = stt++,
-                        SoLuong = item.SoLuong,
-                        DonGia = item.DonGia
-                    };
-                    _context.CT_HoaDons.Add(ct);
-
-                    // Tr? t?n kho
-                    var product = _context.SanPhams.Find(item.MaSP);
-                    if (product != null)
-                    {
-                        product.SoLuongTon -= item.SoLuong;
-                    }
-                }
-
-                _context.SaveChanges();
-
-                // XÛa gi? h‡ng
-                ClearCart();
-
-                return new CheckoutResult
-                {
-                    Success = true,
-                    Message = "??t h‡ng th‡nh cÙng!",
-                    MaHD = hoaDon.MaHD,
-                    TongTien = tongTien
-                };
-            }
-            catch (Exception ex)
-            {
-                return new CheckoutResult { Success = false, Message = $"L?i: {ex.Message}" };
-            }
-        }
-
-        /// <summary>
-        /// Thanh to·n hÛa ??n ch?
-        /// </summary>
         public CheckoutResult PayInvoice(int maHD, string paymentMethod)
         {
             try
@@ -680,44 +343,41 @@ namespace BusinessAccessLayer.Services
                 var hoaDon = _context.HoaDons.Find(maHD);
                 if (hoaDon == null)
                 {
-                    return new CheckoutResult { Success = false, Message = "HÛa ??n khÙng t?n t?i" };
+                    return new CheckoutResult { Success = false, Message = "H√≥a ƒë∆°n kh√¥ng t·ªìn t·∫°i" };
                 }
 
-                // Ki?m tra quy?n
+                // Ki·ªÉm tra quy·ªÅn
                 if (CurrentUser.IsLoggedIn)
                 {
                     var khachHang = GetOrCreateKhachHang();
                     if (khachHang != null && hoaDon.MaKH != khachHang.MaKH)
                     {
-                        return new CheckoutResult { Success = false, Message = "B?n khÙng cÛ quy?n thanh to·n hÛa ??n n‡y" };
+                        return new CheckoutResult { Success = false, Message = "B·∫°n kh√¥ng c√≥ quy·ªÅn thanh to√°n h√≥a ƒë∆°n n√†y" };
                     }
                 }
 
-                hoaDon.TrangThai = "?„ thanh to·n";
+                hoaDon.TrangThai = "ƒê√£ thanh to√°n";
                 hoaDon.PhuongThucTT = paymentMethod;
                 _context.SaveChanges();
 
                 return new CheckoutResult
                 {
                     Success = true,
-                    Message = "Thanh to·n th‡nh cÙng!",
+                    Message = "Thanh to√°n th√†nh c√¥ng!",
                     MaHD = hoaDon.MaHD,
                     TongTien = hoaDon.TongTien
                 };
             }
             catch (Exception ex)
             {
-                return new CheckoutResult { Success = false, Message = $"L?i: {ex.Message}" };
+                return new CheckoutResult { Success = false, Message = $"L·ªói: {ex.Message}" };
             }
         }
 
         #endregion
 
-        #region Kh·ch h‡ng
+        #region Kh√°ch h√†ng
 
-        /// <summary>
-        /// L?y ho?c t?o kh·ch h‡ng t? user ?ang ??ng nh?p
-        /// </summary>
         public KhachHang GetOrCreateKhachHang()
         {
             try
@@ -726,18 +386,18 @@ namespace BusinessAccessLayer.Services
 
                 var user = CurrentUser.User;
 
-                // TÏm kh·ch h‡ng theo email ho?c h? tÍn
+                // T√¨m kh√°ch h√†ng theo email ho·∫∑c h·ªç t√™n
                 var khachHang = _context.KhachHangs
                     .FirstOrDefault(k => k.SDT == user.Email || k.HoTen == user.HoTen);
 
                 if (khachHang == null)
                 {
-                    // T?o m?i kh·ch h‡ng
+                    // T·∫°o m·ªõi kh√°ch h√†ng
                     khachHang = new KhachHang
                     {
-                        HoTen = user.HoTen ?? "Kh·ch h‡ng",
+                        HoTen = user.HoTen ?? "Kh√°ch h√†ng",
                         SDT = user.Email ?? "0000000000",
-                        GioiTinh = "Kh·c",
+                        GioiTinh = "Kh√°c",
                         DiaChi = ""
                     };
                     _context.KhachHangs.Add(khachHang);
@@ -752,9 +412,6 @@ namespace BusinessAccessLayer.Services
             }
         }
 
-        /// <summary>
-        /// L?y thÙng tin t‡i kho?n
-        /// </summary>
         public ThongTinTaiKhoanDTO GetAccountInfo()
         {
             if (!CurrentUser.IsLoggedIn) return null;
@@ -768,247 +425,11 @@ namespace BusinessAccessLayer.Services
                 HoTen = user.HoTen,
                 Email = user.Email,
                 TenDN = user.TenDN,
-                ChucVu = user.ChucVu ?? "Kh·ch h‡ng",
+                ChucVu = user.ChucVu ?? "Kh√°ch h√†ng",
                 Quyen = user.Quyen,
                 DiaChi = khachHang?.DiaChi,
                 SDT = khachHang?.SDT
             };
-        }
-
-        #endregion
-
-        #region Seed Sample Data
-
-        /// <summary>
-        /// T?o d? li?u m?u s?n ph?m cho testing
-        /// </summary>
-        public void SeedSampleProducts()
-        {
-            try
-            {
-                // Ki?m tra ?„ cÛ d? li?u ch?a
-                if (_context.SanPhams.Any())
-                {
-                    System.Diagnostics.Debug.WriteLine("?„ cÛ s?n ph?m, khÙng c?n seed");
-                    return;
-                }
-
-                // T?o th??ng hi?u m?u
-                var brands = new List<ThuongHieu>
-                {
-                    new ThuongHieu { TenThuongHieu = "L'OrÈal Paris", QuocGia = "Ph·p" },
-                    new ThuongHieu { TenThuongHieu = "Maybelline", QuocGia = "M?" },
-                    new ThuongHieu { TenThuongHieu = "Innisfree", QuocGia = "H‡n Qu?c" },
-                    new ThuongHieu { TenThuongHieu = "The Face Shop", QuocGia = "H‡n Qu?c" },
-                    new ThuongHieu { TenThuongHieu = "Cocoon", QuocGia = "Vi?t Nam" },
-                    new ThuongHieu { TenThuongHieu = "Bioderma", QuocGia = "Ph·p" },
-                    new ThuongHieu { TenThuongHieu = "Neutrogena", QuocGia = "M?" },
-                    new ThuongHieu { TenThuongHieu = "Cetaphil", QuocGia = "M?" }
-                };
-
-                foreach (var brand in brands)
-                {
-                    if (!_context.ThuongHieus.Any(t => t.TenThuongHieu == brand.TenThuongHieu))
-                    {
-                        _context.ThuongHieus.Add(brand);
-                    }
-                }
-                _context.SaveChanges();
-
-                // T?o lo?i s?n ph?m m?u
-                var categories = new List<LoaiSP>
-                {
-                    new LoaiSP { TenLoai = "Ch?m sÛc da m?t", MoTa = "C·c s?n ph?m ch?m sÛc da m?t" },
-                    new LoaiSP { TenLoai = "Trang ?i?m", MoTa = "C·c s?n ph?m trang ?i?m" },
-                    new LoaiSP { TenLoai = "Ch?m sÛc c? th?", MoTa = "C·c s?n ph?m ch?m sÛc c? th?" },
-                    new LoaiSP { TenLoai = "Ch?m sÛc tÛc", MoTa = "C·c s?n ph?m ch?m sÛc tÛc" },
-                    new LoaiSP { TenLoai = "N??c hoa", MoTa = "C·c lo?i n??c hoa" },
-                    new LoaiSP { TenLoai = "Ch?ng n?ng", MoTa = "C·c s?n ph?m ch?ng n?ng" }
-                };
-
-                foreach (var cat in categories)
-                {
-                    if (!_context.LoaiSPs.Any(l => l.TenLoai == cat.TenLoai))
-                    {
-                        _context.LoaiSPs.Add(cat);
-                    }
-                }
-                _context.SaveChanges();
-
-                // L?y ID th??ng hi?u v‡ lo?i
-                var loreal = _context.ThuongHieus.First(t => t.TenThuongHieu.Contains("L'OrÈal"));
-                var maybelline = _context.ThuongHieus.First(t => t.TenThuongHieu.Contains("Maybelline"));
-                var innisfree = _context.ThuongHieus.First(t => t.TenThuongHieu.Contains("Innisfree"));
-                var faceshop = _context.ThuongHieus.First(t => t.TenThuongHieu.Contains("Face Shop"));
-                var cocoon = _context.ThuongHieus.First(t => t.TenThuongHieu.Contains("Cocoon"));
-                var bioderma = _context.ThuongHieus.First(t => t.TenThuongHieu.Contains("Bioderma"));
-
-                var skincare = _context.LoaiSPs.First(l => l.TenLoai.Contains("da m?t"));
-                var makeup = _context.LoaiSPs.First(l => l.TenLoai.Contains("Trang ?i?m"));
-                var sunscreen = _context.LoaiSPs.First(l => l.TenLoai.Contains("Ch?ng n?ng"));
-                var bodycare = _context.LoaiSPs.First(l => l.TenLoai.Contains("c? th?"));
-
-                // T?o s?n ph?m m?u
-                var products = new List<SanPham>
-                {
-                    // Ch?m sÛc da
-                    new SanPham
-                    {
-                        TenSP = "S?a r?a m?t Innisfree Green Tea",
-                        MoTa = "S?a r?a m?t chi?t xu?t tr‡ xanh Jeju, l‡m s?ch s‚u v‡ d??ng ?m",
-                        DonGia = 285000,
-                        SoLuongTon = 50,
-                        MaThuongHieu = innisfree.MaThuongHieu,
-                        MaLoai = skincare.MaLoai,
-                        HinhAnh = ""
-                    },
-                    new SanPham
-                    {
-                        TenSP = "N??c t?y trang Bioderma Sensibio H2O",
-                        MoTa = "N??c t?y trang d‡nh cho da nh?y c?m, khÙng c?n, khÙng paraben",
-                        DonGia = 395000,
-                        SoLuongTon = 35,
-                        MaThuongHieu = bioderma.MaThuongHieu,
-                        MaLoai = skincare.MaLoai,
-                        HinhAnh = ""
-                    },
-                    new SanPham
-                    {
-                        TenSP = "Serum Vitamin C L'OrÈal Revitalift",
-                        MoTa = "Serum s·ng da, ch?ng l„o hÛa v?i 12% Vitamin C nguyÍn ch?t",
-                        DonGia = 520000,
-                        SoLuongTon = 25,
-                        MaThuongHieu = loreal.MaThuongHieu,
-                        MaLoai = skincare.MaLoai,
-                        HinhAnh = ""
-                    },
-                    new SanPham
-                    {
-                        TenSP = "Kem d??ng ?m Innisfree Aloe Revital",
-                        MoTa = "Kem d??ng ?m chi?t xu?t lÙ h?i, c?p ?m 72h",
-                        DonGia = 345000,
-                        SoLuongTon = 40,
-                        MaThuongHieu = innisfree.MaThuongHieu,
-                        MaLoai = skincare.MaLoai,
-                        HinhAnh = ""
-                    },
-
-                    // Trang ?i?m
-                    new SanPham
-                    {
-                        TenSP = "Son mÙi Maybelline SuperStay Matte",
-                        MoTa = "Son mÙi lÏ siÍu b?n m‡u 16h, khÙng lem, khÙng trÙi",
-                        DonGia = 189000,
-                        SoLuongTon = 100,
-                        MaThuongHieu = maybelline.MaThuongHieu,
-                        MaLoai = makeup.MaLoai,
-                        HinhAnh = ""
-                    },
-                    new SanPham
-                    {
-                        TenSP = "Mascara Maybelline Lash Sensational",
-                        MoTa = "Mascara l‡m d‡y v‡ d‡i mi g?p 10 l?n",
-                        DonGia = 225000,
-                        SoLuongTon = 60,
-                        MaThuongHieu = maybelline.MaThuongHieu,
-                        MaLoai = makeup.MaLoai,
-                        HinhAnh = ""
-                    },
-                    new SanPham
-                    {
-                        TenSP = "Ph?n n??c The Face Shop Ink Lasting",
-                        MoTa = "Ph?n n??c che ph? ho‡n h?o, ki?m d?u 24h",
-                        DonGia = 450000,
-                        SoLuongTon = 30,
-                        MaThuongHieu = faceshop.MaThuongHieu,
-                        MaLoai = makeup.MaLoai,
-                        HinhAnh = ""
-                    },
-                    new SanPham
-                    {
-                        TenSP = "B?ng ph?n m?t L'OrÈal Color Riche",
-                        MoTa = "B?ng ph?n m?t 16 m‡u, b·m m‡u c? ng‡y",
-                        DonGia = 385000,
-                        SoLuongTon = 45,
-                        MaThuongHieu = loreal.MaThuongHieu,
-                        MaLoai = makeup.MaLoai,
-                        HinhAnh = ""
-                    },
-
-                    // Ch?ng n?ng
-                    new SanPham
-                    {
-                        TenSP = "Kem ch?ng n?ng Innisfree Daily UV SPF50+",
-                        MoTa = "Kem ch?ng n?ng nh? nh‡ng, khÙng g‚y bÛng nh?n",
-                        DonGia = 295000,
-                        SoLuongTon = 55,
-                        MaThuongHieu = innisfree.MaThuongHieu,
-                        MaLoai = sunscreen.MaLoai,
-                        HinhAnh = ""
-                    },
-                    new SanPham
-                    {
-                        TenSP = "X?t ch?ng n?ng L'OrÈal UV Perfect",
-                        MoTa = "X?t ch?ng n?ng ti?n l?i SPF50+ PA++++",
-                        DonGia = 320000,
-                        SoLuongTon = 40,
-                        MaThuongHieu = loreal.MaThuongHieu,
-                        MaLoai = sunscreen.MaLoai,
-                        HinhAnh = ""
-                    },
-
-                    // Ch?m sÛc c? th?
-                    new SanPham
-                    {
-                        TenSP = "D?u d?a Cocoon nguyÍn ch?t",
-                        MoTa = "D?u d?a B?n Tre 100% nguyÍn ch?t, d??ng da v‡ tÛc",
-                        DonGia = 165000,
-                        SoLuongTon = 70,
-                        MaThuongHieu = cocoon.MaThuongHieu,
-                        MaLoai = bodycare.MaLoai,
-                        HinhAnh = ""
-                    },
-                    new SanPham
-                    {
-                        TenSP = "S?a t?m Cocoon C‡ phÍ ??k L?k",
-                        MoTa = "S?a t?m t?y t? b‡o ch?t t? c‡ phÍ nguyÍn ch?t",
-                        DonGia = 145000,
-                        SoLuongTon = 80,
-                        MaThuongHieu = cocoon.MaThuongHieu,
-                        MaLoai = bodycare.MaLoai,
-                        HinhAnh = ""
-                    },
-                    new SanPham
-                    {
-                        TenSP = "Kem d??ng th? Innisfree Olive Real",
-                        MoTa = "Kem d??ng th? chi?t xu?t olive, d??ng ?m s‚u",
-                        DonGia = 285000,
-                        SoLuongTon = 35,
-                        MaThuongHieu = innisfree.MaThuongHieu,
-                        MaLoai = bodycare.MaLoai,
-                        HinhAnh = ""
-                    },
-                    new SanPham
-                    {
-                        TenSP = "Son d??ng mÙi Maybelline Baby Lips",
-                        MoTa = "Son d??ng mÙi SPF20, gi? ?m 8 ti?ng",
-                        DonGia = 75000,
-                        SoLuongTon = 120,
-                        MaThuongHieu = maybelline.MaThuongHieu,
-                        MaLoai = makeup.MaLoai,
-                        HinhAnh = ""
-                    }
-                };
-
-                _context.SanPhams.AddRange(products);
-                _context.SaveChanges();
-
-                System.Diagnostics.Debug.WriteLine($"?„ t?o {products.Count} s?n ph?m m?u");
-            }
-            catch (Exception ex)
-            {
-                System.Diagnostics.Debug.WriteLine($"SeedSampleProducts Error: {ex.Message}");
-            }
         }
 
         #endregion
@@ -1018,116 +439,4 @@ namespace BusinessAccessLayer.Services
             _context?.Dispose();
         }
     }
-
-    #region DTOs
-
-    public class SanPhamDTO
-    {
-        public int MaSP { get; set; }
-        public string TenSP { get; set; }
-        public string MoTa { get; set; }
-        public decimal DonGia { get; set; }
-        public int SoLuongTon { get; set; }
-        public string HinhAnh { get; set; }
-        public string TenThuongHieu { get; set; }
-        public string TenLoai { get; set; }
-        public string QuocGia { get; set; }
-
-        public string GiaFormatted => $"{DonGia:N0}?";
-        public string GiaShort => $"{DonGia / 1000:N0}K";
-        public bool ConHang => SoLuongTon > 0;
-    }
-
-    public class ThuongHieuDTO
-    {
-        public int MaThuongHieu { get; set; }
-        public string TenThuongHieu { get; set; }
-        public string QuocGia { get; set; }
-        public int SoSanPham { get; set; }
-    }
-
-    public class LoaiSPDTO
-    {
-        public int MaLoai { get; set; }
-        public string TenLoai { get; set; }
-        public string MoTa { get; set; }
-        public int SoSanPham { get; set; }
-    }
-
-    public class CartItemDTO
-    {
-        public int MaSP { get; set; }
-        public string TenSP { get; set; }
-        public decimal DonGia { get; set; }
-        public int SoLuong { get; set; }
-        public string HinhAnh { get; set; }
-        public string TenThuongHieu { get; set; }
-
-        public decimal ThanhTien => DonGia * SoLuong;
-        public string GiaFormatted => $"{DonGia:N0}?";
-        public string ThanhTienFormatted => $"{ThanhTien:N0}?";
-    }
-
-    public class CartResult
-    {
-        public bool Success { get; set; }
-        public string Message { get; set; }
-        public int CartCount { get; set; }
-        public decimal CartTotal { get; set; }
-    }
-
-    public class HoaDonDTO
-    {
-        public int MaHD { get; set; }
-        public DateTime NgayLap { get; set; }
-        public decimal TongTien { get; set; }
-        public string TrangThai { get; set; }
-        public string PhuongThucTT { get; set; }
-        public int SoSanPham { get; set; }
-
-        public string NgayFormatted => NgayLap.ToString("dd/MM/yyyy HH:mm");
-        public string TongTienFormatted => $"{TongTien:N0}?";
-        public bool DaThanhToan => TrangThai?.ToLower().Contains("thanh to·n") == true ||
-                                    TrangThai?.ToLower().Contains("ho‡n th‡nh") == true;
-    }
-
-    public class HoaDonChiTietDTO : HoaDonDTO
-    {
-        public string TenKhachHang { get; set; }
-        public List<ChiTietHoaDonDTO> ChiTiet { get; set; } = new List<ChiTietHoaDonDTO>();
-    }
-
-    public class ChiTietHoaDonDTO
-    {
-        public int MaSP { get; set; }
-        public string TenSP { get; set; }
-        public int SoLuong { get; set; }
-        public decimal DonGia { get; set; }
-        public decimal ThanhTien { get; set; }
-
-        public string DonGiaFormatted => $"{DonGia:N0}?";
-        public string ThanhTienFormatted => $"{ThanhTien:N0}?";
-    }
-
-    public class CheckoutResult
-    {
-        public bool Success { get; set; }
-        public string Message { get; set; }
-        public int MaHD { get; set; }
-        public decimal TongTien { get; set; }
-    }
-
-    public class ThongTinTaiKhoanDTO
-    {
-        public int MaNV { get; set; }
-        public string HoTen { get; set; }
-        public string Email { get; set; }
-        public string TenDN { get; set; }
-        public string ChucVu { get; set; }
-        public string Quyen { get; set; }
-        public string DiaChi { get; set; }
-        public string SDT { get; set; }
-    }
-
-    #endregion
 }

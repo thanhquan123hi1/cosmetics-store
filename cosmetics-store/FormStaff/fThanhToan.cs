@@ -21,21 +21,34 @@ namespace cosmetics_store.FormStaff
 
         private void fThanhToan_Load(object sender, EventArgs e)
         {
-            lblKhachHang.Text = $"Khách hàng: {_khachHang.HoTen}";
-            lblTongTien.Text = $"Tổng tiền: {_tongTien:N0} VND";
+            LoadThongTin();
+        }
 
-            // Mặc định chọn tiền mặt
-            rdTienMat.Checked = true;
+        private void LoadThongTin()
+        {
+            lblKhachHang.Text = "Khách hàng: " + (_khachHang?.HoTen ?? "Khách lẻ");
+            lblSDT.Text = "SĐT: " + (_khachHang?.SDT ?? "N/A");
+            lblTongTien.Text = "TỔNG TIỀN: " + _tongTien.ToString("N0") + " VND";
+
+            // Default selection
+            rbTienMat.Checked = true;
         }
 
         private void btnXacNhan_Click(object sender, EventArgs e)
         {
-            if (rdTienMat.Checked)
+            // Xác định phương thức thanh toán
+            if (rbTienMat.Checked)
+            {
                 PhuongThucTT = "Tiền mặt";
-            else if (rdChuyenKhoan.Checked)
+            }
+            else if (rbChuyenKhoan.Checked)
+            {
                 PhuongThucTT = "Chuyển khoản";
-            else if (rdViDienTu.Checked)
+            }
+            else if (rbViDienTu.Checked)
+            {
                 PhuongThucTT = "Ví điện tử";
+            }
             else
             {
                 XtraMessageBox.Show("Vui lòng chọn phương thức thanh toán!", "Thông báo",
@@ -47,7 +60,7 @@ namespace cosmetics_store.FormStaff
             this.Close();
         }
 
-        private void btnQuayLai_Click(object sender, EventArgs e)
+        private void btnHuy_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.Cancel;
             this.Close();

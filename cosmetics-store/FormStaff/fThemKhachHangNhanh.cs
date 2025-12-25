@@ -17,6 +17,7 @@ namespace cosmetics_store.FormStaff
 
         private void btnLuu_Click(object sender, EventArgs e)
         {
+            // Validate
             if (string.IsNullOrWhiteSpace(txtHoTen.Text))
             {
                 XtraMessageBox.Show("Vui lòng nhập họ tên!", "Thông báo",
@@ -33,8 +34,18 @@ namespace cosmetics_store.FormStaff
                 return;
             }
 
+            // Validate SDT format
+            string sdt = txtSDT.Text.Trim();
+            if (sdt.Length < 10 || sdt.Length > 11)
+            {
+                XtraMessageBox.Show("Số điện thoại không hợp lệ (10-11 số)!", "Thông báo",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtSDT.Focus();
+                return;
+            }
+
             HoTen = txtHoTen.Text.Trim();
-            SDT = txtSDT.Text.Trim();
+            SDT = sdt;
             DiaChi = txtDiaChi.Text.Trim();
 
             this.DialogResult = DialogResult.OK;

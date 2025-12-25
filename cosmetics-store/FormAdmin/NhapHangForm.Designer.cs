@@ -97,14 +97,12 @@
             // 
             this.splitContainer.Panel2.Controls.Add(this.gridMaster);
             this.splitContainer.Panel2.Controls.Add(this.gridDetail);
-            this.splitContainer.Size = new System.Drawing.Size(1100, 656);
+            this.splitContainer.Size = new System.Drawing.Size(1100, 700);
             this.splitContainer.SplitterDistance = 449;
             this.splitContainer.TabIndex = 0;
             // 
             // pnlLeft
             // 
-            this.pnlLeft.BackgroundImage = global::cosmetics_store.Properties.Resources.tải_xuống__3_;
-            this.pnlLeft.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.pnlLeft.Controls.Add(this.lblNCC);
             this.pnlLeft.Controls.Add(this.lookupNCC);
             this.pnlLeft.Controls.Add(this.lblNgayNhap);
@@ -128,11 +126,9 @@
             // 
             // lblNCC
             // 
-            this.lblNCC.Appearance.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold);
-            this.lblNCC.Appearance.Options.UseFont = true;
             this.lblNCC.Location = new System.Drawing.Point(12, 15);
             this.lblNCC.Name = "lblNCC";
-            this.lblNCC.Size = new System.Drawing.Size(103, 19);
+            this.lblNCC.Size = new System.Drawing.Size(82, 16);
             this.lblNCC.TabIndex = 0;
             this.lblNCC.Text = "Nhà cung cấp:";
             // 
@@ -145,11 +141,9 @@
             // 
             // lblNgayNhap
             // 
-            this.lblNgayNhap.Appearance.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold);
-            this.lblNgayNhap.Appearance.Options.UseFont = true;
             this.lblNgayNhap.Location = new System.Drawing.Point(12, 55);
             this.lblNgayNhap.Name = "lblNgayNhap";
-            this.lblNgayNhap.Size = new System.Drawing.Size(82, 19);
+            this.lblNgayNhap.Size = new System.Drawing.Size(65, 16);
             this.lblNgayNhap.TabIndex = 2;
             this.lblNgayNhap.Text = "Ngày nhập:";
             // 
@@ -163,11 +157,9 @@
             // 
             // lblSPMoi
             // 
-            this.lblSPMoi.Appearance.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold);
-            this.lblSPMoi.Appearance.Options.UseFont = true;
             this.lblSPMoi.Location = new System.Drawing.Point(12, 95);
             this.lblSPMoi.Name = "lblSPMoi";
-            this.lblSPMoi.Size = new System.Drawing.Size(76, 19);
+            this.lblSPMoi.Size = new System.Drawing.Size(63, 16);
             this.lblSPMoi.TabIndex = 4;
             this.lblSPMoi.Text = "Sản phẩm:";
             // 
@@ -180,11 +172,9 @@
             // 
             // lblSoLuong
             // 
-            this.lblSoLuong.Appearance.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold);
-            this.lblSoLuong.Appearance.Options.UseFont = true;
             this.lblSoLuong.Location = new System.Drawing.Point(12, 135);
             this.lblSoLuong.Name = "lblSoLuong";
-            this.lblSoLuong.Size = new System.Drawing.Size(71, 19);
+            this.lblSoLuong.Size = new System.Drawing.Size(56, 16);
             this.lblSoLuong.TabIndex = 6;
             this.lblSoLuong.Text = "Số lượng:";
             // 
@@ -202,14 +192,11 @@
             // 
             // lblDonGia
             // 
-            this.lblDonGia.Appearance.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold);
-            this.lblDonGia.Appearance.Options.UseFont = true;
-            this.lblDonGia.Location = new System.Drawing.Point(230, 135);
+            this.lblDonGia.Location = new System.Drawing.Point(240, 135);
             this.lblDonGia.Name = "lblDonGia";
-            this.lblDonGia.Size = new System.Drawing.Size(63, 19);
+            this.lblDonGia.Size = new System.Drawing.Size(49, 16);
             this.lblDonGia.TabIndex = 8;
             this.lblDonGia.Text = "Đơn giá:";
-            this.lblDonGia.Click += new System.EventHandler(this.lblDonGia_Click);
             // 
             // spinDonGia
             // 
@@ -225,11 +212,9 @@
             // 
             // lblHanSD
             // 
-            this.lblHanSD.Appearance.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold);
-            this.lblHanSD.Appearance.Options.UseFont = true;
             this.lblHanSD.Location = new System.Drawing.Point(12, 175);
             this.lblHanSD.Name = "lblHanSD";
-            this.lblHanSD.Size = new System.Drawing.Size(97, 19);
+            this.lblHanSD.Size = new System.Drawing.Size(77, 16);
             this.lblHanSD.TabIndex = 10;
             this.lblHanSD.Text = "Hạn sử dụng:";
             // 
@@ -243,8 +228,6 @@
             // 
             // btnThemSP
             // 
-            this.btnThemSP.Appearance.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold);
-            this.btnThemSP.Appearance.Options.UseFont = true;
             this.btnThemSP.Location = new System.Drawing.Point(120, 212);
             this.btnThemSP.Name = "btnThemSP";
             this.btnThemSP.Size = new System.Drawing.Size(94, 29);
@@ -254,8 +237,6 @@
             // 
             // btnXoaSP
             // 
-            this.btnXoaSP.Appearance.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold);
-            this.btnXoaSP.Appearance.Options.UseFont = true;
             this.btnXoaSP.Location = new System.Drawing.Point(230, 212);
             this.btnXoaSP.Name = "btnXoaSP";
             this.btnXoaSP.Size = new System.Drawing.Size(94, 29);
@@ -265,9 +246,7 @@
             // 
             // btnTaoPhieu
             // 
-            this.btnTaoPhieu.Appearance.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold);
-            this.btnTaoPhieu.Appearance.Options.UseFont = true;
-            this.btnTaoPhieu.Location = new System.Drawing.Point(120, 247);
+            this.btnTaoPhieu.Location = new System.Drawing.Point(120, 248);
             this.btnTaoPhieu.Name = "btnTaoPhieu";
             this.btnTaoPhieu.Size = new System.Drawing.Size(200, 29);
             this.btnTaoPhieu.TabIndex = 14;
@@ -280,7 +259,7 @@
             this.gridChiTietMoi.Location = new System.Drawing.Point(0, 0);
             this.gridChiTietMoi.MainView = this.gridViewChiTietMoi;
             this.gridChiTietMoi.Name = "gridChiTietMoi";
-            this.gridChiTietMoi.Size = new System.Drawing.Size(449, 656);
+            this.gridChiTietMoi.Size = new System.Drawing.Size(449, 700);
             this.gridChiTietMoi.TabIndex = 1;
             this.gridChiTietMoi.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewChiTietMoi});
@@ -315,7 +294,7 @@
             this.gridDetail.Location = new System.Drawing.Point(0, 0);
             this.gridDetail.MainView = this.gridViewDetail;
             this.gridDetail.Name = "gridDetail";
-            this.gridDetail.Size = new System.Drawing.Size(647, 656);
+            this.gridDetail.Size = new System.Drawing.Size(647, 700);
             this.gridDetail.TabIndex = 1;
             this.gridDetail.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewDetail});
@@ -332,12 +311,10 @@
             // 
             // NhapHangForm
             // 
-            this.Appearance.Options.UseFont = true;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1100, 656);
+            this.ClientSize = new System.Drawing.Size(1100, 700);
             this.Controls.Add(this.splitContainer);
-            this.Font = new System.Drawing.Font("Times New Roman", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "NhapHangForm";
             this.Text = "Nhập hàng";
             this.splitContainer.Panel1.ResumeLayout(false);

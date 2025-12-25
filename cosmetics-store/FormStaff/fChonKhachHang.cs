@@ -43,33 +43,36 @@ namespace cosmetics_store.FormStaff
                     kh.HoTen,
                     kh.SDT,
                     GhiChu = kh.DiaChi ?? ""
-                }).ToList();
+                }).OrderByDescending(kh => kh.MaKH).Take(100).ToList();
 
                 gridKhachHang.DataSource = data;
 
-                gridViewKH.Columns["MaKH"].Caption = "Mã KH";
-                gridViewKH.Columns["HoTen"].Caption = "Họ tên";
-                gridViewKH.Columns["SDT"].Caption = "SĐT";
-                gridViewKH.Columns["GhiChu"].Caption = "Ghi chú";
+                if (gridViewKH.Columns.Count > 0)
+                {
+                    gridViewKH.Columns["MaKH"].Caption = "Mã KH";
+                    gridViewKH.Columns["HoTen"].Caption = "Họ tên";
+                    gridViewKH.Columns["SDT"].Caption = "SĐT";
+                    gridViewKH.Columns["GhiChu"].Caption = "Địa chỉ";
 
-                gridViewKH.Columns["MaKH"].Width = 60;
-                gridViewKH.Columns["HoTen"].Width = 150;
-                gridViewKH.Columns["SDT"].Width = 100;
-                gridViewKH.Columns["GhiChu"].Width = 150;
+                    gridViewKH.Columns["MaKH"].Width = 60;
+                    gridViewKH.Columns["HoTen"].Width = 180;
+                    gridViewKH.Columns["SDT"].Width = 100;
+                    gridViewKH.Columns["GhiChu"].Width = 180;
+                }
             }
             catch { }
         }
 
         private void btnTim_Click(object sender, EventArgs e)
         {
-            LoadKhachHang(txtTimKiem.Text);
+            LoadKhachHang(txtTimKiem.Text.Trim());
         }
 
         private void txtTimKiem_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == (char)Keys.Enter)
             {
-                LoadKhachHang(txtTimKiem.Text);
+                LoadKhachHang(txtTimKiem.Text.Trim());
             }
         }
 
@@ -101,7 +104,8 @@ namespace cosmetics_store.FormStaff
                         {
                             HoTen = form.HoTen,
                             SDT = form.SDT,
-                            DiaChi = form.DiaChi
+                            DiaChi = form.DiaChi,
+                            GioiTinh = "Khác"
                         };
                         _context.KhachHangs.Add(kh);
                         _context.SaveChanges();
@@ -113,7 +117,7 @@ namespace cosmetics_store.FormStaff
                     }
                     catch (Exception ex)
                     {
-                        XtraMessageBox.Show($"Lỗi: {ex.Message}", "Lỗi",
+                        XtraMessageBox.Show("Lỗi: " + ex.Message, "Lỗi",
                             MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
@@ -124,6 +128,11 @@ namespace cosmetics_store.FormStaff
         {
             this.DialogResult = DialogResult.Cancel;
             this.Close();
+        }
+
+        private void gridViewKH_DoubleClick(object sender, EventArgs e)
+        {
+            btnChon_Click(sender, e);
         }
     }
 }
