@@ -1,21 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using BusinessAccessLayer.Services;
 using BusinessAccessLayer.DTOs;
-using DataAccessLayer;
-using DataAccessLayer.EntityClass;
 using DevExpress.XtraEditors;
 
 namespace cosmetics_store.FormKH
 {
     public partial class fDashboardKH : DevExpress.XtraEditors.XtraForm
     {
-        private KHService _khService;
-        private CosmeticsContext _context;
+        private readonly KHService _khService;
         private Timer _bannerTimer;
         private int _currentBannerIndex = 0;
         private string[] _bannerTexts = new[]
@@ -45,8 +41,7 @@ namespace cosmetics_store.FormKH
         public fDashboardKH()
         {
             InitializeComponent();
-            _context = new CosmeticsContext();
-            _khService = new KHService(_context);
+            _khService = new KHService();
             
             // Enable double buffering
             this.DoubleBuffered = true;
@@ -85,10 +80,15 @@ namespace cosmetics_store.FormKH
             {
                 if (CurrentUser.IsLoggedIn)
                 {
+                    // Gọi GetOrCreateKhachHang để đảm bảo có KhachHang và MaKH được set
                     var kh = _khService.GetOrCreateKhachHang();
                     if (kh != null)
                     {
                         System.Diagnostics.Debug.WriteLine($"Customer initialized: MaKH={kh.MaKH}");
+                    }
+                    else
+                    {
+                        System.Diagnostics.Debug.WriteLine("Customer initialization failed - no KhachHang created");
                     }
                 }
             }
@@ -556,17 +556,19 @@ namespace cosmetics_store.FormKH
         {
             var panel = CreateContentPanel("📋 HÓA ĐƠN MUA HÀNG");
 
-            if (!CurrentUser.IsLoggedIn)
+            if (!CurrentUser.IsLoggedIn || CurrentUser.User == null)
             {
                 AddNotLoggedInMessage(panel, 80);
                 pnlMainArea.Controls.Add(panel);
                 return;
             }
 
-            var invoices = _khService.GetMyInvoices();
-
             int yPos = 80;
-            if (invoices == null || invoices.Count == 0)
+            
+            // Lấy hóa đơn từ service
+            var hoaDons = _khService.GetMyInvoices();
+
+            if (hoaDons.Count == 0)
             {
                 panel.Controls.Add(new Label
                 {
@@ -579,7 +581,7 @@ namespace cosmetics_store.FormKH
             }
             else
             {
-                foreach (var hd in invoices)
+                foreach (var hd in hoaDons)
                 {
                     panel.Controls.Add(CreateInvoiceCard(hd, yPos));
                     yPos += 85;
@@ -600,6 +602,44 @@ namespace cosmetics_store.FormKH
                 BorderStyle = BorderStyle.FixedSingle
             };
 
+            // Xác định trạng thái hiển thị
+            string trangThaiHienThi;
+            Color trangThaiColor;
+
+            switch (hd.TrangThai)
+            {
+                case "Đã thanh toán":
+                case "Hoàn thành":
+                case "Đã giao":
+                    trangThaiHienThi = "✅ Đã thanh toán";
+                    trangThaiColor = _accentGreen;
+                    break;
+                case "CHO_DUYET":
+                    trangThaiHienThi = "⏳ Chờ duyệt";
+                    trangThaiColor = Color.Orange;
+                    break;
+                case "CHO_XAC_NHAN_TT":
+                    trangThaiHienThi = "🔄 Chờ xác nhận TT";
+                    trangThaiColor = Color.DodgerBlue;
+                    break;
+                case "DA_DUYET":
+                    trangThaiHienThi = "📋 Đã duyệt";
+                    trangThaiColor = Color.MediumSeaGreen;
+                    break;
+                case "Đang giao":
+                    trangThaiHienThi = "🚚 Đang giao";
+                    trangThaiColor = Color.DodgerBlue;
+                    break;
+                case "Hủy":
+                    trangThaiHienThi = "❌ Đã hủy";
+                    trangThaiColor = _accentRed;
+                    break;
+                default:
+                    trangThaiHienThi = "⏳ Chờ thanh toán";
+                    trangThaiColor = Color.Orange;
+                    break;
+            }
+
             card.Controls.Add(new Label
             {
                 Text = $"🧾 #{hd.MaHD} | 📅 {hd.NgayFormatted} | 💰 {hd.TongTienFormatted}",
@@ -611,9 +651,9 @@ namespace cosmetics_store.FormKH
 
             card.Controls.Add(new Label
             {
-                Text = $"{(hd.DaThanhToan ? "✅ Đã thanh toán" : "⏳ Chờ thanh toán")} | 📦 {hd.SoSanPham} SP",
+                Text = $"{trangThaiHienThi} | 📦 {hd.SoSanPham} SP",
                 Font = new Font("Segoe UI", 10F),
-                ForeColor = hd.DaThanhToan ? _accentGreen : Color.Orange,
+                ForeColor = trangThaiColor,
                 Location = new Point(10, 42),
                 AutoSize = true
             });
@@ -634,12 +674,14 @@ namespace cosmetics_store.FormKH
             }
 
             string message = $"══ HÓA ĐƠN #{detail.MaHD} ══\n\n";
-            message += $"📅 Ngày: {detail.NgayFormatted}\n";
+            message += $"📅 Ngày: {detail.NgayLap:dd/MM/yyyy}\n";
             message += $"📊 Trạng thái: {detail.TrangThai}\n\n";
             message += "── SẢN PHẨM ──\n";
 
             foreach (var ct in detail.ChiTiet)
+            {
                 message += $"• {ct.TenSP}: {ct.SoLuong} x {ct.DonGiaFormatted} = {ct.ThanhTienFormatted}\n";
+            }
 
             message += $"\n💰 TỔNG: {detail.TongTienFormatted}";
 
@@ -654,16 +696,17 @@ namespace cosmetics_store.FormKH
         {
             var panel = CreateContentPanel("💳 THANH TOÁN HÓA ĐƠN");
 
-            if (!CurrentUser.IsLoggedIn)
+            if (!CurrentUser.IsLoggedIn || CurrentUser.User == null)
             {
                 AddNotLoggedInMessage(panel, 80);
                 pnlMainArea.Controls.Add(panel);
                 return;
             }
 
+            // Lấy hóa đơn chưa thanh toán từ service
             var unpaidInvoices = _khService.GetUnpaidInvoices();
 
-            if (unpaidInvoices == null || unpaidInvoices.Count == 0)
+            if (unpaidInvoices.Count == 0)
             {
                 panel.Controls.Add(new Label
                 {
@@ -680,7 +723,7 @@ namespace cosmetics_store.FormKH
                 foreach (var hd in unpaidInvoices)
                 {
                     panel.Controls.Add(CreatePaymentCard(hd, yPos));
-                    yPos += 100;
+                    yPos += 110;
                 }
             }
 
@@ -691,11 +734,38 @@ namespace cosmetics_store.FormKH
         {
             var card = new Panel
             {
-                Size = new Size(Math.Min(600, pnlMainArea.Width - 60), 90),
+                Size = new Size(Math.Min(650, pnlMainArea.Width - 60), 100),
                 Location = new Point(20, yPos),
                 BackColor = Color.FromArgb(255, 250, 245),
                 BorderStyle = BorderStyle.FixedSingle
             };
+
+            // Xác định trạng thái hiển thị
+            string trangThaiHienThi;
+            Color trangThaiColor;
+            bool canSelectPayment = false;
+
+            switch (hd.TrangThai)
+            {
+                case "CHO_DUYET":
+                    trangThaiHienThi = "⏳ Chờ nhân viên duyệt";
+                    trangThaiColor = Color.Orange;
+                    break;
+                case "CHO_XAC_NHAN_TT":
+                    trangThaiHienThi = "🔄 Chờ xác nhận thanh toán";
+                    trangThaiColor = Color.DodgerBlue;
+                    break;
+                case "DA_DUYET":
+                    trangThaiHienThi = "✅ Đã duyệt - Chờ thanh toán";
+                    trangThaiColor = _accentGreen;
+                    canSelectPayment = true;
+                    break;
+                default:
+                    trangThaiHienThi = "📝 Chờ chọn phương thức thanh toán";
+                    trangThaiColor = Color.Gray;
+                    canSelectPayment = true;
+                    break;
+            }
 
             card.Controls.Add(new Label
             {
@@ -705,29 +775,57 @@ namespace cosmetics_store.FormKH
                 AutoSize = true
             });
 
-            int btnX = 10;
-            var methods = new[] { ("COD", "🚚 COD"), ("Bank", "🏦 Chuyển khoản") };
-
-            foreach (var (method, text) in methods)
+            card.Controls.Add(new Label
             {
-                var btn = new Button
+                Text = trangThaiHienThi,
+                Font = new Font("Segoe UI", 10F),
+                ForeColor = trangThaiColor,
+                Location = new Point(10, 35),
+                AutoSize = true
+            });
+
+            // Chỉ hiển thị nút thanh toán nếu có thể chọn
+            if (canSelectPayment)
+            {
+                int btnX = 10;
+                var methods = new[] { ("COD", "🚚 COD"), ("Bank", "🏦 Chuyển khoản") };
+
+                foreach (var (method, text) in methods)
                 {
-                    Text = text,
-                    Font = new Font("Segoe UI", 9F, FontStyle.Bold),
-                    Size = new Size(120, 30),
-                    Location = new Point(btnX, 50),
-                    FlatStyle = FlatStyle.Flat,
-                    BackColor = _lightPurple,
-                    ForeColor = Color.White,
-                    Cursor = Cursors.Hand
-                };
-                btn.FlatAppearance.BorderSize = 0;
-                
-                int maHD = hd.MaHD;
-                string payMethod = method;
-                btn.Click += (s, e) => ProcessPayment(maHD, payMethod);
-                card.Controls.Add(btn);
-                btnX += 130;
+                    var btn = new Button
+                    {
+                        Text = text,
+                        Font = new Font("Segoe UI", 9F, FontStyle.Bold),
+                        Size = new Size(130, 30),
+                        Location = new Point(btnX, 62),
+                        FlatStyle = FlatStyle.Flat,
+                        BackColor = _lightPurple,
+                        ForeColor = Color.White,
+                        Cursor = Cursors.Hand
+                    };
+                    btn.FlatAppearance.BorderSize = 0;
+                    
+                    int maHD = hd.MaHD;
+                    string payMethod = method;
+                    btn.Click += (s, e) => ProcessPayment(maHD, payMethod);
+                    card.Controls.Add(btn);
+                    btnX += 140;
+                }
+            }
+            else
+            {
+                // Hiển thị phương thức thanh toán đã chọn
+                if (!string.IsNullOrEmpty(hd.PhuongThucTT))
+                {
+                    card.Controls.Add(new Label
+                    {
+                        Text = $"💳 Phương thức: {hd.PhuongThucTT}",
+                        Font = new Font("Segoe UI", 9F),
+                        ForeColor = Color.Gray,
+                        Location = new Point(10, 62),
+                        AutoSize = true
+                    });
+                }
             }
 
             return card;
@@ -735,23 +833,35 @@ namespace cosmetics_store.FormKH
 
         private void ProcessPayment(int maHD, string paymentMethod)
         {
-            var result = XtraMessageBox.Show(
-                $"Xác nhận thanh toán hóa đơn #{maHD}?\nPhương thức: {paymentMethod}",
-                "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            string confirmMessage = paymentMethod == "COD"
+                ? $"Xác nhận chọn thanh toán khi nhận hàng (COD) cho hóa đơn #{maHD}?\n\n" +
+                  "📝 Đơn hàng sẽ được gửi cho nhân viên xác nhận.\n" +
+                  "📦 Bạn sẽ thanh toán khi nhận hàng."
+                : $"Xác nhận đã chuyển khoản cho hóa đơn #{maHD}?\n\n" +
+                  "⚠️ Vui lòng chỉ xác nhận sau khi đã hoàn tất chuyển khoản.\n" +
+                  "📝 Nhân viên sẽ kiểm tra và xác nhận thanh toán.";
 
-            if (result == DialogResult.Yes)
+            var dialogResult = XtraMessageBox.Show(confirmMessage,
+                paymentMethod == "COD" ? "Xác nhận phương thức thanh toán" : "Xác nhận chuyển khoản",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (dialogResult == DialogResult.Yes)
             {
-                var payResult = _khService.PayInvoice(maHD, paymentMethod);
-                
-                if (payResult.Success)
+                var result = _khService.SelectPaymentMethod(maHD, paymentMethod);
+
+                if (result.Success)
                 {
-                    XtraMessageBox.Show($"✅ Thanh toán thành công!", "Thành công",
+                    XtraMessageBox.Show(
+                        $"✅ {result.Message}\n\n" +
+                        $"📝 Mã đơn hàng: #{maHD}",
+                        "Thành công",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
+
                     ShowPaymentPage();
                 }
                 else
                 {
-                    XtraMessageBox.Show(payResult.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    XtraMessageBox.Show(result.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -764,36 +874,31 @@ namespace cosmetics_store.FormKH
         {
             var panel = CreateContentPanel("👤 THÔNG TIN TÀI KHOẢN");
 
-            if (!CurrentUser.IsLoggedIn)
+            if (!CurrentUser.IsLoggedIn || CurrentUser.User == null)
             {
                 AddNotLoggedInMessage(panel, 80);
                 pnlMainArea.Controls.Add(panel);
                 return;
             }
 
+            // Lấy thông tin từ service
             var accountInfo = _khService.GetAccountInfo();
             
-            if (accountInfo == null)
-            {
-                panel.Controls.Add(new Label
-                {
-                    Text = "⚠️ Không thể tải thông tin tài khoản.",
-                    Font = new Font("Segoe UI", 12F),
-                    ForeColor = Color.OrangeRed,
-                    Location = new Point(20, 80),
-                    AutoSize = true
-                });
-                pnlMainArea.Controls.Add(panel);
-                return;
-            }
+            string hoTen = accountInfo?.HoTen ?? CurrentUser.User.HoTen ?? "Chưa cập nhật";
+            string email = accountInfo?.Email ?? CurrentUser.User.Email ?? "Chưa cập nhật";
+            string tenDN = CurrentUser.User.TenDN ?? "Chưa cập nhật";
+            string sdt = !string.IsNullOrEmpty(accountInfo?.SDT) ? accountInfo.SDT : "Chưa cập nhật";
+            string diaChi = !string.IsNullOrEmpty(accountInfo?.DiaChi) ? accountInfo.DiaChi : "Chưa cập nhật";
+            string gioiTinh = !string.IsNullOrEmpty(accountInfo?.GioiTinh) ? accountInfo.GioiTinh : "Chưa cập nhật";
 
             var infoItems = new[]
             {
-                ("Họ tên:", accountInfo.HoTen ?? "-"),
-                ("Email:", accountInfo.Email ?? "-"),
-                ("Tài khoản:", accountInfo.TenDN ?? "-"),
-                ("SĐT:", !string.IsNullOrEmpty(accountInfo.SDT) ? accountInfo.SDT : "-"),
-                ("Địa chỉ:", !string.IsNullOrEmpty(accountInfo.DiaChi) ? accountInfo.DiaChi : "-")
+                ("Họ tên:", hoTen),
+                ("Email:", email),
+                ("Tài khoản:", tenDN),
+                ("SĐT:", sdt),
+                ("Địa chỉ:", diaChi),
+                ("Giới tính:", gioiTinh)
             };
 
             int yPos = 80;
@@ -812,7 +917,7 @@ namespace cosmetics_store.FormKH
                 {
                     Text = value,
                     Font = new Font("Segoe UI", 10F, FontStyle.Bold),
-                    ForeColor = Color.FromArgb(45, 45, 48),
+                    ForeColor = value == "Chưa cập nhật" ? Color.OrangeRed : Color.FromArgb(45, 45, 48),
                     Location = new Point(130, yPos),
                     AutoSize = true,
                     MaximumSize = new Size(400, 0)
@@ -820,7 +925,192 @@ namespace cosmetics_store.FormKH
                 yPos += 30;
             }
 
+            // Nút chỉnh sửa thông tin
+            yPos += 20;
+            var btnEdit = new Button
+            {
+                Text = "✏️ Cập nhật thông tin",
+                Font = new Font("Segoe UI", 10F, FontStyle.Bold),
+                Size = new Size(180, 40),
+                Location = new Point(20, yPos),
+                FlatStyle = FlatStyle.Flat,
+                BackColor = _lightPurple,
+                ForeColor = Color.White,
+                Cursor = Cursors.Hand
+            };
+            btnEdit.FlatAppearance.BorderSize = 0;
+            btnEdit.Click += (s, e) => ShowEditAccountForm();
+            panel.Controls.Add(btnEdit);
+
             pnlMainArea.Controls.Add(panel);
+        }
+
+        private void ShowEditAccountForm()
+        {
+            var accountInfo = _khService.GetAccountInfo();
+            
+            using (var form = new Form())
+            {
+                form.Text = "✏️ Cập nhật thông tin";
+                form.Size = new Size(450, 380);
+                form.StartPosition = FormStartPosition.CenterParent;
+                form.FormBorderStyle = FormBorderStyle.FixedDialog;
+                form.MaximizeBox = false;
+                form.MinimizeBox = false;
+                form.BackColor = Color.White;
+
+                int yPos = 20;
+
+                // Title
+                form.Controls.Add(new Label
+                {
+                    Text = "CẬP NHẬT THÔNG TIN CÁ NHÂN",
+                    Font = new Font("Segoe UI", 14F, FontStyle.Bold),
+                    ForeColor = _primaryPurple,
+                    Location = new Point(20, yPos),
+                    AutoSize = true
+                });
+                yPos += 45;
+
+                // Họ tên
+                form.Controls.Add(new Label
+                {
+                    Text = "Họ tên:",
+                    Font = new Font("Segoe UI", 10F),
+                    Location = new Point(20, yPos),
+                    Size = new Size(80, 22)
+                });
+                var txtHoTen = new TextBox
+                {
+                    Name = "txtHoTen",
+                    Text = accountInfo?.HoTen ?? "",
+                    Font = new Font("Segoe UI", 10F),
+                    Location = new Point(110, yPos),
+                    Size = new Size(300, 25)
+                };
+                form.Controls.Add(txtHoTen);
+                yPos += 35;
+
+                // SĐT
+                form.Controls.Add(new Label
+                {
+                    Text = "SĐT:",
+                    Font = new Font("Segoe UI", 10F),
+                    Location = new Point(20, yPos),
+                    Size = new Size(80, 22)
+                });
+                var txtSDT = new TextBox
+                {
+                    Name = "txtSDT",
+                    Text = accountInfo?.SDT ?? "",
+                    Font = new Font("Segoe UI", 10F),
+                    Location = new Point(110, yPos),
+                    Size = new Size(300, 25)
+                };
+                form.Controls.Add(txtSDT);
+                yPos += 35;
+
+                // Địa chỉ
+                form.Controls.Add(new Label
+                {
+                    Text = "Địa chỉ:",
+                    Font = new Font("Segoe UI", 10F),
+                    Location = new Point(20, yPos),
+                    Size = new Size(80, 22)
+                });
+                var txtDiaChi = new TextBox
+                {
+                    Name = "txtDiaChi",
+                    Text = accountInfo?.DiaChi ?? "",
+                    Font = new Font("Segoe UI", 10F),
+                    Location = new Point(110, yPos),
+                    Size = new Size(300, 50),
+                    Multiline = true
+                };
+                form.Controls.Add(txtDiaChi);
+                yPos += 60;
+
+                // Giới tính
+                form.Controls.Add(new Label
+                {
+                    Text = "Giới tính:",
+                    Font = new Font("Segoe UI", 10F),
+                    Location = new Point(20, yPos),
+                    Size = new Size(80, 22)
+                });
+                var cboGioiTinh = new System.Windows.Forms.ComboBox
+                {
+                    Name = "cboGioiTinh",
+                    Font = new Font("Segoe UI", 10F),
+                    Location = new Point(110, yPos),
+                    Size = new Size(150, 25),
+                    DropDownStyle = ComboBoxStyle.DropDownList
+                };
+                cboGioiTinh.Items.AddRange(new[] { "Nam", "Nữ", "Khác" });
+                cboGioiTinh.SelectedItem = accountInfo?.GioiTinh ?? "Khác";
+                form.Controls.Add(cboGioiTinh);
+                yPos += 45;
+
+                // Buttons
+                var btnSave = new Button
+                {
+                    Text = "💾 Lưu thay đổi",
+                    Font = new Font("Segoe UI", 10F, FontStyle.Bold),
+                    Size = new Size(140, 38),
+                    Location = new Point(110, yPos),
+                    FlatStyle = FlatStyle.Flat,
+                    BackColor = _accentGreen,
+                    ForeColor = Color.White,
+                    Cursor = Cursors.Hand,
+                    DialogResult = DialogResult.OK
+                };
+                btnSave.FlatAppearance.BorderSize = 0;
+                form.Controls.Add(btnSave);
+
+                var btnCancel = new Button
+                {
+                    Text = "❌ Hủy",
+                    Font = new Font("Segoe UI", 10F),
+                    Size = new Size(100, 38),
+                    Location = new Point(260, yPos),
+                    FlatStyle = FlatStyle.Flat,
+                    BackColor = Color.FromArgb(189, 195, 199),
+                    ForeColor = Color.White,
+                    Cursor = Cursors.Hand,
+                    DialogResult = DialogResult.Cancel
+                };
+                btnCancel.FlatAppearance.BorderSize = 0;
+                form.Controls.Add(btnCancel);
+
+                form.AcceptButton = btnSave;
+                form.CancelButton = btnCancel;
+
+                if (form.ShowDialog() == DialogResult.OK)
+                {
+                    // Lưu thông tin
+                    bool success = _khService.UpdateCustomerInfo(
+                        txtHoTen.Text.Trim(),
+                        txtSDT.Text.Trim(),
+                        txtDiaChi.Text.Trim(),
+                        null, // Không đổi email
+                        cboGioiTinh.SelectedItem?.ToString()
+                    );
+
+                    if (success)
+                    {
+                        XtraMessageBox.Show("✅ Cập nhật thông tin thành công!", "Thành công",
+                            MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        
+                        // Refresh trang thông tin
+                        ShowAccountInfoPage();
+                    }
+                    else
+                    {
+                        XtraMessageBox.Show("❌ Có lỗi xảy ra khi cập nhật!", "Lỗi",
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
         }
 
         #endregion
@@ -850,11 +1140,11 @@ namespace cosmetics_store.FormKH
 
         private void ShowProductDetail(int maSP)
         {
-            var product = _context.SanPhams.Include(sp => sp.ThuongHieu).FirstOrDefault(sp => sp.MaSP == maSP);
+            var product = _khService.GetProductById(maSP);
                 
             if (product != null)
             {
-                using (var form = new fSanPhamDetail(product, _context))
+                using (var form = new fSanPhamDetail(product))
                 {
                     if (form.ShowDialog() == DialogResult.OK)
                     {
@@ -881,19 +1171,10 @@ namespace cosmetics_store.FormKH
                 return;
             }
 
-            var legacyCart = cartItems.Select(c => new CartItem
-            {
-                MaSP = c.MaSP,
-                TenSP = c.TenSP,
-                DonGia = c.DonGia,
-                SoLuong = c.SoLuong
-            }).ToList();
-
-            using (var form = new fGioHang(legacyCart, _context))
+            using (var form = new fGioHang())
             {
                 if (form.ShowDialog() == DialogResult.OK)
                 {
-                    _khService.ClearCart();
                     UpdateCartCount();
                     _cachedTopProducts = null;
                     _cachedAllProducts = null;
@@ -1034,7 +1315,6 @@ namespace cosmetics_store.FormKH
                 _bannerTimer?.Stop();
                 _bannerTimer?.Dispose();
                 _khService?.Dispose();
-                _context?.Dispose();
             }
             base.Dispose(disposing);
         }
@@ -1042,14 +1322,5 @@ namespace cosmetics_store.FormKH
         #endregion
 
         private void flowSidebar_Paint(object sender, PaintEventArgs e) { }
-    }
-
-    public class CartItem
-    {
-        public int MaSP { get; set; }
-        public string TenSP { get; set; }
-        public decimal DonGia { get; set; }
-        public int SoLuong { get; set; }
-        public decimal ThanhTien => DonGia * SoLuong;
     }
 }

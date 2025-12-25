@@ -12,6 +12,7 @@ namespace BusinessAccessLayer.DTOs
     public class UserInfo
     {
         public int MaNV { get; set; }
+        public int MaKH { get; set; } // ID khách hàng (??c l?p v?i MaNV)
         public string HoTen { get; set; }
         public string TenDN { get; set; }
         public string Quyen { get; set; }

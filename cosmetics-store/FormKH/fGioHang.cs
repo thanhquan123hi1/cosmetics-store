@@ -1,22 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Net;
 using System.Windows.Forms;
 using BusinessAccessLayer.Services;
-using DataAccessLayer;
-using DataAccessLayer.EntityClass;
+using BusinessAccessLayer.Services.Order;
+using BusinessAccessLayer.DTOs;
 using DevExpress.XtraEditors;
 
 namespace cosmetics_store.FormKH
 {
     public partial class fGioHang : DevExpress.XtraEditors.XtraForm
     {
-        private List<CartItem> _cart;
-        private CosmeticsContext _context;
-        private KHService _khService;
+        private readonly KHService _khService;
+        private List<CartItemDTO> _cartItems;
         
         // Payment state
         private string _selectedPaymentMethod = "COD";
@@ -30,12 +28,10 @@ namespace cosmetics_store.FormKH
         private readonly Color _accentGreen = Color.FromArgb(46, 204, 113);
         private readonly Color _accentRed = Color.FromArgb(231, 76, 60);
 
-        public fGioHang(List<CartItem> cart, CosmeticsContext context)
+        public fGioHang()
         {
             InitializeComponent();
-            _cart = cart;
-            _context = context;
-            _khService = new KHService(context);
+            _khService = new KHService();
             this.Load += fGioHang_Load;
         }
 
@@ -53,7 +49,6 @@ namespace cosmetics_store.FormKH
 
         private void SetupUI()
         {
-            // Set form properties
             this.Text = "🛒 Giỏ hàng & Thanh toán";
             this.BackColor = Color.FromArgb(250, 248, 255);
         }
@@ -62,21 +57,17 @@ namespace cosmetics_store.FormKH
         {
             pnlPaymentMethods.Controls.Clear();
 
-            var methods = new Tuple<string, string, string> []
+            var methods = new[]
             {
-                Tuple.Create("COD", "💵 Thanh toán khi nhận hàng (COD)", "Thanh toán bằng tiền mặt khi nhận hàng"),
-                Tuple.Create("BANK", "🏦 Chuyển khoản ngân hàng", "Chuyển khoản qua tài khoản ngân hàng"),
-                Tuple.Create("MOMO", "📱 Ví MoMo", "Thanh toán qua ví điện tử MoMo"),
-                Tuple.Create("ZALOPAY", "💳 ZaloPay", "Thanh toán qua ZaloPay")
+                ("COD", "💵 Thanh toán khi nhận hàng (COD)", "Thanh toán bằng tiền mặt khi nhận hàng"),
+                ("BANK", "🏦 Chuyển khoản ngân hàng", "Chuyển khoản qua tài khoản ngân hàng"),
+                ("MOMO", "📱 Ví MoMo", "Thanh toán qua ví điện tử MoMo"),
+                ("ZALOPAY", "💳 ZaloPay", "Thanh toán qua ZaloPay")
             };
 
             int yPos = 10;
-            foreach (var method in methods)
+            foreach (var (code, name, desc) in methods)
             {
-                string code = method.Item1;
-                string name = method.Item2;
-                string desc = method.Item3;
-
                 var radio = new RadioButton
                 {
                     Text = name,
@@ -114,33 +105,24 @@ namespace cosmetics_store.FormKH
 
         private void SetupShippingInfo()
         {
-            // Pre-fill with current user info from KhachHang (không phụ thuộc NhanVien)
-            if (CurrentUser.IsLoggedIn)
+            if (!CurrentUser.IsLoggedIn) return;
+
+            // Lấy thông tin giao hàng từ service
+            var shippingInfo = _khService.GetShippingInfo(CurrentUser.User?.Email);
+            if (shippingInfo != null)
             {
-                var accountInfo = _khService.GetAccountInfo();
-                if (accountInfo != null)
-                {
-                    txtHoTen.Text = accountInfo.HoTen ?? "";
-                    txtSDT.Text = accountInfo.SDT ?? "";
-                    txtDiaChi.Text = accountInfo.DiaChi ?? "";
-                    
-                    // Nếu SDT trống, thử dùng email làm liên hệ
-                    if (string.IsNullOrEmpty(txtSDT.Text) && !string.IsNullOrEmpty(accountInfo.Email))
-                    {
-                        // Không điền email vào SDT, để trống cho user nhập
-                    }
-                }
-                else
-                {
-                    // Fallback nếu không lấy được thông tin khách hàng
-                    txtHoTen.Text = CurrentUser.User?.HoTen ?? "";
-                }
+                txtHoTen.Text = shippingInfo.HoTen ?? "";
+                txtSDT.Text = shippingInfo.SDT ?? "";
+                txtDiaChi.Text = shippingInfo.DiaChi ?? "";
+            }
+            else if (CurrentUser.User != null)
+            {
+                txtHoTen.Text = CurrentUser.User.HoTen ?? "";
             }
         }
 
         private void SetupVoucherSection()
         {
-            // Voucher hints
             lblVoucherHint.Text = "💡 Nhập FREESHIP để miễn phí vận chuyển, GIAM10 để giảm 10%";
         }
 
@@ -150,15 +132,18 @@ namespace cosmetics_store.FormKH
 
         private void LoadCart()
         {
+            // Lấy giỏ hàng từ service
+            _cartItems = _khService.GetCartItems();
+            
             gridGioHang.DataSource = null;
             
-            var displayData = _cart.Select(c => new
+            var displayData = _cartItems.Select(c => new
             {
                 c.MaSP,
                 c.TenSP,
                 c.SoLuong,
-                DonGia = c.DonGia,
-                ThanhTien = c.ThanhTien
+                c.DonGia,
+                c.ThanhTien
             }).ToList();
 
             gridGioHang.DataSource = displayData;
@@ -185,7 +170,7 @@ namespace cosmetics_store.FormKH
 
         private void UpdateTotals()
         {
-            decimal subtotal = _cart.Sum(c => c.ThanhTien);
+            decimal subtotal = _cartItems?.Sum(c => c.ThanhTien) ?? 0;
             decimal total = GetFinalTotal();
 
             lblSubtotal.Text = $"{subtotal:N0}đ";
@@ -194,7 +179,6 @@ namespace cosmetics_store.FormKH
             lblDiscount.ForeColor = _discountAmount > 0 ? _accentGreen : Color.Gray;
             lblTotal.Text = $"{total:N0}đ";
 
-            // Update QR if online payment
             if (_selectedPaymentMethod != "COD")
             {
                 UpdateQRCodeDisplay();
@@ -203,7 +187,7 @@ namespace cosmetics_store.FormKH
 
         private decimal GetFinalTotal()
         {
-            decimal subtotal = _cart.Sum(c => c.ThanhTien);
+            decimal subtotal = _cartItems?.Sum(c => c.ThanhTien) ?? 0;
             return Math.Max(0, subtotal + _shippingFee - _discountAmount);
         }
 
@@ -212,21 +196,19 @@ namespace cosmetics_store.FormKH
             if (gridViewGH.FocusedRowHandle < 0) return;
 
             int maSP = Convert.ToInt32(gridViewGH.GetFocusedRowCellValue("MaSP"));
-            var item = _cart.FirstOrDefault(c => c.MaSP == maSP);
-            if (item != null)
-            {
-                var result = XtraMessageBox.Show(
-                    $"Xóa '{item.TenSP}' khỏi giỏ hàng?",
-                    "Xác nhận",
-                    MessageBoxButtons.YesNo,
-                    MessageBoxIcon.Question);
+            string tenSP = gridViewGH.GetFocusedRowCellValue("TenSP")?.ToString() ?? "";
 
-                if (result == DialogResult.Yes)
-                {
-                    _cart.Remove(item);
-                    LoadCart();
-                    UpdateTotals();
-                }
+            var result = XtraMessageBox.Show(
+                $"Xóa '{tenSP}' khỏi giỏ hàng?",
+                "Xác nhận",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                _khService.RemoveFromCart(maSP);
+                LoadCart();
+                UpdateTotals();
             }
         }
 
@@ -234,23 +216,22 @@ namespace cosmetics_store.FormKH
         {
             if (gridViewGH.FocusedRowHandle < 0) return;
             int maSP = Convert.ToInt32(gridViewGH.GetFocusedRowCellValue("MaSP"));
-            var item = _cart.FirstOrDefault(c => c.MaSP == maSP);
-            if (item != null)
-            {
-                item.SoLuong++;
-                LoadCart();
-                UpdateTotals();
-            }
+            
+            // Thêm 1 sản phẩm vào giỏ
+            _khService.AddToCart(maSP, 1);
+            LoadCart();
+            UpdateTotals();
         }
 
         private void btnGiamSL_Click(object sender, EventArgs e)
         {
             if (gridViewGH.FocusedRowHandle < 0) return;
             int maSP = Convert.ToInt32(gridViewGH.GetFocusedRowCellValue("MaSP"));
-            var item = _cart.FirstOrDefault(c => c.MaSP == maSP);
-            if (item != null && item.SoLuong > 1)
+            int soLuong = Convert.ToInt32(gridViewGH.GetFocusedRowCellValue("SoLuong"));
+            
+            if (soLuong > 1)
             {
-                item.SoLuong--;
+                _khService.UpdateQuantity(maSP, soLuong - 1);
                 LoadCart();
                 UpdateTotals();
             }
@@ -271,9 +252,8 @@ namespace cosmetics_store.FormKH
                 return;
             }
 
-            decimal subtotal = _cart.Sum(c => c.ThanhTien);
+            decimal subtotal = _cartItems?.Sum(c => c.ThanhTien) ?? 0;
             
-            // Xử lý các voucher
             switch (voucher)
             {
                 case "FREESHIP":
@@ -368,23 +348,16 @@ namespace cosmetics_store.FormKH
             }
         }
 
-        /// <summary>
-        /// Tạo QR Code cho chuyển khoản ngân hàng theo chuẩn VietQR
-        /// </summary>
         private void GenerateBankQR(decimal amount)
         {
             try
             {
-                // VietQR format: https://img.vietqr.io/image/{BANK_ID}-{ACCOUNT_NO}-{TEMPLATE}.png?amount={AMOUNT}&addInfo={INFO}
-                // Các Bank ID phổ biến: VCB, TCB, MB, VPB, ACB, BIDV, VTB...
-                
-                string bankId = "VCB"; // Vietcombank - có thể cấu hình
-                string accountNo = "1234567890"; // Số tài khoản - có thể cấu hình
-                string template = "compact2"; // compact, compact2, qr_only, print
+                string bankId = "VCB";
+                string accountNo = "1234567890";
+                string template = "compact2";
                 string orderInfo = $"DH{DateTime.Now:yyyyMMddHHmm}";
                 string accountName = "BEAUTY BOX COSMETICS";
                 
-                // URL VietQR API (miễn phí)
                 string qrUrl = $"https://img.vietqr.io/image/{bankId}-{accountNo}-{template}.png" +
                     $"?amount={amount:0}" +
                     $"&addInfo={Uri.EscapeDataString(orderInfo)}" +
@@ -399,19 +372,12 @@ namespace cosmetics_store.FormKH
             }
         }
 
-        /// <summary>
-        /// Tạo QR Code cho MoMo
-        /// </summary>
         private void GenerateMoMoQR(decimal amount)
         {
             try
             {
-                // MoMo deeplink format
-                string phone = "0901234567"; // Số điện thoại nhận tiền
+                string phone = "0901234567";
                 string orderInfo = $"DH{DateTime.Now:yyyyMMddHHmm}";
-                
-                // MoMo QR format (simplified - thực tế cần tích hợp MoMo API)
-                // Sử dụng QR code generator API
                 string content = $"2|99|{phone}|BEAUTY BOX|{orderInfo}|0|0|{amount:0}";
                 string qrUrl = $"https://api.qrserver.com/v1/create-qr-code/?size=200x200&data={Uri.EscapeDataString(content)}";
                 
@@ -423,9 +389,6 @@ namespace cosmetics_store.FormKH
             }
         }
 
-        /// <summary>
-        /// Tạo QR Code cho ZaloPay
-        /// </summary>
         private void GenerateZaloPayQR(decimal amount)
         {
             try
@@ -462,7 +425,6 @@ namespace cosmetics_store.FormKH
 
         private void GenerateFallbackQR(string content)
         {
-            // Tạo placeholder QR khi không tải được
             var bmp = new Bitmap(200, 200);
             using (var g = Graphics.FromImage(bmp))
             {
@@ -484,11 +446,11 @@ namespace cosmetics_store.FormKH
 
         #endregion
 
-        #region Totals & Checkout
+        #region Checkout
 
         private void btnThanhToan_Click(object sender, EventArgs e)
         {
-            if (_cart.Count == 0)
+            if (_cartItems == null || _cartItems.Count == 0)
             {
                 XtraMessageBox.Show("Giỏ hàng trống!", "Thông báo",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -524,7 +486,7 @@ namespace cosmetics_store.FormKH
             decimal total = GetFinalTotal();
             string paymentMethodName = GetPaymentMethodName();
             
-            var result = XtraMessageBox.Show(
+            var confirmResult = XtraMessageBox.Show(
                 $"🛒 XÁC NHẬN ĐẶT HÀNG 🛒\n\n" +
                 $"👤 Người nhận: {txtHoTen.Text}\n" +
                 $"📞 SĐT: {txtSDT.Text}\n" +
@@ -537,7 +499,7 @@ namespace cosmetics_store.FormKH
                 MessageBoxButtons.YesNo,
                 MessageBoxIcon.Question);
 
-            if (result == DialogResult.Yes)
+            if (confirmResult == DialogResult.Yes)
             {
                 ProcessOrder();
             }
@@ -559,127 +521,58 @@ namespace cosmetics_store.FormKH
         {
             try
             {
-                decimal total = GetFinalTotal();
-
-                // Lấy/tạo khách hàng theo email (độc lập với NhanVien)
-                int maKH = GetOrCreateKhachHang();
-
-                // Tạo hóa đơn ở trạng thái CHO_DUYET để nhân viên xử lý
-                var hoaDon = new HoaDon
+                if (!CurrentUser.IsLoggedIn || CurrentUser.User == null)
                 {
-                    MaKH = maKH,
-                    MaNV = 1, // gán nhân viên mặc định (hệ thống) - sẽ được cập nhật khi nhân viên duyệt
-                    NgayLap = DateTime.Now,
-                    TongTien = total,
-                    TrangThai = "CHO_DUYET",
-                    PhuongThucTT = GetPaymentMethodName()
-                };
-
-                _context.HoaDons.Add(hoaDon);
-                _context.SaveChanges();
-
-                // Chi tiết hóa đơn (KHÔNG trừ kho tại đây; trừ kho khi nhân viên duyệt)
-                int stt = 1;
-                foreach (var item in _cart)
-                {
-                    var ct = new CT_HoaDon
-                    {
-                        MaHD = hoaDon.MaHD,
-                        MaSP = item.MaSP,
-                        STT = stt++,
-                        SoLuong = item.SoLuong,
-                        DonGia = item.DonGia
-                    };
-                    _context.CT_HoaDons.Add(ct);
+                    XtraMessageBox.Show("Vui lòng đăng nhập để đặt hàng!", "Thông báo",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
                 }
 
-                _context.SaveChanges();
+                // Tạo request đặt hàng
+                var request = new PlaceOrderRequest
+                {
+                    Email = CurrentUser.User.Email,
+                    HoTen = txtHoTen.Text.Trim(),
+                    SDT = txtSDT.Text.Trim(),
+                    DiaChi = txtDiaChi.Text.Trim(),
+                    PhuongThucTT = GetPaymentMethodName(),
+                    TongTien = GetFinalTotal(),
+                    CartItems = _cartItems
+                };
 
-                XtraMessageBox.Show(
-                    $"✅ ĐẶT HÀNG THÀNH CÔNG!\n\n" +
-                    $"📝 Mã đơn hàng: #{hoaDon.MaHD}\n" +
-                    $"💵 Tổng tiền: {total:N0}đ\n" +
-                    $"💳 Phương thức: {GetPaymentMethodName()}\n" +
-                    $"📌 Trạng thái: CHO_DUYET\n\n" +
-                    "📦 Nhân viên sẽ kiểm tra tồn kho và xác nhận đơn hàng.",
-                    "Đặt hàng thành công",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Information);
+                // Gọi service đặt hàng
+                var result = _khService.PlaceOrder(request);
 
-                this.DialogResult = DialogResult.OK;
-                this.Close();
+                if (result.Success)
+                {
+                    XtraMessageBox.Show(
+                        $"✅ ĐẶT HÀNG THÀNH CÔNG!\n\n" +
+                        $"📝 Mã đơn hàng: #{result.MaHD}\n" +
+                        $"💵 Tổng tiền: {result.TongTien:N0}đ\n" +
+                        $"💳 Phương thức: {GetPaymentMethodName()}\n" +
+                        $"📌 Trạng thái: CHO_DUYET\n\n" +
+                        "📦 Nhân viên sẽ kiểm tra tồn kho và xác nhận đơn hàng.",
+                        "Đặt hàng thành công",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Information);
+
+                    // Xóa giỏ hàng
+                    _khService.ClearCart();
+
+                    this.DialogResult = DialogResult.OK;
+                    this.Close();
+                }
+                else
+                {
+                    XtraMessageBox.Show(result.Message, "Lỗi",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
             catch (Exception ex)
             {
                 XtraMessageBox.Show($"Lỗi đặt hàng: {ex.Message}", "Lỗi",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
-
-        /// <summary>
-        /// Lấy hoặc tạo khách hàng - độc lập với NhanVien, dùng email để liên kết
-        /// </summary>
-        private int GetOrCreateKhachHang()
-        {
-            if (!CurrentUser.IsLoggedIn)
-            {
-                throw new Exception("Vui lòng đăng nhập để đặt hàng.");
-            }
-
-            // Sử dụng KHService để lấy/tạo khách hàng
-            var kh = _khService.GetOrCreateKhachHang();
-            
-            if (kh == null)
-            {
-                // Fallback: Tạo trực tiếp nếu service không tạo được
-                System.Diagnostics.Debug.WriteLine("fGioHang: KHService trả về null, tạo khách hàng trực tiếp");
-                
-                var user = CurrentUser.User;
-                kh = new KhachHang
-                {
-                    HoTen = !string.IsNullOrWhiteSpace(txtHoTen.Text) ? txtHoTen.Text : (user.HoTen ?? "Khách hàng"),
-                    SDT = txtSDT.Text ?? "",
-                    DiaChi = txtDiaChi.Text ?? "",
-                    Email = user.Email ?? "",
-                    GioiTinh = "Khác"
-                };
-                
-                _context.KhachHangs.Add(kh);
-                _context.SaveChanges();
-                
-                // Lưu MaKH vào CurrentUser (sử dụng full namespace)
-                BusinessAccessLayer.Services.CurrentUser.MaKH = kh.MaKH;
-                
-                System.Diagnostics.Debug.WriteLine($"fGioHang: Đã tạo khách hàng mới MaKH={kh.MaKH}");
-            }
-            else
-            {
-                // Cập nhật thông tin giao hàng mới nhất
-                bool needUpdate = false;
-                
-                if (!string.IsNullOrWhiteSpace(txtHoTen.Text) && kh.HoTen != txtHoTen.Text)
-                {
-                    kh.HoTen = txtHoTen.Text;
-                    needUpdate = true;
-                }
-                if (!string.IsNullOrWhiteSpace(txtSDT.Text) && kh.SDT != txtSDT.Text)
-                {
-                    kh.SDT = txtSDT.Text;
-                    needUpdate = true;
-                }
-                if (!string.IsNullOrWhiteSpace(txtDiaChi.Text) && kh.DiaChi != txtDiaChi.Text)
-                {
-                    kh.DiaChi = txtDiaChi.Text;
-                    needUpdate = true;
-                }
-                
-                if (needUpdate)
-                {
-                    _context.SaveChanges();
-                }
-            }
-
-            return kh.MaKH;
         }
 
         #endregion
@@ -692,11 +585,10 @@ namespace cosmetics_store.FormKH
             this.Close();
         }
 
-        #endregion
-
         private void picQRCode_Click(object sender, EventArgs e)
         {
-
         }
+
+        #endregion
     }
 }

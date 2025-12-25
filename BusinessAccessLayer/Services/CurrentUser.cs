@@ -36,6 +36,11 @@ namespace BusinessAccessLayer.Services
         public static void SetUser(UserInfo userInfo)
         {
             User = userInfo;
+            // ??ng b? MaKH t? UserInfo n?u có
+            if (userInfo != null && userInfo.MaKH > 0)
+            {
+                MaKH = userInfo.MaKH;
+            }
         }
         
         public static void SetMaKH(int maKH)

@@ -13,21 +13,21 @@ namespace BusinessAccessLayer.Services.Customer
     public class CartService : IDisposable
     {
         private readonly CosmeticsContext _context;
+        private readonly bool _ownsContext;
         private static List<CartItemDTO> _cart = new List<CartItemDTO>();
 
         public CartService()
         {
             _context = new CosmeticsContext();
+            _ownsContext = true;
         }
 
         public CartService(CosmeticsContext context)
         {
             _context = context;
+            _ownsContext = false;
         }
 
-        /// <summary>
-        /// Thêm s?n ph?m vào gi? hàng
-        /// </summary>
         public CartResult AddToCart(int maSP, int soLuong = 1)
         {
             try
@@ -82,9 +82,6 @@ namespace BusinessAccessLayer.Services.Customer
             }
         }
 
-        /// <summary>
-        /// Xóa s?n ph?m kh?i gi? hàng
-        /// </summary>
         public CartResult RemoveFromCart(int maSP)
         {
             try
@@ -110,7 +107,7 @@ namespace BusinessAccessLayer.Services.Customer
         }
 
         /// <summary>
-        /// C?p nh?t s? l??ng s?n ph?m
+        /// C?p nh?t s? l??ng s?n ph?m trong gi?
         /// </summary>
         public CartResult UpdateQuantity(int maSP, int soLuong)
         {
@@ -121,15 +118,20 @@ namespace BusinessAccessLayer.Services.Customer
                     return RemoveFromCart(maSP);
                 }
 
+                var product = _context.SanPhams.Find(maSP);
+                if (product == null)
+                {
+                    return new CartResult { Success = false, Message = "S?n ph?m không t?n t?i" };
+                }
+
+                if (soLuong > product.SoLuongTon)
+                {
+                    return new CartResult { Success = false, Message = $"Ch? còn {product.SoLuongTon} s?n ph?m trong kho" };
+                }
+
                 var item = _cart.FirstOrDefault(c => c.MaSP == maSP);
                 if (item != null)
                 {
-                    var product = _context.SanPhams.Find(maSP);
-                    if (product != null && soLuong > product.SoLuongTon)
-                    {
-                        return new CartResult { Success = false, Message = $"S? l??ng v??t quá t?n kho ({product.SoLuongTon})" };
-                    }
-
                     item.SoLuong = soLuong;
                     return new CartResult
                     {
@@ -155,25 +157,16 @@ namespace BusinessAccessLayer.Services.Customer
             return _cart.ToList();
         }
 
-        /// <summary>
-        /// ??m s? s?n ph?m trong gi?
-        /// </summary>
         public int GetCartCount()
         {
             return _cart.Sum(c => c.SoLuong);
         }
 
-        /// <summary>
-        /// T?ng ti?n gi? hàng
-        /// </summary>
         public decimal GetCartTotal()
         {
             return _cart.Sum(c => c.ThanhTien);
         }
 
-        /// <summary>
-        /// Xóa toàn b? gi? hàng
-        /// </summary>
         public void ClearCart()
         {
             _cart.Clear();
@@ -181,7 +174,10 @@ namespace BusinessAccessLayer.Services.Customer
 
         public void Dispose()
         {
-            _context?.Dispose();
+            if (_ownsContext)
+            {
+                _context?.Dispose();
+            }
         }
     }
 }

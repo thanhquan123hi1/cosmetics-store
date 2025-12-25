@@ -1,45 +1,54 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using DataAccessLayer;
 using DataAccessLayer.EntityClass;
 using BusinessAccessLayer.DTOs;
+using BusinessAccessLayer.Services.Customer;
 
 namespace BusinessAccessLayer.Services.Order
 {
     /// <summary>
-    /// Service qu?n l� h�a ??n (cho kh�ch h�ng)
+    /// Service quản lý hóa đơn (cho khách hàng)
     /// </summary>
     public class CustomerInvoiceService : IDisposable
     {
         private readonly CosmeticsContext _context;
+        private readonly bool _ownsContext;
+        private readonly CustomerService _customerService;
 
         public CustomerInvoiceService()
         {
             _context = new CosmeticsContext();
+            _ownsContext = true;
+            _customerService = new CustomerService(_context);
         }
 
         public CustomerInvoiceService(CosmeticsContext context)
         {
             _context = context;
+            _ownsContext = false;
+            _customerService = new CustomerService(context);
         }
 
         /// <summary>
-        /// L?y danh s�ch h�a ??n c?a kh�ch h�ng hi?n t?i
+        /// Lấy danh sách hóa đơn của khách hàng hiện tại
         /// </summary>
         public List<HoaDonDTO> GetMyInvoices()
         {
             try
             {
-                if (!CurrentUser.IsLoggedIn)
+                int? maKH = _customerService.GetCurrentCustomerId();
+                System.Diagnostics.Debug.WriteLine($"GetMyInvoices: MaKH={maKH}");
+                
+                if (!maKH.HasValue || maKH.Value <= 0)
+                {
+                    System.Diagnostics.Debug.WriteLine("GetMyInvoices: Không tìm thấy MaKH");
                     return new List<HoaDonDTO>();
+                }
 
-                int? maKH = GetCurrentCustomerId();
-                if (!maKH.HasValue)
-                    return new List<HoaDonDTO>();
-
-                return _context.HoaDons
+                var invoices = _context.HoaDons
                     .Include(h => h.CT_HoaDons)
                     .Where(h => h.MaKH == maKH.Value)
                     .OrderByDescending(h => h.NgayLap)
@@ -53,6 +62,9 @@ namespace BusinessAccessLayer.Services.Order
                         SoSanPham = h.CT_HoaDons.Count
                     })
                     .ToList();
+
+                System.Diagnostics.Debug.WriteLine($"GetMyInvoices: Tìm thấy {invoices.Count} hóa đơn");
+                return invoices;
             }
             catch (Exception ex)
             {
@@ -62,24 +74,24 @@ namespace BusinessAccessLayer.Services.Order
         }
 
         /// <summary>
-        /// L?y h�a ??n ch?a thanh to�n
+        /// Lấy hóa đơn chưa thanh toán
         /// </summary>
         public List<HoaDonDTO> GetUnpaidInvoices()
         {
             try
             {
-                if (!CurrentUser.IsLoggedIn)
+                int? maKH = _customerService.GetCurrentCustomerId();
+                System.Diagnostics.Debug.WriteLine($"GetUnpaidInvoices: MaKH={maKH}");
+                
+                if (!maKH.HasValue || maKH.Value <= 0)
                     return new List<HoaDonDTO>();
 
-                int? maKH = GetCurrentCustomerId();
-                if (!maKH.HasValue)
-                    return new List<HoaDonDTO>();
-
-                return _context.HoaDons
+                var invoices = _context.HoaDons
                     .Include(h => h.CT_HoaDons)
                     .Where(h => h.MaKH == maKH.Value &&
-                                h.TrangThai != "Ho�n th�nh" &&
-                                h.TrangThai != "?� thanh to�n")
+                                h.TrangThai != "Hoàn thành" &&
+                                h.TrangThai != "Đã thanh toán" &&
+                                h.TrangThai != "Đã giao")
                     .OrderByDescending(h => h.NgayLap)
                     .Select(h => new HoaDonDTO
                     {
@@ -91,6 +103,9 @@ namespace BusinessAccessLayer.Services.Order
                         SoSanPham = h.CT_HoaDons.Count
                     })
                     .ToList();
+
+                System.Diagnostics.Debug.WriteLine($"GetUnpaidInvoices: Tìm thấy {invoices.Count} hóa đơn chưa thanh toán");
+                return invoices;
             }
             catch (Exception ex)
             {
@@ -100,7 +115,7 @@ namespace BusinessAccessLayer.Services.Order
         }
 
         /// <summary>
-        /// L?y chi ti?t h�a ??n
+        /// Lấy chi tiết hóa đơn
         /// </summary>
         public HoaDonChiTietDTO GetInvoiceDetail(int maHD)
         {
@@ -113,14 +128,12 @@ namespace BusinessAccessLayer.Services.Order
 
                 if (hd == null) return null;
 
-                // Ki?m tra quy?n xem
-                if (CurrentUser.IsLoggedIn)
+                // Kiểm tra quyền xem
+                int? maKH = _customerService.GetCurrentCustomerId();
+                if (maKH.HasValue && hd.MaKH != maKH.Value)
                 {
-                    int? maKH = GetCurrentCustomerId();
-                    if (maKH.HasValue && hd.MaKH != maKH.Value)
-                    {
-                        return null; // Kh�ng c� quy?n xem
-                    }
+                    System.Diagnostics.Debug.WriteLine($"GetInvoiceDetail: Không có quyền xem hóa đơn {maHD}");
+                    return null;
                 }
 
                 return new HoaDonChiTietDTO
@@ -149,7 +162,7 @@ namespace BusinessAccessLayer.Services.Order
         }
 
         /// <summary>
-        /// Thanh to�n h�a ??n
+        /// Thanh toán hóa đơn
         /// </summary>
         public CheckoutResult PayInvoice(int maHD, string paymentMethod)
         {
@@ -158,69 +171,97 @@ namespace BusinessAccessLayer.Services.Order
                 var hoaDon = _context.HoaDons.Find(maHD);
                 if (hoaDon == null)
                 {
-                    return new CheckoutResult { Success = false, Message = "H�a ??n kh�ng t?n t?i" };
+                    return new CheckoutResult { Success = false, Message = "Hóa đơn không tồn tại" };
                 }
 
-                // Ki?m tra quy?n
-                if (CurrentUser.IsLoggedIn)
+                // Kiểm tra quyền
+                int? maKH = _customerService.GetCurrentCustomerId();
+                if (maKH.HasValue && hoaDon.MaKH != maKH.Value)
                 {
-                    int? maKH = GetCurrentCustomerId();
-                    if (maKH.HasValue && hoaDon.MaKH != maKH.Value)
-                    {
-                        return new CheckoutResult { Success = false, Message = "B?n kh�ng c� quy?n thanh to�n h�a ??n n�y" };
-                    }
+                    return new CheckoutResult { Success = false, Message = "Bạn không có quyền thanh toán hóa đơn này" };
                 }
 
-                hoaDon.TrangThai = "?� thanh to�n";
+                hoaDon.TrangThai = "Đã thanh toán";
                 hoaDon.PhuongThucTT = paymentMethod;
                 _context.SaveChanges();
 
                 return new CheckoutResult
                 {
                     Success = true,
-                    Message = "Thanh to�n th�nh c�ng!",
+                    Message = "Thanh toán thành công!",
                     MaHD = hoaDon.MaHD,
                     TongTien = hoaDon.TongTien
                 };
             }
             catch (Exception ex)
             {
-                return new CheckoutResult { Success = false, Message = $"L?i: {ex.Message}" };
+                return new CheckoutResult { Success = false, Message = $"Lỗi: {ex.Message}" };
             }
         }
 
-        private int? GetCurrentCustomerId()
+        /// <summary>
+        /// Chọn phương thức thanh toán cho hóa đơn (COD hoặc chuyển khoản)
+        /// </summary>
+        public CheckoutResult SelectPaymentMethod(int maHD, string paymentMethod)
         {
-            if (!CurrentUser.IsLoggedIn) return null;
-
-            if (CurrentUser.MaKH.HasValue && CurrentUser.MaKH.Value > 0)
-                return CurrentUser.MaKH;
-
-            var user = CurrentUser.User;
-            KhachHang khachHang = null;
-
-            if (user.MaNV > 0)
+            try
             {
-                khachHang = _context.KhachHangs.FirstOrDefault(k => k.MaKH == user.MaNV);
-            }
+                var hoaDon = _context.HoaDons.Find(maHD);
+                if (hoaDon == null)
+                {
+                    return new CheckoutResult { Success = false, Message = "Không tìm thấy hóa đơn" };
+                }
 
-            if (khachHang == null && !string.IsNullOrEmpty(user.Email))
+                // Kiểm tra quyền
+                int? maKH = _customerService.GetCurrentCustomerId();
+                if (maKH.HasValue && hoaDon.MaKH != maKH.Value)
+                {
+                    return new CheckoutResult { Success = false, Message = "Bạn không có quyền thao tác hóa đơn này" };
+                }
+
+                // COD: Chờ nhân viên duyệt
+                if (paymentMethod == "COD")
+                {
+                    hoaDon.TrangThai = "CHO_DUYET";
+                    hoaDon.PhuongThucTT = "COD";
+                    _context.SaveChanges();
+
+                    return new CheckoutResult
+                    {
+                        Success = true,
+                        Message = "Đã gửi yêu cầu thanh toán COD. Nhân viên sẽ xác nhận đơn hàng.",
+                        MaHD = hoaDon.MaHD,
+                        TongTien = hoaDon.TongTien
+                    };
+                }
+                // Chuyển khoản: Chờ xác nhận thanh toán
+                else
+                {
+                    hoaDon.TrangThai = "CHO_XAC_NHAN_TT";
+                    hoaDon.PhuongThucTT = paymentMethod == "Bank" ? "Chuyển khoản" : paymentMethod;
+                    _context.SaveChanges();
+
+                    return new CheckoutResult
+                    {
+                        Success = true,
+                        Message = "Đã ghi nhận thanh toán. Nhân viên sẽ kiểm tra và xác nhận.",
+                        MaHD = hoaDon.MaHD,
+                        TongTien = hoaDon.TongTien
+                    };
+                }
+            }
+            catch (Exception ex)
             {
-                khachHang = _context.KhachHangs.FirstOrDefault(k => k.Email == user.Email);
+                return new CheckoutResult { Success = false, Message = $"Lỗi: {ex.Message}" };
             }
-
-            if (khachHang != null)
-            {
-                CurrentUser.MaKH = khachHang.MaKH;
-                return khachHang.MaKH;
-            }
-
-            return null;
         }
 
         public void Dispose()
         {
-            _context?.Dispose();
+            if (_ownsContext)
+            {
+                _context?.Dispose();
+            }
         }
     }
 }

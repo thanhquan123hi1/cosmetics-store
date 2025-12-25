@@ -1,22 +1,19 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
-using DataAccessLayer;
-using DataAccessLayer.EntityClass;
+using BusinessAccessLayer.DTOs;
 using DevExpress.XtraEditors;
 
 namespace cosmetics_store.FormKH
 {
     public partial class fSanPhamDetail : DevExpress.XtraEditors.XtraForm
     {
-        private SanPham _sanPham;
-        private CosmeticsContext _context;
+        private readonly SanPhamDTO _sanPham;
 
-        public fSanPhamDetail(SanPham sanPham, CosmeticsContext context)
+        public fSanPhamDetail(SanPhamDTO sanPham)
         {
             InitializeComponent();
             _sanPham = sanPham;
-            _context = context;
             this.Load += fSanPhamDetail_Load;
         }
 
@@ -30,7 +27,7 @@ namespace cosmetics_store.FormKH
             if (_sanPham == null) return;
 
             lblTenSP.Text = _sanPham.TenSP;
-            lblThuongHieu.Text = _sanPham.ThuongHieu?.TenThuongHieu ?? "N/A";
+            lblThuongHieu.Text = _sanPham.TenThuongHieu ?? "N/A";
             lblGia.Text = $"{_sanPham.DonGia:N0} VND";
             lblMoTa.Text = _sanPham.MoTa ?? "Chưa có mô tả";
             lblTonKho.Text = _sanPham.SoLuongTon > 0 ? $"Còn hàng ({_sanPham.SoLuongTon})" : "Hết hàng";
@@ -42,7 +39,6 @@ namespace cosmetics_store.FormKH
                 spinSoLuong.Properties.MinValue = 1;
                 spinSoLuong.Properties.MaxValue = _sanPham.SoLuongTon > 0 ? _sanPham.SoLuongTon : 1;
 
-                // Clamp lại giá trị hiện tại
                 var current = Convert.ToInt32(spinSoLuong.Value);
                 if (_sanPham.SoLuongTon <= 0)
                 {
@@ -81,7 +77,6 @@ namespace cosmetics_store.FormKH
                 return;
             }
 
-            // Trả quantity cho form gọi (đọc qua spinSoLuong.Value)
             this.DialogResult = DialogResult.OK;
             this.Close();
         }

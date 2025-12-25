@@ -76,6 +76,7 @@
     <Compile Include="Services\EmailService.cs" />
     <Compile Include="Services\HoaDonService.cs" />
     <Compile Include="Services\KHService.cs" />
+    <Compile Include="Services\Order\CheckoutService.cs" />
     <Compile Include="Services\Order\CustomerInvoiceService.cs" />
     <Compile Include="Services\Order\InvoiceManagementService.cs" />
     <Compile Include="Services\Product\ProductService.cs" />

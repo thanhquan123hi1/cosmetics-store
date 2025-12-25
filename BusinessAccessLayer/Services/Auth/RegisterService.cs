@@ -25,7 +25,7 @@ namespace BusinessAccessLayer.Services.Auth
         }
 
         /// <summary>
-        /// ??ng ký tài kho?n m?i
+        /// ??ng ký tài kho?n m?i cho khách hàng
         /// </summary>
         public RegisterResult Register(RegisterDTO registerInfo)
         {
@@ -43,7 +43,7 @@ namespace BusinessAccessLayer.Services.Auth
 
                 using (var tx = _context.Database.BeginTransaction())
                 {
-                    // T?o NhanVien
+                    // T?o NhanVien (c?n cho TaiKhoan vì TaiKhoan.MaNV là FK)
                     var nhanVien = new NhanVien
                     {
                         HoTen = registerInfo.HoTen,
@@ -56,18 +56,6 @@ namespace BusinessAccessLayer.Services.Auth
 
                     _context.NhanViens.Add(nhanVien);
                     _context.SaveChanges();
-
-                    // T?o KhachHang (MaKH = MaNV)
-                    var khachHang = new KhachHang
-                    {
-                        MaKH = nhanVien.MaNV,
-                        HoTen = registerInfo.HoTen,
-                        SDT = registerInfo.SDT,
-                        Email = registerInfo.Email,
-                        GioiTinh = registerInfo.GioiTinh ?? "Khác",
-                        DiaChi = registerInfo.DiaChi
-                    };
-                    _context.KhachHangs.Add(khachHang);
 
                     // T?o TaiKhoan
                     var taiKhoan = new TaiKhoan
@@ -83,7 +71,21 @@ namespace BusinessAccessLayer.Services.Auth
                     _context.TaiKhoans.Add(taiKhoan);
                     _context.SaveChanges();
 
+                    // T?o KhachHang ??c l?p (MaKH t? t?ng, không liên quan ??n MaNV)
+                    var khachHang = new KhachHang
+                    {
+                        HoTen = registerInfo.HoTen,
+                        SDT = registerInfo.SDT,
+                        Email = registerInfo.Email, // Liên k?t v?i TaiKhoan qua Email
+                        GioiTinh = registerInfo.GioiTinh ?? "Khác",
+                        DiaChi = registerInfo.DiaChi
+                    };
+                    _context.KhachHangs.Add(khachHang);
+                    _context.SaveChanges();
+
                     tx.Commit();
+
+                    System.Diagnostics.Debug.WriteLine($"RegisterService: ??ng ký thành công - MaNV={nhanVien.MaNV}, MaKH={khachHang.MaKH}");
 
                     return new RegisterResult
                     {
@@ -95,6 +97,7 @@ namespace BusinessAccessLayer.Services.Auth
             }
             catch (Exception ex)
             {
+                System.Diagnostics.Debug.WriteLine($"RegisterService Error: {ex.Message}");
                 return new RegisterResult
                 {
                     Success = false,

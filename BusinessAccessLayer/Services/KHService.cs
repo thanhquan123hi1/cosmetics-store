@@ -20,6 +20,7 @@ namespace BusinessAccessLayer.Services
         private readonly CartService _cartService;
         private readonly ProductService _productService;
         private readonly CustomerInvoiceService _invoiceService;
+        private readonly CheckoutService _checkoutService;
 
         public KHService()
         {
@@ -28,6 +29,7 @@ namespace BusinessAccessLayer.Services
             _cartService = new CartService(_context);
             _productService = new ProductService(_context);
             _invoiceService = new CustomerInvoiceService(_context);
+            _checkoutService = new CheckoutService(_context);
         }
 
         public KHService(CosmeticsContext context)
@@ -37,6 +39,7 @@ namespace BusinessAccessLayer.Services
             _cartService = new CartService(context);
             _productService = new ProductService(context);
             _invoiceService = new CustomerInvoiceService(context);
+            _checkoutService = new CheckoutService(context);
         }
 
         #region Sản Phẩm
@@ -56,6 +59,11 @@ namespace BusinessAccessLayer.Services
             return _productService.SearchProducts(keyword);
         }
 
+        public SanPhamDTO GetProductById(int maSP)
+        {
+            return _productService.GetProductById(maSP);
+        }
+
         #endregion
 
         #region Giỏ hàng
@@ -63,6 +71,16 @@ namespace BusinessAccessLayer.Services
         public CartResult AddToCart(int maSP, int soLuong = 1)
         {
             return _cartService.AddToCart(maSP, soLuong);
+        }
+
+        public CartResult RemoveFromCart(int maSP)
+        {
+            return _cartService.RemoveFromCart(maSP);
+        }
+
+        public CartResult UpdateQuantity(int maSP, int soLuong)
+        {
+            return _cartService.UpdateQuantity(maSP, soLuong);
         }
 
         public List<CartItemDTO> GetCartItems()
@@ -87,6 +105,26 @@ namespace BusinessAccessLayer.Services
 
         #endregion
 
+        #region Đặt hàng / Checkout
+
+        /// <summary>
+        /// Đặt hàng
+        /// </summary>
+        public CheckoutResult PlaceOrder(PlaceOrderRequest request)
+        {
+            return _checkoutService.PlaceOrder(request);
+        }
+
+        /// <summary>
+        /// Lấy thông tin giao hàng theo email
+        /// </summary>
+        public ShippingInfoDTO GetShippingInfo(string email)
+        {
+            return _checkoutService.GetShippingInfo(email);
+        }
+
+        #endregion
+
         #region Hóa Đơn
 
         public List<HoaDonDTO> GetMyInvoices()
@@ -102,6 +140,14 @@ namespace BusinessAccessLayer.Services
         public HoaDonChiTietDTO GetInvoiceDetail(int maHD)
         {
             return _invoiceService.GetInvoiceDetail(maHD);
+        }
+
+        /// <summary>
+        /// Chọn phương thức thanh toán cho hóa đơn
+        /// </summary>
+        public CheckoutResult SelectPaymentMethod(int maHD, string paymentMethod)
+        {
+            return _invoiceService.SelectPaymentMethod(maHD, paymentMethod);
         }
 
         #endregion
@@ -122,6 +168,14 @@ namespace BusinessAccessLayer.Services
             return _customerService.GetOrCreateKhachHang();
         }
 
+        /// <summary>
+        /// Lấy MaKH của khách hàng hiện tại
+        /// </summary>
+        public int? GetCurrentCustomerId()
+        {
+            return _customerService.GetCurrentCustomerId();
+        }
+
         public ThongTinTaiKhoanDTO GetAccountInfo()
         {
             return _customerService.GetAccountInfo();
@@ -136,10 +190,8 @@ namespace BusinessAccessLayer.Services
 
         public void Dispose()
         {
-            _customerService?.Dispose();
-            _cartService?.Dispose();
-            _productService?.Dispose();
-            _invoiceService?.Dispose();
+            // Chỉ dispose context chính - các service con không cần dispose vì dùng chung context
+            _context?.Dispose();
         }
     }
 }

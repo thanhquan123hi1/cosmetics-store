@@ -9,7 +9,7 @@ using BusinessAccessLayer.DTOs;
 namespace BusinessAccessLayer.Services.Auth
 {
     /// <summary>
-    /// Service x? lý ??ng nh?p và ??ng ký
+    /// Service x? lý ??ng nh?p
     /// </summary>
     public class LoginService : IDisposable
     {
@@ -74,28 +74,110 @@ namespace BusinessAccessLayer.Services.Auth
                     };
                 }
 
+                // Tìm ho?c t?o KhachHang d?a trên email c?a tài kho?n
+                int maKH = 0;
+                bool isCustomer = IsCustomerRole(taiKhoan.Quyen);
+                
+                System.Diagnostics.Debug.WriteLine($"LoginService: Quyen='{taiKhoan.Quyen}', IsCustomer={isCustomer}");
+                
+                if (isCustomer)
+                {
+                    maKH = GetOrCreateKhachHang(taiKhoan.Email, taiKhoan.NhanVien?.HoTen ?? taiKhoan.TenDN);
+                    System.Diagnostics.Debug.WriteLine($"LoginService: ?ã l?y/t?o KhachHang, MaKH={maKH}");
+                }
+
+                var userInfo = new UserInfo
+                {
+                    MaNV = taiKhoan.MaNV,
+                    MaKH = maKH,
+                    HoTen = taiKhoan.NhanVien?.HoTen ?? taiKhoan.TenDN,
+                    TenDN = taiKhoan.TenDN,
+                    Quyen = taiKhoan.Quyen,
+                    Email = taiKhoan.Email,
+                    ChucVu = taiKhoan.NhanVien?.ChucVu ?? ""
+                };
+
+                // Set MaKH vào CurrentUser ngay sau khi ??ng nh?p
+                if (maKH > 0)
+                {
+                    CurrentUser.MaKH = maKH;
+                }
+
                 return new LoginResult
                 {
                     Success = true,
                     Message = "??ng nh?p thành công",
-                    UserInfo = new UserInfo
-                    {
-                        MaNV = taiKhoan.MaNV,
-                        HoTen = taiKhoan.NhanVien?.HoTen ?? "",
-                        TenDN = taiKhoan.TenDN,
-                        Quyen = taiKhoan.Quyen,
-                        Email = taiKhoan.Email,
-                        ChucVu = taiKhoan.NhanVien?.ChucVu ?? ""
-                    }
+                    UserInfo = userInfo
                 };
             }
             catch (Exception ex)
             {
+                System.Diagnostics.Debug.WriteLine($"LoginService Error: {ex.Message}");
                 return new LoginResult
                 {
                     Success = false,
                     Message = "L?i h? th?ng: " + ex.Message
                 };
+            }
+        }
+
+        /// <summary>
+        /// Ki?m tra quy?n có ph?i là khách hàng không
+        /// </summary>
+        private bool IsCustomerRole(string quyen)
+        {
+            if (string.IsNullOrEmpty(quyen)) return false;
+            
+            var quyenLower = quyen.ToLower().Trim();
+            return quyenLower == "khách hàng" || 
+                   quyenLower == "khach hang" ||
+                   quyenLower.Contains("khách") ||
+                   quyenLower.Contains("customer");
+        }
+
+        /// <summary>
+        /// Tìm ho?c t?o KhachHang d?a trên email
+        /// </summary>
+        private int GetOrCreateKhachHang(string email, string hoTen)
+        {
+            try
+            {
+                KhachHang khachHang = null;
+
+                // Tìm khách hàng theo email
+                if (!string.IsNullOrEmpty(email))
+                {
+                    khachHang = _context.KhachHangs.FirstOrDefault(k => k.Email == email);
+                    if (khachHang != null)
+                    {
+                        System.Diagnostics.Debug.WriteLine($"LoginService.GetOrCreateKhachHang: Tìm th?y KhachHang theo email, MaKH={khachHang.MaKH}");
+                    }
+                }
+
+                // T?o m?i n?u không tìm th?y
+                if (khachHang == null)
+                {
+                    khachHang = new KhachHang
+                    {
+                        HoTen = !string.IsNullOrEmpty(hoTen) ? hoTen : "Khách hàng",
+                        Email = email ?? "",
+                        SDT = "",
+                        GioiTinh = "Khác",
+                        DiaChi = ""
+                    };
+
+                    _context.KhachHangs.Add(khachHang);
+                    _context.SaveChanges();
+
+                    System.Diagnostics.Debug.WriteLine($"LoginService.GetOrCreateKhachHang: ?ã t?o m?i KhachHang, MaKH={khachHang.MaKH}");
+                }
+
+                return khachHang.MaKH;
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"GetOrCreateKhachHang Error: {ex.Message}");
+                return 0;
             }
         }
 
