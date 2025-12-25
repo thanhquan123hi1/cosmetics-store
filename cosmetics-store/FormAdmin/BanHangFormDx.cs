@@ -39,10 +39,5 @@ namespace cosmetics_store.Forms
         {
 
         }
-
-        private void txtSearch_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 }

@@ -110,7 +110,7 @@
             this.splitContainer.Panel2.Controls.Add(this.grpGioHang);
             this.splitContainer.Panel2.Controls.Add(this.grpThanhToan);
             this.splitContainer.Size = new System.Drawing.Size(960, 580);
-            this.splitContainer.SplitterDistance = 580;
+            this.splitContainer.SplitterDistance = 480;
             this.splitContainer.TabIndex = 1;
             // 
             // grpSanPham
@@ -125,7 +125,7 @@
             this.grpSanPham.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grpSanPham.Location = new System.Drawing.Point(0, 0);
             this.grpSanPham.Name = "grpSanPham";
-            this.grpSanPham.Size = new System.Drawing.Size(580, 580);
+            this.grpSanPham.Size = new System.Drawing.Size(480, 580);
             this.grpSanPham.TabIndex = 0;
             this.grpSanPham.Text = "Danh sách sản phẩm";
             // 
@@ -140,9 +140,8 @@
             this.searchSanPham.Properties.NullValuePrompt = "T?m s?n ph?m...";
             this.searchSanPham.Properties.ShowClearButton = false;
             this.searchSanPham.Properties.ShowSearchButton = false;
-            this.searchSanPham.Size = new System.Drawing.Size(560, 30);
+            this.searchSanPham.Size = new System.Drawing.Size(460, 30);
             this.searchSanPham.TabIndex = 0;
-            this.searchSanPham.SelectedIndexChanged += new System.EventHandler(this.searchSanPham_SelectedIndexChanged);
             // 
             // gridSanPham
             // 
@@ -152,7 +151,7 @@
             this.gridSanPham.Location = new System.Drawing.Point(5, 71);
             this.gridSanPham.MainView = this.gridViewSanPham;
             this.gridSanPham.Name = "gridSanPham";
-            this.gridSanPham.Size = new System.Drawing.Size(565, 450);
+            this.gridSanPham.Size = new System.Drawing.Size(465, 450);
             this.gridSanPham.TabIndex = 1;
             this.gridSanPham.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewSanPham});
@@ -226,20 +225,22 @@
             this.grpGioHang.AppearanceCaption.Options.UseFont = true;
             this.grpGioHang.Controls.Add(this.gridGioHang);
             this.grpGioHang.Controls.Add(this.btnXoaKhoiGio);
-            this.grpGioHang.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.grpGioHang.Dock = System.Windows.Forms.DockStyle.Top;
             this.grpGioHang.Location = new System.Drawing.Point(0, 0);
             this.grpGioHang.Name = "grpGioHang";
-            this.grpGioHang.Size = new System.Drawing.Size(376, 320);
+            this.grpGioHang.Size = new System.Drawing.Size(476, 300);
             this.grpGioHang.TabIndex = 0;
             this.grpGioHang.Text = "Giỏ hàng";
             // 
             // gridGioHang
             // 
-            this.gridGioHang.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridGioHang.Location = new System.Drawing.Point(2, 28);
+            this.gridGioHang.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.gridGioHang.Location = new System.Drawing.Point(15, 40);
             this.gridGioHang.MainView = this.gridViewGioHang;
             this.gridGioHang.Name = "gridGioHang";
-            this.gridGioHang.Size = new System.Drawing.Size(372, 290);
+            this.gridGioHang.Size = new System.Drawing.Size(456, 220);
             this.gridGioHang.TabIndex = 0;
             this.gridGioHang.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewGioHang});
@@ -279,12 +280,12 @@
             this.grpThanhToan.Controls.Add(this.cboPhuongThuc);
             this.grpThanhToan.Controls.Add(this.btnThanhToan);
             this.grpThanhToan.Controls.Add(this.btnHuy);
-            this.grpThanhToan.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.grpThanhToan.Location = new System.Drawing.Point(0, 320);
+            this.grpThanhToan.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.grpThanhToan.Location = new System.Drawing.Point(0, 0);
             this.grpThanhToan.Name = "grpThanhToan";
-            this.grpThanhToan.Size = new System.Drawing.Size(376, 260);
+            this.grpThanhToan.Size = new System.Drawing.Size(476, 580);
             this.grpThanhToan.TabIndex = 1;
-            this.grpThanhToan.Text = "Thanh toán";
+            this.grpThanhToan.Text = "?? Thanh toán";
             // 
             // lblKhachHang
             // 
@@ -314,9 +315,9 @@
             this.lblTongTien.Appearance.Options.UseFont = true;
             this.lblTongTien.Location = new System.Drawing.Point(15, 80);
             this.lblTongTien.Name = "lblTongTien";
-            this.lblTongTien.Size = new System.Drawing.Size(108, 28);
+            this.lblTongTien.Size = new System.Drawing.Size(105, 28);
             this.lblTongTien.TabIndex = 2;
-            this.lblTongTien.Text = "TỔNG TIỀN";
+            this.lblTongTien.Text = "T?NG TI?N:";
             // 
             // lblTongTienValue
             // 
@@ -326,9 +327,9 @@
             this.lblTongTienValue.Appearance.Options.UseForeColor = true;
             this.lblTongTienValue.Location = new System.Drawing.Point(15, 110);
             this.lblTongTienValue.Name = "lblTongTienValue";
-            this.lblTongTienValue.Size = new System.Drawing.Size(25, 41);
+            this.lblTongTienValue.Size = new System.Drawing.Size(43, 41);
             this.lblTongTienValue.TabIndex = 3;
-            this.lblTongTienValue.Text = "0 ";
+            this.lblTongTienValue.Text = "0 ð";
             // 
             // lblPhuongThuc
             // 
@@ -336,13 +337,13 @@
             this.lblPhuongThuc.Appearance.Options.UseFont = true;
             this.lblPhuongThuc.Location = new System.Drawing.Point(15, 160);
             this.lblPhuongThuc.Name = "lblPhuongThuc";
-            this.lblPhuongThuc.Size = new System.Drawing.Size(136, 23);
+            this.lblPhuongThuc.Size = new System.Drawing.Size(122, 23);
             this.lblPhuongThuc.TabIndex = 4;
-            this.lblPhuongThuc.Text = "Phương thức TT : ";
+            this.lblPhuongThuc.Text = "Phýõng th?c TT:";
             // 
             // cboPhuongThuc
             // 
-            this.cboPhuongThuc.EditValue = "Tiền mặt";
+            this.cboPhuongThuc.EditValue = "Ti?n m?t";
             this.cboPhuongThuc.Location = new System.Drawing.Point(150, 157);
             this.cboPhuongThuc.Name = "cboPhuongThuc";
             this.cboPhuongThuc.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 10F);
@@ -356,7 +357,6 @@
             this.cboPhuongThuc.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             this.cboPhuongThuc.Size = new System.Drawing.Size(150, 30);
             this.cboPhuongThuc.TabIndex = 5;
-            this.cboPhuongThuc.SelectedIndexChanged += new System.EventHandler(this.cboPhuongThuc_SelectedIndexChanged);
             // 
             // btnThanhToan
             // 
@@ -370,7 +370,7 @@
             this.btnThanhToan.Name = "btnThanhToan";
             this.btnThanhToan.Size = new System.Drawing.Size(180, 45);
             this.btnThanhToan.TabIndex = 6;
-            this.btnThanhToan.Text = "THANH TOÁN";
+            this.btnThanhToan.Text = "?? THANH TOÁN";
             this.btnThanhToan.Click += new System.EventHandler(this.btnThanhToan_Click);
             // 
             // btnHuy
@@ -381,18 +381,18 @@
             this.btnHuy.Name = "btnHuy";
             this.btnHuy.Size = new System.Drawing.Size(100, 30);
             this.btnHuy.TabIndex = 7;
-            this.btnHuy.Text = "Hủy";
+            this.btnHuy.Text = "H?y";
             this.btnHuy.Click += new System.EventHandler(this.btnHuy_Click);
             // 
             // lblTitle
             // 
-            this.lblTitle.Appearance.Font = new System.Drawing.Font("Segoe UI Black", 18F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitle.Appearance.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold);
             this.lblTitle.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
             this.lblTitle.Appearance.Options.UseFont = true;
             this.lblTitle.Appearance.Options.UseForeColor = true;
             this.lblTitle.Location = new System.Drawing.Point(20, 15);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(143, 41);
+            this.lblTitle.Size = new System.Drawing.Size(132, 41);
             this.lblTitle.TabIndex = 0;
             this.lblTitle.Text = "Bán hàng";
             // 

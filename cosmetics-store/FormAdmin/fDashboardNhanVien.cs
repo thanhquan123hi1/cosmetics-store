@@ -250,10 +250,5 @@ namespace cosmetics_store.Forms
             }
             base.OnFormClosing(e);
         }
-
-        private void pictureEdit1_EditValueChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 }

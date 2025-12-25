@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using DataAccessLayer;
@@ -235,6 +236,5 @@ namespace cosmetics_store.FormStaff
             }
             base.OnFormClosing(e);
         }
-
     }
 }

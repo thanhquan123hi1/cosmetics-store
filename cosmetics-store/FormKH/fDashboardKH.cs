@@ -6,6 +6,7 @@ using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Windows.Forms;
 using BusinessAccessLayer.Services;
+using BusinessAccessLayer.DTOs;
 using DataAccessLayer;
 using DataAccessLayer.EntityClass;
 using DevExpress.XtraEditors;
@@ -65,7 +66,7 @@ namespace cosmetics_store.FormKH
         private void fDashboardKH_Load(object sender, EventArgs e)
         {
             // Seed sample products nếu chưa có
-            _khService.SeedSampleProducts();
+            DatabaseSeeder.SeedSampleProducts();
             
             SetupModernUI();
             SetupSidebarMenu();
@@ -496,7 +497,7 @@ namespace cosmetics_store.FormKH
         private void LoadTopProducts()
         {
             lblSectionTitle.Text = "🔥 TOP SẢN PHẨM BÁN CHẠY";
-            var products = _khService.GetTopProducts(12);
+            var products = _khService.GetTopProducts(6);
             DisplayProducts(products);
         }
 
@@ -979,13 +980,11 @@ namespace cosmetics_store.FormKH
                 
                 if (payResult.Success)
                 {
-                    // Hiển thị form với QR code thanh toán
-                    using (var qrForm = new fThanhToanThanhCong(payResult.MaHD, payResult.TongTien, paymentMethod))
-                    {
-                        qrForm.ShowDialog(this);
-                    }
-                    
-                    // Refresh lại trang thanh toán
+                    XtraMessageBox.Show(
+                        $"✅ Thanh toán thành công!\n\nMã HĐ: #{payResult.MaHD}\nSố tiền: {payResult.TongTien:N0}đ",
+                        "Thành công",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Information);
                     ShowPaymentPage();
                 }
                 else
@@ -1373,6 +1372,11 @@ namespace cosmetics_store.FormKH
         }
 
         #endregion
+
+        private void flowSidebar_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 
     public class CartItem

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
-using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using DataAccessLayer;
@@ -161,9 +160,6 @@ namespace cosmetics_store.Forms
             }
 
             RefreshGioHang();
-            
-            // Reset số lượng về 1 để sẵn sàng cho lần thêm tiếp theo
-            spinSoLuong.Value = 1;
         }
 
         private void btnXoaKhoiGio_Click(object sender, EventArgs e)
@@ -293,16 +289,6 @@ namespace cosmetics_store.Forms
         }
 
         private void gridSanPham_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void searchSanPham_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void cboPhuongThuc_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

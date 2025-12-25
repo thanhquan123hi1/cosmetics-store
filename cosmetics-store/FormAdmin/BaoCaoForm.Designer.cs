@@ -78,7 +78,6 @@
             // 
             // pnlTop
             // 
-            this.pnlTop.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(60)))), ((int)(((byte)(110)))));
             this.pnlTop.Controls.Add(this.lblTuNgay);
             this.pnlTop.Controls.Add(this.dateFrom);
             this.pnlTop.Controls.Add(this.lblDenNgay);
@@ -91,124 +90,82 @@
             this.pnlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlTop.Location = new System.Drawing.Point(0, 0);
             this.pnlTop.Name = "pnlTop";
-            this.pnlTop.Size = new System.Drawing.Size(1200, 100);
+            this.pnlTop.Size = new System.Drawing.Size(1100, 80);
             this.pnlTop.TabIndex = 1;
             this.pnlTop.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlTop_Paint);
             // 
             // lblTuNgay
             // 
-            this.lblTuNgay.Appearance.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.lblTuNgay.Appearance.ForeColor = System.Drawing.Color.White;
-            this.lblTuNgay.Appearance.Options.UseFont = true;
-            this.lblTuNgay.Appearance.Options.UseForeColor = true;
-            this.lblTuNgay.Location = new System.Drawing.Point(12, 20);
+            this.lblTuNgay.Location = new System.Drawing.Point(12, 15);
             this.lblTuNgay.Name = "lblTuNgay";
-            this.lblTuNgay.Size = new System.Drawing.Size(65, 23);
+            this.lblTuNgay.Size = new System.Drawing.Size(52, 16);
             this.lblTuNgay.TabIndex = 0;
             this.lblTuNgay.Text = "Từ ngày:";
             // 
             // dateFrom
             // 
             this.dateFrom.EditValue = new System.DateTime(2025, 12, 10, 0, 0, 0, 0);
-            this.dateFrom.Location = new System.Drawing.Point(85, 17);
+            this.dateFrom.Location = new System.Drawing.Point(70, 12);
             this.dateFrom.Name = "dateFrom";
-            this.dateFrom.Properties.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(70)))), ((int)(((byte)(110)))));
-            this.dateFrom.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.dateFrom.Properties.Appearance.ForeColor = System.Drawing.Color.White;
-            this.dateFrom.Properties.Appearance.Options.UseBackColor = true;
-            this.dateFrom.Properties.Appearance.Options.UseFont = true;
-            this.dateFrom.Properties.Appearance.Options.UseForeColor = true;
-            this.dateFrom.Size = new System.Drawing.Size(130, 30);
+            this.dateFrom.Size = new System.Drawing.Size(120, 22);
             this.dateFrom.TabIndex = 1;
             // 
             // lblDenNgay
             // 
-            this.lblDenNgay.Appearance.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.lblDenNgay.Appearance.ForeColor = System.Drawing.Color.White;
-            this.lblDenNgay.Appearance.Options.UseFont = true;
-            this.lblDenNgay.Appearance.Options.UseForeColor = true;
-            this.lblDenNgay.Location = new System.Drawing.Point(230, 20);
+            this.lblDenNgay.Location = new System.Drawing.Point(210, 15);
             this.lblDenNgay.Name = "lblDenNgay";
-            this.lblDenNgay.Size = new System.Drawing.Size(77, 23);
+            this.lblDenNgay.Size = new System.Drawing.Size(59, 16);
             this.lblDenNgay.TabIndex = 2;
             this.lblDenNgay.Text = "Đến ngày:";
             // 
             // dateTo
             // 
             this.dateTo.EditValue = new System.DateTime(2025, 12, 10, 0, 0, 0, 0);
-            this.dateTo.Location = new System.Drawing.Point(315, 17);
+            this.dateTo.Location = new System.Drawing.Point(280, 12);
             this.dateTo.Name = "dateTo";
-            this.dateTo.Properties.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(70)))), ((int)(((byte)(110)))));
-            this.dateTo.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.dateTo.Properties.Appearance.ForeColor = System.Drawing.Color.White;
-            this.dateTo.Properties.Appearance.Options.UseBackColor = true;
-            this.dateTo.Properties.Appearance.Options.UseFont = true;
-            this.dateTo.Properties.Appearance.Options.UseForeColor = true;
-            this.dateTo.Size = new System.Drawing.Size(130, 30);
+            this.dateTo.Size = new System.Drawing.Size(120, 22);
             this.dateTo.TabIndex = 3;
             // 
             // btnXemBaoCao
             // 
-            this.btnXemBaoCao.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(123)))), ((int)(((byte)(255)))));
-            this.btnXemBaoCao.Appearance.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.btnXemBaoCao.Appearance.ForeColor = System.Drawing.Color.White;
-            this.btnXemBaoCao.Appearance.Options.UseBackColor = true;
-            this.btnXemBaoCao.Appearance.Options.UseFont = true;
-            this.btnXemBaoCao.Appearance.Options.UseForeColor = true;
-            this.btnXemBaoCao.Location = new System.Drawing.Point(460, 12);
-            this.btnXemBaoCao.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.UltraFlat;
-            this.btnXemBaoCao.LookAndFeel.UseDefaultLookAndFeel = false;
+            this.btnXemBaoCao.Location = new System.Drawing.Point(420, 8);
             this.btnXemBaoCao.Name = "btnXemBaoCao";
-            this.btnXemBaoCao.Size = new System.Drawing.Size(140, 36);
+            this.btnXemBaoCao.Size = new System.Drawing.Size(120, 29);
             this.btnXemBaoCao.TabIndex = 4;
             this.btnXemBaoCao.Text = "📈 Xem báo cáo";
             this.btnXemBaoCao.Click += new System.EventHandler(this.btnXemBaoCao_Click);
             // 
             // lblTongDoanhThu
             // 
-            this.lblTongDoanhThu.Appearance.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
-            this.lblTongDoanhThu.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(200)))), ((int)(((byte)(100)))));
+            this.lblTongDoanhThu.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
             this.lblTongDoanhThu.Appearance.Options.UseFont = true;
-            this.lblTongDoanhThu.Appearance.Options.UseForeColor = true;
-            this.lblTongDoanhThu.Location = new System.Drawing.Point(12, 60);
+            this.lblTongDoanhThu.Location = new System.Drawing.Point(12, 50);
             this.lblTongDoanhThu.Name = "lblTongDoanhThu";
-            this.lblTongDoanhThu.Size = new System.Drawing.Size(160, 25);
+            this.lblTongDoanhThu.Size = new System.Drawing.Size(147, 21);
             this.lblTongDoanhThu.TabIndex = 5;
             this.lblTongDoanhThu.Text = "Tổng doanh thu: ";
             // 
             // lblSoDon
             // 
-            this.lblSoDon.Appearance.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.lblSoDon.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
-            this.lblSoDon.Appearance.Options.UseFont = true;
-            this.lblSoDon.Appearance.Options.UseForeColor = true;
-            this.lblSoDon.Location = new System.Drawing.Point(350, 63);
+            this.lblSoDon.Location = new System.Drawing.Point(300, 50);
             this.lblSoDon.Name = "lblSoDon";
-            this.lblSoDon.Size = new System.Drawing.Size(108, 23);
+            this.lblSoDon.Size = new System.Drawing.Size(81, 16);
             this.lblSoDon.TabIndex = 6;
             this.lblSoDon.Text = "Số đơn hàng: ";
             // 
             // lblSoSPBan
             // 
-            this.lblSoSPBan.Appearance.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.lblSoSPBan.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(255)))), ((int)(((byte)(150)))));
-            this.lblSoSPBan.Appearance.Options.UseFont = true;
-            this.lblSoSPBan.Appearance.Options.UseForeColor = true;
-            this.lblSoSPBan.Location = new System.Drawing.Point(580, 63);
+            this.lblSoSPBan.Location = new System.Drawing.Point(500, 50);
             this.lblSoSPBan.Name = "lblSoSPBan";
-            this.lblSoSPBan.Size = new System.Drawing.Size(112, 23);
+            this.lblSoSPBan.Size = new System.Drawing.Size(86, 16);
             this.lblSoSPBan.TabIndex = 7;
             this.lblSoSPBan.Text = "Số SP đã bán: ";
             // 
             // lblTonKhoThap
             // 
-            this.lblTonKhoThap.Appearance.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.lblTonKhoThap.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(150)))), ((int)(((byte)(150)))));
-            this.lblTonKhoThap.Appearance.Options.UseFont = true;
-            this.lblTonKhoThap.Appearance.Options.UseForeColor = true;
-            this.lblTonKhoThap.Location = new System.Drawing.Point(820, 63);
+            this.lblTonKhoThap.Location = new System.Drawing.Point(700, 50);
             this.lblTonKhoThap.Name = "lblTonKhoThap";
-            this.lblTonKhoThap.Size = new System.Drawing.Size(135, 23);
+            this.lblTonKhoThap.Size = new System.Drawing.Size(99, 16);
             this.lblTonKhoThap.TabIndex = 8;
             this.lblTonKhoThap.Text = "SP tồn kho thấp: ";
             // 
@@ -219,11 +176,10 @@
             this.tabControl.Controls.Add(this.tabTopKH);
             this.tabControl.Controls.Add(this.tabTonKho);
             this.tabControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.tabControl.Location = new System.Drawing.Point(0, 100);
+            this.tabControl.Location = new System.Drawing.Point(0, 80);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(1200, 500);
+            this.tabControl.Size = new System.Drawing.Size(1100, 520);
             this.tabControl.TabIndex = 0;
             // 
             // tabDoanhThu
@@ -328,13 +284,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(30)))), ((int)(((byte)(70)))));
-            this.ClientSize = new System.Drawing.Size(1200, 600);
+            this.ClientSize = new System.Drawing.Size(1100, 600);
             this.Controls.Add(this.tabControl);
             this.Controls.Add(this.pnlTop);
             this.Name = "BaoCaoForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "📈 Báo cáo thống kê";
+            this.Text = "Báo cáo thống kê";
             this.pnlTop.ResumeLayout(false);
             this.pnlTop.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dateFrom.Properties.CalendarTimeProperties)).EndInit();

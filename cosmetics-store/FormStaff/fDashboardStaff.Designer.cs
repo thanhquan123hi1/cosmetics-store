@@ -3,6 +3,24 @@
     partial class fDashboardStaff
     {
         private System.ComponentModel.IContainer components = null;
+        private DevExpress.XtraEditors.PanelControl pnlHeader;
+        private DevExpress.XtraEditors.LabelControl lblTitle;
+        private DevExpress.XtraEditors.LabelControl lblNhanVien;
+        private DevExpress.XtraEditors.LabelControl lblCaSang;
+        private DevExpress.XtraEditors.LabelControl lblNgay;
+        private DevExpress.XtraBars.Navigation.AccordionControl accordionMenu;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement aceBanHang;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement aceLapHoaDon;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement aceTraCuu;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement aceSanPham;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement aceKhachHang;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement aceLichSu;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement aceLichSuCaNhan;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement aceTaiKhoan;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement aceThongTinNV;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement aceDangXuat;
+        private System.Windows.Forms.Panel pnlMainContent;
+        private DevExpress.XtraEditors.LabelControl lblGhiChu;
 
         protected override void Dispose(bool disposing)
         {
@@ -10,241 +28,231 @@
             base.Dispose(disposing);
         }
 
-        #region Windows Form Designer generated code
-
         private void InitializeComponent()
         {
-            this.pnlRoot = new System.Windows.Forms.Panel();
-            this.pnlMainContent = new System.Windows.Forms.Panel();
-            this.pnlSidebar = new System.Windows.Forms.Panel();
-            this.lblGhiChu = new DevExpress.XtraEditors.LabelControl();
-            this.lblNgay = new DevExpress.XtraEditors.LabelControl();
-            this.lblCaSang = new DevExpress.XtraEditors.LabelControl();
+            this.pnlHeader = new DevExpress.XtraEditors.PanelControl();
+            this.lblTitle = new DevExpress.XtraEditors.LabelControl();
             this.lblNhanVien = new DevExpress.XtraEditors.LabelControl();
-            this.btnDangXuat = new DevExpress.XtraEditors.SimpleButton();
-            this.btnThongTin = new DevExpress.XtraEditors.SimpleButton();
-            this.btnLichSu = new DevExpress.XtraEditors.SimpleButton();
-            this.btnKhachHang = new DevExpress.XtraEditors.SimpleButton();
-            this.btnSanPham = new DevExpress.XtraEditors.SimpleButton();
-            this.btnLapHoaDon = new DevExpress.XtraEditors.SimpleButton();
-            this.lblSidebarTitle = new DevExpress.XtraEditors.LabelControl();
-            this.pnlRoot.SuspendLayout();
-            this.pnlSidebar.SuspendLayout();
+            this.lblCaSang = new DevExpress.XtraEditors.LabelControl();
+            this.lblNgay = new DevExpress.XtraEditors.LabelControl();
+            this.accordionMenu = new DevExpress.XtraBars.Navigation.AccordionControl();
+            this.aceBanHang = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.aceLapHoaDon = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.aceTraCuu = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.aceSanPham = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.aceKhachHang = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.aceLichSu = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.aceLichSuCaNhan = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.aceTaiKhoan = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.aceThongTinNV = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.aceDangXuat = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.pnlMainContent = new System.Windows.Forms.Panel();
+            this.lblGhiChu = new DevExpress.XtraEditors.LabelControl();
+            ((System.ComponentModel.ISupportInitialize)(this.pnlHeader)).BeginInit();
+            this.pnlHeader.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.accordionMenu)).BeginInit();
             this.SuspendLayout();
             // 
-            // pnlRoot
+            // pnlHeader
             // 
-            this.pnlRoot.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.pnlRoot.Controls.Add(this.pnlMainContent);
-            this.pnlRoot.Controls.Add(this.pnlSidebar);
-            this.pnlRoot.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlRoot.Location = new System.Drawing.Point(0, 0);
-            this.pnlRoot.Name = "pnlRoot";
-            this.pnlRoot.Size = new System.Drawing.Size(1200, 700);
-            this.pnlRoot.TabIndex = 0;
+            this.pnlHeader.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
+            this.pnlHeader.Appearance.Options.UseBackColor = true;
+            this.pnlHeader.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.pnlHeader.Controls.Add(this.lblTitle);
+            this.pnlHeader.Controls.Add(this.lblNhanVien);
+            this.pnlHeader.Controls.Add(this.lblCaSang);
+            this.pnlHeader.Controls.Add(this.lblNgay);
+            this.pnlHeader.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlHeader.Location = new System.Drawing.Point(0, 0);
+            this.pnlHeader.Name = "pnlHeader";
+            this.pnlHeader.Size = new System.Drawing.Size(1200, 60);
+            this.pnlHeader.TabIndex = 0;
             // 
-            // pnlMainContent
+            // lblTitle
             // 
-            this.pnlMainContent.BackColor = System.Drawing.Color.White;
-            this.pnlMainContent.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlMainContent.Location = new System.Drawing.Point(260, 0);
-            this.pnlMainContent.Name = "pnlMainContent";
-            this.pnlMainContent.Size = new System.Drawing.Size(940, 700);
-            this.pnlMainContent.TabIndex = 1;
+            this.lblTitle.Appearance.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
+            this.lblTitle.Appearance.ForeColor = System.Drawing.Color.White;
+            this.lblTitle.Appearance.Options.UseFont = true;
+            this.lblTitle.Appearance.Options.UseForeColor = true;
+            this.lblTitle.Location = new System.Drawing.Point(15, 18);
+            this.lblTitle.Name = "lblTitle";
+            this.lblTitle.Size = new System.Drawing.Size(667, 32);
+            this.lblTitle.TabIndex = 0;
+            this.lblTitle.Text = "PHẦN MỀM QUẢN LÝ CỬA HÀNG MỸ PHẨM - NHÂN VIÊN";
             // 
-            // pnlSidebar
+            // lblNhanVien
             // 
-            this.pnlSidebar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(63)))), ((int)(((byte)(159)))));
-            this.pnlSidebar.Controls.Add(this.lblGhiChu);
-            this.pnlSidebar.Controls.Add(this.lblNgay);
-            this.pnlSidebar.Controls.Add(this.lblCaSang);
-            this.pnlSidebar.Controls.Add(this.lblNhanVien);
-            this.pnlSidebar.Controls.Add(this.btnDangXuat);
-            this.pnlSidebar.Controls.Add(this.btnThongTin);
-            this.pnlSidebar.Controls.Add(this.btnLichSu);
-            this.pnlSidebar.Controls.Add(this.btnKhachHang);
-            this.pnlSidebar.Controls.Add(this.btnSanPham);
-            this.pnlSidebar.Controls.Add(this.btnLapHoaDon);
-            this.pnlSidebar.Controls.Add(this.lblSidebarTitle);
-            this.pnlSidebar.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pnlSidebar.Location = new System.Drawing.Point(0, 0);
-            this.pnlSidebar.Name = "pnlSidebar";
-            this.pnlSidebar.Padding = new System.Windows.Forms.Padding(20);
-            this.pnlSidebar.Size = new System.Drawing.Size(260, 700);
-            this.pnlSidebar.TabIndex = 0;
-            // 
-            // lblGhiChu
-            // 
-            this.lblGhiChu.Appearance.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Italic);
-            this.lblGhiChu.Appearance.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.lblGhiChu.Appearance.Options.UseFont = true;
-            this.lblGhiChu.Appearance.Options.UseForeColor = true;
-            this.lblGhiChu.Location = new System.Drawing.Point(3, 199);
-            this.lblGhiChu.Name = "lblGhiChu";
-            this.lblGhiChu.Size = new System.Drawing.Size(119, 20);
-            this.lblGhiChu.TabIndex = 10;
-            this.lblGhiChu.Text = "Ghi chú quyền hạn";
-            // 
-            // lblNgay
-            // 
-            this.lblNgay.Appearance.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.lblNgay.Appearance.ForeColor = System.Drawing.Color.White;
-            this.lblNgay.Appearance.Options.UseFont = true;
-            this.lblNgay.Appearance.Options.UseForeColor = true;
-            this.lblNgay.Location = new System.Drawing.Point(23, 170);
-            this.lblNgay.Name = "lblNgay";
-            this.lblNgay.Size = new System.Drawing.Size(84, 23);
-            this.lblNgay.TabIndex = 9;
-            this.lblNgay.Text = "Ngày: --/--";
+            this.lblNhanVien.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblNhanVien.Appearance.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.lblNhanVien.Appearance.ForeColor = System.Drawing.Color.White;
+            this.lblNhanVien.Appearance.Options.UseFont = true;
+            this.lblNhanVien.Appearance.Options.UseForeColor = true;
+            this.lblNhanVien.Location = new System.Drawing.Point(700, 20);
+            this.lblNhanVien.Name = "lblNhanVien";
+            this.lblNhanVien.Size = new System.Drawing.Size(197, 23);
+            this.lblNhanVien.TabIndex = 1;
+            this.lblNhanVien.Text = "Nhân viên: Nguyễn Văn A";
             // 
             // lblCaSang
             // 
+            this.lblCaSang.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblCaSang.Appearance.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.lblCaSang.Appearance.ForeColor = System.Drawing.Color.White;
             this.lblCaSang.Appearance.Options.UseFont = true;
             this.lblCaSang.Appearance.Options.UseForeColor = true;
-            this.lblCaSang.Location = new System.Drawing.Point(23, 140);
+            this.lblCaSang.Location = new System.Drawing.Point(920, 20);
             this.lblCaSang.Name = "lblCaSang";
-            this.lblCaSang.Size = new System.Drawing.Size(50, 23);
-            this.lblCaSang.TabIndex = 8;
-            this.lblCaSang.Text = "Ca: ---";
+            this.lblCaSang.Size = new System.Drawing.Size(67, 23);
+            this.lblCaSang.TabIndex = 2;
+            this.lblCaSang.Text = "Ca: Sáng";
             // 
-            // lblNhanVien
+            // lblNgay
             // 
-            this.lblNhanVien.Appearance.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
-            this.lblNhanVien.Appearance.ForeColor = System.Drawing.Color.White;
-            this.lblNhanVien.Appearance.Options.UseFont = true;
-            this.lblNhanVien.Appearance.Options.UseForeColor = true;
-            this.lblNhanVien.Location = new System.Drawing.Point(23, 109);
-            this.lblNhanVien.Name = "lblNhanVien";
-            this.lblNhanVien.Size = new System.Drawing.Size(155, 25);
-            this.lblNhanVien.TabIndex = 7;
-            this.lblNhanVien.Text = "Nhân viên: (Chưa)";
+            this.lblNgay.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblNgay.Appearance.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.lblNgay.Appearance.ForeColor = System.Drawing.Color.White;
+            this.lblNgay.Appearance.Options.UseFont = true;
+            this.lblNgay.Appearance.Options.UseForeColor = true;
+            this.lblNgay.Location = new System.Drawing.Point(1020, 20);
+            this.lblNgay.Name = "lblNgay";
+            this.lblNgay.Size = new System.Drawing.Size(135, 23);
+            this.lblNgay.TabIndex = 3;
+            this.lblNgay.Text = "Ngày: 15/12/2025";
             // 
-            // btnDangXuat
+            // accordionMenu
             // 
-            this.btnDangXuat.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(83)))), ((int)(((byte)(80)))));
-            this.btnDangXuat.Appearance.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.btnDangXuat.Appearance.ForeColor = System.Drawing.Color.White;
-            this.btnDangXuat.Appearance.Options.UseBackColor = true;
-            this.btnDangXuat.Appearance.Options.UseFont = true;
-            this.btnDangXuat.Appearance.Options.UseForeColor = true;
-            this.btnDangXuat.Location = new System.Drawing.Point(23, 550);
-            this.btnDangXuat.Name = "btnDangXuat";
-            this.btnDangXuat.Size = new System.Drawing.Size(214, 45);
-            this.btnDangXuat.TabIndex = 6;
-            this.btnDangXuat.Text = "Đăng xuất";
-            this.btnDangXuat.Click += new System.EventHandler(this.OnDangXuatClick);
+            this.accordionMenu.Appearance.AccordionControl.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
+            this.accordionMenu.Appearance.AccordionControl.Options.UseBackColor = true;
+            this.accordionMenu.Dock = System.Windows.Forms.DockStyle.Left;
+            this.accordionMenu.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
+            this.aceBanHang,
+            this.aceTraCuu,
+            this.aceLichSu,
+            this.aceTaiKhoan});
+            this.accordionMenu.Location = new System.Drawing.Point(0, 60);
+            this.accordionMenu.Name = "accordionMenu";
+            this.accordionMenu.Size = new System.Drawing.Size(220, 640);
+            this.accordionMenu.TabIndex = 1;
             // 
-            // btnThongTin
+            // aceBanHang
             // 
-            this.btnThongTin.Appearance.Font = new System.Drawing.Font("Showcard Gothic", 10.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
-            this.btnThongTin.Appearance.ForeColor = System.Drawing.Color.Black;
-            this.btnThongTin.Appearance.Options.UseFont = true;
-            this.btnThongTin.Appearance.Options.UseForeColor = true;
-            this.btnThongTin.Location = new System.Drawing.Point(0, 405);
-            this.btnThongTin.Name = "btnThongTin";
-            this.btnThongTin.Size = new System.Drawing.Size(260, 40);
-            this.btnThongTin.TabIndex = 5;
-            this.btnThongTin.Text = "Thông tin nhân viên";
-            this.btnThongTin.Click += new System.EventHandler(this.OnThongTinNVClick);
+            this.aceBanHang.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
+            this.aceLapHoaDon});
+            this.aceBanHang.Expanded = true;
+            this.aceBanHang.Name = "aceBanHang";
+            this.aceBanHang.Text = "💰 BÁN HÀNG";
             // 
-            // btnLichSu
+            // aceLapHoaDon
             // 
-            this.btnLichSu.Appearance.Font = new System.Drawing.Font("Showcard Gothic", 10.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
-            this.btnLichSu.Appearance.ForeColor = System.Drawing.Color.Black;
-            this.btnLichSu.Appearance.Options.UseFont = true;
-            this.btnLichSu.Appearance.Options.UseForeColor = true;
-            this.btnLichSu.Location = new System.Drawing.Point(0, 366);
-            this.btnLichSu.Name = "btnLichSu";
-            this.btnLichSu.Size = new System.Drawing.Size(260, 44);
-            this.btnLichSu.TabIndex = 4;
-            this.btnLichSu.Text = "Lịch sử giao dịch";
-            this.btnLichSu.Click += new System.EventHandler(this.OnLichSuCaNhanClick);
+            this.aceLapHoaDon.Name = "aceLapHoaDon";
+            this.aceLapHoaDon.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.aceLapHoaDon.Text = "   • Lập hóa đơn";
+            this.aceLapHoaDon.Click += new System.EventHandler(this.OnLapHoaDonClick);
             // 
-            // btnKhachHang
+            // aceTraCuu
             // 
-            this.btnKhachHang.Appearance.Font = new System.Drawing.Font("Showcard Gothic", 10.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
-            this.btnKhachHang.Appearance.ForeColor = System.Drawing.Color.Black;
-            this.btnKhachHang.Appearance.Options.UseFont = true;
-            this.btnKhachHang.Appearance.Options.UseForeColor = true;
-            this.btnKhachHang.Location = new System.Drawing.Point(0, 323);
-            this.btnKhachHang.Name = "btnKhachHang";
-            this.btnKhachHang.Size = new System.Drawing.Size(260, 48);
-            this.btnKhachHang.TabIndex = 3;
-            this.btnKhachHang.Text = "Khách hàng";
-            this.btnKhachHang.Click += new System.EventHandler(this.OnKhachHangClick);
+            this.aceTraCuu.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
+            this.aceSanPham,
+            this.aceKhachHang});
+            this.aceTraCuu.Expanded = true;
+            this.aceTraCuu.Name = "aceTraCuu";
+            this.aceTraCuu.Text = "🔍 TRA CỨU";
             // 
-            // btnSanPham
+            // aceSanPham
             // 
-            this.btnSanPham.Appearance.Font = new System.Drawing.Font("Showcard Gothic", 10.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
-            this.btnSanPham.Appearance.ForeColor = System.Drawing.Color.Black;
-            this.btnSanPham.Appearance.Options.UseFont = true;
-            this.btnSanPham.Appearance.Options.UseForeColor = true;
-            this.btnSanPham.Location = new System.Drawing.Point(0, 286);
-            this.btnSanPham.Name = "btnSanPham";
-            this.btnSanPham.Size = new System.Drawing.Size(260, 40);
-            this.btnSanPham.TabIndex = 2;
-            this.btnSanPham.Text = "Tra cứu sản phẩm";
-            this.btnSanPham.Click += new System.EventHandler(this.OnSanPhamClick);
+            this.aceSanPham.Name = "aceSanPham";
+            this.aceSanPham.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.aceSanPham.Text = "   • Sản phẩm";
+            this.aceSanPham.Click += new System.EventHandler(this.OnSanPhamClick);
             // 
-            // btnLapHoaDon
+            // aceKhachHang
             // 
-            this.btnLapHoaDon.Appearance.Font = new System.Drawing.Font("Showcard Gothic", 10.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLapHoaDon.Appearance.ForeColor = System.Drawing.Color.Black;
-            this.btnLapHoaDon.Appearance.Options.UseFont = true;
-            this.btnLapHoaDon.Appearance.Options.UseForeColor = true;
-            this.btnLapHoaDon.Location = new System.Drawing.Point(-7, 240);
-            this.btnLapHoaDon.Name = "btnLapHoaDon";
-            this.btnLapHoaDon.Size = new System.Drawing.Size(267, 49);
-            this.btnLapHoaDon.TabIndex = 1;
-            this.btnLapHoaDon.Text = "Lập hóa đơn";
-            this.btnLapHoaDon.Click += new System.EventHandler(this.OnLapHoaDonClick);
+            this.aceKhachHang.Name = "aceKhachHang";
+            this.aceKhachHang.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.aceKhachHang.Text = "   • Khách hàng";
+            this.aceKhachHang.Click += new System.EventHandler(this.OnKhachHangClick);
             // 
-            // lblSidebarTitle
+            // aceLichSu
             // 
-            this.lblSidebarTitle.Appearance.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold);
-            this.lblSidebarTitle.Appearance.ForeColor = System.Drawing.Color.White;
-            this.lblSidebarTitle.Appearance.Options.UseFont = true;
-            this.lblSidebarTitle.Appearance.Options.UseForeColor = true;
-            this.lblSidebarTitle.Location = new System.Drawing.Point(12, 23);
-            this.lblSidebarTitle.Name = "lblSidebarTitle";
-            this.lblSidebarTitle.Size = new System.Drawing.Size(205, 37);
-            this.lblSidebarTitle.TabIndex = 0;
-            this.lblSidebarTitle.Text = "Bảng điều khiển";
+            this.aceLichSu.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
+            this.aceLichSuCaNhan});
+            this.aceLichSu.Expanded = true;
+            this.aceLichSu.Name = "aceLichSu";
+            this.aceLichSu.Text = "📋 LỊCH SỬ";
+            // 
+            // aceLichSuCaNhan
+            // 
+            this.aceLichSuCaNhan.Name = "aceLichSuCaNhan";
+            this.aceLichSuCaNhan.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.aceLichSuCaNhan.Text = "   • Hóa đơn cá nhân";
+            this.aceLichSuCaNhan.Click += new System.EventHandler(this.OnLichSuCaNhanClick);
+            // 
+            // aceTaiKhoan
+            // 
+            this.aceTaiKhoan.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
+            this.aceThongTinNV,
+            this.aceDangXuat});
+            this.aceTaiKhoan.Expanded = true;
+            this.aceTaiKhoan.Name = "aceTaiKhoan";
+            this.aceTaiKhoan.Text = "👤 TÀI KHOẢN";
+            // 
+            // aceThongTinNV
+            // 
+            this.aceThongTinNV.Name = "aceThongTinNV";
+            this.aceThongTinNV.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.aceThongTinNV.Text = "   • Thông tin NV";
+            this.aceThongTinNV.Click += new System.EventHandler(this.OnThongTinNVClick);
+            // 
+            // aceDangXuat
+            // 
+            this.aceDangXuat.Name = "aceDangXuat";
+            this.aceDangXuat.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.aceDangXuat.Text = "   • Đăng xuất";
+            this.aceDangXuat.Click += new System.EventHandler(this.OnDangXuatClick);
+            // 
+            // pnlMainContent
+            // 
+            this.pnlMainContent.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(247)))), ((int)(((byte)(250)))));
+            this.pnlMainContent.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlMainContent.Location = new System.Drawing.Point(220, 60);
+            this.pnlMainContent.Name = "pnlMainContent";
+            this.pnlMainContent.Size = new System.Drawing.Size(980, 610);
+            this.pnlMainContent.TabIndex = 2;
+            // 
+            // lblGhiChu
+            // 
+            this.lblGhiChu.Appearance.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Italic);
+            this.lblGhiChu.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(76)))), ((int)(((byte)(60)))));
+            this.lblGhiChu.Appearance.Options.UseFont = true;
+            this.lblGhiChu.Appearance.Options.UseForeColor = true;
+            this.lblGhiChu.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.lblGhiChu.Location = new System.Drawing.Point(220, 670);
+            this.lblGhiChu.Name = "lblGhiChu";
+            this.lblGhiChu.Padding = new System.Windows.Forms.Padding(10, 5, 0, 5);
+            this.lblGhiChu.Size = new System.Drawing.Size(480, 30);
+            this.lblGhiChu.TabIndex = 3;
+            this.lblGhiChu.Text = "Ghi chú: Nhân viên KHÔNG có quyền xóa dữ liệu / xem báo cáo tổng hợp";
             // 
             // fDashboardStaff
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1200, 700);
-            this.Controls.Add(this.pnlRoot);
+            this.Controls.Add(this.pnlMainContent);
+            this.Controls.Add(this.lblGhiChu);
+            this.Controls.Add(this.accordionMenu);
+            this.Controls.Add(this.pnlHeader);
             this.Name = "fDashboardStaff";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Phần mềm Quản lý Cửa hàng Mỹ phẩm - Nhân viên";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.pnlRoot.ResumeLayout(false);
-            this.pnlSidebar.ResumeLayout(false);
-            this.pnlSidebar.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pnlHeader)).EndInit();
+            this.pnlHeader.ResumeLayout(false);
+            this.pnlHeader.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.accordionMenu)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
-
-        #endregion
-
-        private System.Windows.Forms.Panel pnlRoot;
-        private System.Windows.Forms.Panel pnlSidebar;
-        private DevExpress.XtraEditors.LabelControl lblSidebarTitle;
-        private DevExpress.XtraEditors.SimpleButton btnDangXuat;
-        private DevExpress.XtraEditors.SimpleButton btnThongTin;
-        private DevExpress.XtraEditors.SimpleButton btnLichSu;
-        private DevExpress.XtraEditors.SimpleButton btnKhachHang;
-        private DevExpress.XtraEditors.SimpleButton btnSanPham;
-        private DevExpress.XtraEditors.SimpleButton btnLapHoaDon;
-        private DevExpress.XtraEditors.LabelControl lblNhanVien;
-        private DevExpress.XtraEditors.LabelControl lblCaSang;
-        private DevExpress.XtraEditors.LabelControl lblNgay;
-        private DevExpress.XtraEditors.LabelControl lblGhiChu;
-        private System.Windows.Forms.Panel pnlMainContent;
     }
 }

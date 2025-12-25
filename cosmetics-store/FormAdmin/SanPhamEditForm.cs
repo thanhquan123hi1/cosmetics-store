@@ -15,9 +15,7 @@ namespace cosmetics_store.Forms
         private SanPham _sanPham;
         private bool _isEditMode;
         private string _imagesFolder;
-        private string _sampleImagesFolder;
         private string _selectedImagePath;
-        private static readonly string[] _imageExtensions = { ".jpg", ".jpeg", ".png", ".bmp", ".gif" };
 
         public SanPhamEditForm(CosmeticsContext context)
         {
@@ -46,19 +44,6 @@ namespace cosmetics_store.Forms
                 Directory.CreateDirectory(_imagesFolder);
             }
 
-            _sampleImagesFolder = ResolveSampleFolder();
-            if (!Directory.Exists(_sampleImagesFolder))
-            {
-                Directory.CreateDirectory(_sampleImagesFolder);
-            }
-
-            openFileDialog.InitialDirectory = Directory.Exists(_sampleImagesFolder)
-                ? _sampleImagesFolder
-                : Environment.GetFolderPath(Environment.SpecialFolder.MyPictures);
-
-            // Seed dữ liệu mẫu nếu chưa có
-            SeedData();
-
             LoadLoaiSP();
             LoadThuongHieu();
 
@@ -67,81 +52,6 @@ namespace cosmetics_store.Forms
                 spinSoLuong.Value = 0;
                 spinDonGia.Value = 0;
                 _selectedImagePath = "";
-            }
-
-        }
-
-        private string ResolveSampleFolder()
-        {
-            // Ưu tiên thư mục nằm cạnh file exe
-            var runtimeFolder = Path.Combine(Application.StartupPath, "Image_Products");
-            if (Directory.Exists(runtimeFolder))
-            {
-                return runtimeFolder;
-            }
-
-            // Thử tìm thư mục ở gốc project (2 level lên từ bin/Debug)
-            var rootFolder = Path.GetFullPath(Path.Combine(Application.StartupPath, "..", "..", "Image_Products"));
-            if (Directory.Exists(rootFolder))
-            {
-                return rootFolder;
-            }
-
-            return runtimeFolder;
-        }
-
-        private void SeedData()
-        {
-            try
-            {
-                // Seed Loại sản phẩm
-                var loaiSPData = new[]
-                {
-                    new { TenLoai = "Skincare", MoTa = "Sản phẩm chăm sóc da" },
-                    new { TenLoai = "Makeup", MoTa = "Sản phẩm trang điểm" },
-                    new { TenLoai = "Hương thơm", MoTa = "Nước hoa và các sản phẩm hương thơm" },
-                    new { TenLoai = "Bodycare", MoTa = "Sản phẩm chăm sóc cơ thể" }
-                };
-
-                foreach (var loai in loaiSPData)
-                {
-                    if (!_context.LoaiSPs.Any(l => l.TenLoai == loai.TenLoai))
-                    {
-                        _context.LoaiSPs.Add(new LoaiSP
-                        {
-                            TenLoai = loai.TenLoai,
-                            MoTa = loai.MoTa
-                        });
-                    }
-                }
-
-                // Seed Thương hiệu
-                var thuongHieuData = new[]
-                {
-                    new { TenThuongHieu = "Medicube", QuocGia = "Hàn Quốc" },
-                    new { TenThuongHieu = "Laneige", QuocGia = "Hàn Quốc" },
-                    new { TenThuongHieu = "Chanel", QuocGia = "Pháp" },
-                    new { TenThuongHieu = "Ofelia", QuocGia = "Việt Nam" },
-                    new { TenThuongHieu = "Dior", QuocGia = "Pháp" }
-                };
-
-                foreach (var thuongHieu in thuongHieuData)
-                {
-                    if (!_context.ThuongHieus.Any(t => t.TenThuongHieu == thuongHieu.TenThuongHieu))
-                    {
-                        _context.ThuongHieus.Add(new ThuongHieu
-                        {
-                            TenThuongHieu = thuongHieu.TenThuongHieu,
-                            QuocGia = thuongHieu.QuocGia
-                        });
-                    }
-                }
-
-                _context.SaveChanges();
-            }
-            catch
-            {
-                // Nếu có lỗi thì bỏ qua, có thể dữ liệu đã tồn tại
             }
         }
 
@@ -239,73 +149,35 @@ namespace cosmetics_store.Forms
         {
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
-                TryApplyImage(openFileDialog.FileName, true);
-            }
-        }
-
-        private void btnChonAnhMau_Click(object sender, EventArgs e)
-        {
-            if (!Directory.Exists(_sampleImagesFolder))
-            {
-                XtraMessageBox.Show("Chưa tìm thấy thư mục Image_Products!", "Thông báo",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            var sampleFiles = Directory.GetFiles(_sampleImagesFolder)
-                .Where(f => _imageExtensions.Contains(Path.GetExtension(f).ToLower()))
-                .ToList();
-
-            if (!sampleFiles.Any())
-            {
-                XtraMessageBox.Show("Thư mục Image_Products chưa có ảnh nào.", "Thông báo",
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-
-            using (var dlg = new OpenFileDialog())
-            {
-                dlg.Title = "Chọn ảnh mẫu";
-                dlg.Filter = openFileDialog.Filter;
-                dlg.InitialDirectory = _sampleImagesFolder;
-                if (dlg.ShowDialog() == DialogResult.OK)
+                try
                 {
-                    TryApplyImage(dlg.FileName, false);
-                }
-            }
-        }
+                    string sourceFile = openFileDialog.FileName;
+                    string fileName = Path.GetFileName(sourceFile);
+                    
+                    // Tạo tên file unique để tránh trùng
+                    string uniqueFileName = $"{DateTime.Now:yyyyMMddHHmmss}_{fileName}";
+                    string destPath = Path.Combine(_imagesFolder, uniqueFileName);
 
-        private void TryApplyImage(string sourceFile, bool showSuccessMessage)
-        {
-            try
-            {
-                if (!File.Exists(sourceFile))
-                {
-                    XtraMessageBox.Show("Không tìm thấy file ảnh đã chọn!", "Lỗi",
-                        MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
+                    // Copy file vào thư mục Images/Products
+                    File.Copy(sourceFile, destPath, true);
 
-                string uniqueFileName = $"{DateTime.Now:yyyyMMddHHmmss}_{Path.GetFileName(sourceFile)}";
-                string destPath = Path.Combine(_imagesFolder, uniqueFileName);
-                File.Copy(sourceFile, destPath, true);
+                    // Lưu đường dẫn tương đối
+                    _selectedImagePath = Path.Combine("Images", "Products", uniqueFileName);
 
-                _selectedImagePath = Path.Combine("Images", "Products", uniqueFileName);
-                using (var stream = new FileStream(destPath, FileMode.Open, FileAccess.Read))
-                {
-                    picHinhAnh.Image = Image.FromStream(stream);
-                }
+                    // Hiển thị ảnh preview
+                    using (var stream = new FileStream(destPath, FileMode.Open, FileAccess.Read))
+                    {
+                        picHinhAnh.Image = Image.FromStream(stream);
+                    }
 
-                if (showSuccessMessage)
-                {
                     XtraMessageBox.Show("Đã upload hình ảnh thành công!", "Thông báo",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-            }
-            catch (Exception ex)
-            {
-                XtraMessageBox.Show($"Lỗi xử lý hình ảnh: {ex.Message}", "Lỗi",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                catch (Exception ex)
+                {
+                    XtraMessageBox.Show($"Lỗi upload hình ảnh: {ex.Message}", "Lỗi",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 
@@ -392,16 +264,6 @@ namespace cosmetics_store.Forms
         {
             this.DialogResult = DialogResult.Cancel;
             this.Close();
-        }
-
-        private void lookupLoai_EditValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lookupThuong_EditValueChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }
