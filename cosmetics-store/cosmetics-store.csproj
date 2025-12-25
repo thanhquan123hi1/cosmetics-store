@@ -289,6 +289,12 @@
     <Compile Include="FormStaff\fLichSuGiaoDich.Designer.cs">
       <DependentUpon>fLichSuGiaoDich.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormStaff\fQuanLyKhachHang.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormStaff\fQuanLyKhachHang.Designer.cs">
+      <DependentUpon>fQuanLyKhachHang.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormStaff\fThanhToan.cs">
       <SubType>Form</SubType>
     </Compile>

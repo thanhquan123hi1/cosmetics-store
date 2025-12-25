@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 
 namespace BusinessAccessLayer.DTOs
@@ -15,9 +15,10 @@ namespace BusinessAccessLayer.DTOs
         public string TenNhanVien { get; set; }
 
         public string NgayFormatted => NgayLap.ToString("dd/MM/yyyy HH:mm");
-        public string TongTienFormatted => $"{TongTien:N0}?";
-        public bool DaThanhToan => TrangThai?.ToLower().Contains("thanh to�n") == true ||
-                                    TrangThai?.ToLower().Contains("ho�n th�nh") == true;
+        public string TongTienFormatted => $"{TongTien:N0}đ";
+        public bool DaThanhToan => TrangThai?.ToLower().Contains("thanh toán") == true ||
+                                    TrangThai?.ToLower().Contains("hoàn thành") == true ||
+                                    TrangThai == "DA_DUYET";
     }
 
     public class HoaDonChiTietDTO : HoaDonDTO
@@ -33,8 +34,8 @@ namespace BusinessAccessLayer.DTOs
         public decimal DonGia { get; set; }
         public decimal ThanhTien { get; set; }
 
-        public string DonGiaFormatted => $"{DonGia:N0}?";
-        public string ThanhTienFormatted => $"{ThanhTien:N0}?";
+        public string DonGiaFormatted => $"{DonGia:N0}đ";
+        public string ThanhTienFormatted => $"{ThanhTien:N0}đ";
     }
 
     public class CheckoutResult
@@ -43,5 +44,27 @@ namespace BusinessAccessLayer.DTOs
         public string Message { get; set; }
         public int MaHD { get; set; }
         public decimal TongTien { get; set; }
+    }
+
+    /// <summary>
+    /// Kết quả xử lý hóa đơn (duyệt, từ chối, hoàn thành)
+    /// </summary>
+    public class HoaDonResult
+    {
+        public bool Success { get; set; }
+        public string Message { get; set; }
+        public int MaHD { get; set; }
+    }
+
+    /// <summary>
+    /// Thống kê hóa đơn của nhân viên
+    /// </summary>
+    public class ThongKeNVDTO
+    {
+        public int SoHoaDon { get; set; }
+        public decimal DoanhThu { get; set; }
+        public int SoChoDuyet { get; set; }
+        public int SoDaDuyet { get; set; }
+        public int SoTuChoi { get; set; }
     }
 }

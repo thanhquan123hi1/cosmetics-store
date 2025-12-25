@@ -6,9 +6,7 @@ namespace DataAccessLayer.Utilities
 {
     public static class PasswordHasher
     {
-        /// <summary>
         /// Hash password using SHA256
-        /// </summary>
         public static string HashPassword(string password)
         {
             if (string.IsNullOrEmpty(password))
@@ -26,9 +24,7 @@ namespace DataAccessLayer.Utilities
             }
         }
 
-        /// <summary>
         /// Verify if password matches the hashed password
-        /// </summary>
         public static bool VerifyPassword(string password, string hashedPassword)
         {
             if (string.IsNullOrEmpty(password) || string.IsNullOrEmpty(hashedPassword))

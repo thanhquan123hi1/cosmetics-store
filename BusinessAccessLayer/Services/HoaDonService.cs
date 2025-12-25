@@ -357,24 +357,4 @@ namespace BusinessAccessLayer.Services
             _context?.Dispose();
         }
     }
-
-    #region DTOs
-
-    public class HoaDonResult
-    {
-        public bool Success { get; set; }
-        public string Message { get; set; }
-        public int MaHD { get; set; }
-    }
-
-    public class ThongKeNVDTO
-    {
-        public int SoHoaDon { get; set; }
-        public decimal DoanhThu { get; set; }
-        public int SoChoDuyet { get; set; }
-        public int SoDaDuyet { get; set; }
-        public int SoTuChoi { get; set; }
-    }
-
-    #endregion
 }

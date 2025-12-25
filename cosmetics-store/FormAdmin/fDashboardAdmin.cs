@@ -129,6 +129,12 @@ namespace cosmetics_store.Forms
                 Padding = new Padding(20)
             };
 
+            // Tính toán kích thước content và vị trí căn giữa
+            int contentMaxWidth = 960;
+            int availableWidth = pnlMainContent.Width - 40;
+            int contentWidth = Math.Min(contentMaxWidth, availableWidth);
+            int leftMargin = Math.Max(20, (availableWidth - contentWidth) / 2 + 20);
+
             int yPos = 10;
 
             // ===== TITLE =====
@@ -137,7 +143,7 @@ namespace cosmetics_store.Forms
                 Text = $"📊 TỔNG QUAN HÔM NAY (Ngày {DateTime.Now:dd/MM/yyyy})",
                 Font = new Font("Segoe UI", 16F, FontStyle.Bold),
                 ForeColor = Color.FromArgb(45, 45, 48),
-                Location = new Point(20, yPos),
+                Location = new Point(leftMargin, yPos),
                 AutoSize = true
             };
             panel.Controls.Add(lblTitle);
@@ -146,17 +152,18 @@ namespace cosmetics_store.Forms
             // ===== ROW 1: 4 STAT CARDS =====
             var statsPanel = new FlowLayoutPanel
             {
-                Location = new Point(20, yPos),
-                Size = new Size(900, 110),
+                Location = new Point(leftMargin, yPos),
+                Size = new Size(contentWidth, 110),
                 FlowDirection = FlowDirection.LeftToRight,
                 WrapContents = false,
                 BackColor = Color.Transparent
             };
 
-            statsPanel.Controls.Add(CreateStatCard("💰 DOANH THU", GetTodayRevenue(), Color.FromArgb(46, 204, 113)));
-            statsPanel.Controls.Add(CreateStatCard("📋 ĐƠN HÀNG", GetTodayOrders().ToString() + " Đơn", Color.FromArgb(52, 152, 219)));
-            statsPanel.Controls.Add(CreateStatCard("⚠️ CẦN NHẬP", GetLowStockCount().ToString() + " SP Low", Color.FromArgb(231, 76, 60)));
-            statsPanel.Controls.Add(CreateStatCard("👤 USER", GetActiveUsers().ToString() + " Active", Color.FromArgb(155, 89, 182)));
+            int cardWidth = (contentWidth - 60) / 4;
+            statsPanel.Controls.Add(CreateStatCard("💰 DOANH THU", GetTodayRevenue(), Color.FromArgb(46, 204, 113), cardWidth));
+            statsPanel.Controls.Add(CreateStatCard("📋 ĐƠN HÀNG", GetTodayOrders().ToString() + " Đơn", Color.FromArgb(52, 152, 219), cardWidth));
+            statsPanel.Controls.Add(CreateStatCard("⚠️ CẦN NHẬP", GetLowStockCount().ToString() + " SP Low", Color.FromArgb(231, 76, 60), cardWidth));
+            statsPanel.Controls.Add(CreateStatCard("👤 USER", GetActiveUsers().ToString() + " Active", Color.FromArgb(155, 89, 182), cardWidth));
 
             panel.Controls.Add(statsPanel);
             yPos += 120;
@@ -164,8 +171,8 @@ namespace cosmetics_store.Forms
             // ===== ROW 2: BIỂU ĐỒ + HOẠT ĐỘNG GẦN ĐÂY =====
             var row2Panel = new TableLayoutPanel
             {
-                Location = new Point(20, yPos),
-                Size = new Size(900, 250),
+                Location = new Point(leftMargin, yPos),
+                Size = new Size(contentWidth, 250),
                 ColumnCount = 2,
                 RowCount = 1,
                 BackColor = Color.Transparent
@@ -187,8 +194,8 @@ namespace cosmetics_store.Forms
             // ===== ROW 3: TOP THƯƠNG HIỆU + PHÍM TẮT =====
             var row3Panel = new TableLayoutPanel
             {
-                Location = new Point(20, yPos),
-                Size = new Size(900, 200),
+                Location = new Point(leftMargin, yPos),
+                Size = new Size(contentWidth, 200),
                 ColumnCount = 2,
                 RowCount = 1,
                 BackColor = Color.Transparent
@@ -209,11 +216,11 @@ namespace cosmetics_store.Forms
             return panel;
         }
 
-        private Panel CreateStatCard(string title, string value, Color color)
+        private Panel CreateStatCard(string title, string value, Color color, int width = 200)
         {
             var card = new Panel
             {
-                Size = new Size(200, 95),
+                Size = new Size(width, 95),
                 BackColor = Color.White,
                 Margin = new Padding(0, 0, 15, 0)
             };

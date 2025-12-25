@@ -92,13 +92,22 @@ namespace cosmetics_store.FormKH
             int sidebarWidth = pnlSidebar.Width;
             int mainWidth = screenWidth - sidebarWidth;
 
+            // Căn giữa nội dung pnlHero và pnlProducts trong pnlMainArea
+            int contentMaxWidth = 1100; // Chiều rộng tối đa của nội dung
+            int contentWidth = Math.Min(contentMaxWidth, mainWidth - 40);
+            int leftMargin = (mainWidth - contentWidth) / 2;
+            if (leftMargin < 15) leftMargin = 15;
+
             // Điều chỉnh Hero section
             if (pnlHero.Visible)
             {
-                // Banner chính chiếm 65% chiều rộng
-                int bannerMainWidth = (int)(mainWidth * 0.62);
-                int bannerSideWidth = (int)(mainWidth * 0.32);
-                int bannerHeight = Math.Min(280, (int)(screenHeight * 0.35));
+                pnlHero.Location = new Point(leftMargin, 0);
+                pnlHero.Width = contentWidth;
+                
+                // Banner chính chiếm 62% chiều rộng
+                int bannerMainWidth = (int)(contentWidth * 0.60);
+                int bannerSideWidth = (int)(contentWidth * 0.35);
+                int bannerHeight = Math.Min(250, (int)(screenHeight * 0.32));
 
                 pnlBannerMain.Size = new Size(bannerMainWidth, bannerHeight - 30);
                 pnlBannerMain.Location = new Point(15, 15);
@@ -118,6 +127,10 @@ namespace cosmetics_store.FormKH
             // Điều chỉnh Product section
             if (pnlProducts.Visible)
             {
+                pnlProducts.Location = new Point(leftMargin, pnlHero.Visible ? pnlHero.Bottom + 5 : 0);
+                pnlProducts.Width = contentWidth;
+                
+                // Căn giữa title
                 lblSectionTitle.Location = new Point((pnlProducts.Width - lblSectionTitle.Width) / 2, 10);
                 btnXemTatCa.Location = new Point((pnlProducts.Width - btnXemTatCa.Width) / 2, pnlProducts.Height - 45);
             }
@@ -1168,7 +1181,19 @@ namespace cosmetics_store.FormKH
                 {
                     if (form.ShowDialog() == DialogResult.OK)
                     {
-                        AddToCart(maSP);
+                        // thêm đúng số lượng người dùng chọn
+                        var qty = form.SelectedQuantity;
+                        if (qty <= 0) qty = 1;
+                        var result = _khService.AddToCart(maSP, qty);
+                        if (result.Success)
+                        {
+                            UpdateCartCount();
+                            XtraMessageBox.Show($"✅ {result.Message}", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                        {
+                            XtraMessageBox.Show($"❌ {result.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
                     }
                 }
             }

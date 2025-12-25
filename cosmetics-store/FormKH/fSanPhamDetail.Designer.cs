@@ -136,20 +136,23 @@
             this.spinSoLuong.Name = "spinSoLuong";
             this.spinSoLuong.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.spinSoLuong.Properties.Appearance.Options.UseFont = true;
+            this.spinSoLuong.Properties.Buttons.Clear();
             this.spinSoLuong.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.SpinUp),
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.SpinDown)
+            });
             this.spinSoLuong.Properties.IsFloatValue = false;
-            this.spinSoLuong.Properties.MaxValue = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
             this.spinSoLuong.Properties.MinValue = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            this.spinSoLuong.Size = new System.Drawing.Size(80, 34);
+            this.spinSoLuong.Properties.MaxValue = new decimal(new int[] {
+            9999,
+            0,
+            0,
+            0});
+            this.spinSoLuong.Size = new System.Drawing.Size(100, 34);
             this.spinSoLuong.TabIndex = 6;
             // 
             // btnThemGio

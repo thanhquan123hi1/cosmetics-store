@@ -33,17 +33,17 @@ namespace cosmetics_store.FormStaff
                 if (!string.IsNullOrEmpty(keyword))
                 {
                     keyword = keyword.ToLower();
-                    query = query.Where(kh => kh.HoTen.ToLower().Contains(keyword) ||
-                                               kh.SDT.Contains(keyword));
+                    query = query.Where(k => k.HoTen.ToLower().Contains(keyword) ||
+                                               k.SDT.Contains(keyword));
                 }
 
-                var data = query.Select(kh => new
+                var data = query.Select(k => new
                 {
-                    kh.MaKH,
-                    kh.HoTen,
-                    kh.SDT,
-                    GhiChu = kh.DiaChi ?? ""
-                }).OrderByDescending(kh => kh.MaKH).Take(100).ToList();
+                    k.MaKH,
+                    k.HoTen,
+                    k.SDT,
+                    GhiChu = k.DiaChi ?? ""
+                }).OrderByDescending(k => k.MaKH).Take(100).ToList();
 
                 gridKhachHang.DataSource = data;
 
@@ -100,14 +100,40 @@ namespace cosmetics_store.FormStaff
                 {
                     try
                     {
-                        var kh = new KhachHang
+                        // Kiểm tra khách hàng đã tồn tại theo SĐT
+                        var sdt = form.SDT.Trim();
+                        var existingKH = _context.KhachHangs.FirstOrDefault(x => x.SDT == sdt);
+
+                        if (existingKH != null)
+                        {
+                            // Khách hàng đã tồn tại -> sử dụng khách hàng hiện có
+                            var result = XtraMessageBox.Show(
+                                $"Khách hàng với SĐT {sdt} đã tồn tại:\n" +
+                                $"Họ tên: {existingKH.HoTen}\n" +
+                                $"Địa chỉ: {existingKH.DiaChi ?? "N/A"}\n\n" +
+                                $"Bạn có muốn chọn khách hàng này không?",
+                                "Khách hàng đã tồn tại",
+                                MessageBoxButtons.YesNo,
+                                MessageBoxIcon.Question);
+
+                            if (result == DialogResult.Yes)
+                            {
+                                SelectedKhachHang = existingKH;
+                                this.DialogResult = DialogResult.OK;
+                                this.Close();
+                            }
+                            return;
+                        }
+
+                        // Tạo khách hàng mới
+                        var newKH = new KhachHang
                         {
                             HoTen = form.HoTen,
-                            SDT = form.SDT,
+                            SDT = sdt,
                             DiaChi = form.DiaChi,
                             GioiTinh = "Khác"
                         };
-                        _context.KhachHangs.Add(kh);
+                        _context.KhachHangs.Add(newKH);
                         _context.SaveChanges();
 
                         LoadKhachHang();
