@@ -1,9 +1,9 @@
-﻿using BusinessAccessLayer.DTOs;
+using BusinessAccessLayer.DTOs;
 
 namespace cosmetics_store
 {
     /// <summary>
-    /// Static class lưu trữ thông tin người dùng đang đăng nhập
+    /// Static class ?? l?u tr? th�ng tin ng??i d�ng ?ang ??ng nh?p
     /// </summary>
     public static class CurrentUser
     {
@@ -13,11 +13,11 @@ namespace cosmetics_store
 
         public static bool IsAdmin => User?.Quyen?.ToLower() == "admin";
 
-        public static bool IsNhanVien => User?.Quyen?.ToLower() == "nhân viên" || 
+        public static bool IsNhanVien => User?.Quyen?.ToLower() == "nh�n vi�n" || 
                                           User?.Quyen?.ToLower() == "nhanvien" || 
                                           User?.Quyen?.ToLower() == "staff";
 
-        public static bool IsKhachHang => User?.Quyen?.ToLower() == "khách hàng" || 
+        public static bool IsKhachHang => User?.Quyen?.ToLower() == "kh�ch h�ng" || 
                                            User?.Quyen?.ToLower() == "khachhang" || 
                                            User?.Quyen?.ToLower() == "customer";
 

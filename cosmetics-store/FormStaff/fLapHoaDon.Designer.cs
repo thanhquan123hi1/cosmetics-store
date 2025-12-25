@@ -25,7 +25,6 @@
 
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(fLapHoaDon));
             this.pnlMain = new DevExpress.XtraEditors.PanelControl();
             this.tabControl = new DevExpress.XtraTab.XtraTabControl();
             this.tabThongTin = new DevExpress.XtraTab.XtraTabPage();
@@ -37,7 +36,6 @@
             this.lblTongTien = new DevExpress.XtraEditors.LabelControl();
             this.btnThanhToan = new DevExpress.XtraEditors.SimpleButton();
             this.btnLuu = new DevExpress.XtraEditors.SimpleButton();
-            this.pictureEdit1 = new DevExpress.XtraEditors.PictureEdit();
             this.tabDanhSach = new DevExpress.XtraTab.XtraTabPage();
             this.gridSanPham = new DevExpress.XtraGrid.GridControl();
             this.gridViewSanPham = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -51,7 +49,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.tabControl)).BeginInit();
             this.tabControl.SuspendLayout();
             this.tabThongTin.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureEdit1.Properties)).BeginInit();
             this.tabDanhSach.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridSanPham)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewSanPham)).BeginInit();
@@ -99,7 +96,6 @@
             this.tabThongTin.Controls.Add(this.lblTongTien);
             this.tabThongTin.Controls.Add(this.btnThanhToan);
             this.tabThongTin.Controls.Add(this.btnLuu);
-            this.tabThongTin.Controls.Add(this.pictureEdit1);
             this.tabThongTin.Name = "tabThongTin";
             this.tabThongTin.Size = new System.Drawing.Size(908, 493);
             this.tabThongTin.Text = "THÔNG TIN HÓA ĐƠN";
@@ -116,37 +112,37 @@
             // 
             // lblNV
             // 
-            this.lblNV.Appearance.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold);
+            this.lblNV.Appearance.Font = new System.Drawing.Font("Segoe UI", 11F);
             this.lblNV.Appearance.Options.UseFont = true;
             this.lblNV.Location = new System.Drawing.Point(20, 55);
             this.lblNV.Name = "lblNV";
-            this.lblNV.Size = new System.Drawing.Size(74, 19);
+            this.lblNV.Size = new System.Drawing.Size(77, 25);
             this.lblNV.TabIndex = 1;
             this.lblNV.Text = "NV: NV01";
             // 
             // lblNgay
             // 
-            this.lblNgay.Appearance.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold);
+            this.lblNgay.Appearance.Font = new System.Drawing.Font("Segoe UI", 11F);
             this.lblNgay.Appearance.Options.UseFont = true;
             this.lblNgay.Location = new System.Drawing.Point(20, 85);
             this.lblNgay.Name = "lblNgay";
-            this.lblNgay.Size = new System.Drawing.Size(88, 19);
+            this.lblNgay.Size = new System.Drawing.Size(98, 25);
             this.lblNgay.TabIndex = 2;
             this.lblNgay.Text = "Ngày: 15/12";
             // 
             // lblKhachHang
             // 
-            this.lblKhachHang.Appearance.Font = new System.Drawing.Font("Times New Roman", 11.2F, System.Drawing.FontStyle.Bold);
+            this.lblKhachHang.Appearance.Font = new System.Drawing.Font("Segoe UI", 11F);
             this.lblKhachHang.Appearance.Options.UseFont = true;
             this.lblKhachHang.Location = new System.Drawing.Point(20, 130);
             this.lblKhachHang.Name = "lblKhachHang";
-            this.lblKhachHang.Size = new System.Drawing.Size(209, 22);
+            this.lblKhachHang.Size = new System.Drawing.Size(212, 25);
             this.lblKhachHang.TabIndex = 3;
             this.lblKhachHang.Text = "Khách hàng: (Chưa chọn)";
             // 
             // btnChonKH
             // 
-            this.btnChonKH.Appearance.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold);
+            this.btnChonKH.Appearance.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.btnChonKH.Appearance.Options.UseFont = true;
             this.btnChonKH.Location = new System.Drawing.Point(250, 125);
             this.btnChonKH.Name = "btnChonKH";
@@ -170,7 +166,7 @@
             // btnThanhToan
             // 
             this.btnThanhToan.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(204)))), ((int)(((byte)(113)))));
-            this.btnThanhToan.Appearance.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold);
+            this.btnThanhToan.Appearance.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
             this.btnThanhToan.Appearance.ForeColor = System.Drawing.Color.White;
             this.btnThanhToan.Appearance.Options.UseBackColor = true;
             this.btnThanhToan.Appearance.Options.UseFont = true;
@@ -184,23 +180,14 @@
             // 
             // btnLuu
             // 
-            this.btnLuu.Appearance.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold);
+            this.btnLuu.Appearance.Font = new System.Drawing.Font("Segoe UI", 11F);
             this.btnLuu.Appearance.Options.UseFont = true;
-            this.btnLuu.Location = new System.Drawing.Point(357, 250);
+            this.btnLuu.Location = new System.Drawing.Point(371, 250);
             this.btnLuu.Name = "btnLuu";
             this.btnLuu.Size = new System.Drawing.Size(119, 40);
             this.btnLuu.TabIndex = 7;
             this.btnLuu.Text = "💾 Lưu";
             this.btnLuu.Click += new System.EventHandler(this.btnLuu_Click);
-            // 
-            // pictureEdit1
-            // 
-            this.pictureEdit1.EditValue = ((object)(resources.GetObject("pictureEdit1.EditValue")));
-            this.pictureEdit1.Location = new System.Drawing.Point(496, 44);
-            this.pictureEdit1.Name = "pictureEdit1";
-            this.pictureEdit1.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
-            this.pictureEdit1.Size = new System.Drawing.Size(402, 403);
-            this.pictureEdit1.TabIndex = 8;
             // 
             // tabDanhSach
             // 
@@ -323,7 +310,6 @@
             this.tabControl.ResumeLayout(false);
             this.tabThongTin.ResumeLayout(false);
             this.tabThongTin.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureEdit1.Properties)).EndInit();
             this.tabDanhSach.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridSanPham)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewSanPham)).EndInit();
@@ -333,7 +319,5 @@
             this.ResumeLayout(false);
 
         }
-
-        private DevExpress.XtraEditors.PictureEdit pictureEdit1;
     }
 }

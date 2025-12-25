@@ -183,7 +183,7 @@
             // btnXoa
             // 
             this.btnXoa.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(76)))), ((int)(((byte)(60)))));
-            this.btnXoa.Appearance.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnXoa.Appearance.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnXoa.Appearance.ForeColor = System.Drawing.Color.White;
             this.btnXoa.Appearance.Options.UseBackColor = true;
             this.btnXoa.Appearance.Options.UseFont = true;
@@ -339,13 +339,13 @@
             // 
             // lblVoucherHint
             // 
-            this.lblVoucherHint.Appearance.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblVoucherHint.Appearance.Font = new System.Drawing.Font("Segoe UI", 8F);
             this.lblVoucherHint.Appearance.ForeColor = System.Drawing.Color.Gray;
             this.lblVoucherHint.Appearance.Options.UseFont = true;
             this.lblVoucherHint.Appearance.Options.UseForeColor = true;
             this.lblVoucherHint.Location = new System.Drawing.Point(15, 80);
             this.lblVoucherHint.Name = "lblVoucherHint";
-            this.lblVoucherHint.Size = new System.Drawing.Size(357, 17);
+            this.lblVoucherHint.Size = new System.Drawing.Size(365, 19);
             this.lblVoucherHint.TabIndex = 3;
             this.lblVoucherHint.Text = "💡 Thử: FREESHIP, GIAM10, GIAM20, GIAM50K, NEWUSER";
             // 
@@ -401,6 +401,7 @@
             this.picQRCode.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.picQRCode.TabIndex = 0;
             this.picQRCode.TabStop = false;
+            this.picQRCode.Click += new System.EventHandler(this.picQRCode_Click);
             // 
             // lblPaymentInstructions
             // 

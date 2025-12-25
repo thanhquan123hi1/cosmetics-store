@@ -28,7 +28,6 @@
 
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TonKhoForm));
             this.pnlMain = new DevExpress.XtraEditors.PanelControl();
             this.grid = new DevExpress.XtraGrid.GridControl();
             this.gridView = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -135,9 +134,7 @@
             this.cboTrangThai.EditValue = "Tất cả";
             this.cboTrangThai.Location = new System.Drawing.Point(465, 10);
             this.cboTrangThai.Name = "cboTrangThai";
-            this.cboTrangThai.Properties.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.cboTrangThai.Properties.Appearance.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold);
-            this.cboTrangThai.Properties.Appearance.Options.UseBackColor = true;
+            this.cboTrangThai.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cboTrangThai.Properties.Appearance.Options.UseFont = true;
             this.cboTrangThai.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -147,16 +144,14 @@
             "Sắp hết",
             "Hết hàng"});
             this.cboTrangThai.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-            this.cboTrangThai.Size = new System.Drawing.Size(120, 26);
+            this.cboTrangThai.Size = new System.Drawing.Size(120, 30);
             this.cboTrangThai.TabIndex = 2;
             this.cboTrangThai.EditValueChanged += new System.EventHandler(this.cboTrangThai_EditValueChanged);
             // 
             // btnRefresh
             // 
-            this.btnRefresh.Appearance.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold);
-            this.btnRefresh.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.btnRefresh.Appearance.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.btnRefresh.Appearance.Options.UseFont = true;
-            this.btnRefresh.Appearance.Options.UseForeColor = true;
             this.btnRefresh.Location = new System.Drawing.Point(591, 8);
             this.btnRefresh.Name = "btnRefresh";
             this.btnRefresh.Size = new System.Drawing.Size(123, 30);
@@ -167,7 +162,7 @@
             // btnExport
             // 
             this.btnExport.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(204)))), ((int)(((byte)(113)))));
-            this.btnExport.Appearance.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold);
+            this.btnExport.Appearance.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.btnExport.Appearance.ForeColor = System.Drawing.Color.White;
             this.btnExport.Appearance.Options.UseBackColor = true;
             this.btnExport.Appearance.Options.UseFont = true;
@@ -182,7 +177,6 @@
             // pnlStats
             // 
             this.pnlStats.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(250)))));
-            this.pnlStats.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pnlStats.BackgroundImage")));
             this.pnlStats.Controls.Add(this.lblTotalProducts);
             this.pnlStats.Controls.Add(this.lblTotalStock);
             this.pnlStats.Controls.Add(this.lblTotalValue);
@@ -255,10 +249,8 @@
             // 
             // lblTitle
             // 
-            this.lblTitle.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.lblTitle.Appearance.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold);
             this.lblTitle.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
-            this.lblTitle.Appearance.Options.UseBackColor = true;
             this.lblTitle.Appearance.Options.UseFont = true;
             this.lblTitle.Appearance.Options.UseForeColor = true;
             this.lblTitle.Location = new System.Drawing.Point(20, 15);

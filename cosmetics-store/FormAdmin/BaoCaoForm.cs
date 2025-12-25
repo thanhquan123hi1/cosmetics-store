@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Data.Entity;
-using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;

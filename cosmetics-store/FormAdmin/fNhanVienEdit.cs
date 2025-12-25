@@ -133,10 +133,5 @@ namespace cosmetics_store.Forms
         {
 
         }
-
-        private void txtHoTen_EditValueChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 }
