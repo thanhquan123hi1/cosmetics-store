@@ -67,38 +67,46 @@
             // 
             // rdoAll
             // 
-            this.rdoAll.Font = new System.Drawing.Font("Snap ITC", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdoAll.Location = new System.Drawing.Point(230, 12);
+            this.rdoAll.BackColor = System.Drawing.Color.Red;
+            this.rdoAll.Font = new System.Drawing.Font("Segoe UI Black", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rdoAll.Location = new System.Drawing.Point(230, 8);
             this.rdoAll.Name = "rdoAll";
             this.rdoAll.Size = new System.Drawing.Size(87, 30);
             this.rdoAll.TabIndex = 1;
             this.rdoAll.Text = "Tất cả";
+            this.rdoAll.UseVisualStyleBackColor = false;
             this.rdoAll.CheckedChanged += new System.EventHandler(this.rdoAll_CheckedChanged);
             // 
             // rdoMale
             // 
-            this.rdoMale.Font = new System.Drawing.Font("Snap ITC", 7.8F, System.Drawing.FontStyle.Bold);
-            this.rdoMale.Location = new System.Drawing.Point(342, 12);
+            this.rdoMale.BackColor = System.Drawing.Color.DodgerBlue;
+            this.rdoMale.Font = new System.Drawing.Font("Segoe UI Black", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rdoMale.Location = new System.Drawing.Point(323, 12);
             this.rdoMale.Name = "rdoMale";
             this.rdoMale.Size = new System.Drawing.Size(73, 25);
             this.rdoMale.TabIndex = 2;
             this.rdoMale.Text = "Nam";
+            this.rdoMale.UseVisualStyleBackColor = false;
             this.rdoMale.CheckedChanged += new System.EventHandler(this.rdoMale_CheckedChanged);
             // 
             // rdoFemale
             // 
-            this.rdoFemale.Font = new System.Drawing.Font("Snap ITC", 7.8F, System.Drawing.FontStyle.Bold);
-            this.rdoFemale.Location = new System.Drawing.Point(437, 13);
+            this.rdoFemale.BackColor = System.Drawing.Color.Yellow;
+            this.rdoFemale.Font = new System.Drawing.Font("Segoe UI Black", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rdoFemale.Location = new System.Drawing.Point(411, 13);
             this.rdoFemale.Name = "rdoFemale";
-            this.rdoFemale.Size = new System.Drawing.Size(77, 24);
+            this.rdoFemale.Size = new System.Drawing.Size(93, 24);
             this.rdoFemale.TabIndex = 3;
             this.rdoFemale.Text = "Nữ";
+            this.rdoFemale.UseVisualStyleBackColor = false;
             this.rdoFemale.CheckedChanged += new System.EventHandler(this.rdoFemale_CheckedChanged);
             // 
             // btnAdd
             // 
-            this.btnAdd.Appearance.Font = new System.Drawing.Font("Snap ITC", 7.8F, System.Drawing.FontStyle.Bold);
+            this.btnAdd.Appearance.Font = new System.Drawing.Font("Segoe UI Black", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAdd.Appearance.ForeColor = System.Drawing.Color.Red;
             this.btnAdd.Appearance.Options.UseFont = true;
+            this.btnAdd.Appearance.Options.UseForeColor = true;
             this.btnAdd.Location = new System.Drawing.Point(520, 8);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(94, 29);
@@ -108,8 +116,10 @@
             // 
             // btnEdit
             // 
-            this.btnEdit.Appearance.Font = new System.Drawing.Font("Snap ITC", 7.8F, System.Drawing.FontStyle.Bold);
+            this.btnEdit.Appearance.Font = new System.Drawing.Font("Segoe UI Black", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEdit.Appearance.ForeColor = System.Drawing.Color.Red;
             this.btnEdit.Appearance.Options.UseFont = true;
+            this.btnEdit.Appearance.Options.UseForeColor = true;
             this.btnEdit.Location = new System.Drawing.Point(640, 8);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(94, 29);
@@ -119,8 +129,10 @@
             // 
             // btnDelete
             // 
-            this.btnDelete.Appearance.Font = new System.Drawing.Font("Snap ITC", 7.8F, System.Drawing.FontStyle.Bold);
+            this.btnDelete.Appearance.Font = new System.Drawing.Font("Segoe UI Black", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDelete.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnDelete.Appearance.Options.UseFont = true;
+            this.btnDelete.Appearance.Options.UseForeColor = true;
             this.btnDelete.Location = new System.Drawing.Point(764, 8);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(94, 29);

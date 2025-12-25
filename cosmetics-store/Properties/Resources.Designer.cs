@@ -63,6 +63,16 @@ namespace cosmetics_store.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _1212 {
+            get {
+                object obj = ResourceManager.GetObject("1212", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap bg_dangKy {
             get {
                 object obj = ResourceManager.GetObject("bg_dangKy", resourceCulture);
@@ -186,6 +196,17 @@ namespace cosmetics_store.Properties {
         internal static System.Drawing.Bitmap SignIn_background1 {
             get {
                 object obj = ResourceManager.GetObject("SignIn_background1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Small_Fresh_Spring_Green_Leaf_H5_Background_Wallpaper_Image_For_Free_Download___Pngtree {
+            get {
+                object obj = ResourceManager.GetObject("Small Fresh Spring Green Leaf H5 Background Wallpaper Image For Free Download - P" +
+                        "ngtree", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -47,7 +47,7 @@
             // 
             // pnlHeader
             // 
-            this.pnlHeader.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
+            this.pnlHeader.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.pnlHeader.Appearance.Options.UseBackColor = true;
             this.pnlHeader.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.pnlHeader.Controls.Add(this.lblTitle);
@@ -61,26 +61,26 @@
             // 
             // lblTitle
             // 
-            this.lblTitle.Appearance.Font = new System.Drawing.Font("Segoe UI Black", 13.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitle.Appearance.Font = new System.Drawing.Font("Segoe UI Black", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitle.Appearance.ForeColor = System.Drawing.Color.White;
             this.lblTitle.Appearance.Options.UseFont = true;
             this.lblTitle.Appearance.Options.UseForeColor = true;
             this.lblTitle.Location = new System.Drawing.Point(15, 13);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(310, 31);
+            this.lblTitle.Size = new System.Drawing.Size(316, 31);
             this.lblTitle.TabIndex = 0;
             this.lblTitle.Text = "Cosmetics Store - Nhân viên";
             // 
             // lblUserName
             // 
             this.lblUserName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblUserName.Appearance.Font = new System.Drawing.Font("Segoe UI", 10.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUserName.Appearance.ForeColor = System.Drawing.Color.White;
+            this.lblUserName.Appearance.Font = new System.Drawing.Font("Segoe UI Black", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUserName.Appearance.ForeColor = System.Drawing.Color.Black;
             this.lblUserName.Appearance.Options.UseFont = true;
             this.lblUserName.Appearance.Options.UseForeColor = true;
-            this.lblUserName.Location = new System.Drawing.Point(900, 15);
+            this.lblUserName.Location = new System.Drawing.Point(894, 15);
             this.lblUserName.Name = "lblUserName";
-            this.lblUserName.Size = new System.Drawing.Size(120, 23);
+            this.lblUserName.Size = new System.Drawing.Size(134, 25);
             this.lblUserName.TabIndex = 1;
             this.lblUserName.Text = "Xin chào, User!";
             // 
@@ -144,7 +144,11 @@
             // 
             // aceDashboard
             // 
+            this.aceDashboard.Appearance.Normal.BackColor = System.Drawing.Color.Black;
+            this.aceDashboard.Appearance.Normal.Font = new System.Drawing.Font("Segoe UI Black", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.aceDashboard.Appearance.Normal.ForeColor = System.Drawing.Color.White;
+            this.aceDashboard.Appearance.Normal.Options.UseBackColor = true;
+            this.aceDashboard.Appearance.Normal.Options.UseFont = true;
             this.aceDashboard.Appearance.Normal.Options.UseForeColor = true;
             this.aceDashboard.Name = "aceDashboard";
             this.aceDashboard.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
@@ -153,7 +157,11 @@
             // 
             // aceKinhDoanh
             // 
+            this.aceKinhDoanh.Appearance.Normal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.aceKinhDoanh.Appearance.Normal.Font = new System.Drawing.Font("Segoe UI Black", 10.2F, System.Drawing.FontStyle.Bold);
             this.aceKinhDoanh.Appearance.Normal.ForeColor = System.Drawing.Color.White;
+            this.aceKinhDoanh.Appearance.Normal.Options.UseBackColor = true;
+            this.aceKinhDoanh.Appearance.Normal.Options.UseFont = true;
             this.aceKinhDoanh.Appearance.Normal.Options.UseForeColor = true;
             this.aceKinhDoanh.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
             this.aceBanHang,
@@ -164,7 +172,9 @@
             // 
             // aceBanHang
             // 
-            this.aceBanHang.Appearance.Normal.ForeColor = System.Drawing.Color.White;
+            this.aceBanHang.Appearance.Normal.Font = new System.Drawing.Font("Segoe UI Black", 10.2F, System.Drawing.FontStyle.Bold);
+            this.aceBanHang.Appearance.Normal.ForeColor = System.Drawing.Color.Transparent;
+            this.aceBanHang.Appearance.Normal.Options.UseFont = true;
             this.aceBanHang.Appearance.Normal.Options.UseForeColor = true;
             this.aceBanHang.Name = "aceBanHang";
             this.aceBanHang.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
@@ -173,7 +183,9 @@
             // 
             // aceKhachHang
             // 
+            this.aceKhachHang.Appearance.Normal.Font = new System.Drawing.Font("Segoe UI Black", 10.2F, System.Drawing.FontStyle.Bold);
             this.aceKhachHang.Appearance.Normal.ForeColor = System.Drawing.Color.White;
+            this.aceKhachHang.Appearance.Normal.Options.UseFont = true;
             this.aceKhachHang.Appearance.Normal.Options.UseForeColor = true;
             this.aceKhachHang.Name = "aceKhachHang";
             this.aceKhachHang.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
@@ -182,7 +194,11 @@
             // 
             // aceHangHoa
             // 
+            this.aceHangHoa.Appearance.Normal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.aceHangHoa.Appearance.Normal.Font = new System.Drawing.Font("Segoe UI Black", 10.2F, System.Drawing.FontStyle.Bold);
             this.aceHangHoa.Appearance.Normal.ForeColor = System.Drawing.Color.White;
+            this.aceHangHoa.Appearance.Normal.Options.UseBackColor = true;
+            this.aceHangHoa.Appearance.Normal.Options.UseFont = true;
             this.aceHangHoa.Appearance.Normal.Options.UseForeColor = true;
             this.aceHangHoa.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
             this.aceSanPham,
@@ -193,7 +209,9 @@
             // 
             // aceSanPham
             // 
+            this.aceSanPham.Appearance.Normal.Font = new System.Drawing.Font("Segoe UI Black", 10.2F, System.Drawing.FontStyle.Bold);
             this.aceSanPham.Appearance.Normal.ForeColor = System.Drawing.Color.White;
+            this.aceSanPham.Appearance.Normal.Options.UseFont = true;
             this.aceSanPham.Appearance.Normal.Options.UseForeColor = true;
             this.aceSanPham.Name = "aceSanPham";
             this.aceSanPham.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
@@ -202,7 +220,9 @@
             // 
             // aceTonKho
             // 
+            this.aceTonKho.Appearance.Normal.Font = new System.Drawing.Font("Segoe UI Black", 10.2F, System.Drawing.FontStyle.Bold);
             this.aceTonKho.Appearance.Normal.ForeColor = System.Drawing.Color.White;
+            this.aceTonKho.Appearance.Normal.Options.UseFont = true;
             this.aceTonKho.Appearance.Normal.Options.UseForeColor = true;
             this.aceTonKho.Name = "aceTonKho";
             this.aceTonKho.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;

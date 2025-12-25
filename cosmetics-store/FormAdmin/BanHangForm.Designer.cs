@@ -115,6 +115,8 @@
             // 
             // grpSanPham
             // 
+            this.grpSanPham.Appearance.BackColor = System.Drawing.Color.Black;
+            this.grpSanPham.Appearance.Options.UseBackColor = true;
             this.grpSanPham.AppearanceCaption.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
             this.grpSanPham.AppearanceCaption.Options.UseFont = true;
             this.grpSanPham.Controls.Add(this.searchSanPham);
@@ -168,11 +170,13 @@
             // lblSoLuong
             // 
             this.lblSoLuong.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.lblSoLuong.Appearance.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.lblSoLuong.Appearance.Font = new System.Drawing.Font("Segoe UI Black", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSoLuong.Appearance.ForeColor = System.Drawing.Color.Red;
             this.lblSoLuong.Appearance.Options.UseFont = true;
+            this.lblSoLuong.Appearance.Options.UseForeColor = true;
             this.lblSoLuong.Location = new System.Drawing.Point(10, 535);
             this.lblSoLuong.Name = "lblSoLuong";
-            this.lblSoLuong.Size = new System.Drawing.Size(77, 23);
+            this.lblSoLuong.Size = new System.Drawing.Size(86, 23);
             this.lblSoLuong.TabIndex = 2;
             this.lblSoLuong.Text = "Số lượng: ";
             // 
@@ -208,7 +212,7 @@
             // 
             this.btnThemVaoGio.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnThemVaoGio.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(204)))), ((int)(((byte)(113)))));
-            this.btnThemVaoGio.Appearance.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.btnThemVaoGio.Appearance.Font = new System.Drawing.Font("Segoe UI Black", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnThemVaoGio.Appearance.ForeColor = System.Drawing.Color.White;
             this.btnThemVaoGio.Appearance.Options.UseBackColor = true;
             this.btnThemVaoGio.Appearance.Options.UseFont = true;
@@ -288,11 +292,13 @@
             // 
             // lblKhachHang
             // 
-            this.lblKhachHang.Appearance.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.lblKhachHang.Appearance.Font = new System.Drawing.Font("Segoe UI Black", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblKhachHang.Appearance.ForeColor = System.Drawing.Color.Blue;
             this.lblKhachHang.Appearance.Options.UseFont = true;
-            this.lblKhachHang.Location = new System.Drawing.Point(15, 40);
+            this.lblKhachHang.Appearance.Options.UseForeColor = true;
+            this.lblKhachHang.Location = new System.Drawing.Point(0, 40);
             this.lblKhachHang.Name = "lblKhachHang";
-            this.lblKhachHang.Size = new System.Drawing.Size(95, 23);
+            this.lblKhachHang.Size = new System.Drawing.Size(102, 23);
             this.lblKhachHang.TabIndex = 0;
             this.lblKhachHang.Text = "Khách hàng:";
             // 
@@ -332,18 +338,20 @@
             // 
             // lblPhuongThuc
             // 
-            this.lblPhuongThuc.Appearance.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.lblPhuongThuc.Appearance.Font = new System.Drawing.Font("Segoe UI Black", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPhuongThuc.Appearance.ForeColor = System.Drawing.Color.Red;
             this.lblPhuongThuc.Appearance.Options.UseFont = true;
+            this.lblPhuongThuc.Appearance.Options.UseForeColor = true;
             this.lblPhuongThuc.Location = new System.Drawing.Point(15, 160);
             this.lblPhuongThuc.Name = "lblPhuongThuc";
-            this.lblPhuongThuc.Size = new System.Drawing.Size(136, 23);
+            this.lblPhuongThuc.Size = new System.Drawing.Size(150, 23);
             this.lblPhuongThuc.TabIndex = 4;
             this.lblPhuongThuc.Text = "Phương thức TT : ";
             // 
             // cboPhuongThuc
             // 
             this.cboPhuongThuc.EditValue = "Tiền mặt";
-            this.cboPhuongThuc.Location = new System.Drawing.Point(150, 157);
+            this.cboPhuongThuc.Location = new System.Drawing.Point(186, 157);
             this.cboPhuongThuc.Name = "cboPhuongThuc";
             this.cboPhuongThuc.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cboPhuongThuc.Properties.Appearance.Options.UseFont = true;
@@ -375,8 +383,10 @@
             // 
             // btnHuy
             // 
-            this.btnHuy.Appearance.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.btnHuy.Appearance.Font = new System.Drawing.Font("Segoe UI Black", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHuy.Appearance.ForeColor = System.Drawing.Color.Red;
             this.btnHuy.Appearance.Options.UseFont = true;
+            this.btnHuy.Appearance.Options.UseForeColor = true;
             this.btnHuy.Location = new System.Drawing.Point(210, 220);
             this.btnHuy.Name = "btnHuy";
             this.btnHuy.Size = new System.Drawing.Size(100, 30);
@@ -386,8 +396,10 @@
             // 
             // lblTitle
             // 
+            this.lblTitle.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.lblTitle.Appearance.Font = new System.Drawing.Font("Segoe UI Black", 18F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitle.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
+            this.lblTitle.Appearance.Options.UseBackColor = true;
             this.lblTitle.Appearance.Options.UseFont = true;
             this.lblTitle.Appearance.Options.UseForeColor = true;
             this.lblTitle.Location = new System.Drawing.Point(20, 15);

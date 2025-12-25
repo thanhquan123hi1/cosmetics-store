@@ -50,11 +50,11 @@
             // 
             // lblNhanVien
             // 
-            this.lblNhanVien.Appearance.Font = new System.Drawing.Font("Times New Roman", 11.2F, System.Drawing.FontStyle.Bold);
+            this.lblNhanVien.Appearance.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold);
             this.lblNhanVien.Appearance.Options.UseFont = true;
             this.lblNhanVien.Location = new System.Drawing.Point(20, 55);
             this.lblNhanVien.Name = "lblNhanVien";
-            this.lblNhanVien.Size = new System.Drawing.Size(97, 22);
+            this.lblNhanVien.Size = new System.Drawing.Size(95, 23);
             this.lblNhanVien.TabIndex = 1;
             this.lblNhanVien.Text = "Nhân viên : ";
             // 

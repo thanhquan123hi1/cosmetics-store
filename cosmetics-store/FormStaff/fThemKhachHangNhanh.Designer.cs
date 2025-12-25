@@ -29,49 +29,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtHoTen.Properties)).BeginInit();
             this.SuspendLayout();
             // 
-            // lblTitle
-            // 
-            this.lblTitle.Appearance.Font = new System.Drawing.Font("Segoe UI", 13.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitle.Appearance.Options.UseFont = true;
-            this.lblTitle.Location = new System.Drawing.Point(23, 15);
-            this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(320, 31);
-            this.lblTitle.TabIndex = 0;
-            this.lblTitle.Text = "THÊM KHÁCH HÀNG NHANH";
-            // 
-            // lblHoTen
-            // 
-            this.lblHoTen.Appearance.Font = new System.Drawing.Font("Times New Roman", 10.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblHoTen.Appearance.Options.UseFont = true;
-            this.lblHoTen.Location = new System.Drawing.Point(23, 65);
-            this.lblHoTen.Name = "lblHoTen";
-            this.lblHoTen.Size = new System.Drawing.Size(52, 20);
-            this.lblHoTen.TabIndex = 1;
-            this.lblHoTen.Text = "Họ tên:";
-            // 
-            // lblSDT
-            // 
-            this.lblSDT.Appearance.Font = new System.Drawing.Font("Times New Roman", 10.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSDT.Appearance.Options.UseFont = true;
-            this.lblSDT.Location = new System.Drawing.Point(23, 110);
-            this.lblSDT.Name = "lblSDT";
-            this.lblSDT.Size = new System.Drawing.Size(98, 20);
-            this.lblSDT.TabIndex = 2;
-            this.lblSDT.Text = "Số điện thoại:";
-            // 
-            // lblDiaChi
-            // 
-            this.lblDiaChi.Appearance.Font = new System.Drawing.Font("Times New Roman", 10.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDiaChi.Appearance.Options.UseFont = true;
-            this.lblDiaChi.Location = new System.Drawing.Point(23, 155);
-            this.lblDiaChi.Name = "lblDiaChi";
-            this.lblDiaChi.Size = new System.Drawing.Size(58, 20);
-            this.lblDiaChi.TabIndex = 3;
-            this.lblDiaChi.Text = "Địa chỉ:";
-            // 
             // btnLuu
             // 
-            btnLuu.Appearance.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold);
+            btnLuu.Appearance.Font = new System.Drawing.Font("Segoe UI Black", 10.2F, System.Drawing.FontStyle.Bold);
             btnLuu.Appearance.ForeColor = System.Drawing.Color.Red;
             btnLuu.Appearance.Options.UseFont = true;
             btnLuu.Appearance.Options.UseForeColor = true;
@@ -82,9 +42,49 @@
             btnLuu.Text = "Lưu";
             btnLuu.Click += new System.EventHandler(this.btnLuu_Click);
             // 
+            // lblTitle
+            // 
+            this.lblTitle.Appearance.Font = new System.Drawing.Font("Segoe UI Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitle.Appearance.Options.UseFont = true;
+            this.lblTitle.Location = new System.Drawing.Point(23, 15);
+            this.lblTitle.Name = "lblTitle";
+            this.lblTitle.Size = new System.Drawing.Size(293, 28);
+            this.lblTitle.TabIndex = 0;
+            this.lblTitle.Text = "THÊM KHÁCH HÀNG NHANH";
+            // 
+            // lblHoTen
+            // 
+            this.lblHoTen.Appearance.Font = new System.Drawing.Font("Segoe UI Black", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblHoTen.Appearance.Options.UseFont = true;
+            this.lblHoTen.Location = new System.Drawing.Point(23, 65);
+            this.lblHoTen.Name = "lblHoTen";
+            this.lblHoTen.Size = new System.Drawing.Size(63, 23);
+            this.lblHoTen.TabIndex = 1;
+            this.lblHoTen.Text = "Họ tên:";
+            // 
+            // lblSDT
+            // 
+            this.lblSDT.Appearance.Font = new System.Drawing.Font("Segoe UI Black", 10.2F, System.Drawing.FontStyle.Bold);
+            this.lblSDT.Appearance.Options.UseFont = true;
+            this.lblSDT.Location = new System.Drawing.Point(23, 110);
+            this.lblSDT.Name = "lblSDT";
+            this.lblSDT.Size = new System.Drawing.Size(116, 23);
+            this.lblSDT.TabIndex = 2;
+            this.lblSDT.Text = "Số điện thoại:";
+            // 
+            // lblDiaChi
+            // 
+            this.lblDiaChi.Appearance.Font = new System.Drawing.Font("Segoe UI Black", 10.2F, System.Drawing.FontStyle.Bold);
+            this.lblDiaChi.Appearance.Options.UseFont = true;
+            this.lblDiaChi.Location = new System.Drawing.Point(23, 155);
+            this.lblDiaChi.Name = "lblDiaChi";
+            this.lblDiaChi.Size = new System.Drawing.Size(61, 23);
+            this.lblDiaChi.TabIndex = 3;
+            this.lblDiaChi.Text = "Địa chỉ:";
+            // 
             // btnHuy
             // 
-            this.btnHuy.Appearance.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold);
+            this.btnHuy.Appearance.Font = new System.Drawing.Font("Segoe UI Black", 10.2F, System.Drawing.FontStyle.Bold);
             this.btnHuy.Appearance.ForeColor = System.Drawing.Color.Red;
             this.btnHuy.Appearance.Options.UseFont = true;
             this.btnHuy.Appearance.Options.UseForeColor = true;

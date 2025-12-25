@@ -219,13 +219,13 @@
             // 
             // lblShippingTitle
             // 
-            this.lblShippingTitle.Appearance.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
+            this.lblShippingTitle.Appearance.Font = new System.Drawing.Font("Segoe UI Black", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblShippingTitle.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
             this.lblShippingTitle.Appearance.Options.UseFont = true;
             this.lblShippingTitle.Appearance.Options.UseForeColor = true;
             this.lblShippingTitle.Location = new System.Drawing.Point(20, 315);
             this.lblShippingTitle.Name = "lblShippingTitle";
-            this.lblShippingTitle.Size = new System.Drawing.Size(320, 32);
+            this.lblShippingTitle.Size = new System.Drawing.Size(317, 31);
             this.lblShippingTitle.TabIndex = 5;
             this.lblShippingTitle.Text = "📦 THÔNG TIN GIAO HÀNG";
             // 
@@ -429,11 +429,11 @@
             // 
             // lblSubtotalLabel
             // 
-            this.lblSubtotalLabel.Appearance.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.lblSubtotalLabel.Appearance.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSubtotalLabel.Appearance.Options.UseFont = true;
             this.lblSubtotalLabel.Location = new System.Drawing.Point(15, 515);
             this.lblSubtotalLabel.Name = "lblSubtotalLabel";
-            this.lblSubtotalLabel.Size = new System.Drawing.Size(72, 23);
+            this.lblSubtotalLabel.Size = new System.Drawing.Size(77, 23);
             this.lblSubtotalLabel.TabIndex = 9;
             this.lblSubtotalLabel.Text = "Tạm tính:";
             // 
@@ -443,17 +443,17 @@
             this.lblSubtotal.Appearance.Options.UseFont = true;
             this.lblSubtotal.Location = new System.Drawing.Point(280, 515);
             this.lblSubtotal.Name = "lblSubtotal";
-            this.lblSubtotal.Size = new System.Drawing.Size(17, 23);
+            this.lblSubtotal.Size = new System.Drawing.Size(10, 23);
             this.lblSubtotal.TabIndex = 10;
-            this.lblSubtotal.Text = "0?";
+            this.lblSubtotal.Text = "0";
             // 
             // lblShippingLabel
             // 
-            this.lblShippingLabel.Appearance.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.lblShippingLabel.Appearance.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblShippingLabel.Appearance.Options.UseFont = true;
             this.lblShippingLabel.Location = new System.Drawing.Point(15, 540);
             this.lblShippingLabel.Name = "lblShippingLabel";
-            this.lblShippingLabel.Size = new System.Drawing.Size(120, 23);
+            this.lblShippingLabel.Size = new System.Drawing.Size(124, 23);
             this.lblShippingLabel.TabIndex = 11;
             this.lblShippingLabel.Text = "Phí vận chuyển:";
             // 
@@ -463,17 +463,17 @@
             this.lblShipping.Appearance.Options.UseFont = true;
             this.lblShipping.Location = new System.Drawing.Point(280, 540);
             this.lblShipping.Name = "lblShipping";
-            this.lblShipping.Size = new System.Drawing.Size(57, 23);
+            this.lblShipping.Size = new System.Drawing.Size(49, 23);
             this.lblShipping.TabIndex = 12;
-            this.lblShipping.Text = "30,000?";
+            this.lblShipping.Text = "30,000";
             // 
             // lblDiscountLabel
             // 
-            this.lblDiscountLabel.Appearance.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.lblDiscountLabel.Appearance.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDiscountLabel.Appearance.Options.UseFont = true;
             this.lblDiscountLabel.Location = new System.Drawing.Point(15, 565);
             this.lblDiscountLabel.Name = "lblDiscountLabel";
-            this.lblDiscountLabel.Size = new System.Drawing.Size(72, 23);
+            this.lblDiscountLabel.Size = new System.Drawing.Size(77, 23);
             this.lblDiscountLabel.TabIndex = 13;
             this.lblDiscountLabel.Text = "Giảm giá:";
             // 
@@ -485,9 +485,9 @@
             this.lblDiscount.Appearance.Options.UseForeColor = true;
             this.lblDiscount.Location = new System.Drawing.Point(280, 565);
             this.lblDiscount.Name = "lblDiscount";
-            this.lblDiscount.Size = new System.Drawing.Size(17, 23);
+            this.lblDiscount.Size = new System.Drawing.Size(10, 23);
             this.lblDiscount.TabIndex = 14;
-            this.lblDiscount.Text = "0?";
+            this.lblDiscount.Text = "0";
             // 
             // lblTotalLabel
             // 

@@ -97,13 +97,13 @@
             // 
             // lblTuNgay
             // 
-            this.lblTuNgay.Appearance.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.lblTuNgay.Appearance.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTuNgay.Appearance.ForeColor = System.Drawing.Color.White;
             this.lblTuNgay.Appearance.Options.UseFont = true;
             this.lblTuNgay.Appearance.Options.UseForeColor = true;
             this.lblTuNgay.Location = new System.Drawing.Point(12, 20);
             this.lblTuNgay.Name = "lblTuNgay";
-            this.lblTuNgay.Size = new System.Drawing.Size(65, 23);
+            this.lblTuNgay.Size = new System.Drawing.Size(70, 23);
             this.lblTuNgay.TabIndex = 0;
             this.lblTuNgay.Text = "Từ ngày:";
             // 
@@ -123,13 +123,13 @@
             // 
             // lblDenNgay
             // 
-            this.lblDenNgay.Appearance.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.lblDenNgay.Appearance.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDenNgay.Appearance.ForeColor = System.Drawing.Color.White;
             this.lblDenNgay.Appearance.Options.UseFont = true;
             this.lblDenNgay.Appearance.Options.UseForeColor = true;
             this.lblDenNgay.Location = new System.Drawing.Point(230, 20);
             this.lblDenNgay.Name = "lblDenNgay";
-            this.lblDenNgay.Size = new System.Drawing.Size(77, 23);
+            this.lblDenNgay.Size = new System.Drawing.Size(81, 23);
             this.lblDenNgay.TabIndex = 2;
             this.lblDenNgay.Text = "Đến ngày:";
             // 
@@ -172,7 +172,7 @@
             this.lblTongDoanhThu.Appearance.Options.UseForeColor = true;
             this.lblTongDoanhThu.Location = new System.Drawing.Point(12, 60);
             this.lblTongDoanhThu.Name = "lblTongDoanhThu";
-            this.lblTongDoanhThu.Size = new System.Drawing.Size(160, 25);
+            this.lblTongDoanhThu.Size = new System.Drawing.Size(154, 25);
             this.lblTongDoanhThu.TabIndex = 5;
             this.lblTongDoanhThu.Text = "Tổng doanh thu: ";
             // 
@@ -184,7 +184,7 @@
             this.lblSoDon.Appearance.Options.UseForeColor = true;
             this.lblSoDon.Location = new System.Drawing.Point(350, 63);
             this.lblSoDon.Name = "lblSoDon";
-            this.lblSoDon.Size = new System.Drawing.Size(108, 23);
+            this.lblSoDon.Size = new System.Drawing.Size(112, 23);
             this.lblSoDon.TabIndex = 6;
             this.lblSoDon.Text = "Số đơn hàng: ";
             // 
@@ -196,7 +196,7 @@
             this.lblSoSPBan.Appearance.Options.UseForeColor = true;
             this.lblSoSPBan.Location = new System.Drawing.Point(580, 63);
             this.lblSoSPBan.Name = "lblSoSPBan";
-            this.lblSoSPBan.Size = new System.Drawing.Size(112, 23);
+            this.lblSoSPBan.Size = new System.Drawing.Size(115, 23);
             this.lblSoSPBan.TabIndex = 7;
             this.lblSoSPBan.Text = "Số SP đã bán: ";
             // 
@@ -208,7 +208,7 @@
             this.lblTonKhoThap.Appearance.Options.UseForeColor = true;
             this.lblTonKhoThap.Location = new System.Drawing.Point(820, 63);
             this.lblTonKhoThap.Name = "lblTonKhoThap";
-            this.lblTonKhoThap.Size = new System.Drawing.Size(135, 23);
+            this.lblTonKhoThap.Size = new System.Drawing.Size(139, 23);
             this.lblTonKhoThap.TabIndex = 8;
             this.lblTonKhoThap.Text = "SP tồn kho thấp: ";
             // 
@@ -229,9 +229,9 @@
             // tabDoanhThu
             // 
             this.tabDoanhThu.Controls.Add(this.chartDoanhThu);
-            this.tabDoanhThu.Location = new System.Drawing.Point(4, 25);
+            this.tabDoanhThu.Location = new System.Drawing.Point(4, 32);
             this.tabDoanhThu.Name = "tabDoanhThu";
-            this.tabDoanhThu.Size = new System.Drawing.Size(1092, 491);
+            this.tabDoanhThu.Size = new System.Drawing.Size(1192, 464);
             this.tabDoanhThu.TabIndex = 0;
             this.tabDoanhThu.Text = "📊 Doanh thu";
             // 
@@ -242,16 +242,16 @@
             this.chartDoanhThu.Dock = System.Windows.Forms.DockStyle.Fill;
             this.chartDoanhThu.Location = new System.Drawing.Point(0, 0);
             this.chartDoanhThu.Name = "chartDoanhThu";
-            this.chartDoanhThu.Size = new System.Drawing.Size(1092, 491);
+            this.chartDoanhThu.Size = new System.Drawing.Size(1192, 464);
             this.chartDoanhThu.TabIndex = 0;
             this.chartDoanhThu.Click += new System.EventHandler(this.chartDoanhThu_Click);
             // 
             // tabSPBanChay
             // 
             this.tabSPBanChay.Controls.Add(this.gridSPBanChay);
-            this.tabSPBanChay.Location = new System.Drawing.Point(4, 25);
+            this.tabSPBanChay.Location = new System.Drawing.Point(4, 32);
             this.tabSPBanChay.Name = "tabSPBanChay";
-            this.tabSPBanChay.Size = new System.Drawing.Size(1092, 491);
+            this.tabSPBanChay.Size = new System.Drawing.Size(1192, 464);
             this.tabSPBanChay.TabIndex = 1;
             this.tabSPBanChay.Text = "🔥 SP bán chạy";
             // 
@@ -261,7 +261,7 @@
             this.gridSPBanChay.Location = new System.Drawing.Point(0, 0);
             this.gridSPBanChay.MainView = this.gridViewSPBanChay;
             this.gridSPBanChay.Name = "gridSPBanChay";
-            this.gridSPBanChay.Size = new System.Drawing.Size(1092, 491);
+            this.gridSPBanChay.Size = new System.Drawing.Size(1192, 464);
             this.gridSPBanChay.TabIndex = 0;
             this.gridSPBanChay.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewSPBanChay});
@@ -275,9 +275,9 @@
             // tabTopKH
             // 
             this.tabTopKH.Controls.Add(this.gridTopKH);
-            this.tabTopKH.Location = new System.Drawing.Point(4, 25);
+            this.tabTopKH.Location = new System.Drawing.Point(4, 32);
             this.tabTopKH.Name = "tabTopKH";
-            this.tabTopKH.Size = new System.Drawing.Size(1092, 491);
+            this.tabTopKH.Size = new System.Drawing.Size(1192, 464);
             this.tabTopKH.TabIndex = 2;
             this.tabTopKH.Text = "🏆 Top khách hàng";
             // 
@@ -287,7 +287,7 @@
             this.gridTopKH.Location = new System.Drawing.Point(0, 0);
             this.gridTopKH.MainView = this.gridViewTopKH;
             this.gridTopKH.Name = "gridTopKH";
-            this.gridTopKH.Size = new System.Drawing.Size(1092, 491);
+            this.gridTopKH.Size = new System.Drawing.Size(1192, 464);
             this.gridTopKH.TabIndex = 0;
             this.gridTopKH.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewTopKH});
@@ -301,9 +301,9 @@
             // tabTonKho
             // 
             this.tabTonKho.Controls.Add(this.gridTonKhoThap);
-            this.tabTonKho.Location = new System.Drawing.Point(4, 25);
+            this.tabTonKho.Location = new System.Drawing.Point(4, 32);
             this.tabTonKho.Name = "tabTonKho";
-            this.tabTonKho.Size = new System.Drawing.Size(1092, 491);
+            this.tabTonKho.Size = new System.Drawing.Size(1192, 464);
             this.tabTonKho.TabIndex = 3;
             this.tabTonKho.Text = "⚠️ Tồn kho thấp";
             // 
@@ -313,7 +313,7 @@
             this.gridTonKhoThap.Location = new System.Drawing.Point(0, 0);
             this.gridTonKhoThap.MainView = this.gridViewTonKhoThap;
             this.gridTonKhoThap.Name = "gridTonKhoThap";
-            this.gridTonKhoThap.Size = new System.Drawing.Size(1092, 491);
+            this.gridTonKhoThap.Size = new System.Drawing.Size(1192, 464);
             this.gridTonKhoThap.TabIndex = 0;
             this.gridTonKhoThap.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewTonKhoThap});
@@ -328,7 +328,6 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(30)))), ((int)(((byte)(70)))));
             this.ClientSize = new System.Drawing.Size(1200, 600);
             this.Controls.Add(this.tabControl);
             this.Controls.Add(this.pnlTop);

@@ -75,13 +75,13 @@
             // 
             // lblFrom
             // 
-            this.lblFrom.Appearance.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.lblFrom.Appearance.Font = new System.Drawing.Font("Segoe UI Black", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblFrom.Appearance.ForeColor = System.Drawing.Color.White;
             this.lblFrom.Appearance.Options.UseFont = true;
             this.lblFrom.Appearance.Options.UseForeColor = true;
             this.lblFrom.Location = new System.Drawing.Point(7, 20);
             this.lblFrom.Name = "lblFrom";
-            this.lblFrom.Size = new System.Drawing.Size(65, 23);
+            this.lblFrom.Size = new System.Drawing.Size(75, 23);
             this.lblFrom.TabIndex = 0;
             this.lblFrom.Text = "Từ ngày:";
             // 
@@ -110,13 +110,13 @@
             // 
             // lblTo
             // 
-            this.lblTo.Appearance.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.lblTo.Appearance.Font = new System.Drawing.Font("Segoe UI Black", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTo.Appearance.ForeColor = System.Drawing.Color.White;
             this.lblTo.Appearance.Options.UseFont = true;
             this.lblTo.Appearance.Options.UseForeColor = true;
             this.lblTo.Location = new System.Drawing.Point(200, 20);
             this.lblTo.Name = "lblTo";
-            this.lblTo.Size = new System.Drawing.Size(77, 23);
+            this.lblTo.Size = new System.Drawing.Size(86, 23);
             this.lblTo.TabIndex = 2;
             this.lblTo.Text = "Đến ngày:";
             // 
@@ -145,13 +145,13 @@
             // 
             // lblHanhDong
             // 
-            this.lblHanhDong.Appearance.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.lblHanhDong.Appearance.Font = new System.Drawing.Font("Segoe UI Black", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblHanhDong.Appearance.ForeColor = System.Drawing.Color.White;
             this.lblHanhDong.Appearance.Options.UseFont = true;
             this.lblHanhDong.Appearance.Options.UseForeColor = true;
             this.lblHanhDong.Location = new System.Drawing.Point(399, 20);
             this.lblHanhDong.Name = "lblHanhDong";
-            this.lblHanhDong.Size = new System.Drawing.Size(90, 23);
+            this.lblHanhDong.Size = new System.Drawing.Size(99, 23);
             this.lblHanhDong.TabIndex = 4;
             this.lblHanhDong.Text = "Hành động:";
             // 

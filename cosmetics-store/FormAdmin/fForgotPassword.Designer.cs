@@ -155,12 +155,12 @@
             // lnkLogin
             // 
             this.lnkLogin.AutoSize = true;
-            this.lnkLogin.Font = new System.Drawing.Font("Segoe UI", 10.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lnkLogin.Font = new System.Drawing.Font("Segoe UI Black", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lnkLogin.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
-            this.lnkLogin.Location = new System.Drawing.Point(165, 446);
+            this.lnkLogin.Location = new System.Drawing.Point(148, 446);
             this.lnkLogin.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lnkLogin.Name = "lnkLogin";
-            this.lnkLogin.Size = new System.Drawing.Size(215, 23);
+            this.lnkLogin.Size = new System.Drawing.Size(237, 25);
             this.lnkLogin.TabIndex = 7;
             this.lnkLogin.TabStop = true;
             this.lnkLogin.Text = "Quay lại trang đăng nhập";

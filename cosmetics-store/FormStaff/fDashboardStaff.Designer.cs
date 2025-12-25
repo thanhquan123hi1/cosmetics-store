@@ -54,7 +54,7 @@
             // 
             // pnlSidebar
             // 
-            this.pnlSidebar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(63)))), ((int)(((byte)(159)))));
+            this.pnlSidebar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.pnlSidebar.Controls.Add(this.lblGhiChu);
             this.pnlSidebar.Controls.Add(this.lblNgay);
             this.pnlSidebar.Controls.Add(this.lblCaSang);
@@ -75,56 +75,56 @@
             // 
             // lblGhiChu
             // 
-            this.lblGhiChu.Appearance.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Italic);
+            this.lblGhiChu.Appearance.Font = new System.Drawing.Font("Segoe UI Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblGhiChu.Appearance.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.lblGhiChu.Appearance.Options.UseFont = true;
             this.lblGhiChu.Appearance.Options.UseForeColor = true;
-            this.lblGhiChu.Location = new System.Drawing.Point(3, 199);
+            this.lblGhiChu.Location = new System.Drawing.Point(23, 199);
             this.lblGhiChu.Name = "lblGhiChu";
-            this.lblGhiChu.Size = new System.Drawing.Size(119, 20);
+            this.lblGhiChu.Size = new System.Drawing.Size(133, 20);
             this.lblGhiChu.TabIndex = 10;
             this.lblGhiChu.Text = "Ghi chú quyền hạn";
             // 
             // lblNgay
             // 
-            this.lblNgay.Appearance.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.lblNgay.Appearance.Font = new System.Drawing.Font("Segoe UI Black", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNgay.Appearance.ForeColor = System.Drawing.Color.White;
             this.lblNgay.Appearance.Options.UseFont = true;
             this.lblNgay.Appearance.Options.UseForeColor = true;
             this.lblNgay.Location = new System.Drawing.Point(23, 170);
             this.lblNgay.Name = "lblNgay";
-            this.lblNgay.Size = new System.Drawing.Size(84, 23);
+            this.lblNgay.Size = new System.Drawing.Size(91, 23);
             this.lblNgay.TabIndex = 9;
             this.lblNgay.Text = "Ngày: --/--";
             // 
             // lblCaSang
             // 
-            this.lblCaSang.Appearance.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.lblCaSang.Appearance.Font = new System.Drawing.Font("Segoe UI Black", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCaSang.Appearance.ForeColor = System.Drawing.Color.White;
             this.lblCaSang.Appearance.Options.UseFont = true;
             this.lblCaSang.Appearance.Options.UseForeColor = true;
             this.lblCaSang.Location = new System.Drawing.Point(23, 140);
             this.lblCaSang.Name = "lblCaSang";
-            this.lblCaSang.Size = new System.Drawing.Size(50, 23);
+            this.lblCaSang.Size = new System.Drawing.Size(52, 23);
             this.lblCaSang.TabIndex = 8;
             this.lblCaSang.Text = "Ca: ---";
             // 
             // lblNhanVien
             // 
-            this.lblNhanVien.Appearance.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
+            this.lblNhanVien.Appearance.Font = new System.Drawing.Font("Segoe UI Black", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNhanVien.Appearance.ForeColor = System.Drawing.Color.White;
             this.lblNhanVien.Appearance.Options.UseFont = true;
             this.lblNhanVien.Appearance.Options.UseForeColor = true;
             this.lblNhanVien.Location = new System.Drawing.Point(23, 109);
             this.lblNhanVien.Name = "lblNhanVien";
-            this.lblNhanVien.Size = new System.Drawing.Size(155, 25);
+            this.lblNhanVien.Size = new System.Drawing.Size(162, 25);
             this.lblNhanVien.TabIndex = 7;
             this.lblNhanVien.Text = "Nhân viên: (Chưa)";
             // 
             // btnDangXuat
             // 
             this.btnDangXuat.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(83)))), ((int)(((byte)(80)))));
-            this.btnDangXuat.Appearance.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.btnDangXuat.Appearance.Font = new System.Drawing.Font("Segoe UI Black", 13.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDangXuat.Appearance.ForeColor = System.Drawing.Color.White;
             this.btnDangXuat.Appearance.Options.UseBackColor = true;
             this.btnDangXuat.Appearance.Options.UseFont = true;
@@ -138,7 +138,7 @@
             // 
             // btnThongTin
             // 
-            this.btnThongTin.Appearance.Font = new System.Drawing.Font("Showcard Gothic", 10.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
+            this.btnThongTin.Appearance.Font = new System.Drawing.Font("Segoe UI Black", 12.8F, System.Drawing.FontStyle.Bold);
             this.btnThongTin.Appearance.ForeColor = System.Drawing.Color.Black;
             this.btnThongTin.Appearance.Options.UseFont = true;
             this.btnThongTin.Appearance.Options.UseForeColor = true;
@@ -151,7 +151,7 @@
             // 
             // btnLichSu
             // 
-            this.btnLichSu.Appearance.Font = new System.Drawing.Font("Showcard Gothic", 10.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
+            this.btnLichSu.Appearance.Font = new System.Drawing.Font("Segoe UI Black", 12.8F, System.Drawing.FontStyle.Bold);
             this.btnLichSu.Appearance.ForeColor = System.Drawing.Color.Black;
             this.btnLichSu.Appearance.Options.UseFont = true;
             this.btnLichSu.Appearance.Options.UseForeColor = true;
@@ -164,7 +164,7 @@
             // 
             // btnKhachHang
             // 
-            this.btnKhachHang.Appearance.Font = new System.Drawing.Font("Showcard Gothic", 10.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
+            this.btnKhachHang.Appearance.Font = new System.Drawing.Font("Segoe UI Black", 12.8F, System.Drawing.FontStyle.Bold);
             this.btnKhachHang.Appearance.ForeColor = System.Drawing.Color.Black;
             this.btnKhachHang.Appearance.Options.UseFont = true;
             this.btnKhachHang.Appearance.Options.UseForeColor = true;
@@ -177,7 +177,7 @@
             // 
             // btnSanPham
             // 
-            this.btnSanPham.Appearance.Font = new System.Drawing.Font("Showcard Gothic", 10.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
+            this.btnSanPham.Appearance.Font = new System.Drawing.Font("Segoe UI Black", 12.8F, System.Drawing.FontStyle.Bold);
             this.btnSanPham.Appearance.ForeColor = System.Drawing.Color.Black;
             this.btnSanPham.Appearance.Options.UseFont = true;
             this.btnSanPham.Appearance.Options.UseForeColor = true;
@@ -190,7 +190,7 @@
             // 
             // btnLapHoaDon
             // 
-            this.btnLapHoaDon.Appearance.Font = new System.Drawing.Font("Showcard Gothic", 10.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLapHoaDon.Appearance.Font = new System.Drawing.Font("Segoe UI Black", 12.8F, System.Drawing.FontStyle.Bold);
             this.btnLapHoaDon.Appearance.ForeColor = System.Drawing.Color.Black;
             this.btnLapHoaDon.Appearance.Options.UseFont = true;
             this.btnLapHoaDon.Appearance.Options.UseForeColor = true;
@@ -203,13 +203,13 @@
             // 
             // lblSidebarTitle
             // 
-            this.lblSidebarTitle.Appearance.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold);
+            this.lblSidebarTitle.Appearance.Font = new System.Drawing.Font("Segoe UI Black", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSidebarTitle.Appearance.ForeColor = System.Drawing.Color.White;
             this.lblSidebarTitle.Appearance.Options.UseFont = true;
             this.lblSidebarTitle.Appearance.Options.UseForeColor = true;
             this.lblSidebarTitle.Location = new System.Drawing.Point(12, 23);
             this.lblSidebarTitle.Name = "lblSidebarTitle";
-            this.lblSidebarTitle.Size = new System.Drawing.Size(205, 37);
+            this.lblSidebarTitle.Size = new System.Drawing.Size(225, 38);
             this.lblSidebarTitle.TabIndex = 0;
             this.lblSidebarTitle.Text = "Bảng điều khiển";
             // 

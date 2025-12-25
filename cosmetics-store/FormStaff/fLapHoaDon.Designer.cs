@@ -106,47 +106,47 @@
             // 
             // lblMaHD
             // 
-            this.lblMaHD.Appearance.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
+            this.lblMaHD.Appearance.Font = new System.Drawing.Font("Segoe UI Black", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMaHD.Appearance.Options.UseFont = true;
             this.lblMaHD.Location = new System.Drawing.Point(20, 25);
             this.lblMaHD.Name = "lblMaHD";
-            this.lblMaHD.Size = new System.Drawing.Size(136, 25);
+            this.lblMaHD.Size = new System.Drawing.Size(142, 25);
             this.lblMaHD.TabIndex = 0;
             this.lblMaHD.Text = "Mã HĐ: HD0123";
             // 
             // lblNV
             // 
-            this.lblNV.Appearance.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold);
+            this.lblNV.Appearance.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNV.Appearance.Options.UseFont = true;
             this.lblNV.Location = new System.Drawing.Point(20, 55);
             this.lblNV.Name = "lblNV";
-            this.lblNV.Size = new System.Drawing.Size(74, 19);
+            this.lblNV.Size = new System.Drawing.Size(78, 23);
             this.lblNV.TabIndex = 1;
             this.lblNV.Text = "NV: NV01";
             // 
             // lblNgay
             // 
-            this.lblNgay.Appearance.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold);
+            this.lblNgay.Appearance.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold);
             this.lblNgay.Appearance.Options.UseFont = true;
             this.lblNgay.Location = new System.Drawing.Point(20, 85);
             this.lblNgay.Name = "lblNgay";
-            this.lblNgay.Size = new System.Drawing.Size(88, 19);
+            this.lblNgay.Size = new System.Drawing.Size(100, 23);
             this.lblNgay.TabIndex = 2;
             this.lblNgay.Text = "Ngày: 15/12";
             // 
             // lblKhachHang
             // 
-            this.lblKhachHang.Appearance.Font = new System.Drawing.Font("Times New Roman", 11.2F, System.Drawing.FontStyle.Bold);
+            this.lblKhachHang.Appearance.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold);
             this.lblKhachHang.Appearance.Options.UseFont = true;
             this.lblKhachHang.Location = new System.Drawing.Point(20, 130);
             this.lblKhachHang.Name = "lblKhachHang";
-            this.lblKhachHang.Size = new System.Drawing.Size(209, 22);
+            this.lblKhachHang.Size = new System.Drawing.Size(199, 23);
             this.lblKhachHang.TabIndex = 3;
             this.lblKhachHang.Text = "Khách hàng: (Chưa chọn)";
             // 
             // btnChonKH
             // 
-            this.btnChonKH.Appearance.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold);
+            this.btnChonKH.Appearance.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold);
             this.btnChonKH.Appearance.Options.UseFont = true;
             this.btnChonKH.Location = new System.Drawing.Point(250, 125);
             this.btnChonKH.Name = "btnChonKH";
@@ -157,25 +157,25 @@
             // 
             // lblTongTien
             // 
-            this.lblTongTien.Appearance.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
+            this.lblTongTien.Appearance.Font = new System.Drawing.Font("Segoe UI", 12.2F, System.Drawing.FontStyle.Bold);
             this.lblTongTien.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(76)))), ((int)(((byte)(60)))));
             this.lblTongTien.Appearance.Options.UseFont = true;
             this.lblTongTien.Appearance.Options.UseForeColor = true;
             this.lblTongTien.Location = new System.Drawing.Point(20, 190);
             this.lblTongTien.Name = "lblTongTien";
-            this.lblTongTien.Size = new System.Drawing.Size(275, 32);
+            this.lblTongTien.Size = new System.Drawing.Size(237, 30);
             this.lblTongTien.TabIndex = 5;
             this.lblTongTien.Text = "Tổng tiền: 490.000 VND";
             // 
             // btnThanhToan
             // 
             this.btnThanhToan.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(204)))), ((int)(((byte)(113)))));
-            this.btnThanhToan.Appearance.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold);
+            this.btnThanhToan.Appearance.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold);
             this.btnThanhToan.Appearance.ForeColor = System.Drawing.Color.White;
             this.btnThanhToan.Appearance.Options.UseBackColor = true;
             this.btnThanhToan.Appearance.Options.UseFont = true;
             this.btnThanhToan.Appearance.Options.UseForeColor = true;
-            this.btnThanhToan.Location = new System.Drawing.Point(150, 250);
+            this.btnThanhToan.Location = new System.Drawing.Point(125, 250);
             this.btnThanhToan.Name = "btnThanhToan";
             this.btnThanhToan.Size = new System.Drawing.Size(171, 40);
             this.btnThanhToan.TabIndex = 6;
@@ -184,9 +184,9 @@
             // 
             // btnLuu
             // 
-            this.btnLuu.Appearance.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold);
+            this.btnLuu.Appearance.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold);
             this.btnLuu.Appearance.Options.UseFont = true;
-            this.btnLuu.Location = new System.Drawing.Point(357, 250);
+            this.btnLuu.Location = new System.Drawing.Point(331, 250);
             this.btnLuu.Name = "btnLuu";
             this.btnLuu.Size = new System.Drawing.Size(119, 40);
             this.btnLuu.TabIndex = 7;

@@ -59,7 +59,7 @@
             // 
             // pnlHeader
             // 
-            this.pnlHeader.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
+            this.pnlHeader.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.pnlHeader.Appearance.Options.UseBackColor = true;
             this.pnlHeader.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.pnlHeader.Controls.Add(this.btnDangXuat);
@@ -92,27 +92,27 @@
             // lblUserName
             // 
             this.lblUserName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblUserName.Appearance.Font = new System.Drawing.Font("Snap ITC", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUserName.Appearance.Font = new System.Drawing.Font("Segoe UI Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUserName.Appearance.ForeColor = System.Drawing.Color.White;
             this.lblUserName.Appearance.Options.UseFont = true;
             this.lblUserName.Appearance.Options.UseForeColor = true;
             this.lblUserName.Location = new System.Drawing.Point(947, 20);
             this.lblUserName.Margin = new System.Windows.Forms.Padding(4);
             this.lblUserName.Name = "lblUserName";
-            this.lblUserName.Size = new System.Drawing.Size(269, 23);
+            this.lblUserName.Size = new System.Drawing.Size(244, 28);
             this.lblUserName.TabIndex = 1;
             this.lblUserName.Text = "Xin chào, Administrator!";
             // 
             // lblAppTitle
             // 
-            this.lblAppTitle.Appearance.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold);
-            this.lblAppTitle.Appearance.ForeColor = System.Drawing.Color.White;
+            this.lblAppTitle.Appearance.Font = new System.Drawing.Font("Segoe UI Black", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAppTitle.Appearance.ForeColor = System.Drawing.Color.Brown;
             this.lblAppTitle.Appearance.Options.UseFont = true;
             this.lblAppTitle.Appearance.Options.UseForeColor = true;
             this.lblAppTitle.Location = new System.Drawing.Point(18, 15);
             this.lblAppTitle.Margin = new System.Windows.Forms.Padding(4);
             this.lblAppTitle.Name = "lblAppTitle";
-            this.lblAppTitle.Size = new System.Drawing.Size(182, 32);
+            this.lblAppTitle.Size = new System.Drawing.Size(181, 31);
             this.lblAppTitle.TabIndex = 0;
             this.lblAppTitle.Text = "Cosmetics Store";
             // 
@@ -132,7 +132,7 @@
             // accordionControl
             // 
             this.accordionControl.AllowItemSelection = true;
-            this.accordionControl.Appearance.AccordionControl.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
+            this.accordionControl.Appearance.AccordionControl.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.accordionControl.Appearance.AccordionControl.Options.UseBackColor = true;
             this.accordionControl.Appearance.Group.Default.Font = new System.Drawing.Font("Segoe UI", 10.5F, System.Drawing.FontStyle.Bold);
             this.accordionControl.Appearance.Group.Default.ForeColor = System.Drawing.Color.White;
@@ -161,6 +161,12 @@
             // 
             // accGroupDashboard
             // 
+            this.accGroupDashboard.Appearance.Normal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.accGroupDashboard.Appearance.Normal.Font = new System.Drawing.Font("Segoe UI Black", 10F, System.Drawing.FontStyle.Bold);
+            this.accGroupDashboard.Appearance.Normal.ForeColor = System.Drawing.Color.Black;
+            this.accGroupDashboard.Appearance.Normal.Options.UseBackColor = true;
+            this.accGroupDashboard.Appearance.Normal.Options.UseFont = true;
+            this.accGroupDashboard.Appearance.Normal.Options.UseForeColor = true;
             this.accGroupDashboard.Name = "accGroupDashboard";
             this.accGroupDashboard.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.accGroupDashboard.Text = "📊  DASHBOARD";
@@ -168,6 +174,10 @@
             // 
             // accGroupNguoiDung
             // 
+            this.accGroupNguoiDung.Appearance.Normal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.accGroupNguoiDung.Appearance.Normal.Font = new System.Drawing.Font("Segoe UI Black", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.accGroupNguoiDung.Appearance.Normal.Options.UseBackColor = true;
+            this.accGroupNguoiDung.Appearance.Normal.Options.UseFont = true;
             this.accGroupNguoiDung.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
             this.accItemNhanVien,
             this.accItemTaiKhoan,
@@ -179,6 +189,10 @@
             // 
             // accItemNhanVien
             // 
+            this.accItemNhanVien.Appearance.Normal.Font = new System.Drawing.Font("Segoe UI Black", 9.8F, System.Drawing.FontStyle.Bold);
+            this.accItemNhanVien.Appearance.Normal.ForeColor = System.Drawing.Color.Black;
+            this.accItemNhanVien.Appearance.Normal.Options.UseFont = true;
+            this.accItemNhanVien.Appearance.Normal.Options.UseForeColor = true;
             this.accItemNhanVien.HeaderTemplate.AddRange(new DevExpress.XtraBars.Navigation.HeaderElementInfo[] {
             new DevExpress.XtraBars.Navigation.HeaderElementInfo(DevExpress.XtraBars.Navigation.HeaderElementType.Text),
             new DevExpress.XtraBars.Navigation.HeaderElementInfo(DevExpress.XtraBars.Navigation.HeaderElementType.Image),
@@ -191,6 +205,10 @@
             // 
             // accItemTaiKhoan
             // 
+            this.accItemTaiKhoan.Appearance.Normal.Font = new System.Drawing.Font("Segoe UI Black", 9.8F, System.Drawing.FontStyle.Bold);
+            this.accItemTaiKhoan.Appearance.Normal.ForeColor = System.Drawing.Color.Black;
+            this.accItemTaiKhoan.Appearance.Normal.Options.UseFont = true;
+            this.accItemTaiKhoan.Appearance.Normal.Options.UseForeColor = true;
             this.accItemTaiKhoan.Name = "accItemTaiKhoan";
             this.accItemTaiKhoan.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.accItemTaiKhoan.Text = "   + Tài khoản && Quyền";
@@ -198,6 +216,10 @@
             // 
             // accItemNhatKy
             // 
+            this.accItemNhatKy.Appearance.Normal.Font = new System.Drawing.Font("Segoe UI Black", 9.8F, System.Drawing.FontStyle.Bold);
+            this.accItemNhatKy.Appearance.Normal.ForeColor = System.Drawing.Color.Black;
+            this.accItemNhatKy.Appearance.Normal.Options.UseFont = true;
+            this.accItemNhatKy.Appearance.Normal.Options.UseForeColor = true;
             this.accItemNhatKy.Name = "accItemNhatKy";
             this.accItemNhatKy.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.accItemNhatKy.Text = "   + Nhật ký hệ thống";
@@ -205,6 +227,10 @@
             // 
             // accItemCauHinh
             // 
+            this.accItemCauHinh.Appearance.Normal.Font = new System.Drawing.Font("Segoe UI Black", 9.8F, System.Drawing.FontStyle.Bold);
+            this.accItemCauHinh.Appearance.Normal.ForeColor = System.Drawing.Color.Black;
+            this.accItemCauHinh.Appearance.Normal.Options.UseFont = true;
+            this.accItemCauHinh.Appearance.Normal.Options.UseForeColor = true;
             this.accItemCauHinh.Name = "accItemCauHinh";
             this.accItemCauHinh.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.accItemCauHinh.Text = "   + Cấu hình";
@@ -212,6 +238,10 @@
             // 
             // accGroupHangHoa
             // 
+            this.accGroupHangHoa.Appearance.Normal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.accGroupHangHoa.Appearance.Normal.Font = new System.Drawing.Font("Segoe UI Black", 11.2F, System.Drawing.FontStyle.Bold);
+            this.accGroupHangHoa.Appearance.Normal.Options.UseBackColor = true;
+            this.accGroupHangHoa.Appearance.Normal.Options.UseFont = true;
             this.accGroupHangHoa.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
             this.accItemSanPham,
             this.accItemTonKho,
@@ -223,6 +253,10 @@
             // 
             // accItemSanPham
             // 
+            this.accItemSanPham.Appearance.Normal.Font = new System.Drawing.Font("Segoe UI Black", 9.8F, System.Drawing.FontStyle.Bold);
+            this.accItemSanPham.Appearance.Normal.ForeColor = System.Drawing.Color.Black;
+            this.accItemSanPham.Appearance.Normal.Options.UseFont = true;
+            this.accItemSanPham.Appearance.Normal.Options.UseForeColor = true;
             this.accItemSanPham.Name = "accItemSanPham";
             this.accItemSanPham.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.accItemSanPham.Text = "   + Sản phẩm";
@@ -230,6 +264,10 @@
             // 
             // accItemTonKho
             // 
+            this.accItemTonKho.Appearance.Normal.Font = new System.Drawing.Font("Segoe UI Black", 9.8F, System.Drawing.FontStyle.Bold);
+            this.accItemTonKho.Appearance.Normal.ForeColor = System.Drawing.Color.Black;
+            this.accItemTonKho.Appearance.Normal.Options.UseFont = true;
+            this.accItemTonKho.Appearance.Normal.Options.UseForeColor = true;
             this.accItemTonKho.Name = "accItemTonKho";
             this.accItemTonKho.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.accItemTonKho.Text = "   + Tồn kho";
@@ -237,6 +275,10 @@
             // 
             // accItemNhapHang
             // 
+            this.accItemNhapHang.Appearance.Normal.Font = new System.Drawing.Font("Segoe UI Black", 9.8F, System.Drawing.FontStyle.Bold);
+            this.accItemNhapHang.Appearance.Normal.ForeColor = System.Drawing.Color.Black;
+            this.accItemNhapHang.Appearance.Normal.Options.UseFont = true;
+            this.accItemNhapHang.Appearance.Normal.Options.UseForeColor = true;
             this.accItemNhapHang.Name = "accItemNhapHang";
             this.accItemNhapHang.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.accItemNhapHang.Text = "   + Nhập hàng";
@@ -244,6 +286,10 @@
             // 
             // accItemNhaCC
             // 
+            this.accItemNhaCC.Appearance.Normal.Font = new System.Drawing.Font("Segoe UI Black", 9.8F, System.Drawing.FontStyle.Bold);
+            this.accItemNhaCC.Appearance.Normal.ForeColor = System.Drawing.Color.Black;
+            this.accItemNhaCC.Appearance.Normal.Options.UseFont = true;
+            this.accItemNhaCC.Appearance.Normal.Options.UseForeColor = true;
             this.accItemNhaCC.Name = "accItemNhaCC";
             this.accItemNhaCC.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.accItemNhaCC.Text = "   + Nhà cung cấp";
@@ -251,6 +297,10 @@
             // 
             // accGroupKinhDoanh
             // 
+            this.accGroupKinhDoanh.Appearance.Normal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.accGroupKinhDoanh.Appearance.Normal.Font = new System.Drawing.Font("Segoe UI Black", 10F, System.Drawing.FontStyle.Bold);
+            this.accGroupKinhDoanh.Appearance.Normal.Options.UseBackColor = true;
+            this.accGroupKinhDoanh.Appearance.Normal.Options.UseFont = true;
             this.accGroupKinhDoanh.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
             this.accItemHoaDon,
             this.accItemBaoCao});
@@ -260,6 +310,10 @@
             // 
             // accItemHoaDon
             // 
+            this.accItemHoaDon.Appearance.Normal.Font = new System.Drawing.Font("Segoe UI Black", 9.8F, System.Drawing.FontStyle.Bold);
+            this.accItemHoaDon.Appearance.Normal.ForeColor = System.Drawing.Color.Black;
+            this.accItemHoaDon.Appearance.Normal.Options.UseFont = true;
+            this.accItemHoaDon.Appearance.Normal.Options.UseForeColor = true;
             this.accItemHoaDon.Name = "accItemHoaDon";
             this.accItemHoaDon.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.accItemHoaDon.Text = "   + Hóa đơn bán hàng";
@@ -267,6 +321,10 @@
             // 
             // accItemBaoCao
             // 
+            this.accItemBaoCao.Appearance.Normal.Font = new System.Drawing.Font("Segoe UI Black", 9.8F, System.Drawing.FontStyle.Bold);
+            this.accItemBaoCao.Appearance.Normal.ForeColor = System.Drawing.Color.Black;
+            this.accItemBaoCao.Appearance.Normal.Options.UseFont = true;
+            this.accItemBaoCao.Appearance.Normal.Options.UseForeColor = true;
             this.accItemBaoCao.Name = "accItemBaoCao";
             this.accItemBaoCao.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.accItemBaoCao.Text = "   + Báo cáo";

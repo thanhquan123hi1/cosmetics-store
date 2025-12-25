@@ -421,7 +421,7 @@
             this.lblWelcome.Appearance.Options.UseFont = true;
             this.lblWelcome.Appearance.Options.UseForeColor = true;
             this.lblWelcome.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
-            this.lblWelcome.Location = new System.Drawing.Point(59, 210);
+            this.lblWelcome.Location = new System.Drawing.Point(66, 220);
             this.lblWelcome.Margin = new System.Windows.Forms.Padding(4);
             this.lblWelcome.Name = "lblWelcome";
             this.lblWelcome.Size = new System.Drawing.Size(303, 74);
@@ -430,12 +430,12 @@
             // 
             // lblSystemName
             // 
-            this.lblSystemName.Appearance.Font = new System.Drawing.Font("Ravie", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSystemName.Appearance.Font = new System.Drawing.Font("Segoe UI Black", 16.8F, System.Drawing.FontStyle.Bold);
             this.lblSystemName.Appearance.ForeColor = System.Drawing.Color.Black;
             this.lblSystemName.Appearance.Options.UseFont = true;
             this.lblSystemName.Appearance.Options.UseForeColor = true;
             this.lblSystemName.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
-            this.lblSystemName.Location = new System.Drawing.Point(32, 278);
+            this.lblSystemName.Location = new System.Drawing.Point(35, 302);
             this.lblSystemName.Margin = new System.Windows.Forms.Padding(4);
             this.lblSystemName.Name = "lblSystemName";
             this.lblSystemName.Size = new System.Drawing.Size(303, 98);

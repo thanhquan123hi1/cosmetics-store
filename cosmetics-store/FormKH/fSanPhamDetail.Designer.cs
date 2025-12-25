@@ -23,15 +23,15 @@
         private void InitializeComponent()
         {
             this.pnlMain = new DevExpress.XtraEditors.PanelControl();
+            this.picSanPham = new DevExpress.XtraEditors.PictureEdit();
             this.lblTenSP = new DevExpress.XtraEditors.LabelControl();
             this.lblThuongHieu = new DevExpress.XtraEditors.LabelControl();
             this.lblGia = new DevExpress.XtraEditors.LabelControl();
             this.lblMoTa = new DevExpress.XtraEditors.LabelControl();
             this.lblTonKho = new DevExpress.XtraEditors.LabelControl();
+            this.spinSoLuong = new DevExpress.XtraEditors.SpinEdit();
             this.btnThemGio = new DevExpress.XtraEditors.SimpleButton();
             this.btnDong = new DevExpress.XtraEditors.SimpleButton();
-            this.picSanPham = new DevExpress.XtraEditors.PictureEdit();
-            this.spinSoLuong = new DevExpress.XtraEditors.SpinEdit();
             ((System.ComponentModel.ISupportInitialize)(this.pnlMain)).BeginInit();
             this.pnlMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picSanPham.Properties)).BeginInit();
@@ -58,9 +58,18 @@
             this.pnlMain.Size = new System.Drawing.Size(600, 450);
             this.pnlMain.TabIndex = 0;
             // 
+            // picSanPham
+            // 
+            this.picSanPham.Location = new System.Drawing.Point(20, 20);
+            this.picSanPham.Name = "picSanPham";
+            this.picSanPham.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
+            this.picSanPham.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Zoom;
+            this.picSanPham.Size = new System.Drawing.Size(250, 250);
+            this.picSanPham.TabIndex = 0;
+            // 
             // lblTenSP
             // 
-            this.lblTenSP.Appearance.Font = new System.Drawing.Font("Segoe UI Black", 16.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTenSP.Appearance.Font = new System.Drawing.Font("Segoe UI Black", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTenSP.Appearance.Options.UseFont = true;
             this.lblTenSP.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
             this.lblTenSP.LineColor = System.Drawing.Color.Red;
@@ -72,13 +81,13 @@
             // 
             // lblThuongHieu
             // 
-            this.lblThuongHieu.Appearance.Font = new System.Drawing.Font("Times New Roman", 10.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblThuongHieu.Appearance.Font = new System.Drawing.Font("Segoe UI Black", 10.2F, System.Drawing.FontStyle.Bold);
             this.lblThuongHieu.Appearance.ForeColor = System.Drawing.Color.Gray;
             this.lblThuongHieu.Appearance.Options.UseFont = true;
             this.lblThuongHieu.Appearance.Options.UseForeColor = true;
             this.lblThuongHieu.Location = new System.Drawing.Point(290, 85);
             this.lblThuongHieu.Name = "lblThuongHieu";
-            this.lblThuongHieu.Size = new System.Drawing.Size(91, 20);
+            this.lblThuongHieu.Size = new System.Drawing.Size(107, 23);
             this.lblThuongHieu.TabIndex = 2;
             this.lblThuongHieu.Text = "Thương hiệu";
             // 
@@ -96,7 +105,7 @@
             // 
             // lblMoTa
             // 
-            this.lblMoTa.Appearance.Font = new System.Drawing.Font("Times New Roman", 10.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMoTa.Appearance.Font = new System.Drawing.Font("Segoe UI Black", 10.2F, System.Drawing.FontStyle.Bold);
             this.lblMoTa.Appearance.Options.UseFont = true;
             this.lblMoTa.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
             this.lblMoTa.Location = new System.Drawing.Point(290, 165);
@@ -107,50 +116,15 @@
             // 
             // lblTonKho
             // 
-            this.lblTonKho.Appearance.Font = new System.Drawing.Font("Segoe UI Black", 10.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTonKho.Appearance.Font = new System.Drawing.Font("Segoe UI Black", 10.2F, System.Drawing.FontStyle.Bold);
             this.lblTonKho.Appearance.ForeColor = System.Drawing.Color.Green;
             this.lblTonKho.Appearance.Options.UseFont = true;
             this.lblTonKho.Appearance.Options.UseForeColor = true;
             this.lblTonKho.Location = new System.Drawing.Point(290, 260);
             this.lblTonKho.Name = "lblTonKho";
-            this.lblTonKho.Size = new System.Drawing.Size(81, 23);
+            this.lblTonKho.Size = new System.Drawing.Size(80, 23);
             this.lblTonKho.TabIndex = 5;
             this.lblTonKho.Text = "Còn hàng";
-            // 
-            // btnThemGio
-            // 
-            this.btnThemGio.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(76)))), ((int)(((byte)(60)))));
-            this.btnThemGio.Appearance.Font = new System.Drawing.Font("Segoe UI Black", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnThemGio.Appearance.ForeColor = System.Drawing.Color.White;
-            this.btnThemGio.Appearance.Options.UseBackColor = true;
-            this.btnThemGio.Appearance.Options.UseFont = true;
-            this.btnThemGio.Appearance.Options.UseForeColor = true;
-            this.btnThemGio.Location = new System.Drawing.Point(247, 350);
-            this.btnThemGio.Name = "btnThemGio";
-            this.btnThemGio.Size = new System.Drawing.Size(223, 45);
-            this.btnThemGio.TabIndex = 7;
-            this.btnThemGio.Text = "🛒 THÊM VÀO GIỮ";
-            this.btnThemGio.Click += new System.EventHandler(this.btnThemGio_Click);
-            // 
-            // btnDong
-            // 
-            this.btnDong.Appearance.Font = new System.Drawing.Font("Segoe UI", 10.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDong.Appearance.Options.UseFont = true;
-            this.btnDong.Location = new System.Drawing.Point(490, 352);
-            this.btnDong.Name = "btnDong";
-            this.btnDong.Size = new System.Drawing.Size(90, 45);
-            this.btnDong.TabIndex = 8;
-            this.btnDong.Text = "Đóng";
-            this.btnDong.Click += new System.EventHandler(this.btnDong_Click);
-            // 
-            // picSanPham
-            // 
-            this.picSanPham.Location = new System.Drawing.Point(20, 20);
-            this.picSanPham.Name = "picSanPham";
-            this.picSanPham.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
-            this.picSanPham.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Zoom;
-            this.picSanPham.Size = new System.Drawing.Size(250, 250);
-            this.picSanPham.TabIndex = 0;
             // 
             // spinSoLuong
             // 
@@ -178,6 +152,32 @@
             0});
             this.spinSoLuong.Size = new System.Drawing.Size(80, 34);
             this.spinSoLuong.TabIndex = 6;
+            // 
+            // btnThemGio
+            // 
+            this.btnThemGio.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(76)))), ((int)(((byte)(60)))));
+            this.btnThemGio.Appearance.Font = new System.Drawing.Font("Segoe UI Black", 12.2F, System.Drawing.FontStyle.Bold);
+            this.btnThemGio.Appearance.ForeColor = System.Drawing.Color.White;
+            this.btnThemGio.Appearance.Options.UseBackColor = true;
+            this.btnThemGio.Appearance.Options.UseFont = true;
+            this.btnThemGio.Appearance.Options.UseForeColor = true;
+            this.btnThemGio.Location = new System.Drawing.Point(247, 350);
+            this.btnThemGio.Name = "btnThemGio";
+            this.btnThemGio.Size = new System.Drawing.Size(223, 45);
+            this.btnThemGio.TabIndex = 7;
+            this.btnThemGio.Text = "🛒 THÊM VÀO GIỮ";
+            this.btnThemGio.Click += new System.EventHandler(this.btnThemGio_Click);
+            // 
+            // btnDong
+            // 
+            this.btnDong.Appearance.Font = new System.Drawing.Font("Segoe UI Black", 10.2F, System.Drawing.FontStyle.Bold);
+            this.btnDong.Appearance.Options.UseFont = true;
+            this.btnDong.Location = new System.Drawing.Point(490, 352);
+            this.btnDong.Name = "btnDong";
+            this.btnDong.Size = new System.Drawing.Size(90, 45);
+            this.btnDong.TabIndex = 8;
+            this.btnDong.Text = "Đóng";
+            this.btnDong.Click += new System.EventHandler(this.btnDong_Click);
             // 
             // fSanPhamDetail
             // 

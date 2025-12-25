@@ -45,23 +45,23 @@
             // 
             // lblTitle
             // 
-            this.lblTitle.Appearance.Font = new System.Drawing.Font("Segoe UI Black", 16.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitle.Appearance.Font = new System.Drawing.Font("Segoe UI Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitle.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(76)))), ((int)(((byte)(60)))));
             this.lblTitle.Appearance.Options.UseFont = true;
             this.lblTitle.Appearance.Options.UseForeColor = true;
             this.lblTitle.Location = new System.Drawing.Point(20, 15);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(343, 38);
+            this.lblTitle.Size = new System.Drawing.Size(244, 28);
             this.lblTitle.TabIndex = 0;
             this.lblTitle.Text = "🔍 TRA CỨU SẢN PHẨM";
             // 
             // lblTimKiem
             // 
-            this.lblTimKiem.Appearance.Font = new System.Drawing.Font("Bernard MT Condensed", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTimKiem.Appearance.Font = new System.Drawing.Font("Segoe UI Black", 9.2F, System.Drawing.FontStyle.Bold);
             this.lblTimKiem.Appearance.Options.UseFont = true;
             this.lblTimKiem.Location = new System.Drawing.Point(20, 60);
             this.lblTimKiem.Name = "lblTimKiem";
-            this.lblTimKiem.Size = new System.Drawing.Size(288, 18);
+            this.lblTimKiem.Size = new System.Drawing.Size(317, 21);
             this.lblTimKiem.TabIndex = 1;
             this.lblTimKiem.Text = "Tìm theo: [ Tên SP / Loại / Thương hiệu ]";
             // 

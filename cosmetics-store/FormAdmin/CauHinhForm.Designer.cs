@@ -40,47 +40,49 @@
             this.lblTitle = new DevExpress.XtraEditors.LabelControl();
             this.grpStore = new DevExpress.XtraEditors.GroupControl();
             this.lblStoreName = new DevExpress.XtraEditors.LabelControl();
+            this.txtStoreName = new DevExpress.XtraEditors.TextEdit();
             this.lblStoreAddress = new DevExpress.XtraEditors.LabelControl();
+            this.txtStoreAddress = new DevExpress.XtraEditors.TextEdit();
             this.lblStorePhone = new DevExpress.XtraEditors.LabelControl();
+            this.txtStorePhone = new DevExpress.XtraEditors.TextEdit();
             this.lblStoreEmail = new DevExpress.XtraEditors.LabelControl();
+            this.txtStoreEmail = new DevExpress.XtraEditors.TextEdit();
             this.grpInventory = new DevExpress.XtraEditors.GroupControl();
             this.lblLowStock = new DevExpress.XtraEditors.LabelControl();
+            this.spinLowStock = new DevExpress.XtraEditors.SpinEdit();
             this.lblLowStockNote = new DevExpress.XtraEditors.LabelControl();
             this.grpEmail = new DevExpress.XtraEditors.GroupControl();
             this.lblSmtpEmail = new DevExpress.XtraEditors.LabelControl();
+            this.txtSmtpEmail = new DevExpress.XtraEditors.TextEdit();
             this.lblSmtpDisplayName = new DevExpress.XtraEditors.LabelControl();
+            this.txtSmtpDisplayName = new DevExpress.XtraEditors.TextEdit();
             this.pnlBottom = new System.Windows.Forms.Panel();
             this.btnSave = new DevExpress.XtraEditors.SimpleButton();
             this.btnCancel = new DevExpress.XtraEditors.SimpleButton();
             this.btnResetDefault = new DevExpress.XtraEditors.SimpleButton();
-            this.txtStoreName = new DevExpress.XtraEditors.TextEdit();
-            this.txtStoreAddress = new DevExpress.XtraEditors.TextEdit();
-            this.txtStorePhone = new DevExpress.XtraEditors.TextEdit();
-            this.txtStoreEmail = new DevExpress.XtraEditors.TextEdit();
-            this.spinLowStock = new DevExpress.XtraEditors.SpinEdit();
-            this.txtSmtpEmail = new DevExpress.XtraEditors.TextEdit();
-            this.txtSmtpDisplayName = new DevExpress.XtraEditors.TextEdit();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pnlMain)).BeginInit();
             this.pnlMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grpStore)).BeginInit();
             this.grpStore.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.grpInventory)).BeginInit();
-            this.grpInventory.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.grpEmail)).BeginInit();
-            this.grpEmail.SuspendLayout();
-            this.pnlBottom.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtStoreName.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtStoreAddress.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtStorePhone.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtStoreEmail.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grpInventory)).BeginInit();
+            this.grpInventory.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.spinLowStock.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grpEmail)).BeginInit();
+            this.grpEmail.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtSmtpEmail.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSmtpDisplayName.Properties)).BeginInit();
+            this.pnlBottom.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlMain
             // 
-            this.pnlMain.Appearance.BackColor = System.Drawing.Color.White;
+            this.pnlMain.Appearance.BackColor = System.Drawing.Color.Transparent;
             this.pnlMain.Appearance.Options.UseBackColor = true;
             this.pnlMain.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.pnlMain.Controls.Add(this.lblTitle);
@@ -88,8 +90,10 @@
             this.pnlMain.Controls.Add(this.grpInventory);
             this.pnlMain.Controls.Add(this.grpEmail);
             this.pnlMain.Controls.Add(this.pnlBottom);
+            this.pnlMain.Controls.Add(this.pictureBox1);
             this.pnlMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlMain.Location = new System.Drawing.Point(0, 0);
+            this.pnlMain.LookAndFeel.UseDefaultLookAndFeel = false;
             this.pnlMain.Name = "pnlMain";
             this.pnlMain.Padding = new System.Windows.Forms.Padding(20);
             this.pnlMain.Size = new System.Drawing.Size(800, 550);
@@ -97,13 +101,13 @@
             // 
             // lblTitle
             // 
-            this.lblTitle.Appearance.Font = new System.Drawing.Font("Snap ITC", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitle.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
+            this.lblTitle.Appearance.Font = new System.Drawing.Font("Segoe UI Black", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitle.Appearance.ForeColor = System.Drawing.Color.Black;
             this.lblTitle.Appearance.Options.UseFont = true;
             this.lblTitle.Appearance.Options.UseForeColor = true;
-            this.lblTitle.Location = new System.Drawing.Point(25, 15);
+            this.lblTitle.Location = new System.Drawing.Point(40, 13);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(319, 39);
+            this.lblTitle.Size = new System.Drawing.Size(270, 41);
             this.lblTitle.TabIndex = 0;
             this.lblTitle.Text = "Cấu hình hệ thống";
             // 
@@ -111,6 +115,8 @@
             // 
             this.grpStore.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.grpStore.Appearance.BackColor = System.Drawing.Color.Transparent;
+            this.grpStore.Appearance.Options.UseBackColor = true;
             this.grpStore.AppearanceCaption.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
             this.grpStore.AppearanceCaption.Options.UseFont = true;
             this.grpStore.Controls.Add(this.lblStoreName);
@@ -121,7 +127,9 @@
             this.grpStore.Controls.Add(this.txtStorePhone);
             this.grpStore.Controls.Add(this.lblStoreEmail);
             this.grpStore.Controls.Add(this.txtStoreEmail);
+            this.grpStore.GroupStyle = DevExpress.Utils.GroupStyle.Light;
             this.grpStore.Location = new System.Drawing.Point(25, 60);
+            this.grpStore.LookAndFeel.UseDefaultLookAndFeel = false;
             this.grpStore.Name = "grpStore";
             this.grpStore.Size = new System.Drawing.Size(750, 155);
             this.grpStore.TabIndex = 1;
@@ -131,46 +139,90 @@
             // 
             this.lblStoreName.Appearance.Font = new System.Drawing.Font("Segoe UI", 10.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblStoreName.Appearance.Options.UseFont = true;
-            this.lblStoreName.Location = new System.Drawing.Point(20, 35);
+            this.lblStoreName.Location = new System.Drawing.Point(11, 35);
             this.lblStoreName.Name = "lblStoreName";
             this.lblStoreName.Size = new System.Drawing.Size(113, 23);
             this.lblStoreName.TabIndex = 0;
             this.lblStoreName.Text = "Tên cửa hàng:";
             // 
+            // txtStoreName
+            // 
+            this.txtStoreName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtStoreName.Location = new System.Drawing.Point(130, 32);
+            this.txtStoreName.Name = "txtStoreName";
+            this.txtStoreName.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.txtStoreName.Properties.Appearance.Options.UseFont = true;
+            this.txtStoreName.Size = new System.Drawing.Size(600, 30);
+            this.txtStoreName.TabIndex = 1;
+            // 
             // lblStoreAddress
             // 
             this.lblStoreAddress.Appearance.Font = new System.Drawing.Font("Segoe UI", 10.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblStoreAddress.Appearance.Options.UseFont = true;
-            this.lblStoreAddress.Location = new System.Drawing.Point(20, 65);
+            this.lblStoreAddress.Location = new System.Drawing.Point(15, 65);
             this.lblStoreAddress.Name = "lblStoreAddress";
             this.lblStoreAddress.Size = new System.Drawing.Size(61, 23);
             this.lblStoreAddress.TabIndex = 2;
             this.lblStoreAddress.Text = "Địa chỉ:";
             // 
+            // txtStoreAddress
+            // 
+            this.txtStoreAddress.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtStoreAddress.Location = new System.Drawing.Point(130, 62);
+            this.txtStoreAddress.Name = "txtStoreAddress";
+            this.txtStoreAddress.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.txtStoreAddress.Properties.Appearance.Options.UseFont = true;
+            this.txtStoreAddress.Size = new System.Drawing.Size(600, 30);
+            this.txtStoreAddress.TabIndex = 3;
+            // 
             // lblStorePhone
             // 
             this.lblStorePhone.Appearance.Font = new System.Drawing.Font("Segoe UI", 10.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblStorePhone.Appearance.Options.UseFont = true;
-            this.lblStorePhone.Location = new System.Drawing.Point(20, 95);
+            this.lblStorePhone.Location = new System.Drawing.Point(15, 95);
             this.lblStorePhone.Name = "lblStorePhone";
             this.lblStorePhone.Size = new System.Drawing.Size(109, 23);
             this.lblStorePhone.TabIndex = 4;
             this.lblStorePhone.Text = "Số điện thoại:";
             // 
+            // txtStorePhone
+            // 
+            this.txtStorePhone.Location = new System.Drawing.Point(130, 92);
+            this.txtStorePhone.Name = "txtStorePhone";
+            this.txtStorePhone.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.txtStorePhone.Properties.Appearance.Options.UseFont = true;
+            this.txtStorePhone.Size = new System.Drawing.Size(180, 30);
+            this.txtStorePhone.TabIndex = 5;
+            // 
             // lblStoreEmail
             // 
             this.lblStoreEmail.Appearance.Font = new System.Drawing.Font("Segoe UI", 10.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblStoreEmail.Appearance.Options.UseFont = true;
-            this.lblStoreEmail.Location = new System.Drawing.Point(20, 125);
+            this.lblStoreEmail.Location = new System.Drawing.Point(15, 125);
             this.lblStoreEmail.Name = "lblStoreEmail";
             this.lblStoreEmail.Size = new System.Drawing.Size(49, 23);
             this.lblStoreEmail.TabIndex = 6;
             this.lblStoreEmail.Text = "Email:";
             // 
+            // txtStoreEmail
+            // 
+            this.txtStoreEmail.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtStoreEmail.Location = new System.Drawing.Point(130, 122);
+            this.txtStoreEmail.Name = "txtStoreEmail";
+            this.txtStoreEmail.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.txtStoreEmail.Properties.Appearance.Options.UseFont = true;
+            this.txtStoreEmail.Size = new System.Drawing.Size(400, 30);
+            this.txtStoreEmail.TabIndex = 7;
+            // 
             // grpInventory
             // 
             this.grpInventory.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.grpInventory.Appearance.BackColor = System.Drawing.Color.Transparent;
+            this.grpInventory.Appearance.Options.UseBackColor = true;
             this.grpInventory.AppearanceCaption.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
             this.grpInventory.AppearanceCaption.Options.UseFont = true;
             this.grpInventory.Controls.Add(this.lblLowStock);
@@ -193,6 +245,27 @@
             this.lblLowStock.TabIndex = 0;
             this.lblLowStock.Text = "Ngưỡng cảnh báo tồn:";
             // 
+            // spinLowStock
+            // 
+            this.spinLowStock.EditValue = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.spinLowStock.Location = new System.Drawing.Point(200, 35);
+            this.spinLowStock.Name = "spinLowStock";
+            this.spinLowStock.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.spinLowStock.Properties.Appearance.Options.UseFont = true;
+            this.spinLowStock.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.spinLowStock.Properties.MaxValue = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.spinLowStock.Size = new System.Drawing.Size(100, 30);
+            this.spinLowStock.TabIndex = 1;
+            // 
             // lblLowStockNote
             // 
             this.lblLowStockNote.Appearance.Font = new System.Drawing.Font("Segoe UI", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -209,6 +282,8 @@
             // 
             this.grpEmail.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.grpEmail.Appearance.BackColor = System.Drawing.Color.Transparent;
+            this.grpEmail.Appearance.Options.UseBackColor = true;
             this.grpEmail.AppearanceCaption.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
             this.grpEmail.AppearanceCaption.Options.UseFont = true;
             this.grpEmail.Controls.Add(this.lblSmtpEmail);
@@ -231,6 +306,18 @@
             this.lblSmtpEmail.TabIndex = 0;
             this.lblSmtpEmail.Text = "Email SMTP:";
             // 
+            // txtSmtpEmail
+            // 
+            this.txtSmtpEmail.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtSmtpEmail.Location = new System.Drawing.Point(130, 32);
+            this.txtSmtpEmail.Name = "txtSmtpEmail";
+            this.txtSmtpEmail.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.txtSmtpEmail.Properties.Appearance.Options.UseFont = true;
+            this.txtSmtpEmail.Properties.ReadOnly = true;
+            this.txtSmtpEmail.Size = new System.Drawing.Size(400, 30);
+            this.txtSmtpEmail.TabIndex = 1;
+            // 
             // lblSmtpDisplayName
             // 
             this.lblSmtpDisplayName.Appearance.Font = new System.Drawing.Font("Segoe UI", 10.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -240,6 +327,17 @@
             this.lblSmtpDisplayName.Size = new System.Drawing.Size(109, 23);
             this.lblSmtpDisplayName.TabIndex = 2;
             this.lblSmtpDisplayName.Text = "Tên hiển thị : ";
+            // 
+            // txtSmtpDisplayName
+            // 
+            this.txtSmtpDisplayName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtSmtpDisplayName.Location = new System.Drawing.Point(130, 64);
+            this.txtSmtpDisplayName.Name = "txtSmtpDisplayName";
+            this.txtSmtpDisplayName.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.txtSmtpDisplayName.Properties.Appearance.Options.UseFont = true;
+            this.txtSmtpDisplayName.Size = new System.Drawing.Size(400, 30);
+            this.txtSmtpDisplayName.TabIndex = 3;
             // 
             // pnlBottom
             // 
@@ -296,91 +394,17 @@
             this.btnResetDefault.Text = "♻️ Khôi phục mặc định";
             this.btnResetDefault.Click += new System.EventHandler(this.btnResetDefault_Click);
             // 
-            // txtStoreName
+            // pictureBox1
             // 
-            this.txtStoreName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtStoreName.Location = new System.Drawing.Point(130, 32);
-            this.txtStoreName.Name = "txtStoreName";
-            this.txtStoreName.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.txtStoreName.Properties.Appearance.Options.UseFont = true;
-            this.txtStoreName.Size = new System.Drawing.Size(600, 30);
-            this.txtStoreName.TabIndex = 1;
-            // 
-            // txtStoreAddress
-            // 
-            this.txtStoreAddress.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtStoreAddress.Location = new System.Drawing.Point(130, 62);
-            this.txtStoreAddress.Name = "txtStoreAddress";
-            this.txtStoreAddress.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.txtStoreAddress.Properties.Appearance.Options.UseFont = true;
-            this.txtStoreAddress.Size = new System.Drawing.Size(600, 30);
-            this.txtStoreAddress.TabIndex = 3;
-            // 
-            // txtStorePhone
-            // 
-            this.txtStorePhone.Location = new System.Drawing.Point(130, 92);
-            this.txtStorePhone.Name = "txtStorePhone";
-            this.txtStorePhone.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.txtStorePhone.Properties.Appearance.Options.UseFont = true;
-            this.txtStorePhone.Size = new System.Drawing.Size(180, 30);
-            this.txtStorePhone.TabIndex = 5;
-            // 
-            // txtStoreEmail
-            // 
-            this.txtStoreEmail.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtStoreEmail.Location = new System.Drawing.Point(130, 122);
-            this.txtStoreEmail.Name = "txtStoreEmail";
-            this.txtStoreEmail.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.txtStoreEmail.Properties.Appearance.Options.UseFont = true;
-            this.txtStoreEmail.Size = new System.Drawing.Size(400, 30);
-            this.txtStoreEmail.TabIndex = 7;
-            // 
-            // spinLowStock
-            // 
-            this.spinLowStock.EditValue = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            this.spinLowStock.Location = new System.Drawing.Point(200, 35);
-            this.spinLowStock.Name = "spinLowStock";
-            this.spinLowStock.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.spinLowStock.Properties.Appearance.Options.UseFont = true;
-            this.spinLowStock.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.spinLowStock.Properties.MaxValue = new decimal(new int[] {
-            1000,
-            0,
-            0,
-            0});
-            this.spinLowStock.Size = new System.Drawing.Size(100, 30);
-            this.spinLowStock.TabIndex = 1;
-            // 
-            // txtSmtpEmail
-            // 
-            this.txtSmtpEmail.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtSmtpEmail.Location = new System.Drawing.Point(130, 32);
-            this.txtSmtpEmail.Name = "txtSmtpEmail";
-            this.txtSmtpEmail.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.txtSmtpEmail.Properties.Appearance.Options.UseFont = true;
-            this.txtSmtpEmail.Properties.ReadOnly = true;
-            this.txtSmtpEmail.Size = new System.Drawing.Size(400, 30);
-            this.txtSmtpEmail.TabIndex = 1;
-            // 
-            // txtSmtpDisplayName
-            // 
-            this.txtSmtpDisplayName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtSmtpDisplayName.Location = new System.Drawing.Point(130, 64);
-            this.txtSmtpDisplayName.Name = "txtSmtpDisplayName";
-            this.txtSmtpDisplayName.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.txtSmtpDisplayName.Properties.Appearance.Options.UseFont = true;
-            this.txtSmtpDisplayName.Size = new System.Drawing.Size(400, 30);
-            this.txtSmtpDisplayName.TabIndex = 3;
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox1.Image = global::cosmetics_store.Properties.Resources.Small_Fresh_Spring_Green_Leaf_H5_Background_Wallpaper_Image_For_Free_Download___Pngtree;
+            this.pictureBox1.Location = new System.Drawing.Point(20, 20);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(760, 510);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 8;
+            this.pictureBox1.TabStop = false;
             // 
             // CauHinhForm
             // 
@@ -397,22 +421,25 @@
             ((System.ComponentModel.ISupportInitialize)(this.grpStore)).EndInit();
             this.grpStore.ResumeLayout(false);
             this.grpStore.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.grpInventory)).EndInit();
-            this.grpInventory.ResumeLayout(false);
-            this.grpInventory.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.grpEmail)).EndInit();
-            this.grpEmail.ResumeLayout(false);
-            this.grpEmail.PerformLayout();
-            this.pnlBottom.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.txtStoreName.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtStoreAddress.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtStorePhone.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtStoreEmail.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grpInventory)).EndInit();
+            this.grpInventory.ResumeLayout(false);
+            this.grpInventory.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.spinLowStock.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grpEmail)).EndInit();
+            this.grpEmail.ResumeLayout(false);
+            this.grpEmail.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtSmtpEmail.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSmtpDisplayName.Properties)).EndInit();
+            this.pnlBottom.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
+
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

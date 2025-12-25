@@ -22,16 +22,16 @@ namespace cosmetics_store.Forms
 
         private void ApplyModernTheme()
         {
-            // Màu sắc dễ nhìn hơn - theme sáng và tươi
+            // Màu sắc dễ nhìn hơn - theme sáng và tươi với độ trong suốt
             var lightBackground = Color.FromArgb(240, 242, 245);    // Nền sáng
-            var cardBackground = Color.White;                        // Card trắng
+            var cardBackground = Color.FromArgb(200, 255, 255, 255);  // Card trắng trong suốt
             var headerBackground = Color.FromArgb(52, 73, 94);      // Header xanh đậm
-            var inputBackground = Color.FromArgb(250, 251, 252);    // Input trắng nhạt
+            var inputBackground = Color.FromArgb(220, 255, 255, 255); // Input trắng nhạt trong suốt
             var textDark = Color.FromArgb(44, 62, 80);              // Text đen xanh
             var borderColor = Color.FromArgb(220, 223, 230);        // Border nhạt
 
-            // Form styling - nền sáng dễ nhìn
-            this.BackColor = lightBackground;
+            // Form styling - trong suốt để thấy ảnh nền
+            this.BackColor = Color.Transparent;
 
             // Font - rõ ràng và dễ đọc
             var mainFont = new Font("Segoe UI", 10F, FontStyle.Regular);
@@ -41,20 +41,26 @@ namespace cosmetics_store.Forms
 
             try
             {
-                // Style main title
+                // Style main title - với background để dễ đọc
                 if (this.Controls.Find("lblTitle", true).Length > 0)
                 {
                     var lblTitle = this.Controls.Find("lblTitle", true)[0] as DevExpress.XtraEditors.LabelControl;
                     if (lblTitle != null)
                     {
                         lblTitle.Appearance.Font = headerFont;
-                        lblTitle.Appearance.ForeColor = headerBackground;
+                        lblTitle.Appearance.ForeColor = Color.White; // Text trắng
+                        lblTitle.Appearance.BackColor = Color.FromArgb(180, 52, 73, 94); // Background xanh đậm trong suốt
                         lblTitle.Appearance.Options.UseFont = true;
                         lblTitle.Appearance.Options.UseForeColor = true;
+                        lblTitle.Appearance.Options.UseBackColor = true;
+                        lblTitle.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
+                        lblTitle.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+                        lblTitle.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+                        lblTitle.Padding = new Padding(10, 5, 10, 5);
                     }
                 }
 
-                // Style GroupBoxes - card trắng đẹp
+                // Style GroupBoxes - card trắng trong suốt đẹp
                 foreach (Control ctrl in GetAllControls(this))
                 {
                     if (ctrl is DevExpress.XtraEditors.GroupControl groupBox)
@@ -66,6 +72,10 @@ namespace cosmetics_store.Forms
                         groupBox.AppearanceCaption.Options.UseFont = true;
                         groupBox.AppearanceCaption.Options.UseForeColor = true;
                         groupBox.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
+                        
+                        // Làm trong suốt GroupBox
+                        groupBox.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Flat;
+                        groupBox.LookAndFeel.UseDefaultLookAndFeel = false;
                     }
                     else if (ctrl is DevExpress.XtraEditors.LabelControl label)
                     {
@@ -108,24 +118,24 @@ namespace cosmetics_store.Forms
                     StyleButton(this.Controls.Find("btnResetDefault", true)[0] as DevExpress.XtraEditors.SimpleButton,
                         Color.FromArgb(231, 76, 60), Color.White, boldFont, "🔄 Khôi phục mặc định");
 
-                // Style pnlMain
+                // Style pnlMain - trong suốt
                 if (this.Controls.Find("pnlMain", true).Length > 0)
                 {
                     var pnlMain = this.Controls.Find("pnlMain", true)[0] as DevExpress.XtraEditors.PanelControl;
                     if (pnlMain != null)
                     {
-                        pnlMain.Appearance.BackColor = lightBackground;
+                        pnlMain.Appearance.BackColor = Color.Transparent;
                         pnlMain.Appearance.Options.UseBackColor = true;
                     }
                 }
 
-                // Style pnlBottom
+                // Style pnlBottom - trong suốt nhẹ
                 if (this.Controls.Find("pnlBottom", true).Length > 0)
                 {
                     var pnlBottom = this.Controls.Find("pnlBottom", true)[0] as Panel;
                     if (pnlBottom != null)
                     {
-                        pnlBottom.BackColor = Color.FromArgb(236, 240, 241);
+                        pnlBottom.BackColor = Color.FromArgb(200, 236, 240, 241);
                     }
                 }
 

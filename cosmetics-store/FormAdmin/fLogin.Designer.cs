@@ -107,11 +107,11 @@
             // 
             // lblUsername
             // 
-            this.lblUsername.Appearance.Font = new System.Drawing.Font("Showcard Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUsername.Appearance.Font = new System.Drawing.Font("Segoe UI Black", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUsername.Appearance.Options.UseFont = true;
             this.lblUsername.Location = new System.Drawing.Point(70, 180);
             this.lblUsername.Name = "lblUsername";
-            this.lblUsername.Size = new System.Drawing.Size(137, 21);
+            this.lblUsername.Size = new System.Drawing.Size(132, 23);
             this.lblUsername.TabIndex = 1;
             this.lblUsername.Text = "Tên Đăng Nhập";
             // 
@@ -128,11 +128,11 @@
             // 
             // lblPassword
             // 
-            this.lblPassword.Appearance.Font = new System.Drawing.Font("Showcard Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPassword.Appearance.Font = new System.Drawing.Font("Segoe UI Black", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPassword.Appearance.Options.UseFont = true;
             this.lblPassword.Location = new System.Drawing.Point(70, 270);
             this.lblPassword.Name = "lblPassword";
-            this.lblPassword.Size = new System.Drawing.Size(91, 21);
+            this.lblPassword.Size = new System.Drawing.Size(82, 23);
             this.lblPassword.TabIndex = 3;
             this.lblPassword.Text = "Mật Khẩu";
             // 

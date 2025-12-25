@@ -35,6 +35,9 @@
             this.accordionControlElement2 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.accordionControlElement3 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.accordionControlElement4 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.accordionControlElement5 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.accordionControlElement6 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.accordionControlElement7 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.pnlMainContent = new System.Windows.Forms.Panel();
             this.pictureEdit1 = new DevExpress.XtraEditors.PictureEdit();
             ((System.ComponentModel.ISupportInitialize)(this.pnlHeader)).BeginInit();
@@ -45,7 +48,7 @@
             // 
             // pnlHeader
             // 
-            this.pnlHeader.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(89)))), ((int)(((byte)(182)))));
+            this.pnlHeader.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.pnlHeader.Appearance.Options.UseBackColor = true;
             this.pnlHeader.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.pnlHeader.Controls.Add(this.lblTitle);
@@ -59,13 +62,13 @@
             // 
             // lblTitle
             // 
-            this.lblTitle.Appearance.Font = new System.Drawing.Font("Segoe UI Black", 13.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitle.Appearance.ForeColor = System.Drawing.Color.White;
+            this.lblTitle.Appearance.Font = new System.Drawing.Font("Segoe UI Black", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitle.Appearance.ForeColor = System.Drawing.Color.Black;
             this.lblTitle.Appearance.Options.UseFont = true;
             this.lblTitle.Appearance.Options.UseForeColor = true;
-            this.lblTitle.Location = new System.Drawing.Point(16, 15);
+            this.lblTitle.Location = new System.Drawing.Point(12, 6);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(176, 31);
+            this.lblTitle.Size = new System.Drawing.Size(211, 37);
             this.lblTitle.TabIndex = 0;
             this.lblTitle.Text = "Cosmetics Store";
             // 
@@ -73,7 +76,7 @@
             // 
             this.lblUserName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblUserName.Appearance.Font = new System.Drawing.Font("Segoe UI", 10.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUserName.Appearance.ForeColor = System.Drawing.Color.White;
+            this.lblUserName.Appearance.ForeColor = System.Drawing.Color.Black;
             this.lblUserName.Appearance.Options.UseFont = true;
             this.lblUserName.Appearance.Options.UseForeColor = true;
             this.lblUserName.ImageOptions.Image = global::cosmetics_store.Properties.Resources.role_tag1;
@@ -102,7 +105,7 @@
             // 
             // accordionMenu
             // 
-            this.accordionMenu.Appearance.AccordionControl.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(68)))), ((int)(((byte)(173)))));
+            this.accordionMenu.Appearance.AccordionControl.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.accordionMenu.Appearance.AccordionControl.Options.UseBackColor = true;
             this.accordionMenu.Dock = System.Windows.Forms.DockStyle.Left;
             this.accordionMenu.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
@@ -113,7 +116,10 @@
             this.accordionControlElement1,
             this.accordionControlElement2,
             this.accordionControlElement3,
-            this.accordionControlElement4});
+            this.accordionControlElement4,
+            this.accordionControlElement5,
+            this.accordionControlElement6,
+            this.accordionControlElement7});
             this.accordionMenu.Location = new System.Drawing.Point(0, 56);
             this.accordionMenu.Name = "accordionMenu";
             this.accordionMenu.ScrollBarMode = DevExpress.XtraBars.Navigation.ScrollBarMode.Hidden;
@@ -122,6 +128,10 @@
             // 
             // aceDashboard
             // 
+            this.aceDashboard.Appearance.Normal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.aceDashboard.Appearance.Normal.Font = new System.Drawing.Font("Segoe UI Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.aceDashboard.Appearance.Normal.Options.UseBackColor = true;
+            this.aceDashboard.Appearance.Normal.Options.UseFont = true;
             this.aceDashboard.Name = "aceDashboard";
             this.aceDashboard.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.aceDashboard.Text = "Trang chủ";
@@ -129,6 +139,10 @@
             // 
             // aceSanPham
             // 
+            this.aceSanPham.Appearance.Normal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.aceSanPham.Appearance.Normal.Font = new System.Drawing.Font("Segoe UI Black", 9F, System.Drawing.FontStyle.Bold);
+            this.aceSanPham.Appearance.Normal.Options.UseBackColor = true;
+            this.aceSanPham.Appearance.Normal.Options.UseFont = true;
             this.aceSanPham.Name = "aceSanPham";
             this.aceSanPham.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.aceSanPham.Text = "Sản Phẩm";
@@ -136,6 +150,10 @@
             // 
             // aceDonHang
             // 
+            this.aceDonHang.Appearance.Normal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.aceDonHang.Appearance.Normal.Font = new System.Drawing.Font("Segoe UI Black", 9F, System.Drawing.FontStyle.Bold);
+            this.aceDonHang.Appearance.Normal.Options.UseBackColor = true;
+            this.aceDonHang.Appearance.Normal.Options.UseFont = true;
             this.aceDonHang.Name = "aceDonHang";
             this.aceDonHang.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.aceDonHang.Text = "Đơn hàng của tôi";
@@ -143,6 +161,10 @@
             // 
             // aceThongTin
             // 
+            this.aceThongTin.Appearance.Normal.BackColor = System.Drawing.Color.Maroon;
+            this.aceThongTin.Appearance.Normal.Font = new System.Drawing.Font("Segoe UI Black", 9F, System.Drawing.FontStyle.Bold);
+            this.aceThongTin.Appearance.Normal.Options.UseBackColor = true;
+            this.aceThongTin.Appearance.Normal.Options.UseFont = true;
             this.aceThongTin.Name = "aceThongTin";
             this.aceThongTin.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.aceThongTin.Text = "Thông tin cá nhân";
@@ -171,6 +193,24 @@
             this.accordionControlElement4.Name = "accordionControlElement4";
             this.accordionControlElement4.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.accordionControlElement4.Text = "Element4";
+            // 
+            // accordionControlElement5
+            // 
+            this.accordionControlElement5.Name = "accordionControlElement5";
+            this.accordionControlElement5.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.accordionControlElement5.Text = "Element5";
+            // 
+            // accordionControlElement6
+            // 
+            this.accordionControlElement6.Name = "accordionControlElement6";
+            this.accordionControlElement6.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.accordionControlElement6.Text = "Element6";
+            // 
+            // accordionControlElement7
+            // 
+            this.accordionControlElement7.Name = "accordionControlElement7";
+            this.accordionControlElement7.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.accordionControlElement7.Text = "Element7";
             // 
             // pnlMainContent
             // 
@@ -220,5 +260,8 @@
         private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement2;
         private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement3;
         private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement4;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement5;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement6;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement7;
     }
 }

@@ -448,6 +448,7 @@
     <None Include="Resources\wrong-password1.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\Small Fresh Spring Green Leaf H5 Background Wallpaper Image For Free Download - Pngtree.jpg" />
     <None Include="Resources\tải xuống %285%29.jpg" />
     <None Include="Resources\Purple background.jpg" />
     <None Include="Resources\tải xuống %283%29.jpg" />
@@ -463,6 +464,7 @@
     <Content Include="Image_Products\250k_toner_dạng_nước.jpg" />
     <Content Include="Image_Products\390k_kem_dưỡng.jpg" />
     <Content Include="Image_Products\ofelia_má_hồng_201k.jpg" />
+    <None Include="Resources\1212.jpg" />
     <Content Include="Resources\forgotpwd.png" />
     <None Include="Resources\icn_home1.png" />
     <None Include="Resources\role_tag1.png" />

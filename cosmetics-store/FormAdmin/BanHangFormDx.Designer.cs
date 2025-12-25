@@ -27,7 +27,7 @@
 
         private void InitializeComponent()
         {
-            DevExpress.XtraGrid.GridLevelNode gridLevelNode1 = new DevExpress.XtraGrid.GridLevelNode();
+            DevExpress.XtraGrid.GridLevelNode gridLevelNode2 = new DevExpress.XtraGrid.GridLevelNode();
             this.splitContainer = new System.Windows.Forms.SplitContainer();
             this.txtSearch = new DevExpress.XtraEditors.SearchControl();
             this.gridSanPham = new DevExpress.XtraGrid.GridControl();
@@ -115,18 +115,22 @@
             // 
             // btnThemVaoGio
             // 
+            this.btnThemVaoGio.Appearance.Font = new System.Drawing.Font("Segoe UI Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnThemVaoGio.Appearance.ForeColor = System.Drawing.Color.Red;
+            this.btnThemVaoGio.Appearance.Options.UseFont = true;
+            this.btnThemVaoGio.Appearance.Options.UseForeColor = true;
             this.btnThemVaoGio.Location = new System.Drawing.Point(12, 570);
             this.btnThemVaoGio.Name = "btnThemVaoGio";
             this.btnThemVaoGio.Size = new System.Drawing.Size(217, 35);
             this.btnThemVaoGio.TabIndex = 2;
-            this.btnThemVaoGio.Text = "➕ Thêm vào giỏ";
+            this.btnThemVaoGio.Text = " Thêm vào giỏ";
             this.btnThemVaoGio.Click += new System.EventHandler(this.btnThemVaoGio_Click);
             // 
             // gridGioHang
             // 
-            gridLevelNode1.RelationName = "Level1";
+            gridLevelNode2.RelationName = "Level1";
             this.gridGioHang.LevelTree.Nodes.AddRange(new DevExpress.XtraGrid.GridLevelNode[] {
-            gridLevelNode1});
+            gridLevelNode2});
             this.gridGioHang.Location = new System.Drawing.Point(12, 12);
             this.gridGioHang.MainView = this.gridViewGioHang;
             this.gridGioHang.Name = "gridGioHang";
@@ -143,6 +147,10 @@
             // 
             // btnXoaKhoiGio
             // 
+            this.btnXoaKhoiGio.Appearance.Font = new System.Drawing.Font("Segoe UI Black", 10.2F, System.Drawing.FontStyle.Bold);
+            this.btnXoaKhoiGio.Appearance.ForeColor = System.Drawing.Color.BlueViolet;
+            this.btnXoaKhoiGio.Appearance.Options.UseFont = true;
+            this.btnXoaKhoiGio.Appearance.Options.UseForeColor = true;
             this.btnXoaKhoiGio.Location = new System.Drawing.Point(12, 420);
             this.btnXoaKhoiGio.Name = "btnXoaKhoiGio";
             this.btnXoaKhoiGio.Size = new System.Drawing.Size(150, 29);
@@ -186,16 +194,22 @@
             // 
             // lblTongTien
             // 
-            this.lblTongTien.Appearance.Font = new System.Drawing.Font("Tahoma", 14F, System.Drawing.FontStyle.Bold);
+            this.lblTongTien.Appearance.Font = new System.Drawing.Font("Segoe UI Black", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTongTien.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.lblTongTien.Appearance.Options.UseFont = true;
+            this.lblTongTien.Appearance.Options.UseForeColor = true;
             this.lblTongTien.Location = new System.Drawing.Point(12, 520);
             this.lblTongTien.Name = "lblTongTien";
-            this.lblTongTien.Size = new System.Drawing.Size(147, 29);
+            this.lblTongTien.Size = new System.Drawing.Size(137, 31);
             this.lblTongTien.TabIndex = 6;
             this.lblTongTien.Text = "TỔNG TIỀN:";
             // 
             // btnThanhToan
             // 
+            this.btnThanhToan.Appearance.Font = new System.Drawing.Font("Segoe UI Black", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnThanhToan.Appearance.ForeColor = System.Drawing.Color.Blue;
+            this.btnThanhToan.Appearance.Options.UseFont = true;
+            this.btnThanhToan.Appearance.Options.UseForeColor = true;
             this.btnThanhToan.Location = new System.Drawing.Point(12, 570);
             this.btnThanhToan.Name = "btnThanhToan";
             this.btnThanhToan.Size = new System.Drawing.Size(238, 50);
@@ -205,6 +219,10 @@
             // 
             // btnHuyDon
             // 
+            this.btnHuyDon.Appearance.Font = new System.Drawing.Font("Segoe UI Black", 10.2F, System.Drawing.FontStyle.Bold);
+            this.btnHuyDon.Appearance.ForeColor = System.Drawing.Color.Blue;
+            this.btnHuyDon.Appearance.Options.UseFont = true;
+            this.btnHuyDon.Appearance.Options.UseForeColor = true;
             this.btnHuyDon.Location = new System.Drawing.Point(351, 570);
             this.btnHuyDon.Name = "btnHuyDon";
             this.btnHuyDon.Size = new System.Drawing.Size(175, 50);
