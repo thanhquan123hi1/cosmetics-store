@@ -301,20 +301,25 @@ namespace BusinessAccessLayer.Services
         {
             try
             {
+
+                // lấy sản phẩm từ database
                 var product = _context.SanPhams
                     .Include(sp => sp.ThuongHieu)
                     .FirstOrDefault(sp => sp.MaSP == maSP);
 
+                // xem sản phẩm có tồn tại không
                 if (product == null)
                 {
                     return new CartResult { Success = false, Message = "S?n ph?m kh�ng t?n t?i" };
                 }
 
+                // xem số lượng tồn kho có đủ không
                 if (product.SoLuongTon < soLuong)
                 {
                     return new CartResult { Success = false, Message = $"Ch? c�n {product.SoLuongTon} s?n ph?m trong kho" };
                 }
 
+                // kiểm tra sản phẩm đã có trong giỏ hàng chưa
                 var existing = _cart.FirstOrDefault(c => c.MaSP == maSP);
                 if (existing != null)
                 {
