@@ -553,30 +553,26 @@ namespace cosmetics_store.FormKH
         {
             try
             {
-                decimal subtotal = _cart.Sum(c => c.ThanhTien);
                 decimal total = GetFinalTotal();
 
-                // T?o ho?c l?y khách hàng
+                // Lấy/tạo khách hàng theo luồng chuẩn (MaKH = MaNV)
                 int maKH = GetOrCreateKhachHang();
 
-                // Xác ??nh tr?ng thái ??n hàng
-                string trangThai = _selectedPaymentMethod == "COD" ? "Chờ giao hàng" : "Chờ xác nhận thanh toán";
-
-                // T?o hóa ??n
+                // Tạo hóa đơn ở trạng thái CHO_DUYET để nhân viên xử lý
                 var hoaDon = new HoaDon
                 {
                     MaKH = maKH,
-                    MaNV = 1, // H? th?ng
+                    MaNV = 1, // gán nhân viên mặc định (hệ thống) - sẽ được cập nhật khi nhân viên duyệt
                     NgayLap = DateTime.Now,
                     TongTien = total,
-                    TrangThai = trangThai,
+                    TrangThai = "CHO_DUYET",
                     PhuongThucTT = GetPaymentMethodName()
                 };
 
                 _context.HoaDons.Add(hoaDon);
                 _context.SaveChanges();
 
-                // Chi ti?t hóa ??n
+                // Chi tiết hóa đơn (KHÔNG trừ kho tại đây; trừ kho khi nhân viên duyệt)
                 int stt = 1;
                 foreach (var item in _cart)
                 {
@@ -589,35 +585,20 @@ namespace cosmetics_store.FormKH
                         DonGia = item.DonGia
                     };
                     _context.CT_HoaDons.Add(ct);
-
-                    // Tr? t?n kho
-                    var sp = _context.SanPhams.Find(item.MaSP);
-                    if (sp != null)
-                    {
-                        sp.SoLuongTon -= item.SoLuong;
-                    }
                 }
 
                 _context.SaveChanges();
 
-                // Thông báo thành công
-                string successMsg = $"✅ ĐẶT HÀNG THÀNH CÔNG!\n\n" +
+                XtraMessageBox.Show(
+                    $"✅ ĐẶT HÀNG THÀNH CÔNG!\n\n" +
                     $"📝 Mã đơn hàng: #{hoaDon.MaHD}\n" +
                     $"💵 Tổng tiền: {total:N0}đ\n" +
-                    $"💳 Phương thức: {GetPaymentMethodName()}\n\n";
-
-                if (_selectedPaymentMethod != "COD")
-                {
-                    successMsg += "💳 Vui lòng hoàn tất thanh toán để đơn hàng được xử lý.\n" +
-                                  "Đơn hàng sẽ được xác nhận sau khi nhận được thanh toán.";
-                }
-                else
-                {
-                    successMsg += "📦 Nhân viên sẽ liên hệ xác nhận đơn hàng trong thời gian sớm nhất.";
-                }
-
-                XtraMessageBox.Show(successMsg, "Đặt hàng thành công",
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    $"💳 Phương thức: {GetPaymentMethodName()}\n" +
+                    $"📌 Trạng thái: CHO_DUYET\n\n" +
+                    "📦 Nhân viên sẽ kiểm tra tồn kho và xác nhận đơn hàng.",
+                    "Đặt hàng thành công",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
 
                 this.DialogResult = DialogResult.OK;
                 this.Close();
@@ -631,34 +612,36 @@ namespace cosmetics_store.FormKH
 
         private int GetOrCreateKhachHang()
         {
-            if (CurrentUser.IsLoggedIn)
+            if (!CurrentUser.IsLoggedIn)
             {
-                var kh = _context.KhachHangs.FirstOrDefault(k => 
-                    k.SDT == CurrentUser.User.Email || k.HoTen == CurrentUser.User.HoTen);
-                    
-                if (kh != null)
-                {
-                    // C?p nh?t ??a ch? m?i
-                    if (!string.IsNullOrEmpty(txtDiaChi.Text))
-                    {
-                        kh.DiaChi = txtDiaChi.Text;
-                        _context.SaveChanges();
-                    }
-                    return kh.MaKH;
-                }
+                // Ứng dụng hiện yêu cầu đăng nhập cho flow khách hàng.
+                throw new Exception("Vui lòng đăng nhập để đặt hàng.");
             }
 
-            // T?o m?i khách hàng
-            var newKH = new KhachHang
+            // Đồng bộ theo thiết kế: MaKH = MaNV
+            var kh = _context.KhachHangs.FirstOrDefault(k => k.MaKH == CurrentUser.User.MaNV);
+            if (kh == null)
             {
-                HoTen = txtHoTen.Text,
-                SDT = txtSDT.Text,
-                DiaChi = txtDiaChi.Text,
-                GioiTinh = "Khác"
-            };
-            _context.KhachHangs.Add(newKH);
+                kh = new KhachHang
+                {
+                    MaKH = CurrentUser.User.MaNV,
+                    HoTen = txtHoTen.Text,
+                    SDT = txtSDT.Text,
+                    DiaChi = txtDiaChi.Text,
+                    GioiTinh = "Khác"
+                };
+                _context.KhachHangs.Add(kh);
+            }
+            else
+            {
+                // Cập nhật thông tin giao hàng mới nhất
+                kh.HoTen = string.IsNullOrWhiteSpace(txtHoTen.Text) ? kh.HoTen : txtHoTen.Text;
+                kh.SDT = string.IsNullOrWhiteSpace(txtSDT.Text) ? kh.SDT : txtSDT.Text;
+                kh.DiaChi = string.IsNullOrWhiteSpace(txtDiaChi.Text) ? kh.DiaChi : txtDiaChi.Text;
+            }
+
             _context.SaveChanges();
-            return newKH.MaKH;
+            return kh.MaKH;
         }
 
         #endregion

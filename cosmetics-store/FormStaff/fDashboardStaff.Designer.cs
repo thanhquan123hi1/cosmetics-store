@@ -11,6 +11,7 @@
         private DevExpress.XtraBars.Navigation.AccordionControl accordionMenu;
         private DevExpress.XtraBars.Navigation.AccordionControlElement aceBanHang;
         private DevExpress.XtraBars.Navigation.AccordionControlElement aceLapHoaDon;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement aceDuyetHoaDon;
         private DevExpress.XtraBars.Navigation.AccordionControlElement aceTraCuu;
         private DevExpress.XtraBars.Navigation.AccordionControlElement aceSanPham;
         private DevExpress.XtraBars.Navigation.AccordionControlElement aceKhachHang;
@@ -18,6 +19,7 @@
         private DevExpress.XtraBars.Navigation.AccordionControlElement aceLichSuCaNhan;
         private DevExpress.XtraBars.Navigation.AccordionControlElement aceTaiKhoan;
         private DevExpress.XtraBars.Navigation.AccordionControlElement aceThongTinNV;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement aceDoiMatKhau;
         private DevExpress.XtraBars.Navigation.AccordionControlElement aceDangXuat;
         private System.Windows.Forms.Panel pnlMainContent;
         private DevExpress.XtraEditors.LabelControl lblGhiChu;
@@ -38,6 +40,7 @@
             this.accordionMenu = new DevExpress.XtraBars.Navigation.AccordionControl();
             this.aceBanHang = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.aceLapHoaDon = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.aceDuyetHoaDon = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.aceTraCuu = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.aceSanPham = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.aceKhachHang = new DevExpress.XtraBars.Navigation.AccordionControlElement();
@@ -45,6 +48,7 @@
             this.aceLichSuCaNhan = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.aceTaiKhoan = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.aceThongTinNV = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.aceDoiMatKhau = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.aceDangXuat = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.pnlMainContent = new System.Windows.Forms.Panel();
             this.lblGhiChu = new DevExpress.XtraEditors.LabelControl();
@@ -137,7 +141,8 @@
             // aceBanHang
             // 
             this.aceBanHang.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
-            this.aceLapHoaDon});
+            this.aceLapHoaDon,
+            this.aceDuyetHoaDon});
             this.aceBanHang.Expanded = true;
             this.aceBanHang.Name = "aceBanHang";
             this.aceBanHang.Text = "💰 BÁN HÀNG";
@@ -148,6 +153,13 @@
             this.aceLapHoaDon.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.aceLapHoaDon.Text = "   • Lập hóa đơn";
             this.aceLapHoaDon.Click += new System.EventHandler(this.OnLapHoaDonClick);
+            // 
+            // aceDuyetHoaDon
+            // 
+            this.aceDuyetHoaDon.Name = "aceDuyetHoaDon";
+            this.aceDuyetHoaDon.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.aceDuyetHoaDon.Text = "   • Duyệt hóa đơn";
+            this.aceDuyetHoaDon.Click += new System.EventHandler(this.OnDuyetHoaDonClick);
             // 
             // aceTraCuu
             // 
@@ -191,6 +203,7 @@
             // 
             this.aceTaiKhoan.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
             this.aceThongTinNV,
+            this.aceDoiMatKhau,
             this.aceDangXuat});
             this.aceTaiKhoan.Expanded = true;
             this.aceTaiKhoan.Name = "aceTaiKhoan";
@@ -202,6 +215,13 @@
             this.aceThongTinNV.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.aceThongTinNV.Text = "   • Thông tin NV";
             this.aceThongTinNV.Click += new System.EventHandler(this.OnThongTinNVClick);
+            // 
+            // aceDoiMatKhau
+            // 
+            this.aceDoiMatKhau.Name = "aceDoiMatKhau";
+            this.aceDoiMatKhau.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.aceDoiMatKhau.Text = "   • Đổi mật khẩu";
+            this.aceDoiMatKhau.Click += new System.EventHandler(this.OnDoiMatKhauClick);
             // 
             // aceDangXuat
             // 

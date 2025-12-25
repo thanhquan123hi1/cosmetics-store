@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data.Entity;
 using System.Linq;
 using DataAccessLayer;
 using DataAccessLayer.EntityClass;
@@ -28,7 +29,7 @@ namespace BusinessAccessLayer.Services
                     return new LoginResult
                     {
                         Success = false,
-                        Message = "Tên đăng nh?p và m?t kh?u không đư?c đ? tr?ng"
+                        Message = "Tên đăng nhập và mật khẩu không được để trống"
                     };
                 }
 
@@ -116,80 +117,81 @@ namespace BusinessAccessLayer.Services
         {
             try
             {
-                // Validate required fields
                 if (string.IsNullOrWhiteSpace(registerInfo.HoTen))
-                {
                     return new RegisterResult { Success = false, Message = "Họ tên không được để trống" };
-                }
 
                 if (string.IsNullOrWhiteSpace(registerInfo.TenDN))
-                {
                     return new RegisterResult { Success = false, Message = "Tên đăng nhập không được để trống" };
-                }
 
                 if (string.IsNullOrWhiteSpace(registerInfo.MatKhau))
-                {
                     return new RegisterResult { Success = false, Message = "Mật khẩu không được để trống" };
-                }
 
                 if (registerInfo.MatKhau.Length < 6)
-                {
                     return new RegisterResult { Success = false, Message = "Mật khẩu phải có ít nhất 6 ký tự" };
-                }
 
                 if (string.IsNullOrWhiteSpace(registerInfo.Email))
-                {
                     return new RegisterResult { Success = false, Message = "Email không được để trống" };
-                }
 
-                // Check if username already exists
                 var existingUser = _context.TaiKhoans.FirstOrDefault(tk => tk.TenDN == registerInfo.TenDN);
                 if (existingUser != null)
-                {
                     return new RegisterResult { Success = false, Message = "Tên đăng nhập đã tồn tại" };
-                }
 
-                // Check if email already exists
                 var existingEmail = _context.TaiKhoans.FirstOrDefault(tk => tk.Email == registerInfo.Email);
                 if (existingEmail != null)
-                {
                     return new RegisterResult { Success = false, Message = "Email đã được sử dụng" };
+
+                using (var tx = _context.Database.BeginTransaction())
+                {
+                    // Schema hiện tại: TaiKhoan PK/FK = MaNV (1-1 với NhanVien).
+                    // Để đảm bảo luôn có KhachHang tương ứng, đồng bộ KhachHang.MaKH = NhanVien.MaNV.
+
+                    var nhanVien = new NhanVien
+                    {
+                        HoTen = registerInfo.HoTen,
+                        GioiTinh = registerInfo.GioiTinh ?? "Khác",
+                        NgaySinh = registerInfo.NgaySinh,
+                        DiaChi = registerInfo.DiaChi,
+                        ChucVu = "Khách hàng",
+                        SDT = registerInfo.SDT
+                    };
+
+                    _context.NhanViens.Add(nhanVien);
+                    _context.SaveChanges();
+
+                    // Tạo hồ sơ khách hàng tương ứng
+                    var khachHang = new KhachHang
+                    {
+                        MaKH = nhanVien.MaNV,
+                        HoTen = registerInfo.HoTen,
+                        SDT = registerInfo.SDT,
+                        GioiTinh = registerInfo.GioiTinh ?? "Khác",
+                        DiaChi = registerInfo.DiaChi
+                    };
+                    _context.KhachHangs.Add(khachHang);
+
+                    // Tạo tài khoản đăng nhập
+                    var taiKhoan = new TaiKhoan
+                    {
+                        MaNV = nhanVien.MaNV,
+                        TenDN = registerInfo.TenDN,
+                        MatKhau = PasswordHasher.HashPassword(registerInfo.MatKhau),
+                        Quyen = "Khách hàng",
+                        Email = registerInfo.Email,
+                        TrangThai = true
+                    };
+
+                    _context.TaiKhoans.Add(taiKhoan);
+                    _context.SaveChanges();
+
+                    tx.Commit();
+
+                    return new RegisterResult
+                    {
+                        Success = true,
+                        Message = "Đăng ký thành công",
+                        MaNV = nhanVien.MaNV
+                    };
                 }
-
-                // Create new employee (với chức vụ là Khách hàng)
-                var nhanVien = new NhanVien
-                {
-                    HoTen = registerInfo.HoTen,
-                    GioiTinh = registerInfo.GioiTinh ?? "Khác",
-                    NgaySinh = registerInfo.NgaySinh,
-                    DiaChi = registerInfo.DiaChi,
-                    ChucVu = "Khách hàng",  // Sửa từ "Nhân viên" thành "Khách hàng"
-                    SDT = registerInfo.SDT
-                };
-
-                _context.NhanViens.Add(nhanVien);
-                _context.SaveChanges();
-
-                // Create new account (với quyền là Khách hàng)
-                var taiKhoan = new TaiKhoan
-                {
-                    MaNV = nhanVien.MaNV,
-                    TenDN = registerInfo.TenDN,
-                    MatKhau = PasswordHasher.HashPassword(registerInfo.MatKhau),
-                    Quyen = "Khách hàng",  // Sửa từ "Nhân viên" thành "Khách hàng"
-                    Email = registerInfo.Email,
-                    TrangThai = true
-                };
-
-                _context.TaiKhoans.Add(taiKhoan);
-                _context.SaveChanges();
-
-                return new RegisterResult
-                {
-                    Success = true,
-                    Message = "Đăng ký thành công",
-                    MaNV = nhanVien.MaNV
-                };
             }
             catch (Exception ex)
             {
