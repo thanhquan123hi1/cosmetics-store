@@ -1,22 +1,29 @@
 ﻿using System;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using DataAccessLayer;
+using BusinessAccessLayer.Services;
+using cosmetics_store.Forms;
 
 namespace cosmetics_store.FormStaff
 {
     public partial class fDashboardStaff : DevExpress.XtraEditors.XtraForm
     {
+        private KHService _khService;
+
         public fDashboardStaff()
         {
             InitializeComponent();
+            _khService = new KHService();
             this.Load += fDashboardStaff_Load;
         }
 
         private void fDashboardStaff_Load(object sender, EventArgs e)
         {
             SetupUI();
+            LoadNavigationMenu();
             ShowWelcomePanel();
         }
 
@@ -25,13 +32,27 @@ namespace cosmetics_store.FormStaff
             // Cập nhật thông tin user
             if (CurrentUser.IsLoggedIn)
             {
-                lblNhanVien.Text = $"Nhân viên: {CurrentUser.User.HoTen}";
-                lblCaSang.Text = $"Ca: Sáng";
-                lblNgay.Text = $"Ngày: {DateTime.Now:dd/MM/yyyy}";
+                lblNhanVien.Text = "Nhân viên: " + CurrentUser.User.HoTen;
+                lblCaSang.Text = "Ca: Sáng";
+                lblNgay.Text = "Ngày: " + DateTime.Now.ToString("dd/MM/yyyy");
             }
 
             // Ghi chú quyền
             lblGhiChu.Text = "Ghi chú: Nhân viên KHÔNG có quyền xóa dữ liệu / xem báo cáo tổng hợp";
+        }
+
+        private void LoadNavigationMenu()
+        {
+            // Tạo các menu item trong FlowLayoutPanel
+            string[] menuItems = new string []
+            {
+                "BÁN HÀNG|Lập hóa đơn",
+                "TRA CỨU|Sản phẩm|Khách hàng",
+                "LỊCH SỬ|Hóa đơn cá nhân",
+                "TÀI KHOẢN|Thông tin NV|Đăng xuất"
+            };
+
+            // Menu đã được tạo trong Designer
         }
 
         #region Menu Events
@@ -48,8 +69,7 @@ namespace cosmetics_store.FormStaff
 
         private void OnKhachHangClick(object sender, EventArgs e)
         {
-            // Hiển thị form quản lý khách hàng đơn giản
-            ShowFormInPanel(new Forms.fCostumer());
+            ShowFormInPanel(new fCostumer());
         }
 
         private void OnLichSuCaNhanClick(object sender, EventArgs e)
@@ -64,14 +84,17 @@ namespace cosmetics_store.FormStaff
 
         private void OnDangXuatClick(object sender, EventArgs e)
         {
-            var result = XtraMessageBox.Show("Bạn có chắc chắn muốn đăng xuất?", "Xác nhận",
-                MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            var result = XtraMessageBox.Show(
+                "Bạn có chắc chắn muốn đăng xuất?",
+                "Xác nhận",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question);
 
             if (result == DialogResult.Yes)
             {
                 CurrentUser.Logout();
                 this.Hide();
-                var loginForm = new Forms.fLogin();
+                var loginForm = new fLogin();
                 loginForm.FormClosed += (s, args) => this.Close();
                 loginForm.Show();
             }
@@ -89,35 +112,50 @@ namespace cosmetics_store.FormStaff
             {
                 Dock = DockStyle.Fill,
                 BackColor = Color.White,
-                Padding = new Padding(30)
+                Padding = new Padding(40)
             };
 
             // Tiêu đề chào mừng
             var lblWelcome = new LabelControl
             {
-                Text = "Chào mừng nhân viên!",
-                Font = new Font("Segoe UI", 24F, FontStyle.Bold),
-                ForeColor = Color.FromArgb(45, 45, 48),
-                Location = new Point(30, 30)
+                Text = "CHÀO MỪNG NHÂN VIÊN!",
+                Font = new Font("Segoe UI", 28F, FontStyle.Bold),
+                ForeColor = Color.FromArgb(52, 152, 219),
+                Location = new Point(40, 40),
+                AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.Default
             };
             panel.Controls.Add(lblWelcome);
+
+            // Tên nhân viên
+            if (CurrentUser.IsLoggedIn)
+            {
+                var lblName = new LabelControl
+                {
+                    Text = CurrentUser.User.HoTen,
+                    Font = new Font("Segoe UI", 18F, FontStyle.Regular),
+                    ForeColor = Color.FromArgb(100, 100, 100),
+                    Location = new Point(40, 90),
+                    AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.Default
+                };
+                panel.Controls.Add(lblName);
+            }
 
             // Các chức năng nhanh
             var lblQuickActions = new LabelControl
             {
                 Text = "Các chức năng nhanh:",
-                Font = new Font("Segoe UI", 12F, FontStyle.Bold),
-                ForeColor = Color.FromArgb(100, 100, 100),
-                Location = new Point(30, 90)
+                Font = new Font("Segoe UI", 14F, FontStyle.Bold),
+                ForeColor = Color.FromArgb(60, 60, 60),
+                Location = new Point(40, 160)
             };
             panel.Controls.Add(lblQuickActions);
 
-            int yPos = 130;
-            var quickActions = new[]
+            int yPos = 210;
+            var quickActions = new (string Text, Action OnClick) []
             {
-                ("➕ Tạo hóa đơn mới", new Action(() => ShowFormInPanel(new fLapHoaDon()))),
-                ("🔍 Tra cứu sản phẩm", new Action(() => ShowFormInPanel(new fTraCuuSanPham()))),
-                ("📋 Lịch sử giao dịch", new Action(() => ShowFormInPanel(new fLichSuGiaoDich())))
+                ("+ TẠO HÓA ĐƠN MỚI", () => ShowFormInPanel(new fLapHoaDon())),
+                ("TRA CỨU SẢN PHẨM", () => ShowFormInPanel(new fTraCuuSanPham())),
+                ("LỊCH SỬ GIAO DỊCH", () => ShowFormInPanel(new fLichSuGiaoDich()))
             };
 
             foreach (var (text, action) in quickActions)
@@ -125,18 +163,82 @@ namespace cosmetics_store.FormStaff
                 var btn = new SimpleButton
                 {
                     Text = text,
-                    Location = new Point(30, yPos),
-                    Size = new Size(250, 45),
-                    Appearance = { 
-                        Font = new Font("Segoe UI", 11F), 
-                        TextOptions = { HAlignment = DevExpress.Utils.HorzAlignment.Near }
+                    Location = new Point(40, yPos),
+                    Size = new Size(300, 50),
+                    Appearance =
+                    {
+                        Font = new Font("Segoe UI", 12F, FontStyle.Bold),
+                        BackColor = Color.FromArgb(52, 152, 219),
+                        ForeColor = Color.White,
+                        TextOptions = { HAlignment = DevExpress.Utils.HorzAlignment.Center }
                     }
                 };
                 btn.Click += (s, e) => action();
                 panel.Controls.Add(btn);
-                yPos += 55;
+                yPos += 60;
             }
 
+            // Thống kê nhanh
+            var pnlStats = new Panel
+            {
+                Location = new Point(450, 160),
+                Size = new Size(400, 200),
+                BackColor = Color.FromArgb(245, 247, 250)
+            };
+
+            var lblStatsTitle = new LabelControl
+            {
+                Text = "THỐNG KÊ HÔM NAY",
+                Font = new Font("Segoe UI", 12F, FontStyle.Bold),
+                Location = new Point(20, 15)
+            };
+            pnlStats.Controls.Add(lblStatsTitle);
+
+            try
+            {
+                using (var context = new CosmeticsContext())
+                {
+                    var today = DateTime.Today;
+                    var tomorrow = today.AddDays(1);
+                    int maNV = CurrentUser.IsLoggedIn ? CurrentUser.User.MaNV : 0;
+
+                    var soHD = context.HoaDons
+                        .Count(h => h.MaNV == maNV && h.NgayLap >= today && h.NgayLap < tomorrow);
+                    
+                    var doanhThu = context.HoaDons
+                        .Where(h => h.MaNV == maNV && h.NgayLap >= today && h.NgayLap < tomorrow && h.TrangThai == "Hoàn thành")
+                        .Sum(h => (decimal?)h.TongTien) ?? 0;
+
+                    var lblSoHD = new LabelControl
+                    {
+                        Text = "Số hóa đơn: " + soHD,
+                        Font = new Font("Segoe UI", 11F),
+                        Location = new Point(20, 55)
+                    };
+                    pnlStats.Controls.Add(lblSoHD);
+
+                    var lblDoanhThu = new LabelControl
+                    {
+                        Text = "Doanh thu: " + doanhThu.ToString("N0") + " VND",
+                        Font = new Font("Segoe UI", 11F),
+                        Location = new Point(20, 85)
+                    };
+                    pnlStats.Controls.Add(lblDoanhThu);
+                }
+            }
+            catch
+            {
+                var lblError = new LabelControl
+                {
+                    Text = "Không thể tải thống kê",
+                    Font = new Font("Segoe UI", 10F),
+                    ForeColor = Color.Gray,
+                    Location = new Point(20, 55)
+                };
+                pnlStats.Controls.Add(lblError);
+            }
+
+            panel.Controls.Add(pnlStats);
             pnlMainContent.Controls.Add(panel);
         }
 
@@ -148,46 +250,52 @@ namespace cosmetics_store.FormStaff
             {
                 Dock = DockStyle.Fill,
                 BackColor = Color.White,
-                Padding = new Padding(30)
+                Padding = new Padding(40)
             };
 
             var lblTitle = new LabelControl
             {
                 Text = "THÔNG TIN NHÂN VIÊN",
-                Font = new Font("Segoe UI", 18F, FontStyle.Bold),
-                ForeColor = Color.FromArgb(45, 45, 48),
-                Location = new Point(30, 30)
+                Font = new Font("Segoe UI", 20F, FontStyle.Bold),
+                ForeColor = Color.FromArgb(52, 152, 219),
+                Location = new Point(40, 30)
             };
             panel.Controls.Add(lblTitle);
 
-            int yPos = 90;
+            int yPos = 100;
             if (CurrentUser.IsLoggedIn)
             {
-                AddInfoRow(panel, "Họ tên:", CurrentUser.User.HoTen, ref yPos);
-                AddInfoRow(panel, "Email:", CurrentUser.User.Email ?? "N/A", ref yPos);
-                AddInfoRow(panel, "Quyền:", CurrentUser.User.Quyen, ref yPos);
+                var user = CurrentUser.User;
+                var infoItems = new (string Label, string Value) []
+                {
+                    ("Họ tên:", user.HoTen ?? "N/A"),
+                    ("Email:", user.Email ?? "N/A"),
+                    ("Chức vụ:", user.ChucVu ?? "Nhân viên"),
+                    ("Quyền:", user.Quyen ?? "Staff")
+                };
+
+                foreach (var (label, value) in infoItems)
+                {
+                    var lblLabel = new LabelControl
+                    {
+                        Text = label,
+                        Font = new Font("Segoe UI", 12F, FontStyle.Bold),
+                        Location = new Point(40, yPos),
+                        Size = new Size(120, 25)
+                    };
+                    var lblValue = new LabelControl
+                    {
+                        Text = value,
+                        Font = new Font("Segoe UI", 12F),
+                        Location = new Point(170, yPos)
+                    };
+                    panel.Controls.Add(lblLabel);
+                    panel.Controls.Add(lblValue);
+                    yPos += 40;
+                }
             }
 
             pnlMainContent.Controls.Add(panel);
-        }
-
-        private void AddInfoRow(Panel panel, string label, string value, ref int yPos)
-        {
-            var lbl = new LabelControl
-            {
-                Text = label,
-                Font = new Font("Segoe UI", 11F, FontStyle.Bold),
-                Location = new Point(30, yPos)
-            };
-            var val = new LabelControl
-            {
-                Text = value,
-                Font = new Font("Segoe UI", 11F),
-                Location = new Point(150, yPos)
-            };
-            panel.Controls.Add(lbl);
-            panel.Controls.Add(val);
-            yPos += 35;
         }
 
         private void ShowFormInPanel(Form form)
@@ -221,8 +329,11 @@ namespace cosmetics_store.FormStaff
         {
             if (CurrentUser.IsLoggedIn)
             {
-                var result = XtraMessageBox.Show("Bạn có muốn đăng xuất?", "Xác nhận",
-                    MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                var result = XtraMessageBox.Show(
+                    "Bạn có muốn đăng xuất?",
+                    "Xác nhận",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question);
 
                 if (result == DialogResult.Yes)
                 {
@@ -233,8 +344,9 @@ namespace cosmetics_store.FormStaff
                     e.Cancel = true;
                 }
             }
+            
+            _khService?.Dispose();
             base.OnFormClosing(e);
         }
-
     }
 }

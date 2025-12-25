@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Data.Entity;
-using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using DataAccessLayer;
@@ -23,134 +22,8 @@ namespace cosmetics_store.Forms
 
         private void NhanVienForm_Load(object sender, EventArgs e)
         {
-            ApplyModernTheme();
             SetupGridColumns();
             LoadData();
-        }
-
-        private void ApplyModernTheme()
-        {
-            // Màu sắc theo mẫu AuditLogForm
-            var darkBlue = Color.FromArgb(20, 30, 70);
-            var mediumBlue = Color.FromArgb(45, 60, 110);
-            var textWhite = Color.White;
-
-            // Form background
-            this.BackColor = darkBlue;
-
-            // Font
-            var mainFont = new Font("Segoe UI", 10F, FontStyle.Regular);
-            var boldFont = new Font("Segoe UI", 10F, FontStyle.Bold);
-
-            try
-            {
-                // Style panels nếu có
-                foreach (Control ctrl in this.Controls)
-                {
-                    if (ctrl is Panel panel)
-                    {
-                        panel.BackColor = mediumBlue;
-                    }
-                    else if (ctrl is DevExpress.XtraEditors.PanelControl panelCtrl)
-                    {
-                        panelCtrl.Appearance.BackColor = mediumBlue;
-                        panelCtrl.Appearance.Options.UseBackColor = true;
-                    }
-                }
-
-                // Style SearchControl
-                if (searchControl != null)
-                {
-                    searchControl.Properties.Appearance.Font = mainFont;
-                    searchControl.Properties.Appearance.BackColor = Color.FromArgb(60, 70, 110);
-                    searchControl.Properties.Appearance.ForeColor = textWhite;
-                    searchControl.Properties.Appearance.Options.UseFont = true;
-                    searchControl.Properties.Appearance.Options.UseBackColor = true;
-                    searchControl.Properties.Appearance.Options.UseForeColor = true;
-                    searchControl.Properties.NullValuePrompt = "Tìm kiếm nhân viên...";
-                }
-
-                // Style Buttons
-                if (btnAdd != null)
-                    StyleButton(btnAdd, Color.FromArgb(0, 123, 255), textWhite, boldFont, "➕ Thêm");
-                
-                if (btnEdit != null)
-                    StyleButton(btnEdit, Color.FromArgb(40, 167, 69), textWhite, boldFont, "✏️ Sửa");
-                
-                if (btnDelete != null)
-                    StyleButton(btnDelete, Color.FromArgb(220, 53, 69), textWhite, boldFont, "🗑️ Xóa");
-
-                // Style Grid
-                if (gridControl1 != null && gridView1 != null)
-                {
-                    StyleGrid(gridControl1, gridView1);
-                }
-            }
-            catch { }
-        }
-
-        private void StyleButton(DevExpress.XtraEditors.SimpleButton button, Color backColor, Color foreColor, Font font, string text)
-        {
-            if (button == null) return;
-            button.Text = text;
-            button.Appearance.BackColor = backColor;
-            button.Appearance.ForeColor = foreColor;
-            button.Appearance.Font = font;
-            button.Appearance.Options.UseBackColor = true;
-            button.Appearance.Options.UseForeColor = true;
-            button.Appearance.Options.UseFont = true;
-            button.LookAndFeel.UseDefaultLookAndFeel = false;
-            button.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.UltraFlat;
-            button.Height = Math.Max(button.Height, 36);
-            button.Padding = new Padding(8, 4, 8, 4);
-
-            button.MouseEnter += (s, e) => { button.Appearance.BackColor = ControlPaint.Light(backColor, 0.2f); };
-            button.MouseLeave += (s, e) => { button.Appearance.BackColor = backColor; };
-        }
-
-        private void StyleGrid(DevExpress.XtraGrid.GridControl grid, DevExpress.XtraGrid.Views.Grid.GridView gridView)
-        {
-            var textWhite = Color.White;
-            grid.BackColor = Color.FromArgb(30, 40, 80);
-
-            gridView.Appearance.Row.BackColor = Color.FromArgb(40, 50, 95);
-            gridView.Appearance.Row.ForeColor = Color.FromArgb(240, 240, 240);
-            gridView.Appearance.Row.Font = new Font("Segoe UI", 11F, FontStyle.Regular);
-            gridView.Appearance.Row.Options.UseBackColor = true;
-            gridView.Appearance.Row.Options.UseForeColor = true;
-            gridView.Appearance.Row.Options.UseFont = true;
-
-            gridView.Appearance.EvenRow.BackColor = Color.FromArgb(45, 55, 100);
-            gridView.Appearance.EvenRow.ForeColor = Color.FromArgb(240, 240, 240);
-            gridView.Appearance.EvenRow.Font = new Font("Segoe UI", 11F, FontStyle.Regular);
-            gridView.Appearance.EvenRow.Options.UseBackColor = true;
-            gridView.Appearance.EvenRow.Options.UseForeColor = true;
-            gridView.Appearance.EvenRow.Options.UseFont = true;
-
-            gridView.Appearance.HeaderPanel.BackColor = Color.FromArgb(220, 230, 245);
-            gridView.Appearance.HeaderPanel.ForeColor = Color.Black;
-            gridView.Appearance.HeaderPanel.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            gridView.Appearance.HeaderPanel.Options.UseBackColor = true;
-            gridView.Appearance.HeaderPanel.Options.UseForeColor = true;
-            gridView.Appearance.HeaderPanel.Options.UseFont = true;
-            gridView.Appearance.HeaderPanel.Options.UseTextOptions = true;
-            gridView.Appearance.HeaderPanel.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            gridView.Appearance.HeaderPanel.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
-
-            gridView.Appearance.FocusedRow.BackColor = Color.FromArgb(0, 120, 215);
-            gridView.Appearance.FocusedRow.ForeColor = textWhite;
-            gridView.Appearance.FocusedRow.Font = new Font("Segoe UI", 11F, FontStyle.Regular);
-            gridView.Appearance.FocusedRow.Options.UseBackColor = true;
-            gridView.Appearance.FocusedRow.Options.UseForeColor = true;
-            gridView.Appearance.FocusedRow.Options.UseFont = true;
-
-            gridView.Appearance.SelectedRow.BackColor = Color.FromArgb(30, 100, 180);
-            gridView.Appearance.SelectedRow.ForeColor = textWhite;
-            gridView.Appearance.SelectedRow.Font = new Font("Segoe UI", 11F, FontStyle.Regular);
-
-            gridView.OptionsView.RowAutoHeight = true;
-            gridView.OptionsView.EnableAppearanceEvenRow = true;
-            gridView.RowHeight = 32;
         }
 
         private void SetupGridColumns()

@@ -127,12 +127,6 @@
     <Compile Include="FormAdmin\fForgotPassword.Designer.cs">
       <DependentUpon>fForgotPassword.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormAdmin\fKhachHangEdit.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormAdmin\fKhachHangEdit.Designer.cs">
-      <DependentUpon>fKhachHangEdit.cs</DependentUpon>
-    </Compile>
     <Compile Include="FormAdmin\fRegister.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -253,12 +247,6 @@
     <Compile Include="FormKH\fSanPhamDetail.Designer.cs">
       <DependentUpon>fSanPhamDetail.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormKH\fThanhToanThanhCong.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormKH\fThanhToanThanhCong.Designer.cs">
-      <DependentUpon>fThanhToanThanhCong.cs</DependentUpon>
-    </Compile>
     <Compile Include="FormStaff\fChonKhachHang.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -340,9 +328,6 @@
     <EmbeddedResource Include="FormAdmin\fForgotPassword.resx">
       <DependentUpon>fForgotPassword.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormAdmin\fKhachHangEdit.resx">
-      <DependentUpon>fKhachHangEdit.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="FormAdmin\fRegister.resx" />
     <EmbeddedResource Include="FormAdmin\NhaCungCapEditForm.resx">
       <DependentUpon>NhaCungCapEditForm.cs</DependentUpon>
@@ -398,9 +383,6 @@
     <EmbeddedResource Include="FormKH\fSanPhamDetail.resx">
       <DependentUpon>fSanPhamDetail.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormKH\fThanhToanThanhCong.resx">
-      <DependentUpon>fThanhToanThanhCong.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="FormStaff\fChonKhachHang.resx">
       <DependentUpon>fChonKhachHang.cs</DependentUpon>
     </EmbeddedResource>
@@ -448,35 +430,9 @@
     <None Include="Resources\wrong-password1.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\tải xuống %285%29.jpg" />
-    <None Include="Resources\Purple background.jpg" />
-    <None Include="Resources\tải xuống %283%29.jpg" />
-    <None Include="Resources\tải xuống %282%29.jpg" />
-    <None Include="Resources\tải xuống %284%291.jpg" />
-    <None Include="Resources\tải xuống %284%29.jpg" />
-    <None Include="Resources\Lise Watier - Teint Velours Collection.jpg" />
-    <None Include="Resources\tải xuống %281%29.jpg" />
-    <None Include="Resources\tải xuống.jpg" />
-    <None Include="Resources\Set of cosmetic products for skin care on glass background _ Premium Vector.jpg" />
-    <None Include="Resources\bg_dgvNhanVien.png" />
-    <None Include="Resources\bg_dangKy.png" />
-    <Content Include="Image_Products\250k_toner_dạng_nước.jpg" />
-    <Content Include="Image_Products\390k_kem_dưỡng.jpg" />
-    <Content Include="Image_Products\ofelia_má_hồng_201k.jpg" />
     <Content Include="Resources\forgotpwd.png" />
-    <None Include="Resources\icn_home1.png" />
-    <None Include="Resources\role_tag1.png" />
-    <None Include="Resources\picKhachHang.jpg" />
-    <None Include="Resources\picSanPham.png" />
-    <None Include="Resources\SignIn_background1.png" />
-    <None Include="Resources\lock_icon.png" />
-    <None Include="Resources\user_icon.png" />
-    <None Include="Resources\picNhanVien.png" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\DataAccessLayer\DataAccessLayer.csproj" />
-    <ProjectReference Include="..\BusinessAccessLayer\BusinessAccessLayer.csproj" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

@@ -16,49 +16,81 @@ namespace cosmetics_store.Forms
             InitializeComponent();
             _authService = new AuthService();
             CreateCloseButton();
+            ApplyVietnameseFont();
         }
 
         private void CreateCloseButton()
         {
-            btnClose = new Button
-            {
-                Text = "✕",
-                Font = new Font("Segoe UI", 12F, FontStyle.Bold),
-                Size = new Size(36, 36),
-                FlatStyle = FlatStyle.Flat,
-                BackColor = Color.Transparent,
-                ForeColor = Color.White,
-                Cursor = Cursors.Hand,
-                TabStop = false,
-                Anchor = AnchorStyles.Top | AnchorStyles.Right
-            };
+            // Tạo nút X đóng form
+            btnClose = new Button();
+            btnClose.Text = "✕";
+            btnClose.Font = new Font("Arial", 14F, FontStyle.Bold);
+            btnClose.Size = new Size(35, 35);
+            btnClose.Location = new Point(this.Width - 45, 10);
+            btnClose.FlatStyle = FlatStyle.Flat;
             btnClose.FlatAppearance.BorderSize = 0;
+            btnClose.BackColor = Color.Transparent;
+            btnClose.ForeColor = Color.White;
+            btnClose.Cursor = Cursors.Hand;
             btnClose.Click += BtnClose_Click;
-
-            btnClose.MouseEnter += (s, e) =>
-            {
-                btnClose.BackColor = Color.FromArgb(232, 17, 35);
+            
+            // Hiệu ứng hover
+            btnClose.MouseEnter += (s, e) => {
+                btnClose.BackColor = Color.FromArgb(232, 17, 35); // Màu đỏ khi hover
             };
-            btnClose.MouseLeave += (s, e) =>
-            {
+            btnClose.MouseLeave += (s, e) => {
                 btnClose.BackColor = Color.Transparent;
             };
 
-            pnlRight.Controls.Add(btnClose);
+            // Thêm vào form (trên panel phải)
+            this.Controls.Add(btnClose);
             btnClose.BringToFront();
-            PositionCloseButton();
-            pnlRight.SizeChanged += (s, e) => PositionCloseButton();
-        }
-
-        private void PositionCloseButton()
-        {
-            if (btnClose?.Parent == null) return;
-            btnClose.Location = new Point(btnClose.Parent.Width - btnClose.Width - 12, 12);
         }
 
         private void BtnClose_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void ApplyVietnameseFont()
+        {
+            // Áp dụng font hỗ trợ tiếng Việt
+            this.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            
+            // Title
+            lblTitle.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
+            lblTitle.Text = "Đăng nhập";
+
+            // Welcome panel
+            lblWelcome.Font = new Font("Segoe UI", 24F, FontStyle.Bold);
+            lblWelcome.Text = "Chào mừng!";
+
+            lblSystemName.Font = new Font("Segoe UI", 11F, FontStyle.Regular);
+            lblSystemName.Text = "Hệ thống quản lý\nCửa hàng mỹ phẩm";
+            
+            lblVersion.Font = new Font("Segoe UI", 9F, FontStyle.Regular);
+            lblVersion.Text = "Version 1.0.0";
+
+            // Labels
+            lblUsername.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular);
+            lblUsername.Text = "Tên đăng nhập";
+
+            lblPassword.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular);
+            lblPassword.Text = "Mật khẩu";
+
+            // Buttons
+            btnLogin.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular);
+            btnLogin.Text = "Đăng nhập";
+
+            btnExit.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular);
+            btnExit.Text = "Thoát";
+
+            // Links
+            lnkForgot.Font = new Font("Segoe UI", 9F, FontStyle.Regular);
+            lnkForgot.Text = "Quên mật khẩu?";
+
+            lnkRegister.Font = new Font("Segoe UI", 9F, FontStyle.Regular);
+            lnkRegister.Text = "Chưa có tài khoản? Đăng ký";
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
@@ -196,16 +228,6 @@ namespace cosmetics_store.Forms
         }
 
         private void lblTitle_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pnlRight_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void pictureEdit1_EditValueChanged(object sender, EventArgs e)
         {
 
         }

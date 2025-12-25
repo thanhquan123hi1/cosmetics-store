@@ -55,21 +55,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DTOs\CartDTO.cs" />
+    <Compile Include="DTOs\HoaDonDTO.cs" />
     <Compile Include="DTOs\LoginResult.cs" />
     <Compile Include="DTOs\RegisterDTO.cs" />
+    <Compile Include="DTOs\ResetPasswordResult.cs" />
+    <Compile Include="DTOs\SanPhamDTO.cs" />
+    <Compile Include="DTOs\ThongTinTaiKhoanDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\AuthService.cs" />
     <Compile Include="Services\CurrentUser.cs" />
-    <Compile Include="Services\DatabaseSeeder.cs" />
+    <Compile Include="DatabaseSeeder.cs" />
     <Compile Include="Services\EmailService.cs" />
     <Compile Include="Services\KHService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\DataAccessLayer\DataAccessLayer.csproj" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

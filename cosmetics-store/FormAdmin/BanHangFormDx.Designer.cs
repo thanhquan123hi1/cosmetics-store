@@ -93,7 +93,6 @@
             this.txtSearch.Properties.ShowSearchButton = false;
             this.txtSearch.Size = new System.Drawing.Size(400, 22);
             this.txtSearch.TabIndex = 0;
-            this.txtSearch.SelectedIndexChanged += new System.EventHandler(this.txtSearch_SelectedIndexChanged);
             this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
             // gridSanPham

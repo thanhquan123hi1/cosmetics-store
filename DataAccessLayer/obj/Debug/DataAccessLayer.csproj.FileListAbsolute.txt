@@ -46,3 +46,15 @@ C:\Users\LENOVO\OneDrive\Documents\cosmetics-store\DataAccessLayer\obj\Debug\Dat
 C:\Users\LENOVO\OneDrive\Documents\cosmetics-store\DataAccessLayer\obj\Debug\DataAcce.E67BD773.Up2Date
 C:\Users\LENOVO\OneDrive\Documents\cosmetics-store\DataAccessLayer\obj\Debug\DataAccessLayer.dll
 C:\Users\LENOVO\OneDrive\Documents\cosmetics-store\DataAccessLayer\obj\Debug\DataAccessLayer.pdb
+C:\GitHub\cosmetics-store-H-ng\cosmetics-store-H-ng\DataAccessLayer\bin\Debug\DataAccessLayer.dll.config
+C:\GitHub\cosmetics-store-H-ng\cosmetics-store-H-ng\DataAccessLayer\bin\Debug\DataAccessLayer.dll
+C:\GitHub\cosmetics-store-H-ng\cosmetics-store-H-ng\DataAccessLayer\bin\Debug\DataAccessLayer.pdb
+C:\GitHub\cosmetics-store-H-ng\cosmetics-store-H-ng\DataAccessLayer\bin\Debug\EntityFramework.dll
+C:\GitHub\cosmetics-store-H-ng\cosmetics-store-H-ng\DataAccessLayer\bin\Debug\EntityFramework.SqlServer.dll
+C:\GitHub\cosmetics-store-H-ng\cosmetics-store-H-ng\DataAccessLayer\bin\Debug\EntityFramework.xml
+C:\GitHub\cosmetics-store-H-ng\cosmetics-store-H-ng\DataAccessLayer\bin\Debug\EntityFramework.SqlServer.xml
+C:\GitHub\cosmetics-store-H-ng\cosmetics-store-H-ng\DataAccessLayer\obj\Debug\DataAccessLayer.csproj.AssemblyReference.cache
+C:\GitHub\cosmetics-store-H-ng\cosmetics-store-H-ng\DataAccessLayer\obj\Debug\DataAccessLayer.csproj.CoreCompileInputs.cache
+C:\GitHub\cosmetics-store-H-ng\cosmetics-store-H-ng\DataAccessLayer\obj\Debug\DataAcce.E67BD773.Up2Date
+C:\GitHub\cosmetics-store-H-ng\cosmetics-store-H-ng\DataAccessLayer\obj\Debug\DataAccessLayer.dll
+C:\GitHub\cosmetics-store-H-ng\cosmetics-store-H-ng\DataAccessLayer\obj\Debug\DataAccessLayer.pdb

@@ -63,6 +63,7 @@
             this.lblPromo3 = new DevExpress.XtraEditors.LabelControl();
             this.pnlHeader = new DevExpress.XtraEditors.PanelControl();
             this.lblLogo = new DevExpress.XtraEditors.LabelControl();
+            this.txtTimKiem = new DevExpress.XtraEditors.TextEdit();
             this.btnTimKiem = new DevExpress.XtraEditors.SimpleButton();
             this.lblHeThong = new DevExpress.XtraEditors.LabelControl();
             this.lblTapChi = new DevExpress.XtraEditors.LabelControl();
@@ -91,11 +92,11 @@
             this.pnlBannerSide2 = new DevExpress.XtraEditors.PanelControl();
             this.lblBannerSide2 = new DevExpress.XtraEditors.LabelControl();
             this.btnChat = new DevExpress.XtraEditors.SimpleButton();
-            this.txtTimKiem = new DevExpress.XtraEditors.TextEdit();
             ((System.ComponentModel.ISupportInitialize)(this.pnlTopBar)).BeginInit();
             this.pnlTopBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pnlHeader)).BeginInit();
             this.pnlHeader.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTimKiem.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pnlNav)).BeginInit();
             this.pnlNav.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pnlSidebar)).BeginInit();
@@ -112,7 +113,6 @@
             this.pnlBannerSide1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pnlBannerSide2)).BeginInit();
             this.pnlBannerSide2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtTimKiem.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlTopBar
@@ -131,39 +131,39 @@
             // 
             // lblPromo1
             // 
-            this.lblPromo1.Appearance.Font = new System.Drawing.Font("Vivaldi", 10.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPromo1.Appearance.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.lblPromo1.Appearance.ForeColor = System.Drawing.Color.White;
             this.lblPromo1.Appearance.Options.UseFont = true;
             this.lblPromo1.Appearance.Options.UseForeColor = true;
             this.lblPromo1.Location = new System.Drawing.Point(150, 7);
             this.lblPromo1.Name = "lblPromo1";
-            this.lblPromo1.Size = new System.Drawing.Size(225, 20);
+            this.lblPromo1.Size = new System.Drawing.Size(206, 20);
             this.lblPromo1.TabIndex = 0;
             this.lblPromo1.Text = "🚚 Freeship 15K mọi đơn hàng";
             // 
             // lblPromo2
             // 
             this.lblPromo2.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.lblPromo2.Appearance.Font = new System.Drawing.Font("Vivaldi", 10.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
+            this.lblPromo2.Appearance.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.lblPromo2.Appearance.ForeColor = System.Drawing.Color.White;
             this.lblPromo2.Appearance.Options.UseFont = true;
             this.lblPromo2.Appearance.Options.UseForeColor = true;
             this.lblPromo2.Location = new System.Drawing.Point(550, 7);
             this.lblPromo2.Name = "lblPromo2";
-            this.lblPromo2.Size = new System.Drawing.Size(256, 20);
+            this.lblPromo2.Size = new System.Drawing.Size(209, 20);
             this.lblPromo2.TabIndex = 1;
             this.lblPromo2.Text = "🎁 Quà Tặng Cho Đơn Từ 499K";
             // 
             // lblPromo3
             // 
             this.lblPromo3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblPromo3.Appearance.Font = new System.Drawing.Font("Vivaldi", 10.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
+            this.lblPromo3.Appearance.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.lblPromo3.Appearance.ForeColor = System.Drawing.Color.White;
             this.lblPromo3.Appearance.Options.UseFont = true;
             this.lblPromo3.Appearance.Options.UseForeColor = true;
             this.lblPromo3.Location = new System.Drawing.Point(1050, 7);
             this.lblPromo3.Name = "lblPromo3";
-            this.lblPromo3.Size = new System.Drawing.Size(294, 20);
+            this.lblPromo3.Size = new System.Drawing.Size(283, 20);
             this.lblPromo3.TabIndex = 2;
             this.lblPromo3.Text = "📦 Mua online nhận tại cửa hàng gần nhất";
             // 
@@ -188,21 +188,34 @@
             // 
             // lblLogo
             // 
-            this.lblLogo.Appearance.Font = new System.Drawing.Font("Snap ITC", 19.2F, System.Drawing.FontStyle.Bold);
+            this.lblLogo.Appearance.Font = new System.Drawing.Font("Segoe UI", 22F, System.Drawing.FontStyle.Bold);
             this.lblLogo.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(0)))), ((int)(((byte)(128)))));
             this.lblLogo.Appearance.Options.UseFont = true;
             this.lblLogo.Appearance.Options.UseForeColor = true;
-            this.lblLogo.Location = new System.Drawing.Point(3, 12);
+            this.lblLogo.Location = new System.Drawing.Point(15, 12);
             this.lblLogo.Name = "lblLogo";
-            this.lblLogo.Size = new System.Drawing.Size(263, 42);
+            this.lblLogo.Size = new System.Drawing.Size(227, 50);
             this.lblLogo.TabIndex = 0;
             this.lblLogo.Text = "BEAUTY BOX";
+            // 
+            // txtTimKiem
+            // 
+            this.txtTimKiem.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtTimKiem.Location = new System.Drawing.Point(250, 17);
+            this.txtTimKiem.Name = "txtTimKiem";
+            this.txtTimKiem.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 11F);
+            this.txtTimKiem.Properties.Appearance.Options.UseFont = true;
+            this.txtTimKiem.Properties.NullValuePrompt = "🔍 Tìm kiếm sản phẩm, thương hiệu...";
+            this.txtTimKiem.Size = new System.Drawing.Size(450, 32);
+            this.txtTimKiem.TabIndex = 1;
+            this.txtTimKiem.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTimKiem_KeyPress);
             // 
             // btnTimKiem
             // 
             this.btnTimKiem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnTimKiem.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(147)))), ((int)(((byte)(112)))), ((int)(((byte)(219)))));
-            this.btnTimKiem.Appearance.Font = new System.Drawing.Font("Stencil", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTimKiem.Appearance.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnTimKiem.Appearance.ForeColor = System.Drawing.Color.White;
             this.btnTimKiem.Appearance.Options.UseBackColor = true;
             this.btnTimKiem.Appearance.Options.UseFont = true;
@@ -217,24 +230,24 @@
             // lblHeThong
             // 
             this.lblHeThong.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblHeThong.Appearance.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblHeThong.Appearance.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.lblHeThong.Appearance.Options.UseFont = true;
             this.lblHeThong.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblHeThong.Location = new System.Drawing.Point(870, 12);
             this.lblHeThong.Name = "lblHeThong";
-            this.lblHeThong.Size = new System.Drawing.Size(159, 20);
+            this.lblHeThong.Size = new System.Drawing.Size(152, 20);
             this.lblHeThong.TabIndex = 3;
             this.lblHeThong.Text = "🏠 Hệ thống cửa hàng";
             // 
             // lblTapChi
             // 
             this.lblTapChi.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblTapChi.Appearance.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTapChi.Appearance.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.lblTapChi.Appearance.Options.UseFont = true;
             this.lblTapChi.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblTapChi.Location = new System.Drawing.Point(870, 35);
             this.lblTapChi.Name = "lblTapChi";
-            this.lblTapChi.Size = new System.Drawing.Size(136, 20);
+            this.lblTapChi.Size = new System.Drawing.Size(132, 20);
             this.lblTapChi.TabIndex = 4;
             this.lblTapChi.Text = "📖 Tạp chí làm đẹp";
             // 
@@ -317,13 +330,13 @@
             // 
             // lblSidebarTitle
             // 
-            this.lblSidebarTitle.Appearance.Font = new System.Drawing.Font("Snap ITC", 13.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSidebarTitle.Appearance.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Bold);
             this.lblSidebarTitle.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(0)))), ((int)(((byte)(128)))));
             this.lblSidebarTitle.Appearance.Options.UseFont = true;
             this.lblSidebarTitle.Appearance.Options.UseForeColor = true;
             this.lblSidebarTitle.Location = new System.Drawing.Point(15, 12);
             this.lblSidebarTitle.Name = "lblSidebarTitle";
-            this.lblSidebarTitle.Size = new System.Drawing.Size(111, 29);
+            this.lblSidebarTitle.Size = new System.Drawing.Size(95, 30);
             this.lblSidebarTitle.TabIndex = 0;
             this.lblSidebarTitle.Text = "☰ MENU";
             // 
@@ -340,6 +353,7 @@
             this.flowSidebar.Size = new System.Drawing.Size(225, 588);
             this.flowSidebar.TabIndex = 1;
             this.flowSidebar.WrapContents = false;
+            this.flowSidebar.Paint += new System.Windows.Forms.PaintEventHandler(this.flowSidebar_Paint);
             // 
             // pnlMainArea
             // 
@@ -365,22 +379,22 @@
             this.pnlProducts.Controls.Add(this.lblSectionTitle);
             this.pnlProducts.Controls.Add(this.flowProducts);
             this.pnlProducts.Controls.Add(this.btnXemTatCa);
-            this.pnlProducts.Location = new System.Drawing.Point(0, 260);
+            this.pnlProducts.Location = new System.Drawing.Point(0, 284);
             this.pnlProducts.Name = "pnlProducts";
             this.pnlProducts.Padding = new System.Windows.Forms.Padding(15);
-            this.pnlProducts.Size = new System.Drawing.Size(1165, 381);
+            this.pnlProducts.Size = new System.Drawing.Size(1165, 357);
             this.pnlProducts.TabIndex = 1;
             // 
             // lblSectionTitle
             // 
             this.lblSectionTitle.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.lblSectionTitle.Appearance.Font = new System.Drawing.Font("Showcard Gothic", 16.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSectionTitle.Appearance.Font = new System.Drawing.Font("Segoe UI", 17F, System.Drawing.FontStyle.Bold);
             this.lblSectionTitle.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
             this.lblSectionTitle.Appearance.Options.UseFont = true;
             this.lblSectionTitle.Appearance.Options.UseForeColor = true;
             this.lblSectionTitle.Location = new System.Drawing.Point(420, 10);
             this.lblSectionTitle.Name = "lblSectionTitle";
-            this.lblSectionTitle.Size = new System.Drawing.Size(431, 36);
+            this.lblSectionTitle.Size = new System.Drawing.Size(424, 40);
             this.lblSectionTitle.TabIndex = 0;
             this.lblSectionTitle.Text = "🔥 TOP SẢN PHẨM BÁN CHẠY";
             // 
@@ -393,19 +407,19 @@
             this.flowProducts.BackColor = System.Drawing.Color.Transparent;
             this.flowProducts.Location = new System.Drawing.Point(15, 50);
             this.flowProducts.Name = "flowProducts";
-            this.flowProducts.Size = new System.Drawing.Size(1135, 280);
+            this.flowProducts.Size = new System.Drawing.Size(1135, 256);
             this.flowProducts.TabIndex = 1;
             // 
             // btnXemTatCa
             // 
             this.btnXemTatCa.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnXemTatCa.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(147)))), ((int)(((byte)(112)))), ((int)(((byte)(219)))));
-            this.btnXemTatCa.Appearance.Font = new System.Drawing.Font("Snap ITC", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnXemTatCa.Appearance.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnXemTatCa.Appearance.ForeColor = System.Drawing.Color.White;
             this.btnXemTatCa.Appearance.Options.UseBackColor = true;
             this.btnXemTatCa.Appearance.Options.UseFont = true;
             this.btnXemTatCa.Appearance.Options.UseForeColor = true;
-            this.btnXemTatCa.Location = new System.Drawing.Point(510, 340);
+            this.btnXemTatCa.Location = new System.Drawing.Point(510, 316);
             this.btnXemTatCa.Name = "btnXemTatCa";
             this.btnXemTatCa.Size = new System.Drawing.Size(160, 38);
             this.btnXemTatCa.TabIndex = 2;
@@ -424,7 +438,7 @@
             this.pnlHero.Location = new System.Drawing.Point(0, 0);
             this.pnlHero.Name = "pnlHero";
             this.pnlHero.Padding = new System.Windows.Forms.Padding(15);
-            this.pnlHero.Size = new System.Drawing.Size(1165, 260);
+            this.pnlHero.Size = new System.Drawing.Size(1165, 264);
             this.pnlHero.TabIndex = 0;
             // 
             // pnlBannerMain
@@ -472,7 +486,7 @@
             // 
             this.lblBannerMain.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblBannerMain.Appearance.Font = new System.Drawing.Font("Showcard Gothic", 22.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBannerMain.Appearance.Font = new System.Drawing.Font("Segoe UI", 22F, System.Drawing.FontStyle.Bold);
             this.lblBannerMain.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(0)))), ((int)(((byte)(128)))));
             this.lblBannerMain.Appearance.Options.UseFont = true;
             this.lblBannerMain.Appearance.Options.UseForeColor = true;
@@ -501,7 +515,7 @@
             // btnMuaNgay
             // 
             this.btnMuaNgay.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
-            this.btnMuaNgay.Appearance.Font = new System.Drawing.Font("Times New Roman", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMuaNgay.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.btnMuaNgay.Appearance.ForeColor = System.Drawing.Color.White;
             this.btnMuaNgay.Appearance.Options.UseBackColor = true;
             this.btnMuaNgay.Appearance.Options.UseFont = true;
@@ -526,13 +540,13 @@
             // 
             // lblBannerSide1
             // 
-            this.lblBannerSide1.Appearance.Font = new System.Drawing.Font("Snap ITC", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBannerSide1.Appearance.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
             this.lblBannerSide1.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(125)))), ((int)(((byte)(50)))));
             this.lblBannerSide1.Appearance.Options.UseFont = true;
             this.lblBannerSide1.Appearance.Options.UseForeColor = true;
             this.lblBannerSide1.Location = new System.Drawing.Point(20, 38);
             this.lblBannerSide1.Name = "lblBannerSide1";
-            this.lblBannerSide1.Size = new System.Drawing.Size(356, 30);
+            this.lblBannerSide1.Size = new System.Drawing.Size(299, 32);
             this.lblBannerSide1.TabIndex = 0;
             this.lblBannerSide1.Text = "🧴 SẠCH SÂU - CÚC ĐỈNH";
             // 
@@ -549,13 +563,13 @@
             // 
             // lblBannerSide2
             // 
-            this.lblBannerSide2.Appearance.Font = new System.Drawing.Font("Stencil", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBannerSide2.Appearance.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
             this.lblBannerSide2.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(0)))), ((int)(((byte)(128)))));
             this.lblBannerSide2.Appearance.Options.UseFont = true;
             this.lblBannerSide2.Appearance.Options.UseForeColor = true;
             this.lblBannerSide2.Location = new System.Drawing.Point(20, 42);
             this.lblBannerSide2.Name = "lblBannerSide2";
-            this.lblBannerSide2.Size = new System.Drawing.Size(364, 27);
+            this.lblBannerSide2.Size = new System.Drawing.Size(380, 32);
             this.lblBannerSide2.TabIndex = 0;
             this.lblBannerSide2.Text = "💄 ĐỘC QUYỀN TẠI BEAUTY BOX";
             // 
@@ -573,19 +587,6 @@
             this.btnChat.Size = new System.Drawing.Size(55, 55);
             this.btnChat.TabIndex = 5;
             this.btnChat.Text = "💬";
-            // 
-            // txtTimKiem
-            // 
-            this.txtTimKiem.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtTimKiem.Location = new System.Drawing.Point(250, 17);
-            this.txtTimKiem.Name = "txtTimKiem";
-            this.txtTimKiem.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.txtTimKiem.Properties.Appearance.Options.UseFont = true;
-            this.txtTimKiem.Properties.NullValuePrompt = "🔍 Tìm kiếm sản phẩm, thương hiệu...";
-            this.txtTimKiem.Size = new System.Drawing.Size(450, 32);
-            this.txtTimKiem.TabIndex = 1;
-            this.txtTimKiem.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTimKiem_KeyPress);
             // 
             // fDashboardKH
             // 
@@ -609,6 +610,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pnlHeader)).EndInit();
             this.pnlHeader.ResumeLayout(false);
             this.pnlHeader.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTimKiem.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pnlNav)).EndInit();
             this.pnlNav.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pnlSidebar)).EndInit();
@@ -630,7 +632,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pnlBannerSide2)).EndInit();
             this.pnlBannerSide2.ResumeLayout(false);
             this.pnlBannerSide2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtTimKiem.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
