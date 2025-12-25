@@ -5,7 +5,6 @@ using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using DataAccessLayer;
 using BusinessAccessLayer.Services;
-using cosmetics_store.Forms;
 
 namespace cosmetics_store.FormStaff
 {
@@ -46,10 +45,10 @@ namespace cosmetics_store.FormStaff
             // Tạo các menu item trong FlowLayoutPanel
             string[] menuItems = new string []
             {
-                "BÁN HÀNG|Lập hóa đơn",
+                "BÁN HÀNG|Lập hóa đơn|Duyệt hóa đơn",
                 "TRA CỨU|Sản phẩm|Khách hàng",
                 "LỊCH SỬ|Hóa đơn cá nhân",
-                "TÀI KHOẢN|Thông tin NV|Đăng xuất"
+                "TÀI KHOẢN|Thông tin NV|Đổi mật khẩu|Đăng xuất"
             };
 
             // Menu đã được tạo trong Designer
@@ -62,6 +61,11 @@ namespace cosmetics_store.FormStaff
             ShowFormInPanel(new fLapHoaDon());
         }
 
+        private void OnDuyetHoaDonClick(object sender, EventArgs e)
+        {
+            ShowFormInPanel(new fDuyetHoaDon());
+        }
+
         private void OnSanPhamClick(object sender, EventArgs e)
         {
             ShowFormInPanel(new fTraCuuSanPham());
@@ -69,7 +73,14 @@ namespace cosmetics_store.FormStaff
 
         private void OnKhachHangClick(object sender, EventArgs e)
         {
-            ShowFormInPanel(new fCostumer());
+            // Sử dụng form chọn khách hàng thay vì fCostumer
+            using (var context = new CosmeticsContext())
+            {
+                using (var form = new fChonKhachHang(context))
+                {
+                    form.ShowDialog();
+                }
+            }
         }
 
         private void OnLichSuCaNhanClick(object sender, EventArgs e)
@@ -80,6 +91,14 @@ namespace cosmetics_store.FormStaff
         private void OnThongTinNVClick(object sender, EventArgs e)
         {
             ShowThongTinNhanVien();
+        }
+
+        private void OnDoiMatKhauClick(object sender, EventArgs e)
+        {
+            using (var form = new fDoiMatKhau())
+            {
+                form.ShowDialog();
+            }
         }
 
         private void OnDangXuatClick(object sender, EventArgs e)
@@ -94,9 +113,7 @@ namespace cosmetics_store.FormStaff
             {
                 CurrentUser.Logout();
                 this.Hide();
-                var loginForm = new fLogin();
-                loginForm.FormClosed += (s, args) => this.Close();
-                loginForm.Show();
+                Application.Restart();
             }
         }
 
@@ -151,14 +168,15 @@ namespace cosmetics_store.FormStaff
             panel.Controls.Add(lblQuickActions);
 
             int yPos = 210;
-            var quickActions = new (string Text, Action OnClick) []
+            var quickActions = new (string Text, Action OnClick, Color BgColor) []
             {
-                ("+ TẠO HÓA ĐƠN MỚI", () => ShowFormInPanel(new fLapHoaDon())),
-                ("TRA CỨU SẢN PHẨM", () => ShowFormInPanel(new fTraCuuSanPham())),
-                ("LỊCH SỬ GIAO DỊCH", () => ShowFormInPanel(new fLichSuGiaoDich()))
+                ("+ TẠO HÓA ĐƠN MỚI", () => ShowFormInPanel(new fLapHoaDon()), Color.FromArgb(52, 152, 219)),
+                ("✓ DUYỆT HÓA ĐƠN", () => ShowFormInPanel(new fDuyetHoaDon()), Color.FromArgb(39, 174, 96)),
+                ("TRA CỨU SẢN PHẨM", () => ShowFormInPanel(new fTraCuuSanPham()), Color.FromArgb(155, 89, 182)),
+                ("LỊCH SỬ GIAO DỊCH", () => ShowFormInPanel(new fLichSuGiaoDich()), Color.FromArgb(241, 196, 15))
             };
 
-            foreach (var (text, action) in quickActions)
+            foreach (var (text, action, bgColor) in quickActions)
             {
                 var btn = new SimpleButton
                 {
@@ -168,7 +186,7 @@ namespace cosmetics_store.FormStaff
                     Appearance =
                     {
                         Font = new Font("Segoe UI", 12F, FontStyle.Bold),
-                        BackColor = Color.FromArgb(52, 152, 219),
+                        BackColor = bgColor,
                         ForeColor = Color.White,
                         TextOptions = { HAlignment = DevExpress.Utils.HorzAlignment.Center }
                     }
@@ -182,7 +200,7 @@ namespace cosmetics_store.FormStaff
             var pnlStats = new Panel
             {
                 Location = new Point(450, 160),
-                Size = new Size(400, 200),
+                Size = new Size(450, 250),
                 BackColor = Color.FromArgb(245, 247, 250)
             };
 
@@ -206,12 +224,15 @@ namespace cosmetics_store.FormStaff
                         .Count(h => h.MaNV == maNV && h.NgayLap >= today && h.NgayLap < tomorrow);
                     
                     var doanhThu = context.HoaDons
-                        .Where(h => h.MaNV == maNV && h.NgayLap >= today && h.NgayLap < tomorrow && h.TrangThai == "Hoàn thành")
+                        .Where(h => h.MaNV == maNV && h.NgayLap >= today && h.NgayLap < tomorrow && 
+                               (h.TrangThai == "Hoàn thành" || h.TrangThai == "DA_DUYET"))
                         .Sum(h => (decimal?)h.TongTien) ?? 0;
+
+                    var soChoDuyet = context.HoaDons.Count(h => h.TrangThai == "CHO_DUYET");
 
                     var lblSoHD = new LabelControl
                     {
-                        Text = "Số hóa đơn: " + soHD,
+                        Text = $"Số hóa đơn đã xử lý: {soHD}",
                         Font = new Font("Segoe UI", 11F),
                         Location = new Point(20, 55)
                     };
@@ -219,11 +240,38 @@ namespace cosmetics_store.FormStaff
 
                     var lblDoanhThu = new LabelControl
                     {
-                        Text = "Doanh thu: " + doanhThu.ToString("N0") + " VND",
+                        Text = $"Doanh thu: {doanhThu:N0} VND",
                         Font = new Font("Segoe UI", 11F),
                         Location = new Point(20, 85)
                     };
                     pnlStats.Controls.Add(lblDoanhThu);
+
+                    var lblChoDuyet = new LabelControl
+                    {
+                        Text = $"Đơn hàng chờ duyệt: {soChoDuyet}",
+                        Font = new Font("Segoe UI", 11F, FontStyle.Bold),
+                        ForeColor = soChoDuyet > 0 ? Color.FromArgb(231, 76, 60) : Color.FromArgb(39, 174, 96),
+                        Location = new Point(20, 115)
+                    };
+                    pnlStats.Controls.Add(lblChoDuyet);
+
+                    if (soChoDuyet > 0)
+                    {
+                        var btnDuyetNgay = new SimpleButton
+                        {
+                            Text = "Duyệt ngay →",
+                            Location = new Point(20, 150),
+                            Size = new Size(150, 35),
+                            Appearance =
+                            {
+                                Font = new Font("Segoe UI", 10F, FontStyle.Bold),
+                                BackColor = Color.FromArgb(39, 174, 96),
+                                ForeColor = Color.White
+                            }
+                        };
+                        btnDuyetNgay.Click += (s, ev) => ShowFormInPanel(new fDuyetHoaDon());
+                        pnlStats.Controls.Add(btnDuyetNgay);
+                    }
                 }
             }
             catch
@@ -270,6 +318,7 @@ namespace cosmetics_store.FormStaff
                 {
                     ("Họ tên:", user.HoTen ?? "N/A"),
                     ("Email:", user.Email ?? "N/A"),
+                    ("Tên đăng nhập:", user.TenDN ?? "N/A"),
                     ("Chức vụ:", user.ChucVu ?? "Nhân viên"),
                     ("Quyền:", user.Quyen ?? "Staff")
                 };
@@ -281,18 +330,40 @@ namespace cosmetics_store.FormStaff
                         Text = label,
                         Font = new Font("Segoe UI", 12F, FontStyle.Bold),
                         Location = new Point(40, yPos),
-                        Size = new Size(120, 25)
+                        Size = new Size(150, 25)
                     };
                     var lblValue = new LabelControl
                     {
                         Text = value,
                         Font = new Font("Segoe UI", 12F),
-                        Location = new Point(170, yPos)
+                        Location = new Point(200, yPos)
                     };
                     panel.Controls.Add(lblLabel);
                     panel.Controls.Add(lblValue);
                     yPos += 40;
                 }
+
+                // Nút đổi mật khẩu
+                var btnDoiMK = new SimpleButton
+                {
+                    Text = "Đổi mật khẩu",
+                    Location = new Point(40, yPos + 20),
+                    Size = new Size(150, 40),
+                    Appearance =
+                    {
+                        Font = new Font("Segoe UI", 10F, FontStyle.Bold),
+                        BackColor = Color.FromArgb(52, 152, 219),
+                        ForeColor = Color.White
+                    }
+                };
+                btnDoiMK.Click += (s, ev) =>
+                {
+                    using (var form = new fDoiMatKhau())
+                    {
+                        form.ShowDialog();
+                    }
+                };
+                panel.Controls.Add(btnDoiMK);
             }
 
             pnlMainContent.Controls.Add(panel);

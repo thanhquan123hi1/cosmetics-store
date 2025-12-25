@@ -11,6 +11,8 @@ namespace BusinessAccessLayer.DTOs
         public string TrangThai { get; set; }
         public string PhuongThucTT { get; set; }
         public int SoSanPham { get; set; }
+        public string TenKhachHang { get; set; }
+        public string TenNhanVien { get; set; }
 
         public string NgayFormatted => NgayLap.ToString("dd/MM/yyyy HH:mm");
         public string TongTienFormatted => $"{TongTien:N0}?";
@@ -20,7 +22,6 @@ namespace BusinessAccessLayer.DTOs
 
     public class HoaDonChiTietDTO : HoaDonDTO
     {
-        public string TenKhachHang { get; set; }
         public List<ChiTietHoaDonDTO> ChiTiet { get; set; } = new List<ChiTietHoaDonDTO>();
     }
 

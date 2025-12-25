@@ -247,6 +247,12 @@
     <Compile Include="FormKH\fSanPhamDetail.Designer.cs">
       <DependentUpon>fSanPhamDetail.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormStaff\fChiTietHoaDon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormStaff\fChiTietHoaDon.Designer.cs">
+      <DependentUpon>fChiTietHoaDon.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormStaff\fChonKhachHang.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -258,6 +264,18 @@
     </Compile>
     <Compile Include="FormStaff\fDashboardStaff.Designer.cs">
       <DependentUpon>fDashboardStaff.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormStaff\fDoiMatKhau.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormStaff\fDoiMatKhau.Designer.cs">
+      <DependentUpon>fDoiMatKhau.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormStaff\fDuyetHoaDon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormStaff\fDuyetHoaDon.Designer.cs">
+      <DependentUpon>fDuyetHoaDon.cs</DependentUpon>
     </Compile>
     <Compile Include="FormStaff\fLapHoaDon.cs">
       <SubType>Form</SubType>
@@ -383,11 +401,20 @@
     <EmbeddedResource Include="FormKH\fSanPhamDetail.resx">
       <DependentUpon>fSanPhamDetail.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormStaff\fChiTietHoaDon.resx">
+      <DependentUpon>fChiTietHoaDon.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormStaff\fChonKhachHang.resx">
       <DependentUpon>fChonKhachHang.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormStaff\fDashboardStaff.resx">
       <DependentUpon>fDashboardStaff.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormStaff\fDoiMatKhau.resx">
+      <DependentUpon>fDoiMatKhau.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormStaff\fDuyetHoaDon.resx">
+      <DependentUpon>fDuyetHoaDon.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormStaff\fLapHoaDon.resx">
       <DependentUpon>fLapHoaDon.cs</DependentUpon>

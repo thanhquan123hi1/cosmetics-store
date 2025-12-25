@@ -265,3 +265,6 @@ D:\GitHub\cosmetics-store\cosmetics-store\bin\Debug\DevExpress.RichEdit.v25.1.Co
 D:\GitHub\cosmetics-store\cosmetics-store\bin\Debug\DevExpress.XtraTreeList.v25.1.xml
 D:\GitHub\cosmetics-store\cosmetics-store\bin\Debug\DevExpress.Office.v25.1.Core.xml
 D:\GitHub\cosmetics-store\cosmetics-store\obj\Debug\cosmetic.146A6D13.Up2Date
+D:\GitHub\cosmetics-store\cosmetics-store\obj\Debug\cosmetics_store.FormStaff.fChiTietHoaDon.resources
+D:\GitHub\cosmetics-store\cosmetics-store\obj\Debug\cosmetics_store.FormStaff.fDoiMatKhau.resources
+D:\GitHub\cosmetics-store\cosmetics-store\obj\Debug\cosmetics_store.FormStaff.fDuyetHoaDon.resources

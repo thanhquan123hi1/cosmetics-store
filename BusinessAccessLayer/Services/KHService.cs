@@ -380,18 +380,19 @@ namespace BusinessAccessLayer.Services
                 if (!CurrentUser.IsLoggedIn) return null;
 
                 var user = CurrentUser.User;
+                if (user.MaNV <= 0) return null;
 
-                // Tìm khách hàng theo email hoặc họ tên
-                var khachHang = _context.KhachHangs
-                    .FirstOrDefault(k => k.SDT == user.Email || k.HoTen == user.HoTen);
+                // Đồng bộ theo thiết kế hiện tại: MaKH = MaNV (tạo khi đăng ký)
+                var khachHang = _context.KhachHangs.FirstOrDefault(k => k.MaKH == user.MaNV);
 
                 if (khachHang == null)
                 {
-                    // Tạo mới khách hàng
+                    // Trường hợp dữ liệu cũ chưa đồng bộ: tạo mới hồ sơ KhachHang
                     khachHang = new KhachHang
                     {
+                        MaKH = user.MaNV,
                         HoTen = user.HoTen ?? "Khách hàng",
-                        SDT = user.Email ?? "0000000000",
+                        SDT = "",
                         GioiTinh = "Khác",
                         DiaChi = ""
                     };

@@ -67,6 +67,7 @@
     <Compile Include="Services\CurrentUser.cs" />
     <Compile Include="DatabaseSeeder.cs" />
     <Compile Include="Services\EmailService.cs" />
+    <Compile Include="Services\HoaDonService.cs" />
     <Compile Include="Services\KHService.cs" />
   </ItemGroup>
   <ItemGroup>
