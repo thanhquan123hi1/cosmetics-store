@@ -63,6 +63,46 @@ namespace cosmetics_store.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _123 {
+            get {
+                object obj = ResourceManager.GetObject("123", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _232 {
+            get {
+                object obj = ResourceManager.GetObject("232", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _234 {
+            get {
+                object obj = ResourceManager.GetObject("234", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _3D_realistic_podium {
+            get {
+                object obj = ResourceManager.GetObject("3D realistic podium", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap forgotpwd {
             get {
                 object obj = ResourceManager.GetObject("forgotpwd", resourceCulture);
@@ -86,6 +126,16 @@ namespace cosmetics_store.Properties {
         internal static System.Drawing.Bitmap wrong_password1 {
             get {
                 object obj = ResourceManager.GetObject("wrong-password1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Лавандовая_нежность_4 {
+            get {
+                object obj = ResourceManager.GetObject("Лавандовая нежность 4", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

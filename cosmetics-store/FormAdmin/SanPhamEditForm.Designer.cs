@@ -110,9 +110,9 @@
             this.btnChonAnh.Appearance.Options.UseBackColor = true;
             this.btnChonAnh.Appearance.Options.UseFont = true;
             this.btnChonAnh.Appearance.Options.UseForeColor = true;
-            this.btnChonAnh.Location = new System.Drawing.Point(23, 389);
+            this.btnChonAnh.Location = new System.Drawing.Point(28, 388);
             this.btnChonAnh.Name = "btnChonAnh";
-            this.btnChonAnh.Size = new System.Drawing.Size(604, 28);
+            this.btnChonAnh.Size = new System.Drawing.Size(594, 28);
             this.btnChonAnh.StyleController = this.layoutControl;
             this.btnChonAnh.TabIndex = 7;
             this.btnChonAnh.Text = "Chọn hình ảnh";
@@ -126,9 +126,9 @@
             this.btnOk.Appearance.Options.UseBackColor = true;
             this.btnOk.Appearance.Options.UseFont = true;
             this.btnOk.Appearance.Options.UseForeColor = true;
-            this.btnOk.Location = new System.Drawing.Point(23, 507);
+            this.btnOk.Location = new System.Drawing.Point(28, 502);
             this.btnOk.Name = "btnOk";
-            this.btnOk.Size = new System.Drawing.Size(487, 30);
+            this.btnOk.Size = new System.Drawing.Size(479, 30);
             this.btnOk.StyleController = this.layoutControl;
             this.btnOk.TabIndex = 8;
             this.btnOk.Text = "✔ Lưu";
@@ -138,9 +138,9 @@
             // 
             this.btnCancel.Appearance.Font = new System.Drawing.Font("Segoe UI", 11F);
             this.btnCancel.Appearance.Options.UseFont = true;
-            this.btnCancel.Location = new System.Drawing.Point(514, 507);
+            this.btnCancel.Location = new System.Drawing.Point(511, 502);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(113, 30);
+            this.btnCancel.Size = new System.Drawing.Size(111, 30);
             this.btnCancel.StyleController = this.layoutControl;
             this.btnCancel.TabIndex = 9;
             this.btnCancel.Text = "Hủy";
@@ -163,38 +163,38 @@
             this.layoutItemBtnOk,
             this.layoutItemBtnCancel});
             this.layoutControlGroup1.Name = "Root";
-            this.layoutControlGroup1.Padding = new DevExpress.XtraLayout.Utils.Padding(21, 21, 21, 21);
+            this.layoutControlGroup1.Padding = new DevExpress.XtraLayout.Utils.Padding(26, 26, 26, 26);
             this.layoutControlGroup1.Size = new System.Drawing.Size(650, 560);
             this.layoutControlGroup1.TextVisible = false;
             // 
             // layoutItemBtnChonAnh
             // 
             this.layoutItemBtnChonAnh.Control = this.btnChonAnh;
-            this.layoutItemBtnChonAnh.Location = new System.Drawing.Point(0, 366);
+            this.layoutItemBtnChonAnh.Location = new System.Drawing.Point(0, 360);
             this.layoutItemBtnChonAnh.Name = "layoutItemBtnChonAnh";
-            this.layoutItemBtnChonAnh.Size = new System.Drawing.Size(608, 32);
+            this.layoutItemBtnChonAnh.Size = new System.Drawing.Size(598, 32);
             this.layoutItemBtnChonAnh.TextVisible = false;
             // 
             // emptySpaceItem1
             // 
-            this.emptySpaceItem1.Location = new System.Drawing.Point(0, 398);
+            this.emptySpaceItem1.Location = new System.Drawing.Point(0, 392);
             this.emptySpaceItem1.Name = "emptySpaceItem1";
-            this.emptySpaceItem1.Size = new System.Drawing.Size(608, 86);
+            this.emptySpaceItem1.Size = new System.Drawing.Size(598, 82);
             // 
             // layoutItemBtnOk
             // 
             this.layoutItemBtnOk.Control = this.btnOk;
-            this.layoutItemBtnOk.Location = new System.Drawing.Point(0, 484);
+            this.layoutItemBtnOk.Location = new System.Drawing.Point(0, 474);
             this.layoutItemBtnOk.Name = "layoutItemBtnOk";
-            this.layoutItemBtnOk.Size = new System.Drawing.Size(491, 34);
+            this.layoutItemBtnOk.Size = new System.Drawing.Size(483, 34);
             this.layoutItemBtnOk.TextVisible = false;
             // 
             // layoutItemBtnCancel
             // 
             this.layoutItemBtnCancel.Control = this.btnCancel;
-            this.layoutItemBtnCancel.Location = new System.Drawing.Point(491, 484);
+            this.layoutItemBtnCancel.Location = new System.Drawing.Point(483, 474);
             this.layoutItemBtnCancel.Name = "layoutItemBtnCancel";
-            this.layoutItemBtnCancel.Size = new System.Drawing.Size(117, 34);
+            this.layoutItemBtnCancel.Size = new System.Drawing.Size(115, 34);
             this.layoutItemBtnCancel.TextVisible = false;
             // 
             // openFileDialog
@@ -204,33 +204,33 @@
             // 
             // txtTen
             // 
-            this.txtTen.Location = new System.Drawing.Point(153, 23);
+            this.txtTen.Location = new System.Drawing.Point(158, 28);
             this.txtTen.Name = "txtTen";
             this.txtTen.Properties.Appearance.BackColor = System.Drawing.Color.White;
             this.txtTen.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.txtTen.Properties.Appearance.Options.UseBackColor = true;
             this.txtTen.Properties.Appearance.Options.UseFont = true;
             this.txtTen.Properties.NullValuePrompt = "Nhập tên sản phẩm...";
-            this.txtTen.Size = new System.Drawing.Size(474, 30);
+            this.txtTen.Size = new System.Drawing.Size(464, 30);
             this.txtTen.StyleController = this.layoutControl;
             this.txtTen.TabIndex = 0;
             // 
             // txtMoTa
             // 
-            this.txtMoTa.Location = new System.Drawing.Point(153, 57);
+            this.txtMoTa.Location = new System.Drawing.Point(158, 62);
             this.txtMoTa.Name = "txtMoTa";
             this.txtMoTa.Properties.Appearance.BackColor = System.Drawing.Color.White;
             this.txtMoTa.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.txtMoTa.Properties.Appearance.Options.UseBackColor = true;
             this.txtMoTa.Properties.Appearance.Options.UseFont = true;
             this.txtMoTa.Properties.NullValuePrompt = "Mô tả sản phẩm...";
-            this.txtMoTa.Size = new System.Drawing.Size(474, 64);
+            this.txtMoTa.Size = new System.Drawing.Size(464, 63);
             this.txtMoTa.StyleController = this.layoutControl;
             this.txtMoTa.TabIndex = 1;
             // 
             // lookupLoai
             // 
-            this.lookupLoai.Location = new System.Drawing.Point(153, 125);
+            this.lookupLoai.Location = new System.Drawing.Point(158, 129);
             this.lookupLoai.Name = "lookupLoai";
             this.lookupLoai.Properties.Appearance.BackColor = System.Drawing.Color.White;
             this.lookupLoai.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 10F);
@@ -239,13 +239,13 @@
             this.lookupLoai.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.lookupLoai.Properties.NullText = "-- Chọn loại sản phẩm --";
-            this.lookupLoai.Size = new System.Drawing.Size(170, 30);
+            this.lookupLoai.Size = new System.Drawing.Size(165, 30);
             this.lookupLoai.StyleController = this.layoutControl;
             this.lookupLoai.TabIndex = 2;
             // 
             // lookupThuong
             // 
-            this.lookupThuong.Location = new System.Drawing.Point(457, 125);
+            this.lookupThuong.Location = new System.Drawing.Point(457, 129);
             this.lookupThuong.Name = "lookupThuong";
             this.lookupThuong.Properties.Appearance.BackColor = System.Drawing.Color.White;
             this.lookupThuong.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 10F);
@@ -254,7 +254,7 @@
             this.lookupThuong.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.lookupThuong.Properties.NullText = "-- Chọn thương hiệu --";
-            this.lookupThuong.Size = new System.Drawing.Size(170, 30);
+            this.lookupThuong.Size = new System.Drawing.Size(165, 30);
             this.lookupThuong.StyleController = this.layoutControl;
             this.lookupThuong.TabIndex = 3;
             // 
@@ -265,7 +265,7 @@
             0,
             0,
             0});
-            this.spinSoLuong.Location = new System.Drawing.Point(153, 159);
+            this.spinSoLuong.Location = new System.Drawing.Point(158, 163);
             this.spinSoLuong.Name = "spinSoLuong";
             this.spinSoLuong.Properties.Appearance.BackColor = System.Drawing.Color.White;
             this.spinSoLuong.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 10F);
@@ -274,7 +274,7 @@
             this.spinSoLuong.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.spinSoLuong.Properties.IsFloatValue = false;
-            this.spinSoLuong.Size = new System.Drawing.Size(170, 30);
+            this.spinSoLuong.Size = new System.Drawing.Size(165, 30);
             this.spinSoLuong.StyleController = this.layoutControl;
             this.spinSoLuong.TabIndex = 4;
             // 
@@ -285,7 +285,7 @@
             0,
             0,
             0});
-            this.spinDonGia.Location = new System.Drawing.Point(457, 159);
+            this.spinDonGia.Location = new System.Drawing.Point(457, 163);
             this.spinDonGia.Name = "spinDonGia";
             this.spinDonGia.Properties.Appearance.BackColor = System.Drawing.Color.White;
             this.spinDonGia.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 10F);
@@ -293,17 +293,17 @@
             this.spinDonGia.Properties.Appearance.Options.UseFont = true;
             this.spinDonGia.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.spinDonGia.Size = new System.Drawing.Size(170, 30);
+            this.spinDonGia.Size = new System.Drawing.Size(165, 30);
             this.spinDonGia.StyleController = this.layoutControl;
             this.spinDonGia.TabIndex = 5;
             // 
             // picHinhAnh
             // 
-            this.picHinhAnh.Location = new System.Drawing.Point(153, 193);
+            this.picHinhAnh.Location = new System.Drawing.Point(158, 197);
             this.picHinhAnh.Name = "picHinhAnh";
             this.picHinhAnh.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
             this.picHinhAnh.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Zoom;
-            this.picHinhAnh.Size = new System.Drawing.Size(474, 192);
+            this.picHinhAnh.Size = new System.Drawing.Size(464, 187);
             this.picHinhAnh.StyleController = this.layoutControl;
             this.picHinhAnh.TabIndex = 6;
             // 
@@ -314,7 +314,7 @@
             this.layoutItemTen.Control = this.txtTen;
             this.layoutItemTen.Location = new System.Drawing.Point(0, 0);
             this.layoutItemTen.Name = "layoutItemTen";
-            this.layoutItemTen.Size = new System.Drawing.Size(608, 34);
+            this.layoutItemTen.Size = new System.Drawing.Size(598, 34);
             this.layoutItemTen.Text = "Tên Sản Phẩm";
             this.layoutItemTen.TextSize = new System.Drawing.Size(115, 23);
             // 
@@ -325,7 +325,7 @@
             this.layoutItemMoTa.Control = this.txtMoTa;
             this.layoutItemMoTa.Location = new System.Drawing.Point(0, 34);
             this.layoutItemMoTa.Name = "layoutItemMoTa";
-            this.layoutItemMoTa.Size = new System.Drawing.Size(608, 68);
+            this.layoutItemMoTa.Size = new System.Drawing.Size(598, 67);
             this.layoutItemMoTa.Text = "Mô tả: ";
             this.layoutItemMoTa.TextSize = new System.Drawing.Size(115, 23);
             // 
@@ -334,9 +334,9 @@
             this.layoutItemLoai.AppearanceItemCaption.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.layoutItemLoai.AppearanceItemCaption.Options.UseFont = true;
             this.layoutItemLoai.Control = this.lookupLoai;
-            this.layoutItemLoai.Location = new System.Drawing.Point(0, 102);
+            this.layoutItemLoai.Location = new System.Drawing.Point(0, 101);
             this.layoutItemLoai.Name = "layoutItemLoai";
-            this.layoutItemLoai.Size = new System.Drawing.Size(304, 34);
+            this.layoutItemLoai.Size = new System.Drawing.Size(299, 34);
             this.layoutItemLoai.Text = "Loại SP: ";
             this.layoutItemLoai.TextSize = new System.Drawing.Size(115, 23);
             // 
@@ -345,9 +345,9 @@
             this.layoutItemThuong.AppearanceItemCaption.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.layoutItemThuong.AppearanceItemCaption.Options.UseFont = true;
             this.layoutItemThuong.Control = this.lookupThuong;
-            this.layoutItemThuong.Location = new System.Drawing.Point(304, 102);
+            this.layoutItemThuong.Location = new System.Drawing.Point(299, 101);
             this.layoutItemThuong.Name = "layoutItemThuong";
-            this.layoutItemThuong.Size = new System.Drawing.Size(304, 34);
+            this.layoutItemThuong.Size = new System.Drawing.Size(299, 34);
             this.layoutItemThuong.Text = "Thương hiệu: ";
             this.layoutItemThuong.TextSize = new System.Drawing.Size(115, 23);
             // 
@@ -356,9 +356,9 @@
             this.layoutItemSoLuong.AppearanceItemCaption.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.layoutItemSoLuong.AppearanceItemCaption.Options.UseFont = true;
             this.layoutItemSoLuong.Control = this.spinSoLuong;
-            this.layoutItemSoLuong.Location = new System.Drawing.Point(0, 136);
+            this.layoutItemSoLuong.Location = new System.Drawing.Point(0, 135);
             this.layoutItemSoLuong.Name = "layoutItemSoLuong";
-            this.layoutItemSoLuong.Size = new System.Drawing.Size(304, 34);
+            this.layoutItemSoLuong.Size = new System.Drawing.Size(299, 34);
             this.layoutItemSoLuong.Text = "Số lượng";
             this.layoutItemSoLuong.TextSize = new System.Drawing.Size(115, 23);
             // 
@@ -367,9 +367,9 @@
             this.layoutItemDonGia.AppearanceItemCaption.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.layoutItemDonGia.AppearanceItemCaption.Options.UseFont = true;
             this.layoutItemDonGia.Control = this.spinDonGia;
-            this.layoutItemDonGia.Location = new System.Drawing.Point(304, 136);
+            this.layoutItemDonGia.Location = new System.Drawing.Point(299, 135);
             this.layoutItemDonGia.Name = "layoutItemDonGia";
-            this.layoutItemDonGia.Size = new System.Drawing.Size(304, 34);
+            this.layoutItemDonGia.Size = new System.Drawing.Size(299, 34);
             this.layoutItemDonGia.Text = "Đơn giá (VNĐ):";
             this.layoutItemDonGia.TextSize = new System.Drawing.Size(115, 23);
             // 
@@ -378,9 +378,9 @@
             this.layoutItemHinhAnh.AppearanceItemCaption.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.layoutItemHinhAnh.AppearanceItemCaption.Options.UseFont = true;
             this.layoutItemHinhAnh.Control = this.picHinhAnh;
-            this.layoutItemHinhAnh.Location = new System.Drawing.Point(0, 170);
+            this.layoutItemHinhAnh.Location = new System.Drawing.Point(0, 169);
             this.layoutItemHinhAnh.Name = "layoutItemHinhAnh";
-            this.layoutItemHinhAnh.Size = new System.Drawing.Size(608, 196);
+            this.layoutItemHinhAnh.Size = new System.Drawing.Size(598, 191);
             this.layoutItemHinhAnh.Text = "Hình ảnh: ";
             this.layoutItemHinhAnh.TextSize = new System.Drawing.Size(115, 23);
             // 

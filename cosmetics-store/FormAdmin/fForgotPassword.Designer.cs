@@ -21,6 +21,7 @@
         private void InitializeComponent()
         {
             this.pnlMain = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lblTitle = new DevExpress.XtraEditors.LabelControl();
             this.lblDescription = new DevExpress.XtraEditors.LabelControl();
             this.lblEmail = new DevExpress.XtraEditors.LabelControl();
@@ -28,15 +29,15 @@
             this.btnSend = new DevExpress.XtraEditors.SimpleButton();
             this.btnCancel = new DevExpress.XtraEditors.SimpleButton();
             this.lnkLogin = new System.Windows.Forms.LinkLabel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pnlMain.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtEmail.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtEmail.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlMain
             // 
             this.pnlMain.BackColor = System.Drawing.Color.White;
+            this.pnlMain.BackgroundImage = global::cosmetics_store.Properties.Resources._123;
             this.pnlMain.Controls.Add(this.pictureBox1);
             this.pnlMain.Controls.Add(this.lblTitle);
             this.pnlMain.Controls.Add(this.lblDescription);
@@ -52,10 +53,19 @@
             this.pnlMain.Size = new System.Drawing.Size(525, 492);
             this.pnlMain.TabIndex = 0;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::cosmetics_store.Properties.Resources.forgotpwd;
+            this.pictureBox1.Location = new System.Drawing.Point(231, 63);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(85, 89);
+            this.pictureBox1.TabIndex = 8;
+            this.pictureBox1.TabStop = false;
+            // 
             // lblTitle
             // 
-            this.lblTitle.Appearance.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold);
-            this.lblTitle.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
+            this.lblTitle.Appearance.Font = new System.Drawing.Font("Segoe UI Black", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitle.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.lblTitle.Appearance.Options.UseFont = true;
             this.lblTitle.Appearance.Options.UseForeColor = true;
             this.lblTitle.Appearance.Options.UseTextOptions = true;
@@ -71,8 +81,8 @@
             // 
             // lblDescription
             // 
-            this.lblDescription.Appearance.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.lblDescription.Appearance.ForeColor = System.Drawing.Color.Gray;
+            this.lblDescription.Appearance.Font = new System.Drawing.Font("Segoe UI Black", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDescription.Appearance.ForeColor = System.Drawing.Color.Black;
             this.lblDescription.Appearance.Options.UseFont = true;
             this.lblDescription.Appearance.Options.UseForeColor = true;
             this.lblDescription.Appearance.Options.UseTextOptions = true;
@@ -88,12 +98,12 @@
             // 
             // lblEmail
             // 
-            this.lblEmail.Appearance.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.lblEmail.Appearance.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblEmail.Appearance.Options.UseFont = true;
             this.lblEmail.Location = new System.Drawing.Point(58, 264);
             this.lblEmail.Margin = new System.Windows.Forms.Padding(4);
             this.lblEmail.Name = "lblEmail";
-            this.lblEmail.Size = new System.Drawing.Size(41, 23);
+            this.lblEmail.Size = new System.Drawing.Size(44, 23);
             this.lblEmail.TabIndex = 3;
             this.lblEmail.Text = "Email";
             // 
@@ -111,7 +121,7 @@
             // btnSend
             // 
             this.btnSend.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
-            this.btnSend.Appearance.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
+            this.btnSend.Appearance.Font = new System.Drawing.Font("Segoe UI Black", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSend.Appearance.ForeColor = System.Drawing.Color.White;
             this.btnSend.Appearance.Options.UseBackColor = true;
             this.btnSend.Appearance.Options.UseFont = true;
@@ -128,7 +138,7 @@
             // btnCancel
             // 
             this.btnCancel.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(165)))), ((int)(((byte)(166)))));
-            this.btnCancel.Appearance.Font = new System.Drawing.Font("Segoe UI", 11F);
+            this.btnCancel.Appearance.Font = new System.Drawing.Font("Segoe UI Black", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancel.Appearance.ForeColor = System.Drawing.Color.White;
             this.btnCancel.Appearance.Options.UseBackColor = true;
             this.btnCancel.Appearance.Options.UseFont = true;
@@ -145,27 +155,19 @@
             // lnkLogin
             // 
             this.lnkLogin.AutoSize = true;
-            this.lnkLogin.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.lnkLogin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.lnkLogin.Font = new System.Drawing.Font("Segoe UI Black", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lnkLogin.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
-            this.lnkLogin.Location = new System.Drawing.Point(165, 446);
+            this.lnkLogin.Location = new System.Drawing.Point(161, 446);
             this.lnkLogin.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lnkLogin.Name = "lnkLogin";
-            this.lnkLogin.Size = new System.Drawing.Size(206, 23);
+            this.lnkLogin.Size = new System.Drawing.Size(225, 23);
             this.lnkLogin.TabIndex = 7;
             this.lnkLogin.TabStop = true;
             this.lnkLogin.Text = "Quay lại trang đăng nhập";
             this.lnkLogin.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkLogin_LinkClicked);
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::cosmetics_store.Properties.Resources.forgotpwd;
-            this.pictureBox1.Location = new System.Drawing.Point(231, 63);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(85, 89);
-            this.pictureBox1.TabIndex = 8;
-            this.pictureBox1.TabStop = false;
-            // 
-            // ForgotPasswordForm
+            // fForgotPassword
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -174,14 +176,14 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
-            this.Name = "ForgotPasswordForm";
+            this.Name = "fForgotPassword";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Quên mật khẩu";
             this.Load += new System.EventHandler(this.ForgotPasswordForm_Load);
             this.pnlMain.ResumeLayout(false);
             this.pnlMain.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtEmail.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtEmail.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }

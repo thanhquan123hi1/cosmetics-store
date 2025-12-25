@@ -93,25 +93,26 @@
             // pnlLeft
             // 
             this.pnlLeft.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
+            this.pnlLeft.BackgroundImage = global::cosmetics_store.Properties.Resources.Лавандовая_нежность_4;
             this.pnlLeft.Controls.Add(this.lblWelcome);
             this.pnlLeft.Controls.Add(this.lblSystemName);
             this.pnlLeft.Controls.Add(this.lblVersion);
             this.pnlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlLeft.Location = new System.Drawing.Point(0, 0);
-            this.pnlLeft.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlLeft.Margin = new System.Windows.Forms.Padding(4);
             this.pnlLeft.Name = "pnlLeft";
             this.pnlLeft.Size = new System.Drawing.Size(343, 800);
             this.pnlLeft.TabIndex = 0;
             // 
             // lblWelcome
             // 
-            this.lblWelcome.Appearance.Font = new System.Drawing.Font("Segoe UI", 26F, System.Drawing.FontStyle.Bold);
-            this.lblWelcome.Appearance.ForeColor = System.Drawing.Color.White;
+            this.lblWelcome.Appearance.Font = new System.Drawing.Font("Segoe UI Black", 25.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblWelcome.Appearance.ForeColor = System.Drawing.Color.Black;
             this.lblWelcome.Appearance.Options.UseFont = true;
             this.lblWelcome.Appearance.Options.UseForeColor = true;
             this.lblWelcome.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
-            this.lblWelcome.Location = new System.Drawing.Point(35, 246);
-            this.lblWelcome.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.lblWelcome.Location = new System.Drawing.Point(32, 195);
+            this.lblWelcome.Margin = new System.Windows.Forms.Padding(4);
             this.lblWelcome.Name = "lblWelcome";
             this.lblWelcome.Size = new System.Drawing.Size(303, 74);
             this.lblWelcome.TabIndex = 0;
@@ -119,13 +120,13 @@
             // 
             // lblSystemName
             // 
-            this.lblSystemName.Appearance.Font = new System.Drawing.Font("Segoe UI", 13F);
-            this.lblSystemName.Appearance.ForeColor = System.Drawing.Color.White;
+            this.lblSystemName.Appearance.Font = new System.Drawing.Font("Segoe UI Black", 13.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSystemName.Appearance.ForeColor = System.Drawing.Color.Black;
             this.lblSystemName.Appearance.Options.UseFont = true;
             this.lblSystemName.Appearance.Options.UseForeColor = true;
             this.lblSystemName.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
-            this.lblSystemName.Location = new System.Drawing.Point(35, 332);
-            this.lblSystemName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.lblSystemName.Location = new System.Drawing.Point(32, 334);
+            this.lblSystemName.Margin = new System.Windows.Forms.Padding(4);
             this.lblSystemName.Name = "lblSystemName";
             this.lblSystemName.Size = new System.Drawing.Size(303, 98);
             this.lblSystemName.TabIndex = 1;
@@ -138,7 +139,7 @@
             this.lblVersion.Appearance.Options.UseFont = true;
             this.lblVersion.Appearance.Options.UseForeColor = true;
             this.lblVersion.Location = new System.Drawing.Point(35, 751);
-            this.lblVersion.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.lblVersion.Margin = new System.Windows.Forms.Padding(4);
             this.lblVersion.Name = "lblVersion";
             this.lblVersion.Size = new System.Drawing.Size(83, 20);
             this.lblVersion.TabIndex = 2;
@@ -172,39 +173,39 @@
             this.pnlRight.Controls.Add(this.lnkLogin);
             this.pnlRight.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlRight.Location = new System.Drawing.Point(343, 0);
-            this.pnlRight.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlRight.Margin = new System.Windows.Forms.Padding(4);
             this.pnlRight.Name = "pnlRight";
             this.pnlRight.Size = new System.Drawing.Size(590, 800);
             this.pnlRight.TabIndex = 1;
             // 
             // lblTitle
             // 
-            this.lblTitle.Appearance.Font = new System.Drawing.Font("Segoe UI", 22F, System.Drawing.FontStyle.Bold);
+            this.lblTitle.Appearance.Font = new System.Drawing.Font("Segoe UI Black", 22.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitle.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
             this.lblTitle.Appearance.Options.UseFont = true;
             this.lblTitle.Appearance.Options.UseForeColor = true;
             this.lblTitle.Location = new System.Drawing.Point(47, 31);
-            this.lblTitle.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.lblTitle.Margin = new System.Windows.Forms.Padding(4);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(326, 50);
+            this.lblTitle.Size = new System.Drawing.Size(345, 50);
             this.lblTitle.TabIndex = 0;
             this.lblTitle.Text = "Đăng Ký Tài Khoản";
             // 
             // lblHoTen
             // 
-            this.lblHoTen.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.lblHoTen.Appearance.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblHoTen.Appearance.Options.UseFont = true;
             this.lblHoTen.Location = new System.Drawing.Point(47, 98);
-            this.lblHoTen.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.lblHoTen.Margin = new System.Windows.Forms.Padding(4);
             this.lblHoTen.Name = "lblHoTen";
-            this.lblHoTen.Size = new System.Drawing.Size(86, 23);
+            this.lblHoTen.Size = new System.Drawing.Size(90, 23);
             this.lblHoTen.TabIndex = 1;
             this.lblHoTen.Text = "Họ và tên *";
             // 
             // txtHoTen
             // 
             this.txtHoTen.Location = new System.Drawing.Point(47, 123);
-            this.txtHoTen.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtHoTen.Margin = new System.Windows.Forms.Padding(4);
             this.txtHoTen.Name = "txtHoTen";
             this.txtHoTen.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.txtHoTen.Properties.Appearance.Options.UseFont = true;
@@ -214,19 +215,19 @@
             // 
             // lblGioiTinh
             // 
-            this.lblGioiTinh.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.lblGioiTinh.Appearance.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblGioiTinh.Appearance.Options.UseFont = true;
             this.lblGioiTinh.Location = new System.Drawing.Point(47, 172);
-            this.lblGioiTinh.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.lblGioiTinh.Margin = new System.Windows.Forms.Padding(4);
             this.lblGioiTinh.Name = "lblGioiTinh";
-            this.lblGioiTinh.Size = new System.Drawing.Size(65, 23);
+            this.lblGioiTinh.Size = new System.Drawing.Size(70, 23);
             this.lblGioiTinh.TabIndex = 3;
             this.lblGioiTinh.Text = "Giới tính";
             // 
             // cboGioiTinh
             // 
             this.cboGioiTinh.Location = new System.Drawing.Point(47, 197);
-            this.cboGioiTinh.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cboGioiTinh.Margin = new System.Windows.Forms.Padding(4);
             this.cboGioiTinh.Name = "cboGioiTinh";
             this.cboGioiTinh.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cboGioiTinh.Properties.Appearance.Options.UseFont = true;
@@ -239,12 +240,12 @@
             // 
             // lblNgaySinh
             // 
-            this.lblNgaySinh.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.lblNgaySinh.Appearance.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNgaySinh.Appearance.Options.UseFont = true;
             this.lblNgaySinh.Location = new System.Drawing.Point(292, 172);
-            this.lblNgaySinh.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.lblNgaySinh.Margin = new System.Windows.Forms.Padding(4);
             this.lblNgaySinh.Name = "lblNgaySinh";
-            this.lblNgaySinh.Size = new System.Drawing.Size(70, 21);
+            this.lblNgaySinh.Size = new System.Drawing.Size(79, 23);
             this.lblNgaySinh.TabIndex = 5;
             this.lblNgaySinh.Text = "Ngày sinh";
             // 
@@ -252,7 +253,7 @@
             // 
             this.dtNgaySinh.EditValue = null;
             this.dtNgaySinh.Location = new System.Drawing.Point(292, 197);
-            this.dtNgaySinh.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dtNgaySinh.Margin = new System.Windows.Forms.Padding(4);
             this.dtNgaySinh.Name = "dtNgaySinh";
             this.dtNgaySinh.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.dtNgaySinh.Properties.Appearance.Options.UseFont = true;
@@ -271,19 +272,19 @@
             // 
             // lblDiaChi
             // 
-            this.lblDiaChi.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.lblDiaChi.Appearance.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDiaChi.Appearance.Options.UseFont = true;
             this.lblDiaChi.Location = new System.Drawing.Point(292, 246);
-            this.lblDiaChi.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.lblDiaChi.Margin = new System.Windows.Forms.Padding(4);
             this.lblDiaChi.Name = "lblDiaChi";
-            this.lblDiaChi.Size = new System.Drawing.Size(52, 23);
+            this.lblDiaChi.Size = new System.Drawing.Size(55, 23);
             this.lblDiaChi.TabIndex = 9;
             this.lblDiaChi.Text = "Địa chỉ";
             // 
             // txtDiaChi
             // 
             this.txtDiaChi.Location = new System.Drawing.Point(292, 271);
-            this.txtDiaChi.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtDiaChi.Margin = new System.Windows.Forms.Padding(4);
             this.txtDiaChi.Name = "txtDiaChi";
             this.txtDiaChi.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.txtDiaChi.Properties.Appearance.Options.UseFont = true;
@@ -293,19 +294,19 @@
             // 
             // lblSDT
             // 
-            this.lblSDT.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.lblSDT.Appearance.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSDT.Appearance.Options.UseFont = true;
             this.lblSDT.Location = new System.Drawing.Point(47, 246);
-            this.lblSDT.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.lblSDT.Margin = new System.Windows.Forms.Padding(4);
             this.lblSDT.Name = "lblSDT";
-            this.lblSDT.Size = new System.Drawing.Size(113, 23);
+            this.lblSDT.Size = new System.Drawing.Size(119, 23);
             this.lblSDT.TabIndex = 7;
             this.lblSDT.Text = "Số điện thoại *";
             // 
             // txtSDT
             // 
             this.txtSDT.Location = new System.Drawing.Point(47, 271);
-            this.txtSDT.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtSDT.Margin = new System.Windows.Forms.Padding(4);
             this.txtSDT.Name = "txtSDT";
             this.txtSDT.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.txtSDT.Properties.Appearance.Options.UseFont = true;
@@ -315,19 +316,19 @@
             // 
             // lblTenDN
             // 
-            this.lblTenDN.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.lblTenDN.Appearance.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTenDN.Appearance.Options.UseFont = true;
             this.lblTenDN.Location = new System.Drawing.Point(47, 326);
-            this.lblTenDN.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.lblTenDN.Margin = new System.Windows.Forms.Padding(4);
             this.lblTenDN.Name = "lblTenDN";
-            this.lblTenDN.Size = new System.Drawing.Size(126, 23);
+            this.lblTenDN.Size = new System.Drawing.Size(131, 23);
             this.lblTenDN.TabIndex = 11;
             this.lblTenDN.Text = "Tên đăng nhập *";
             // 
             // txtTenDN
             // 
             this.txtTenDN.Location = new System.Drawing.Point(47, 351);
-            this.txtTenDN.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtTenDN.Margin = new System.Windows.Forms.Padding(4);
             this.txtTenDN.Name = "txtTenDN";
             this.txtTenDN.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.txtTenDN.Properties.Appearance.Options.UseFont = true;
@@ -337,19 +338,19 @@
             // 
             // lblEmail
             // 
-            this.lblEmail.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.lblEmail.Appearance.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblEmail.Appearance.Options.UseFont = true;
             this.lblEmail.Location = new System.Drawing.Point(47, 400);
-            this.lblEmail.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.lblEmail.Margin = new System.Windows.Forms.Padding(4);
             this.lblEmail.Name = "lblEmail";
-            this.lblEmail.Size = new System.Drawing.Size(49, 21);
+            this.lblEmail.Size = new System.Drawing.Size(57, 23);
             this.lblEmail.TabIndex = 13;
             this.lblEmail.Text = "Email *";
             // 
             // txtEmail
             // 
             this.txtEmail.Location = new System.Drawing.Point(47, 425);
-            this.txtEmail.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtEmail.Margin = new System.Windows.Forms.Padding(4);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.txtEmail.Properties.Appearance.Options.UseFont = true;
@@ -359,19 +360,19 @@
             // 
             // lblMatKhau
             // 
-            this.lblMatKhau.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.lblMatKhau.Appearance.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMatKhau.Appearance.Options.UseFont = true;
             this.lblMatKhau.Location = new System.Drawing.Point(47, 474);
-            this.lblMatKhau.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.lblMatKhau.Margin = new System.Windows.Forms.Padding(4);
             this.lblMatKhau.Name = "lblMatKhau";
-            this.lblMatKhau.Size = new System.Drawing.Size(84, 23);
+            this.lblMatKhau.Size = new System.Drawing.Size(89, 23);
             this.lblMatKhau.TabIndex = 15;
             this.lblMatKhau.Text = "Mật khẩu *";
             // 
             // txtMatKhau
             // 
             this.txtMatKhau.Location = new System.Drawing.Point(47, 498);
-            this.txtMatKhau.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtMatKhau.Margin = new System.Windows.Forms.Padding(4);
             this.txtMatKhau.Name = "txtMatKhau";
             this.txtMatKhau.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.txtMatKhau.Properties.Appearance.Options.UseFont = true;
@@ -382,19 +383,19 @@
             // 
             // lblXacNhanMK
             // 
-            this.lblXacNhanMK.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.lblXacNhanMK.Appearance.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblXacNhanMK.Appearance.Options.UseFont = true;
             this.lblXacNhanMK.Location = new System.Drawing.Point(292, 474);
-            this.lblXacNhanMK.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.lblXacNhanMK.Margin = new System.Windows.Forms.Padding(4);
             this.lblXacNhanMK.Name = "lblXacNhanMK";
-            this.lblXacNhanMK.Size = new System.Drawing.Size(160, 23);
+            this.lblXacNhanMK.Size = new System.Drawing.Size(166, 23);
             this.lblXacNhanMK.TabIndex = 17;
             this.lblXacNhanMK.Text = "Xác nhận mật khẩu *";
             // 
             // txtXacNhanMK
             // 
             this.txtXacNhanMK.Location = new System.Drawing.Point(292, 498);
-            this.txtXacNhanMK.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtXacNhanMK.Margin = new System.Windows.Forms.Padding(4);
             this.txtXacNhanMK.Name = "txtXacNhanMK";
             this.txtXacNhanMK.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.txtXacNhanMK.Properties.Appearance.Options.UseFont = true;
@@ -406,14 +407,14 @@
             // btnRegister
             // 
             this.btnRegister.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
-            this.btnRegister.Appearance.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
+            this.btnRegister.Appearance.Font = new System.Drawing.Font("Segoe UI Black", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRegister.Appearance.ForeColor = System.Drawing.Color.White;
             this.btnRegister.Appearance.Options.UseBackColor = true;
             this.btnRegister.Appearance.Options.UseFont = true;
             this.btnRegister.Appearance.Options.UseForeColor = true;
             this.btnRegister.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
             this.btnRegister.Location = new System.Drawing.Point(47, 566);
-            this.btnRegister.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnRegister.Margin = new System.Windows.Forms.Padding(4);
             this.btnRegister.Name = "btnRegister";
             this.btnRegister.Size = new System.Drawing.Size(222, 55);
             this.btnRegister.TabIndex = 19;
@@ -423,14 +424,14 @@
             // btnCancel
             // 
             this.btnCancel.Appearance.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.btnCancel.Appearance.Font = new System.Drawing.Font("Segoe UI", 11F);
+            this.btnCancel.Appearance.Font = new System.Drawing.Font("Segoe UI Black", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancel.Appearance.ForeColor = System.Drawing.Color.Black;
             this.btnCancel.Appearance.Options.UseBackColor = true;
             this.btnCancel.Appearance.Options.UseFont = true;
             this.btnCancel.Appearance.Options.UseForeColor = true;
             this.btnCancel.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
             this.btnCancel.Location = new System.Drawing.Point(292, 566);
-            this.btnCancel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(4);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(222, 55);
             this.btnCancel.TabIndex = 20;
@@ -441,12 +442,12 @@
             // 
             this.lnkLogin.ActiveLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
             this.lnkLogin.AutoSize = true;
-            this.lnkLogin.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.lnkLogin.Font = new System.Drawing.Font("Segoe UI Black", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lnkLogin.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
             this.lnkLogin.Location = new System.Drawing.Point(145, 682);
             this.lnkLogin.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lnkLogin.Name = "lnkLogin";
-            this.lnkLogin.Size = new System.Drawing.Size(228, 23);
+            this.lnkLogin.Size = new System.Drawing.Size(245, 23);
             this.lnkLogin.TabIndex = 21;
             this.lnkLogin.TabStop = true;
             this.lnkLogin.Text = "Đã có tài khoản? Đăng nhập";
@@ -460,7 +461,7 @@
             this.Controls.Add(this.pnlRight);
             this.Controls.Add(this.pnlLeft);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.Name = "fRegister";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

@@ -137,7 +137,7 @@ namespace BusinessAccessLayer.Services
                             SoLuongTon = 50,
                             MaThuongHieu = innisfree.MaThuongHieu,
                             MaLoai = skincare.MaLoai,
-                            HinhAnh = ""
+                            HinhAnh = "https://product.hstatic.net/1000025647/product/sua_rua_mat_innisfree_tra_xanh_green_tea_cleansing_foam_c2464aa291954065843e15f78cd89392.png"
                         },
                         new SanPham
                         {
@@ -147,7 +147,7 @@ namespace BusinessAccessLayer.Services
                             SoLuongTon = 35,
                             MaThuongHieu = bioderma.MaThuongHieu,
                             MaLoai = skincare.MaLoai,
-                            HinhAnh = ""
+                            HinhAnh = "https://product.hstatic.net/1000025647/product/io_h2o_500ml_-_hon_hop__dau_mun_972a34eb219049ed9c0e9ff4ac33dd83_large_5f219ea5048f49d48c4ee12190c17edc.jpg"
                         },
                         new SanPham
                         {
@@ -157,7 +157,7 @@ namespace BusinessAccessLayer.Services
                             SoLuongTon = 25,
                             MaThuongHieu = loreal.MaThuongHieu,
                             MaLoai = skincare.MaLoai,
-                            HinhAnh = ""
+                            HinhAnh = "https://product.hstatic.net/1000398092/product/screenshot_1684568098_bc403cfdfe0e4ce99857bc6964f6b44e.png"
                         },
                         new SanPham
                         {
@@ -167,7 +167,7 @@ namespace BusinessAccessLayer.Services
                             SoLuongTon = 40,
                             MaThuongHieu = innisfree.MaThuongHieu,
                             MaLoai = skincare.MaLoai,
-                            HinhAnh = ""
+                            HinhAnh = "https://www.innisfree.vn/static/upload/product/product/113_ID0101_2.png"
                         },
 
                         // Trang điểm
@@ -179,7 +179,7 @@ namespace BusinessAccessLayer.Services
                             SoLuongTon = 100,
                             MaThuongHieu = maybelline.MaThuongHieu,
                             MaLoai = makeup.MaLoai,
-                            HinhAnh = ""
+                            HinhAnh = "https://www.guardian.com.vn/media/catalog/product/cache/30b2b44eba57cd45fd3ef9287600968e/7/_/7_13_1.png"
                         },
                         new SanPham
                         {
@@ -189,7 +189,7 @@ namespace BusinessAccessLayer.Services
                             SoLuongTon = 60,
                             MaThuongHieu = maybelline.MaThuongHieu,
                             MaLoai = makeup.MaLoai,
-                            HinhAnh = ""
+                            HinhAnh = "https://www.maybelline.vn/-/media/project/loreal/brand-sites/mny/apac/vn/products/eye-makeup/mascara/lash-sensational-waterproof-mascara/eye-make-up_mascaras_lash-sensational-waterproof-mascara_very-black.jpg?rev=bc19cd5f6ff641d6a7647ef39c08b4ae&cx=0.46&cy=0.5&cw=600&ch=900&hash=5D43BB5106EC18E338F2D314323376C6"
                         },
                         new SanPham
                         {
@@ -199,7 +199,7 @@ namespace BusinessAccessLayer.Services
                             SoLuongTon = 30,
                             MaThuongHieu = faceshop.MaThuongHieu,
                             MaLoai = makeup.MaLoai,
-                            HinhAnh = ""
+                            HinhAnh = "https://myphamthefaceshop.com/wp-content/uploads/2021/11/phan-nuoc-lau-troi-ink-lasting-cushion-spf30-pa-fmgt.jpg"
                         },
                         new SanPham
                         {
@@ -209,7 +209,7 @@ namespace BusinessAccessLayer.Services
                             SoLuongTon = 45,
                             MaThuongHieu = loreal.MaThuongHieu,
                             MaLoai = makeup.MaLoai,
-                            HinhAnh = ""
+                            HinhAnh = "https://mint07.com/wp-content/uploads/2018/01/Phan-mat-Loreal-Paris-Color-Riche-La-Palette-Nude-beige-01-swatch-1.png"
                         },
 
                         // Chống nắng
@@ -221,7 +221,7 @@ namespace BusinessAccessLayer.Services
                             SoLuongTon = 55,
                             MaThuongHieu = innisfree.MaThuongHieu,
                             MaLoai = sunscreen.MaLoai,
-                            HinhAnh = ""
+                            HinhAnh = "https://www.guardian.com.vn/media/catalog/product/cache/30b2b44eba57cd45fd3ef9287600968e/3/0/3029575.jpg"
                         },
                         new SanPham
                         {
@@ -231,7 +231,7 @@ namespace BusinessAccessLayer.Services
                             SoLuongTon = 40,
                             MaThuongHieu = loreal.MaThuongHieu,
                             MaLoai = sunscreen.MaLoai,
-                            HinhAnh = ""
+                            HinhAnh = "https://www.guardian.com.vn/media/catalog/product/cache/30b2b44eba57cd45fd3ef9287600968e/3/0/3027053_-_copy.png"
                         },
 
                         // Chăm sóc cơ thể
@@ -243,7 +243,7 @@ namespace BusinessAccessLayer.Services
                             SoLuongTon = 70,
                             MaThuongHieu = cocoon.MaThuongHieu,
                             MaLoai = bodycare.MaLoai,
-                            HinhAnh = ""
+                            HinhAnh = "https://image.cocoonvietnam.com/uploads/Son_duong_dau_dua_26498c9936.jpg"
                         },
                         new SanPham
                         {
@@ -253,7 +253,7 @@ namespace BusinessAccessLayer.Services
                             SoLuongTon = 80,
                             MaThuongHieu = cocoon.MaThuongHieu,
                             MaLoai = bodycare.MaLoai,
-                            HinhAnh = ""
+                            HinhAnh = "https://image.cocoonvietnam.com/uploads/Artboard_24_dadd05e976.jpg"
                         },
                         new SanPham
                         {
@@ -263,7 +263,7 @@ namespace BusinessAccessLayer.Services
                             SoLuongTon = 35,
                             MaThuongHieu = innisfree.MaThuongHieu,
                             MaLoai = bodycare.MaLoai,
-                            HinhAnh = ""
+                            HinhAnh = "https://www.innisfree.vn/static/upload/product/product/700_ID0101_2.png"
                         },
                         new SanPham
                         {
@@ -273,7 +273,7 @@ namespace BusinessAccessLayer.Services
                             SoLuongTon = 120,
                             MaThuongHieu = maybelline.MaThuongHieu,
                             MaLoai = makeup.MaLoai,
-                            HinhAnh = ""
+                            HinhAnh = "https://bizweb.dktcdn.net/thumb/grande/100/374/252/products/sonduongmoicomaumaybellinebaby-5a839f94-3464-4c6c-b5b2-990d56d5ca73.jpg?v=1710242257587"
                         }
                     };
 

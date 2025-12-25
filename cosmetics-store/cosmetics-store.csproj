@@ -430,6 +430,11 @@
     <None Include="Resources\wrong-password1.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\Лавандовая нежность 4.jpg" />
+    <None Include="Resources\3D realistic podium.jpg" />
+    <None Include="Resources\232.jpg" />
+    <None Include="Resources\123.jpg" />
+    <None Include="Resources\234.jpg" />
     <Content Include="Resources\forgotpwd.png" />
   </ItemGroup>
   <ItemGroup />
