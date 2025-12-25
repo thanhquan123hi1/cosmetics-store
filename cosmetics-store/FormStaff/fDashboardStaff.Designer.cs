@@ -65,20 +65,20 @@
             this.pnlHeader.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlHeader.Location = new System.Drawing.Point(0, 0);
             this.pnlHeader.Name = "pnlHeader";
-            this.pnlHeader.Size = new System.Drawing.Size(1280, 65);
+            this.pnlHeader.Size = new System.Drawing.Size(1200, 60);
             this.pnlHeader.TabIndex = 0;
             // 
             // lblTitle
             // 
-            this.lblTitle.Appearance.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Bold);
+            this.lblTitle.Appearance.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
             this.lblTitle.Appearance.ForeColor = System.Drawing.Color.White;
             this.lblTitle.Appearance.Options.UseFont = true;
             this.lblTitle.Appearance.Options.UseForeColor = true;
-            this.lblTitle.Location = new System.Drawing.Point(20, 18);
+            this.lblTitle.Location = new System.Drawing.Point(15, 18);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(693, 35);
+            this.lblTitle.Size = new System.Drawing.Size(667, 32);
             this.lblTitle.TabIndex = 0;
-            this.lblTitle.Text = "PHAN MEM QUAN LY CUA HANG MY PHAM - NHAN VIEN";
+            this.lblTitle.Text = "PHẦN MỀM QUẢN LÝ CỬA HÀNG MỸ PHẨM - NHÂN VIÊN";
             // 
             // lblNhanVien
             // 
@@ -87,11 +87,11 @@
             this.lblNhanVien.Appearance.ForeColor = System.Drawing.Color.White;
             this.lblNhanVien.Appearance.Options.UseFont = true;
             this.lblNhanVien.Appearance.Options.UseForeColor = true;
-            this.lblNhanVien.Location = new System.Drawing.Point(750, 22);
+            this.lblNhanVien.Location = new System.Drawing.Point(700, 20);
             this.lblNhanVien.Name = "lblNhanVien";
-            this.lblNhanVien.Size = new System.Drawing.Size(198, 23);
+            this.lblNhanVien.Size = new System.Drawing.Size(197, 23);
             this.lblNhanVien.TabIndex = 1;
-            this.lblNhanVien.Text = "Nhan vien: Nguyen Van A";
+            this.lblNhanVien.Text = "Nhân viên: Nguyễn Văn A";
             // 
             // lblCaSang
             // 
@@ -100,11 +100,11 @@
             this.lblCaSang.Appearance.ForeColor = System.Drawing.Color.White;
             this.lblCaSang.Appearance.Options.UseFont = true;
             this.lblCaSang.Appearance.Options.UseForeColor = true;
-            this.lblCaSang.Location = new System.Drawing.Point(980, 22);
+            this.lblCaSang.Location = new System.Drawing.Point(920, 20);
             this.lblCaSang.Name = "lblCaSang";
             this.lblCaSang.Size = new System.Drawing.Size(67, 23);
             this.lblCaSang.TabIndex = 2;
-            this.lblCaSang.Text = "Ca: Sang";
+            this.lblCaSang.Text = "Ca: Sáng";
             // 
             // lblNgay
             // 
@@ -113,11 +113,11 @@
             this.lblNgay.Appearance.ForeColor = System.Drawing.Color.White;
             this.lblNgay.Appearance.Options.UseFont = true;
             this.lblNgay.Appearance.Options.UseForeColor = true;
-            this.lblNgay.Location = new System.Drawing.Point(1100, 22);
+            this.lblNgay.Location = new System.Drawing.Point(1020, 20);
             this.lblNgay.Name = "lblNgay";
             this.lblNgay.Size = new System.Drawing.Size(135, 23);
             this.lblNgay.TabIndex = 3;
-            this.lblNgay.Text = "Ngay: 15/12/2025";
+            this.lblNgay.Text = "Ngày: 15/12/2025";
             // 
             // accordionMenu
             // 
@@ -129,9 +129,9 @@
             this.aceTraCuu,
             this.aceLichSu,
             this.aceTaiKhoan});
-            this.accordionMenu.Location = new System.Drawing.Point(0, 65);
+            this.accordionMenu.Location = new System.Drawing.Point(0, 60);
             this.accordionMenu.Name = "accordionMenu";
-            this.accordionMenu.Size = new System.Drawing.Size(240, 655);
+            this.accordionMenu.Size = new System.Drawing.Size(220, 640);
             this.accordionMenu.TabIndex = 1;
             // 
             // aceBanHang
@@ -140,13 +140,13 @@
             this.aceLapHoaDon});
             this.aceBanHang.Expanded = true;
             this.aceBanHang.Name = "aceBanHang";
-            this.aceBanHang.Text = "BAN HANG";
+            this.aceBanHang.Text = "💰 BÁN HÀNG";
             // 
             // aceLapHoaDon
             // 
             this.aceLapHoaDon.Name = "aceLapHoaDon";
             this.aceLapHoaDon.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.aceLapHoaDon.Text = "   Lap hoa don";
+            this.aceLapHoaDon.Text = "   • Lập hóa đơn";
             this.aceLapHoaDon.Click += new System.EventHandler(this.OnLapHoaDonClick);
             // 
             // aceTraCuu
@@ -156,20 +156,20 @@
             this.aceKhachHang});
             this.aceTraCuu.Expanded = true;
             this.aceTraCuu.Name = "aceTraCuu";
-            this.aceTraCuu.Text = "TRA CUU";
+            this.aceTraCuu.Text = "🔍 TRA CỨU";
             // 
             // aceSanPham
             // 
             this.aceSanPham.Name = "aceSanPham";
             this.aceSanPham.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.aceSanPham.Text = "   San pham";
+            this.aceSanPham.Text = "   • Sản phẩm";
             this.aceSanPham.Click += new System.EventHandler(this.OnSanPhamClick);
             // 
             // aceKhachHang
             // 
             this.aceKhachHang.Name = "aceKhachHang";
             this.aceKhachHang.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.aceKhachHang.Text = "   Khach hang";
+            this.aceKhachHang.Text = "   • Khách hàng";
             this.aceKhachHang.Click += new System.EventHandler(this.OnKhachHangClick);
             // 
             // aceLichSu
@@ -178,13 +178,13 @@
             this.aceLichSuCaNhan});
             this.aceLichSu.Expanded = true;
             this.aceLichSu.Name = "aceLichSu";
-            this.aceLichSu.Text = "LICH SU";
+            this.aceLichSu.Text = "📋 LỊCH SỬ";
             // 
             // aceLichSuCaNhan
             // 
             this.aceLichSuCaNhan.Name = "aceLichSuCaNhan";
             this.aceLichSuCaNhan.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.aceLichSuCaNhan.Text = "   Hoa don ca nhan";
+            this.aceLichSuCaNhan.Text = "   • Hóa đơn cá nhân";
             this.aceLichSuCaNhan.Click += new System.EventHandler(this.OnLichSuCaNhanClick);
             // 
             // aceTaiKhoan
@@ -194,29 +194,29 @@
             this.aceDangXuat});
             this.aceTaiKhoan.Expanded = true;
             this.aceTaiKhoan.Name = "aceTaiKhoan";
-            this.aceTaiKhoan.Text = "TAI KHOAN";
+            this.aceTaiKhoan.Text = "👤 TÀI KHOẢN";
             // 
             // aceThongTinNV
             // 
             this.aceThongTinNV.Name = "aceThongTinNV";
             this.aceThongTinNV.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.aceThongTinNV.Text = "   Thong tin NV";
+            this.aceThongTinNV.Text = "   • Thông tin NV";
             this.aceThongTinNV.Click += new System.EventHandler(this.OnThongTinNVClick);
             // 
             // aceDangXuat
             // 
             this.aceDangXuat.Name = "aceDangXuat";
             this.aceDangXuat.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.aceDangXuat.Text = "   Dang xuat";
+            this.aceDangXuat.Text = "   • Đăng xuất";
             this.aceDangXuat.Click += new System.EventHandler(this.OnDangXuatClick);
             // 
             // pnlMainContent
             // 
             this.pnlMainContent.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(247)))), ((int)(((byte)(250)))));
             this.pnlMainContent.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlMainContent.Location = new System.Drawing.Point(240, 65);
+            this.pnlMainContent.Location = new System.Drawing.Point(220, 60);
             this.pnlMainContent.Name = "pnlMainContent";
-            this.pnlMainContent.Size = new System.Drawing.Size(1040, 619);
+            this.pnlMainContent.Size = new System.Drawing.Size(980, 610);
             this.pnlMainContent.TabIndex = 2;
             // 
             // lblGhiChu
@@ -226,25 +226,25 @@
             this.lblGhiChu.Appearance.Options.UseFont = true;
             this.lblGhiChu.Appearance.Options.UseForeColor = true;
             this.lblGhiChu.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.lblGhiChu.Location = new System.Drawing.Point(240, 684);
+            this.lblGhiChu.Location = new System.Drawing.Point(220, 670);
             this.lblGhiChu.Name = "lblGhiChu";
-            this.lblGhiChu.Padding = new System.Windows.Forms.Padding(15, 8, 0, 8);
-            this.lblGhiChu.Size = new System.Drawing.Size(484, 36);
+            this.lblGhiChu.Padding = new System.Windows.Forms.Padding(10, 5, 0, 5);
+            this.lblGhiChu.Size = new System.Drawing.Size(480, 30);
             this.lblGhiChu.TabIndex = 3;
-            this.lblGhiChu.Text = "Ghi chu: Nhan vien KHONG co quyen xoa du lieu / xem bao cao tong hop";
+            this.lblGhiChu.Text = "Ghi chú: Nhân viên KHÔNG có quyền xóa dữ liệu / xem báo cáo tổng hợp";
             // 
             // fDashboardStaff
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1280, 720);
+            this.ClientSize = new System.Drawing.Size(1200, 700);
             this.Controls.Add(this.pnlMainContent);
             this.Controls.Add(this.lblGhiChu);
             this.Controls.Add(this.accordionMenu);
             this.Controls.Add(this.pnlHeader);
             this.Name = "fDashboardStaff";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Phan mem Quan ly Cua hang My pham - Nhan vien";
+            this.Text = "Phần mềm Quản lý Cửa hàng Mỹ phẩm - Nhân viên";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)(this.pnlHeader)).EndInit();
             this.pnlHeader.ResumeLayout(false);

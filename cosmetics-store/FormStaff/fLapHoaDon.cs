@@ -8,7 +8,6 @@ using DataAccessLayer;
 using DataAccessLayer.EntityClass;
 using DevExpress.XtraEditors;
 using DevExpress.XtraGrid.Views.Grid;
-using BusinessAccessLayer.Services;
 
 namespace cosmetics_store.FormStaff
 {
@@ -40,9 +39,9 @@ namespace cosmetics_store.FormStaff
             {
                 var maxHD = _context.HoaDons.Max(h => (int?)h.MaHD) ?? 0;
                 _currentMaHD = maxHD + 1;
-                lblMaHD.Text = "Mã HĐ: HD" + _currentMaHD.ToString("D4");
-                lblNV.Text = "NV: " + (CurrentUser.IsLoggedIn ? CurrentUser.User.HoTen : "N/A");
-                lblNgay.Text = "Ngày: " + DateTime.Now.ToString("dd/MM/yyyy");
+                lblMaHD.Text = $"Mã HĐ: HD{_currentMaHD:D4}";
+                lblNV.Text = $"NV: {(CurrentUser.IsLoggedIn ? CurrentUser.User.HoTen : "N/A")}";
+                lblNgay.Text = $"Ngày: {DateTime.Now:dd/MM}";
             }
             catch
             {
@@ -51,49 +50,39 @@ namespace cosmetics_store.FormStaff
             }
         }
 
-        private void LoadSanPham(string keyword = "")
+        private void LoadSanPham()
         {
             try
             {
-                var query = _context.SanPhams
+                var sanPhams = _context.SanPhams
                     .Include(sp => sp.ThuongHieu)
-                    .Where(sp => sp.SoLuongTon > 0);
-
-                if (!string.IsNullOrEmpty(keyword))
-                {
-                    keyword = keyword.ToLower();
-                    query = query.Where(sp => sp.TenSP.ToLower().Contains(keyword) ||
-                                               sp.ThuongHieu.TenThuongHieu.ToLower().Contains(keyword));
-                }
-
-                var sanPhams = query.Select(sp => new
-                {
-                    sp.MaSP,
-                    sp.TenSP,
-                    sp.DonGia,
-                    TonKho = sp.SoLuongTon,
-                    ThuongHieu = sp.ThuongHieu.TenThuongHieu
-                }).ToList();
+                    .Where(sp => sp.SoLuongTon > 0)
+                    .Select(sp => new
+                    {
+                        sp.MaSP,
+                        sp.TenSP,
+                        sp.DonGia,
+                        sp.SoLuongTon,
+                        ThuongHieu = sp.ThuongHieu.TenThuongHieu
+                    })
+                    .ToList();
 
                 gridSanPham.DataSource = sanPhams;
 
-                if (gridViewSanPham.Columns.Count > 0)
-                {
-                    gridViewSanPham.Columns["MaSP"].Caption = "Mã SP";
-                    gridViewSanPham.Columns["TenSP"].Caption = "Tên SP";
-                    gridViewSanPham.Columns["DonGia"].Caption = "Đơn giá";
-                    gridViewSanPham.Columns["TonKho"].Caption = "Tồn kho";
-                    gridViewSanPham.Columns["ThuongHieu"].Caption = "Thương hiệu";
+                gridViewSanPham.Columns["MaSP"].Caption = "Mã SP";
+                gridViewSanPham.Columns["TenSP"].Caption = "Tên SP";
+                gridViewSanPham.Columns["DonGia"].Caption = "Đơn giá";
+                gridViewSanPham.Columns["SoLuongTon"].Caption = "Tồn kho";
+                gridViewSanPham.Columns["ThuongHieu"].Caption = "Thương hiệu";
 
-                    gridViewSanPham.Columns["MaSP"].Width = 60;
-                    gridViewSanPham.Columns["TenSP"].Width = 180;
-                    gridViewSanPham.Columns["DonGia"].Width = 90;
-                    gridViewSanPham.Columns["TonKho"].Width = 70;
-                    gridViewSanPham.Columns["ThuongHieu"].Width = 100;
+                gridViewSanPham.Columns["MaSP"].Width = 60;
+                gridViewSanPham.Columns["TenSP"].Width = 150;
+                gridViewSanPham.Columns["DonGia"].Width = 100;
+                gridViewSanPham.Columns["SoLuongTon"].Width = 70;
+                gridViewSanPham.Columns["ThuongHieu"].Width = 100;
 
-                    gridViewSanPham.Columns["DonGia"].DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-                    gridViewSanPham.Columns["DonGia"].DisplayFormat.FormatString = "#,##0";
-                }
+                gridViewSanPham.Columns["DonGia"].DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+                gridViewSanPham.Columns["DonGia"].DisplayFormat.FormatString = "#,##0";
             }
             catch { }
         }
@@ -102,19 +91,6 @@ namespace cosmetics_store.FormStaff
         {
             gridViewChiTiet.OptionsBehavior.Editable = false;
             gridViewChiTiet.OptionsView.ShowGroupPanel = false;
-        }
-
-        private void btnTimSP_Click(object sender, EventArgs e)
-        {
-            LoadSanPham(txtTimSP.Text.Trim());
-        }
-
-        private void txtTimSP_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (e.KeyChar == (char)Keys.Enter)
-            {
-                LoadSanPham(txtTimSP.Text.Trim());
-            }
         }
 
         private void btnThemSP_Click(object sender, EventArgs e)
@@ -129,7 +105,7 @@ namespace cosmetics_store.FormStaff
             int maSP = Convert.ToInt32(gridViewSanPham.GetFocusedRowCellValue("MaSP"));
             string tenSP = gridViewSanPham.GetFocusedRowCellValue("TenSP").ToString();
             decimal donGia = Convert.ToDecimal(gridViewSanPham.GetFocusedRowCellValue("DonGia"));
-            int tonKho = Convert.ToInt32(gridViewSanPham.GetFocusedRowCellValue("TonKho"));
+            int tonKho = Convert.ToInt32(gridViewSanPham.GetFocusedRowCellValue("SoLuongTon"));
             int soLuong = Convert.ToInt32(spinSoLuong.Value);
 
             if (soLuong <= 0)
@@ -145,7 +121,7 @@ namespace cosmetics_store.FormStaff
 
             if (totalQty > tonKho)
             {
-                XtraMessageBox.Show("Vượt quá tồn kho! (Tồn: " + tonKho + ")", "Thông báo",
+                XtraMessageBox.Show($"Vượt quá tồn kho! (Tồn: {tonKho})", "Thông báo",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
@@ -171,27 +147,6 @@ namespace cosmetics_store.FormStaff
 
             RefreshChiTietGrid();
             UpdateTongTien();
-            spinSoLuong.Value = 1;
-        }
-
-        private void btnXoaSP_Click(object sender, EventArgs e)
-        {
-            if (gridViewChiTiet.FocusedRowHandle < 0) return;
-
-            int maSP = Convert.ToInt32(gridViewChiTiet.GetFocusedRowCellValue("MaSP"));
-            var item = _chiTietList.FirstOrDefault(c => c.MaSP == maSP);
-            if (item != null)
-            {
-                _chiTietList.Remove(item);
-                // Re-number STT
-                int stt = 1;
-                foreach (var ct in _chiTietList)
-                {
-                    ct.STT = stt++;
-                }
-                RefreshChiTietGrid();
-                UpdateTongTien();
-            }
         }
 
         private void RefreshChiTietGrid()
@@ -209,9 +164,9 @@ namespace cosmetics_store.FormStaff
                 gridViewChiTiet.Columns["ThanhTien"].Caption = "Thành tiền";
 
                 gridViewChiTiet.Columns["STT"].Width = 40;
-                gridViewChiTiet.Columns["TenSP"].Width = 180;
+                gridViewChiTiet.Columns["TenSP"].Width = 150;
                 gridViewChiTiet.Columns["SoLuong"].Width = 50;
-                gridViewChiTiet.Columns["DonGia"].Width = 90;
+                gridViewChiTiet.Columns["DonGia"].Width = 80;
                 gridViewChiTiet.Columns["ThanhTien"].Width = 100;
 
                 gridViewChiTiet.Columns["DonGia"].DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
@@ -224,7 +179,7 @@ namespace cosmetics_store.FormStaff
         private void UpdateTongTien()
         {
             decimal tongTien = _chiTietList.Sum(c => c.ThanhTien);
-            lblTongTien.Text = "TỔNG TIỀN: " + tongTien.ToString("N0") + " VND";
+            lblTongTien.Text = $"Tổng tiền: {tongTien:N0} VND";
         }
 
         private void btnChonKH_Click(object sender, EventArgs e)
@@ -236,7 +191,7 @@ namespace cosmetics_store.FormStaff
                     _selectedKhachHang = form.SelectedKhachHang;
                     if (_selectedKhachHang != null)
                     {
-                        lblKhachHang.Text = "Khách hàng: " + _selectedKhachHang.HoTen;
+                        lblKhachHang.Text = $"Khách hàng: {_selectedKhachHang.HoTen}";
                     }
                 }
             }
@@ -314,14 +269,13 @@ namespace cosmetics_store.FormStaff
                     ThoiGian = DateTime.Now,
                     HanhDong = "CREATE_HoaDon",
                     MaBanGhi = hoaDon.MaHD.ToString(),
-                    DuLieuMoi = "HĐ #" + hoaDon.MaHD + ", Tổng: " + tongTien.ToString("N0") + "đ",
+                    DuLieuMoi = $"HĐ #{hoaDon.MaHD}, Tổng: {tongTien:N0}đ",
                     MaNV = CurrentUser.IsLoggedIn ? CurrentUser.User.MaNV : (int?)null
                 };
                 _context.AuditLogs.Add(log);
                 _context.SaveChanges();
 
-                XtraMessageBox.Show(
-                    "Thanh toán thành công!\nHóa đơn: HD" + hoaDon.MaHD.ToString("D4") + "\nTổng tiền: " + tongTien.ToString("N0") + " VND",
+                XtraMessageBox.Show($"Thanh toán thành công!\nHóa đơn: HD{hoaDon.MaHD:D4}\nTổng tiền: {tongTien:N0} VND",
                     "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 // Reset
@@ -329,7 +283,7 @@ namespace cosmetics_store.FormStaff
             }
             catch (Exception ex)
             {
-                XtraMessageBox.Show("Lỗi: " + ex.Message, "Lỗi",
+                XtraMessageBox.Show($"Lỗi: {ex.Message}", "Lỗi",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -345,21 +299,11 @@ namespace cosmetics_store.FormStaff
             LoadSanPham();
         }
 
-        private void btnHuyHD_Click(object sender, EventArgs e)
+        private void btnLuu_Click(object sender, EventArgs e)
         {
-            if (_chiTietList.Count > 0)
-            {
-                var result = XtraMessageBox.Show(
-                    "Bạn có chắc muốn hủy hóa đơn này?",
-                    "Xác nhận",
-                    MessageBoxButtons.YesNo,
-                    MessageBoxIcon.Question);
-
-                if (result == DialogResult.Yes)
-                {
-                    ResetForm();
-                }
-            }
+            // Lưu hóa đơn tạm (chưa thanh toán)
+            XtraMessageBox.Show("Đã lưu hóa đơn tạm!", "Thông báo",
+                MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         protected override void Dispose(bool disposing)

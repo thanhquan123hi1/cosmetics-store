@@ -8,7 +8,7 @@ using BusinessAccessLayer.DTOs;
 
 namespace BusinessAccessLayer.Services
 {
-
+    
     public class KHService : IDisposable
     {
         private readonly CosmeticsContext _context;
