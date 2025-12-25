@@ -158,12 +158,13 @@ namespace BusinessAccessLayer.Services
                     _context.NhanViens.Add(nhanVien);
                     _context.SaveChanges();
 
-                    // Tạo hồ sơ khách hàng tương ứng
+                    // Tạo hồ sơ khách hàng tương ứng (bao gồm Email)
                     var khachHang = new KhachHang
                     {
                         MaKH = nhanVien.MaNV,
                         HoTen = registerInfo.HoTen,
                         SDT = registerInfo.SDT,
+                        Email = registerInfo.Email, // ĐÃ THÊM EMAIL
                         GioiTinh = registerInfo.GioiTinh ?? "Khác",
                         DiaChi = registerInfo.DiaChi
                     };
@@ -204,48 +205,6 @@ namespace BusinessAccessLayer.Services
         }
 
 
-        public bool IsUsernameAvailable(string username)
-        {
-            try
-            {
-                return !_context.TaiKhoans.Any(tk => tk.TenDN == username);
-            }
-            catch
-            {
-                return false;
-            }
-        }
-
-
-        public bool IsEmailAvailable(string email)
-        {
-            try
-            {
-                return !_context.TaiKhoans.Any(tk => tk.Email == email);
-            }
-            catch
-            {
-                return false;
-            }
-        }
-
-
-        public bool CheckRole(string username, string requiredRole)
-        {
-            try
-            {
-                var taiKhoan = _context.TaiKhoans.FirstOrDefault(tk => tk.TenDN == username);
-                
-                if (taiKhoan == null || taiKhoan.TrangThai == false)
-                    return false;
-
-                return taiKhoan.Quyen.Equals(requiredRole, StringComparison.OrdinalIgnoreCase);
-            }
-            catch
-            {
-                return false;
-            }
-        }
 
         public bool ChangePassword(string username, string oldPassword, string newPassword)
         {
@@ -296,32 +255,6 @@ namespace BusinessAccessLayer.Services
             }
         }
 
-        public UserInfo GetUserInfo(string username)
-        {
-            try
-            {
-                var taiKhoan = _context.TaiKhoans
-                    .Include("NhanVien")
-                    .FirstOrDefault(tk => tk.TenDN == username);
-
-                if (taiKhoan == null)
-                    return null;
-
-                return new UserInfo
-                {
-                    MaNV = taiKhoan.MaNV,
-                    HoTen = taiKhoan.NhanVien?.HoTen ?? "",
-                    TenDN = taiKhoan.TenDN,
-                    Quyen = taiKhoan.Quyen,
-                    Email = taiKhoan.Email,
-                    ChucVu = taiKhoan.NhanVien?.ChucVu ?? ""
-                };
-            }
-            catch
-            {
-                return null;
-            }
-        }
 
         #region Reset Password Functions
 

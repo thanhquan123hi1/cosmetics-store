@@ -114,20 +114,26 @@ namespace cosmetics_store.FormKH
 
         private void SetupShippingInfo()
         {
-            // Pre-fill with current user info
+            // Pre-fill with current user info from KhachHang (không phụ thuộc NhanVien)
             if (CurrentUser.IsLoggedIn)
             {
-                txtHoTen.Text = CurrentUser.User.HoTen ?? "";
-                txtSDT.Text = CurrentUser.User.Email ?? "";
-                
-                var kh = _khService.GetOrCreateKhachHang();
-                if (kh != null)
+                var accountInfo = _khService.GetAccountInfo();
+                if (accountInfo != null)
                 {
-                    txtDiaChi.Text = kh.DiaChi ?? "";
-                    if (!string.IsNullOrEmpty(kh.SDT))
+                    txtHoTen.Text = accountInfo.HoTen ?? "";
+                    txtSDT.Text = accountInfo.SDT ?? "";
+                    txtDiaChi.Text = accountInfo.DiaChi ?? "";
+                    
+                    // Nếu SDT trống, thử dùng email làm liên hệ
+                    if (string.IsNullOrEmpty(txtSDT.Text) && !string.IsNullOrEmpty(accountInfo.Email))
                     {
-                        txtSDT.Text = kh.SDT;
+                        // Không điền email vào SDT, để trống cho user nhập
                     }
+                }
+                else
+                {
+                    // Fallback nếu không lấy được thông tin khách hàng
+                    txtHoTen.Text = CurrentUser.User?.HoTen ?? "";
                 }
             }
         }
@@ -267,7 +273,7 @@ namespace cosmetics_store.FormKH
 
             decimal subtotal = _cart.Sum(c => c.ThanhTien);
             
-            // X? lý các voucher
+            // Xử lý các voucher
             switch (voucher)
             {
                 case "FREESHIP":
@@ -363,22 +369,22 @@ namespace cosmetics_store.FormKH
         }
 
         /// <summary>
-        /// T?o QR Code cho chuy?n kho?n ngân hàng theo chu?n VietQR
+        /// Tạo QR Code cho chuyển khoản ngân hàng theo chuẩn VietQR
         /// </summary>
         private void GenerateBankQR(decimal amount)
         {
             try
             {
                 // VietQR format: https://img.vietqr.io/image/{BANK_ID}-{ACCOUNT_NO}-{TEMPLATE}.png?amount={AMOUNT}&addInfo={INFO}
-                // Các Bank ID ph? bi?n: VCB, TCB, MB, VPB, ACB, BIDV, VTB...
+                // Các Bank ID phổ biến: VCB, TCB, MB, VPB, ACB, BIDV, VTB...
                 
-                string bankId = "VCB"; // Vietcombank - có th? c?u hình
-                string accountNo = "1234567890"; // S? tài kho?n - có th? c?u hình
+                string bankId = "VCB"; // Vietcombank - có thể cấu hình
+                string accountNo = "1234567890"; // Số tài khoản - có thể cấu hình
                 string template = "compact2"; // compact, compact2, qr_only, print
                 string orderInfo = $"DH{DateTime.Now:yyyyMMddHHmm}";
                 string accountName = "BEAUTY BOX COSMETICS";
                 
-                // URL VietQR API (mi?n phí)
+                // URL VietQR API (miễn phí)
                 string qrUrl = $"https://img.vietqr.io/image/{bankId}-{accountNo}-{template}.png" +
                     $"?amount={amount:0}" +
                     $"&addInfo={Uri.EscapeDataString(orderInfo)}" +
@@ -394,18 +400,18 @@ namespace cosmetics_store.FormKH
         }
 
         /// <summary>
-        /// T?o QR Code cho MoMo
+        /// Tạo QR Code cho MoMo
         /// </summary>
         private void GenerateMoMoQR(decimal amount)
         {
             try
             {
                 // MoMo deeplink format
-                string phone = "0901234567"; // S? ?i?n tho?i nh?n ti?n
+                string phone = "0901234567"; // Số điện thoại nhận tiền
                 string orderInfo = $"DH{DateTime.Now:yyyyMMddHHmm}";
                 
-                // MoMo QR format (simplified - th?c t? c?n tích h?p MoMo API)
-                // S? d?ng QR code generator API
+                // MoMo QR format (simplified - thực tế cần tích hợp MoMo API)
+                // Sử dụng QR code generator API
                 string content = $"2|99|{phone}|BEAUTY BOX|{orderInfo}|0|0|{amount:0}";
                 string qrUrl = $"https://api.qrserver.com/v1/create-qr-code/?size=200x200&data={Uri.EscapeDataString(content)}";
                 
@@ -418,7 +424,7 @@ namespace cosmetics_store.FormKH
         }
 
         /// <summary>
-        /// T?o QR Code cho ZaloPay
+        /// Tạo QR Code cho ZaloPay
         /// </summary>
         private void GenerateZaloPayQR(decimal amount)
         {
@@ -456,7 +462,7 @@ namespace cosmetics_store.FormKH
 
         private void GenerateFallbackQR(string content)
         {
-            // T?o placeholder QR khi không t?i ???c
+            // Tạo placeholder QR khi không tải được
             var bmp = new Bitmap(200, 200);
             using (var g = Graphics.FromImage(bmp))
             {
@@ -470,7 +476,7 @@ namespace cosmetics_store.FormKH
                         Alignment = StringAlignment.Center,
                         LineAlignment = StringAlignment.Center
                     };
-                    g.DrawString("QR Code\n(?ang t?i...)", font, Brushes.Gray, new RectangleF(10, 70, 180, 60), sf);
+                    g.DrawString("QR Code\n(Đang tải...)", font, Brushes.Gray, new RectangleF(10, 70, 180, 60), sf);
                 }
             }
             picQRCode.Image = bmp;
@@ -555,7 +561,7 @@ namespace cosmetics_store.FormKH
             {
                 decimal total = GetFinalTotal();
 
-                // Lấy/tạo khách hàng theo luồng chuẩn (MaKH = MaNV)
+                // Lấy/tạo khách hàng theo email (độc lập với NhanVien)
                 int maKH = GetOrCreateKhachHang();
 
                 // Tạo hóa đơn ở trạng thái CHO_DUYET để nhân viên xử lý
@@ -610,37 +616,69 @@ namespace cosmetics_store.FormKH
             }
         }
 
+        /// <summary>
+        /// Lấy hoặc tạo khách hàng - độc lập với NhanVien, dùng email để liên kết
+        /// </summary>
         private int GetOrCreateKhachHang()
         {
             if (!CurrentUser.IsLoggedIn)
             {
-                // Ứng dụng hiện yêu cầu đăng nhập cho flow khách hàng.
                 throw new Exception("Vui lòng đăng nhập để đặt hàng.");
             }
 
-            // Đồng bộ theo thiết kế: MaKH = MaNV
-            var kh = _context.KhachHangs.FirstOrDefault(k => k.MaKH == CurrentUser.User.MaNV);
+            // Sử dụng KHService để lấy/tạo khách hàng
+            var kh = _khService.GetOrCreateKhachHang();
+            
             if (kh == null)
             {
+                // Fallback: Tạo trực tiếp nếu service không tạo được
+                System.Diagnostics.Debug.WriteLine("fGioHang: KHService trả về null, tạo khách hàng trực tiếp");
+                
+                var user = CurrentUser.User;
                 kh = new KhachHang
                 {
-                    MaKH = CurrentUser.User.MaNV,
-                    HoTen = txtHoTen.Text,
-                    SDT = txtSDT.Text,
-                    DiaChi = txtDiaChi.Text,
+                    HoTen = !string.IsNullOrWhiteSpace(txtHoTen.Text) ? txtHoTen.Text : (user.HoTen ?? "Khách hàng"),
+                    SDT = txtSDT.Text ?? "",
+                    DiaChi = txtDiaChi.Text ?? "",
+                    Email = user.Email ?? "",
                     GioiTinh = "Khác"
                 };
+                
                 _context.KhachHangs.Add(kh);
+                _context.SaveChanges();
+                
+                // Lưu MaKH vào CurrentUser (sử dụng full namespace)
+                BusinessAccessLayer.Services.CurrentUser.MaKH = kh.MaKH;
+                
+                System.Diagnostics.Debug.WriteLine($"fGioHang: Đã tạo khách hàng mới MaKH={kh.MaKH}");
             }
             else
             {
                 // Cập nhật thông tin giao hàng mới nhất
-                kh.HoTen = string.IsNullOrWhiteSpace(txtHoTen.Text) ? kh.HoTen : txtHoTen.Text;
-                kh.SDT = string.IsNullOrWhiteSpace(txtSDT.Text) ? kh.SDT : txtSDT.Text;
-                kh.DiaChi = string.IsNullOrWhiteSpace(txtDiaChi.Text) ? kh.DiaChi : txtDiaChi.Text;
+                bool needUpdate = false;
+                
+                if (!string.IsNullOrWhiteSpace(txtHoTen.Text) && kh.HoTen != txtHoTen.Text)
+                {
+                    kh.HoTen = txtHoTen.Text;
+                    needUpdate = true;
+                }
+                if (!string.IsNullOrWhiteSpace(txtSDT.Text) && kh.SDT != txtSDT.Text)
+                {
+                    kh.SDT = txtSDT.Text;
+                    needUpdate = true;
+                }
+                if (!string.IsNullOrWhiteSpace(txtDiaChi.Text) && kh.DiaChi != txtDiaChi.Text)
+                {
+                    kh.DiaChi = txtDiaChi.Text;
+                    needUpdate = true;
+                }
+                
+                if (needUpdate)
+                {
+                    _context.SaveChanges();
+                }
             }
 
-            _context.SaveChanges();
             return kh.MaKH;
         }
 

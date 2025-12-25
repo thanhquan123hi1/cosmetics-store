@@ -36,6 +36,27 @@ namespace cosmetics_store.FormKH
             lblTonKho.Text = _sanPham.SoLuongTon > 0 ? $"Còn hàng ({_sanPham.SoLuongTon})" : "Hết hàng";
             lblTonKho.ForeColor = _sanPham.SoLuongTon > 0 ? Color.Green : Color.Red;
 
+            // Cấu hình số lượng theo tồn kho
+            if (spinSoLuong != null)
+            {
+                spinSoLuong.Properties.MinValue = 1;
+                spinSoLuong.Properties.MaxValue = _sanPham.SoLuongTon > 0 ? _sanPham.SoLuongTon : 1;
+
+                // Clamp lại giá trị hiện tại
+                var current = Convert.ToInt32(spinSoLuong.Value);
+                if (_sanPham.SoLuongTon <= 0)
+                {
+                    spinSoLuong.Value = 1;
+                    spinSoLuong.Enabled = false;
+                }
+                else
+                {
+                    spinSoLuong.Enabled = true;
+                    if (current < 1) spinSoLuong.Value = 1;
+                    if (current > _sanPham.SoLuongTon) spinSoLuong.Value = _sanPham.SoLuongTon;
+                }
+            }
+
             // Load hình ảnh
             try
             {
@@ -60,6 +81,7 @@ namespace cosmetics_store.FormKH
                 return;
             }
 
+            // Trả quantity cho form gọi (đọc qua spinSoLuong.Value)
             this.DialogResult = DialogResult.OK;
             this.Close();
         }
@@ -68,6 +90,15 @@ namespace cosmetics_store.FormKH
         {
             this.DialogResult = DialogResult.Cancel;
             this.Close();
+        }
+
+        public int SelectedQuantity
+        {
+            get
+            {
+                try { return Convert.ToInt32(spinSoLuong.Value); }
+                catch { return 1; }
+            }
         }
     }
 }

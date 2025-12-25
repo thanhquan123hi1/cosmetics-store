@@ -16,6 +16,9 @@ namespace DataAccessLayer.EntityClass
         [StringLength(20, ErrorMessage = "SĐT không được quá 20 ký tự")]
         public string SDT { get; set; }
 
+        [StringLength(150, ErrorMessage = "Email không được quá 150 ký tự")]
+        public string Email { get; set; }
+
         [StringLength(10, ErrorMessage = "Giới tính không được quá 10 ký tự")]
         public string GioiTinh { get; set; }
 

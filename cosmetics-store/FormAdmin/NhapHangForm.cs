@@ -354,8 +354,14 @@ namespace cosmetics_store.Forms
             int soSP = _chiTietMoi.Count;
             int tongSL = _chiTietMoi.Sum(ct => ct.SoLuong);
 
-            // Cập nhật title nếu có thể (không bắt buộc có lblTongTien)
-            this.Text = $"📦 NHẬP HÀNG | Tổng: {tongTien:N0} đ | {soSP} SP | {tongSL} đơn vị";
+            // Cập nhật label tổng tiền
+            if (lblTongTien != null)
+            {
+                lblTongTien.Text = $"💰 TỔNG: {tongTien:N0} đ | {soSP} SP | {tongSL} đơn vị";
+            }
+            
+            // Cập nhật title form
+            this.Text = $"📦 NHẬP HÀNG | Tổng: {tongTien:N0} đ";
         }
 
         private void btnTaoPhieu_Click(object sender, EventArgs e)

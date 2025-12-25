@@ -17,6 +17,48 @@ namespace cosmetics_store.Forms
             _authService = new AuthService();
             CreateCloseButton();
             ApplyVietnameseFont();
+            SetupEnterKeyHandling();
+        }
+
+        private void SetupEnterKeyHandling()
+        {
+            // Đặt AcceptButton để Enter kích hoạt btnLogin
+            this.AcceptButton = btnLogin;
+
+            // Thêm KeyDown event cho form để xử lý Enter ở mọi nơi
+            this.KeyPreview = true;
+            this.KeyDown += fLogin_KeyDown;
+
+            // Xử lý Enter trong các TextEdit
+            txtUsername.KeyDown += TxtUsername_KeyDown;
+            txtPassword.KeyDown += TxtPassword_KeyDown;
+        }
+
+        private void fLogin_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.SuppressKeyPress = true;
+                btnLogin_Click(sender, e);
+            }
+        }
+
+        private void TxtUsername_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.SuppressKeyPress = true;
+                txtPassword.Focus();
+            }
+        }
+
+        private void TxtPassword_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.SuppressKeyPress = true;
+                btnLogin_Click(sender, e);
+            }
         }
 
         private void CreateCloseButton()
@@ -204,6 +246,7 @@ namespace cosmetics_store.Forms
         {
             if (e.KeyChar == (char)Keys.Enter)
             {
+                e.Handled = true;
                 btnLogin_Click(sender, e);
             }
         }

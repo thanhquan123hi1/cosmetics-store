@@ -379,7 +379,7 @@
             this.pnlProducts.Controls.Add(this.lblSectionTitle);
             this.pnlProducts.Controls.Add(this.flowProducts);
             this.pnlProducts.Controls.Add(this.btnXemTatCa);
-            this.pnlProducts.Location = new System.Drawing.Point(0, 284);
+            this.pnlProducts.Location = new System.Drawing.Point(0, 0);
             this.pnlProducts.Name = "pnlProducts";
             this.pnlProducts.Padding = new System.Windows.Forms.Padding(15);
             this.pnlProducts.Size = new System.Drawing.Size(1165, 357);

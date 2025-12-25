@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Drawing;
-using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Windows.Forms;
 using BusinessAccessLayer.Services;
@@ -13,21 +12,12 @@ using DevExpress.XtraEditors;
 
 namespace cosmetics_store.FormKH
 {
-    /// <summary>
-    /// Dashboard chính cho KHÁCH HÀNG (USER)
-    /// Thiết kế hiện đại lấy cảm hứng từ BeautyBox/Sephora
-    /// CHỈ có quyền: Xem sản phẩm, Xem hóa đơn, Thanh toán, Thông tin tài khoản
-    /// KHÔNG có quyền: Admin, Báo cáo, Kho hàng, Nhân sự, Cấu hình
-    /// </summary>
     public partial class fDashboardKH : DevExpress.XtraEditors.XtraForm
     {
         private KHService _khService;
         private CosmeticsContext _context;
         private Timer _bannerTimer;
-        private Timer _hoverTimer;
-        private Timer _promoScrollTimer;
         private int _currentBannerIndex = 0;
-        private int _promoScrollPos = 0;
         private string[] _bannerTexts = new[]
         {
             "🌸 YÊU HÀNG XIN - SĂN SALE ĐẬM 🌸",
@@ -39,7 +29,6 @@ namespace cosmetics_store.FormKH
         // Màu theme BeautyBox
         private readonly Color _primaryPurple = Color.FromArgb(128, 0, 128);
         private readonly Color _lightPurple = Color.FromArgb(147, 112, 219);
-        private readonly Color _pastelPink = Color.FromArgb(255, 182, 193);
         private readonly Color _lightBg = Color.FromArgb(250, 248, 255);
         private readonly Color _accentGreen = Color.FromArgb(46, 204, 113);
         private readonly Color _accentRed = Color.FromArgb(231, 76, 60);
@@ -47,140 +36,69 @@ namespace cosmetics_store.FormKH
         // Menu hiện tại
         private string _currentMenu = "Trang chủ";
         private Panel _activeMenuPanel = null;
+        
+        // Cache cho products
+        private List<SanPhamDTO> _cachedTopProducts = null;
+        private List<SanPhamDTO> _cachedAllProducts = null;
+        private DateTime _lastProductLoad = DateTime.MinValue;
 
         public fDashboardKH()
         {
             InitializeComponent();
             _context = new CosmeticsContext();
             _khService = new KHService(_context);
-            this.Load += fDashboardKH_Load;
-            this.Resize += fDashboardKH_Resize;
-            this.DoubleBuffered = true;
             
-            // Enable double buffering for smoother rendering
+            // Enable double buffering
+            this.DoubleBuffered = true;
             SetStyle(ControlStyles.OptimizedDoubleBuffer | 
                      ControlStyles.AllPaintingInWmPaint | 
                      ControlStyles.UserPaint, true);
+            
+            this.Load += fDashboardKH_Load;
         }
-
+        
         private void fDashboardKH_Load(object sender, EventArgs e)
         {
-            // Seed sample products nếu chưa có
-            DatabaseSeeder.SeedSampleProducts();
-            
-            SetupModernUI();
-            SetupSidebarMenu();
-            SetupCategoryNav();
-            SetupHeader();
-            ShowHomePage();
-            StartBannerSlider();
-            StartPromoScroll();
-            AdjustLayoutForScreenSize();
-        }
-
-        private void fDashboardKH_Resize(object sender, EventArgs e)
-        {
-            AdjustLayoutForScreenSize();
-        }
-
-        #region Responsive Layout
-
-        private void AdjustLayoutForScreenSize()
-        {
-            int screenWidth = this.ClientSize.Width;
-            int screenHeight = this.ClientSize.Height;
-            int sidebarWidth = pnlSidebar.Width;
-            int mainWidth = screenWidth - sidebarWidth;
-
-            // Điều chỉnh Hero section
-            if (pnlHero.Visible)
-            {
-                // Banner chính chiếm 65% chiều rộng
-                int bannerMainWidth = (int)(mainWidth * 0.62);
-                int bannerSideWidth = (int)(mainWidth * 0.32);
-                int bannerHeight = Math.Min(280, (int)(screenHeight * 0.35));
-
-                pnlBannerMain.Size = new Size(bannerMainWidth, bannerHeight - 30);
-                pnlBannerMain.Location = new Point(15, 15);
-
-                pnlBannerSide1.Size = new Size(bannerSideWidth, (bannerHeight - 40) / 2);
-                pnlBannerSide1.Location = new Point(bannerMainWidth + 30, 15);
-
-                pnlBannerSide2.Size = new Size(bannerSideWidth, (bannerHeight - 40) / 2);
-                pnlBannerSide2.Location = new Point(bannerMainWidth + 30, pnlBannerSide1.Bottom + 10);
-
-                pnlHero.Height = bannerHeight;
-
-                // Điều chỉnh nút banner
-                btnBannerNext.Location = new Point(pnlBannerMain.Width - 50, pnlBannerMain.Height / 2 - 25);
-            }
-
-            // Điều chỉnh Product section
-            if (pnlProducts.Visible)
-            {
-                lblSectionTitle.Location = new Point((pnlProducts.Width - lblSectionTitle.Width) / 2, 10);
-                btnXemTatCa.Location = new Point((pnlProducts.Width - btnXemTatCa.Width) / 2, pnlProducts.Height - 45);
-            }
-
-            // Điều chỉnh số cột product cards
-            AdjustProductGrid();
-
-            // Refresh rounded corners
-            ApplyRoundedCorners(pnlBannerMain, 15);
-            ApplyRoundedCorners(pnlBannerSide1, 10);
-            ApplyRoundedCorners(pnlBannerSide2, 10);
-        }
-
-        private void AdjustProductGrid()
-        {
-            if (flowProducts == null) return;
-
-            int availableWidth = flowProducts.Width - 30;
-            int cardWidth = 200;
-            int cardMargin = 20;
-            int columns = Math.Max(1, availableWidth / (cardWidth + cardMargin));
-
-            // Điều chỉnh kích thước card dựa trên không gian có sẵn
-            int newCardWidth = (availableWidth - (columns * cardMargin)) / columns;
-            newCardWidth = Math.Max(180, Math.Min(220, newCardWidth));
-
-            foreach (Control ctrl in flowProducts.Controls)
-            {
-                if (ctrl is Panel card && card.Tag?.ToString() == "ProductCard")
-                {
-                    card.Width = newCardWidth;
-                }
-            }
-        }
-
-        #endregion
-
-        #region UI Setup
-
-        private void SetupModernUI()
-        {
-            this.BackColor = _lightBg;
-            ApplyRoundedCorners(pnlBannerMain, 15);
-            ApplyRoundedCorners(pnlBannerSide1, 10);
-            ApplyRoundedCorners(pnlBannerSide2, 10);
-        }
-
-        private void ApplyRoundedCorners(Control control, int radius)
-        {
-            if (control == null || control.Width <= radius * 2 || control.Height <= radius * 2) return;
+            this.SuspendLayout();
             
             try
             {
-                GraphicsPath path = new GraphicsPath();
-                path.AddArc(0, 0, radius, radius, 180, 90);
-                path.AddArc(control.Width - radius, 0, radius, radius, 270, 90);
-                path.AddArc(control.Width - radius, control.Height - radius, radius, radius, 0, 90);
-                path.AddArc(0, control.Height - radius, radius, radius, 90, 90);
-                path.CloseAllFigures();
-                control.Region = new Region(path);
+                DatabaseSeeder.SeedSampleProducts();
+                InitializeCustomer();
+                SetupSidebarMenu();
+                SetupCategoryNav();
+                SetupHeader();
+                StartBannerSlider();
+                
+                // Hiển thị trang chủ
+                ShowHomePage();
             }
-            catch { }
+            finally
+            {
+                this.ResumeLayout(true);
+            }
         }
+        
+        private void InitializeCustomer()
+        {
+            try
+            {
+                if (CurrentUser.IsLoggedIn)
+                {
+                    var kh = _khService.GetOrCreateKhachHang();
+                    if (kh != null)
+                    {
+                        System.Diagnostics.Debug.WriteLine($"Customer initialized: MaKH={kh.MaKH}");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"InitializeCustomer Error: {ex.Message}");
+            }
+        }
+
+        #region UI Setup
 
         private void SetupHeader()
         {
@@ -193,23 +111,16 @@ namespace cosmetics_store.FormKH
             {
                 lblDangNhap.Text = "👤 Đăng nhập";
             }
-            
             UpdateCartCount();
-            AddHoverEffect(lblGioHang);
-            AddHoverEffect(lblDangNhap);
-            AddHoverEffect(lblYeuThich);
         }
 
         private void SetupCategoryNav()
         {
+            flowNav.SuspendLayout();
             flowNav.Controls.Clear();
 
-            var categories = new[]
-            {
-                "Thương hiệu", "Khuyến mãi hot", "Trang điểm", 
-                "Chăm sóc da mặt", "Chăm sóc cơ thể", "Sản phẩm mới",
-                "Đặt hàng Online & Nhận tại cửa hàng"
-            };
+            var categories = new[] { "Thương hiệu", "Khuyến mãi hot", "Trang điểm", 
+                "Chăm sóc da mặt", "Chăm sóc cơ thể", "Sản phẩm mới" };
 
             foreach (var cat in categories)
             {
@@ -219,33 +130,21 @@ namespace cosmetics_store.FormKH
                     Font = new Font("Segoe UI", 9.5F),
                     LinkColor = Color.FromArgb(60, 60, 60),
                     ActiveLinkColor = _primaryPurple,
-                    VisitedLinkColor = Color.FromArgb(60, 60, 60),
                     LinkBehavior = LinkBehavior.HoverUnderline,
                     AutoSize = true,
                     Margin = new Padding(15, 5, 15, 5),
                     Padding = new Padding(5)
                 };
-                btn.Click += (s, e) => FilterByCategory(cat);
+                string category = cat;
+                btn.Click += (s, e) => { ShowProductsPage(); lblSectionTitle.Text = $"📦 {category.ToUpper()}"; };
                 flowNav.Controls.Add(btn);
             }
-        }
-
-        private void FilterByCategory(string category)
-        {
-            ShowProductsPage();
-            lblSectionTitle.Text = $"📦 {category.ToUpper()}";
-            // TODO: Filter products by category
-        }
-
-        private void AddHoverEffect(Control control)
-        {
-            Color originalColor = control.ForeColor;
-            control.MouseEnter += (s, e) => control.ForeColor = _primaryPurple;
-            control.MouseLeave += (s, e) => control.ForeColor = originalColor;
+            flowNav.ResumeLayout(true);
         }
 
         private void SetupSidebarMenu()
         {
+            flowSidebar.SuspendLayout();
             flowSidebar.Controls.Clear();
 
             var menuItems = new[]
@@ -259,18 +158,13 @@ namespace cosmetics_store.FormKH
 
             foreach (var (icon, text, action) in menuItems)
             {
-                var menuItem = CreateSidebarMenuItem(icon, text, action);
-                flowSidebar.Controls.Add(menuItem);
+                flowSidebar.Controls.Add(CreateSidebarMenuItem(icon, text, action));
             }
 
-            var logoutItem = CreateSidebarMenuItem("🚪", "Đăng xuất", new Action(DoLogout));
+            var logoutItem = CreateSidebarMenuItem("🚪", "Đăng xuất", new Action(() => btnDangXuat_Click(this, EventArgs.Empty)));
             logoutItem.Margin = new Padding(5, 30, 5, 5);
             flowSidebar.Controls.Add(logoutItem);
-        }
-
-        private void DoLogout()
-        {
-            btnDangXuat_Click(this, EventArgs.Empty);
+            flowSidebar.ResumeLayout(true);
         }
 
         private Panel CreateSidebarMenuItem(string icon, string text, Action clickAction)
@@ -278,7 +172,7 @@ namespace cosmetics_store.FormKH
             var panel = new Panel
             {
                 Size = new Size(flowSidebar.Width - 10, 50),
-                Margin = new Padding(3, 3, 3, 3),
+                Margin = new Padding(3),
                 BackColor = Color.Transparent,
                 Cursor = Cursors.Hand,
                 Tag = text
@@ -291,45 +185,30 @@ namespace cosmetics_store.FormKH
                 Size = new Size(48, 50),
                 Location = new Point(5, 0),
                 TextAlign = ContentAlignment.MiddleCenter,
-                BackColor = Color.Transparent,
-                Cursor = Cursors.Hand
+                BackColor = Color.Transparent
             };
 
             var lblText = new Label
             {
                 Text = text,
-                Font = new Font("Segoe UI", 11F, FontStyle.Regular),
+                Font = new Font("Segoe UI", 11F),
                 ForeColor = Color.FromArgb(60, 60, 60),
                 Size = new Size(150, 50),
                 Location = new Point(55, 0),
                 TextAlign = ContentAlignment.MiddleLeft,
                 BackColor = Color.Transparent,
-                Cursor = Cursors.Hand,
                 AutoEllipsis = true
             };
 
             panel.Controls.Add(lblIcon);
             panel.Controls.Add(lblText);
 
-            // Hover effect
-            panel.MouseEnter += (s, e) => AnimateMenuHover(panel, true);
-            panel.MouseLeave += (s, e) => AnimateMenuHover(panel, false);
-            lblIcon.MouseEnter += (s, e) => AnimateMenuHover(panel, true);
-            lblIcon.MouseLeave += (s, e) => AnimateMenuHover(panel, false);
-            lblText.MouseEnter += (s, e) => AnimateMenuHover(panel, true);
-            lblText.MouseLeave += (s, e) => AnimateMenuHover(panel, false);
-
-            panel.Click += (s, e) => { SetActiveMenu(text); clickAction(); };
-            lblIcon.Click += (s, e) => { SetActiveMenu(text); clickAction(); };
-            lblText.Click += (s, e) => { SetActiveMenu(text); clickAction(); };
+            EventHandler clickHandler = (s, e) => { SetActiveMenu(text); clickAction(); };
+            panel.Click += clickHandler;
+            lblIcon.Click += clickHandler;
+            lblText.Click += clickHandler;
 
             return panel;
-        }
-
-        private void AnimateMenuHover(Panel panel, bool isHovering)
-        {
-            if (_activeMenuPanel == panel) return;
-            panel.BackColor = isHovering ? Color.FromArgb(240, 230, 250) : Color.Transparent;
         }
 
         private void SetActiveMenu(string menuName)
@@ -341,30 +220,15 @@ namespace cosmetics_store.FormKH
                 if (ctrl is Panel panel)
                 {
                     bool isActive = panel.Tag?.ToString() == menuName;
-                    if (isActive)
+                    panel.BackColor = isActive ? Color.FromArgb(220, 200, 240) : Color.Transparent;
+                    if (isActive) _activeMenuPanel = panel;
+                    
+                    foreach (Control child in panel.Controls)
                     {
-                        panel.BackColor = Color.FromArgb(220, 200, 240);
-                        _activeMenuPanel = panel;
-                        
-                        foreach (Control child in panel.Controls)
+                        if (child is Label lbl && lbl.Location.X > 40)
                         {
-                            if (child is Label lbl && lbl.Location.X > 40)
-                            {
-                                lbl.Font = new Font("Segoe UI", 10.5F, FontStyle.Bold);
-                                lbl.ForeColor = _primaryPurple;
-                            }
-                        }
-                    }
-                    else
-                    {
-                        panel.BackColor = Color.Transparent;
-                        foreach (Control child in panel.Controls)
-                        {
-                            if (child is Label lbl && lbl.Location.X > 40)
-                            {
-                                lbl.Font = new Font("Segoe UI", 10.5F, FontStyle.Regular);
-                                lbl.ForeColor = Color.FromArgb(60, 60, 60);
-                            }
+                            lbl.Font = new Font("Segoe UI", 10.5F, isActive ? FontStyle.Bold : FontStyle.Regular);
+                            lbl.ForeColor = isActive ? _primaryPurple : Color.FromArgb(60, 60, 60);
                         }
                     }
                 }
@@ -373,7 +237,7 @@ namespace cosmetics_store.FormKH
 
         #endregion
 
-        #region Banner & Promo Animation
+        #region Banner
 
         private void StartBannerSlider()
         {
@@ -381,27 +245,11 @@ namespace cosmetics_store.FormKH
             _bannerTimer.Tick += (s, e) =>
             {
                 _currentBannerIndex = (_currentBannerIndex + 1) % _bannerTexts.Length;
-                AnimateBannerChange();
+                lblBannerMain.Text = _bannerTexts[_currentBannerIndex];
+                UpdateBannerDots();
             };
             _bannerTimer.Start();
             lblBannerMain.Text = _bannerTexts[0];
-            UpdateBannerDots();
-        }
-
-        private void StartPromoScroll()
-        {
-            _promoScrollTimer = new Timer { Interval = 50 };
-            _promoScrollTimer.Tick += (s, e) =>
-            {
-                _promoScrollPos++;
-                if (_promoScrollPos > 100) _promoScrollPos = 0;
-            };
-            _promoScrollTimer.Start();
-        }
-
-        private void AnimateBannerChange()
-        {
-            lblBannerMain.Text = _bannerTexts[_currentBannerIndex];
             UpdateBannerDots();
         }
 
@@ -409,75 +257,32 @@ namespace cosmetics_store.FormKH
         {
             string dots = "";
             for (int i = 0; i < _bannerTexts.Length; i++)
-            {
                 dots += (i == _currentBannerIndex) ? " ● " : " ○ ";
-            }
             lblBannerDots.Text = dots;
         }
 
         private void btnBannerPrev_Click(object sender, EventArgs e)
         {
             _currentBannerIndex = (_currentBannerIndex - 1 + _bannerTexts.Length) % _bannerTexts.Length;
-            AnimateBannerChange();
+            lblBannerMain.Text = _bannerTexts[_currentBannerIndex];
+            UpdateBannerDots();
         }
 
         private void btnBannerNext_Click(object sender, EventArgs e)
         {
             _currentBannerIndex = (_currentBannerIndex + 1) % _bannerTexts.Length;
-            AnimateBannerChange();
+            lblBannerMain.Text = _bannerTexts[_currentBannerIndex];
+            UpdateBannerDots();
         }
 
         #endregion
 
-        #region Page Navigation
+        #region Page Navigation - QUAN TRỌNG: Quản lý hiển thị panels
 
-        private void ShowHomePage()
-        {
-            SetActiveMenu("Trang chủ");
-            pnlHero.Visible = true;
-            pnlProducts.Visible = true;
-            LoadTopProducts();
-            AdjustLayoutForScreenSize();
-        }
-
-        private void ShowProductsPage()
-        {
-            SetActiveMenu("Sản phẩm");
-            pnlHero.Visible = false;
-            pnlProducts.Visible = true;
-            lblSectionTitle.Text = "🛍️ TẤT CẢ SẢN PHẨM";
-            LoadAllProducts();
-            AdjustLayoutForScreenSize();
-        }
-
-        private void ShowInvoicesPage()
-        {
-            SetActiveMenu("Hóa đơn mua hàng");
-            pnlHero.Visible = false;
-            pnlProducts.Visible = false;
-            ClearMainContent();
-            ShowInvoicesList();
-        }
-
-        private void ShowPaymentPage()
-        {
-            SetActiveMenu("Thanh toán");
-            pnlHero.Visible = false;
-            pnlProducts.Visible = false;
-            ClearMainContent();
-            ShowPaymentPanel();
-        }
-
-        private void ShowAccountInfoPage()
-        {
-            SetActiveMenu("Thông tin tài khoản");
-            pnlHero.Visible = false;
-            pnlProducts.Visible = false;
-            ClearMainContent();
-            ShowAccountInfo();
-        }
-
-        private void ClearMainContent()
+        /// <summary>
+        /// Ẩn tất cả panels con trong pnlMainArea (trừ pnlHero và pnlProducts)
+        /// </summary>
+        private void HideAllDynamicPanels()
         {
             var toRemove = pnlMainArea.Controls.Cast<Control>()
                 .Where(c => c != pnlHero && c != pnlProducts)
@@ -490,210 +295,255 @@ namespace cosmetics_store.FormKH
             }
         }
 
+        /// <summary>
+        /// Cập nhật vị trí pnlProducts dựa trên pnlHero
+        /// </summary>
+        private void UpdateProductsPosition()
+        {
+            if (pnlHero.Visible)
+            {
+                pnlProducts.Location = new Point(0, pnlHero.Bottom + 5);
+            }
+            else
+            {
+                pnlProducts.Location = new Point(0, 0);
+            }
+            pnlProducts.Height = pnlMainArea.Height - pnlProducts.Top - 10;
+        }
+
+        private void ShowHomePage()
+        {
+            SetActiveMenu("Trang chủ");
+            HideAllDynamicPanels();
+            
+            pnlHero.Visible = true;
+            pnlProducts.Visible = true;
+            UpdateProductsPosition();
+            
+            lblSectionTitle.Text = "🔥 TOP SẢN PHẨM BÁN CHẠY";
+            LoadTopProducts();
+        }
+
+        private void ShowProductsPage()
+        {
+            SetActiveMenu("Sản phẩm");
+            HideAllDynamicPanels();
+            
+            pnlHero.Visible = false;
+            pnlProducts.Visible = true;
+            UpdateProductsPosition();
+            
+            lblSectionTitle.Text = "🛍️ TẤT CẢ SẢN PHẨM";
+            LoadAllProducts();
+        }
+
+        private void ShowInvoicesPage()
+        {
+            SetActiveMenu("Hóa đơn mua hàng");
+            HideAllDynamicPanels();
+            
+            pnlHero.Visible = false;
+            pnlProducts.Visible = false;
+            
+            ShowInvoicesList();
+        }
+
+        private void ShowPaymentPage()
+        {
+            SetActiveMenu("Thanh toán");
+            HideAllDynamicPanels();
+            
+            pnlHero.Visible = false;
+            pnlProducts.Visible = false;
+            
+            ShowPaymentPanel();
+        }
+
+        private void ShowAccountInfoPage()
+        {
+            SetActiveMenu("Thông tin tài khoản");
+            HideAllDynamicPanels();
+            
+            pnlHero.Visible = false;
+            pnlProducts.Visible = false;
+            
+            ShowAccountInfo();
+        }
+
         #endregion
 
         #region Products
 
         private void LoadTopProducts()
         {
-            lblSectionTitle.Text = "🔥 TOP SẢN PHẨM BÁN CHẠY";
+            if (_cachedTopProducts != null && (DateTime.Now - _lastProductLoad).TotalMinutes < 5)
+            {
+                DisplayProducts(_cachedTopProducts);
+                return;
+            }
+            
             var products = _khService.GetTopProducts(6);
+            _cachedTopProducts = products;
+            _lastProductLoad = DateTime.Now;
             DisplayProducts(products);
         }
 
         private void LoadAllProducts()
         {
-            var products = _khService.GetAllProducts(1, 30);
+            if (_cachedAllProducts != null && (DateTime.Now - _lastProductLoad).TotalMinutes < 5)
+            {
+                DisplayProducts(_cachedAllProducts);
+                return;
+            }
+            
+            var products = _khService.GetAllProducts(1, 20);
+            _cachedAllProducts = products;
+            _lastProductLoad = DateTime.Now;
             DisplayProducts(products);
         }
 
         private void DisplayProducts(List<SanPhamDTO> products)
         {
-            flowProducts.Controls.Clear();
             flowProducts.SuspendLayout();
+            
+            foreach (Control ctrl in flowProducts.Controls)
+                ctrl.Dispose();
+            flowProducts.Controls.Clear();
 
-            if (products.Count == 0)
+            if (products == null || products.Count == 0)
             {
-                var lblEmpty = new Label
+                flowProducts.Controls.Add(new Label
                 {
                     Text = "📭 Không có sản phẩm nào",
                     Font = new Font("Segoe UI", 14F),
                     ForeColor = Color.Gray,
                     AutoSize = true,
                     Margin = new Padding(20)
-                };
-                flowProducts.Controls.Add(lblEmpty);
+                });
             }
             else
             {
                 foreach (var sp in products)
-                {
-                    var card = CreateModernProductCard(sp);
-                    flowProducts.Controls.Add(card);
-                }
+                    flowProducts.Controls.Add(CreateProductCard(sp));
             }
 
-            flowProducts.ResumeLayout();
+            flowProducts.ResumeLayout(true);
         }
 
-        private Panel CreateModernProductCard(SanPhamDTO sp)
+        private Panel CreateProductCard(SanPhamDTO sp)
         {
             var card = new Panel
             {
-                Size = new Size(200, 310),
+                Size = new Size(200, 280),
                 BackColor = Color.White,
-                Margin = new Padding(10),
+                Margin = new Padding(8),
                 Cursor = Cursors.Hand,
-                Tag = "ProductCard"
-            };
-
-            // Shadow effect
-            card.Paint += (s, e) =>
-            {
-                using (var pen = new Pen(Color.FromArgb(30, 0, 0, 0), 1))
-                {
-                    e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
-                    e.Graphics.DrawRectangle(pen, 0, 0, card.Width - 1, card.Height - 1);
-                }
+                BorderStyle = BorderStyle.FixedSingle
             };
 
             // FREESHIP Badge
-            var lblFreeship = new Label
+            card.Controls.Add(new Label
             {
                 Text = "FREESHIP",
                 Font = new Font("Segoe UI", 7F, FontStyle.Bold),
                 ForeColor = Color.White,
                 BackColor = _accentGreen,
-                Size = new Size(58, 18),
-                Location = new Point(8, 8),
+                Size = new Size(55, 16),
+                Location = new Point(5, 5),
                 TextAlign = ContentAlignment.MiddleCenter
-            };
-            card.Controls.Add(lblFreeship);
+            });
 
             // Price Badge
-            var lblPriceTag = new Label
+            card.Controls.Add(new Label
             {
                 Text = sp.GiaShort,
-                Font = new Font("Segoe UI", 8F, FontStyle.Bold),
+                Font = new Font("Segoe UI", 7F, FontStyle.Bold),
                 ForeColor = Color.White,
                 BackColor = _accentRed,
-                Size = new Size(55, 20),
-                Location = new Point(card.Width - 63, 8),
+                Size = new Size(50, 16),
+                Location = new Point(card.Width - 57, 5),
                 TextAlign = ContentAlignment.MiddleCenter
-            };
-            card.Controls.Add(lblPriceTag);
+            });
 
-            // Wishlist
-            var lblWishlist = new Label
-            {
-                Text = "♡",
-                Font = new Font("Segoe UI", 16F),
-                ForeColor = Color.FromArgb(200, 200, 200),
-                Size = new Size(30, 30),
-                Location = new Point(card.Width - 35, 30),
-                TextAlign = ContentAlignment.MiddleCenter,
-                Cursor = Cursors.Hand
-            };
-            lblWishlist.Click += (s, e) =>
-            {
-                lblWishlist.Text = lblWishlist.Text == "♡" ? "♥" : "♡";
-                lblWishlist.ForeColor = lblWishlist.Text == "♥" ? Color.Red : Color.FromArgb(200, 200, 200);
-            };
-            card.Controls.Add(lblWishlist);
-
-            // Product Image
+            // Product Image placeholder
             var picProduct = new Panel
             {
-                Size = new Size(180, 135),
-                Location = new Point(10, 38),
-                BackColor = Color.FromArgb(248, 248, 252),
-                Cursor = Cursors.Hand
+                Size = new Size(180, 100),
+                Location = new Point(10, 28),
+                BackColor = Color.FromArgb(248, 248, 252)
             };
-            
-            // Placeholder icon
-            var lblImagePlaceholder = new Label
+            picProduct.Controls.Add(new Label
             {
                 Text = "🧴",
-                Font = new Font("Segoe UI Emoji", 40F),
+                Font = new Font("Segoe UI Emoji", 32F),
                 Dock = DockStyle.Fill,
                 TextAlign = ContentAlignment.MiddleCenter,
                 ForeColor = Color.FromArgb(200, 180, 220)
-            };
-            picProduct.Controls.Add(lblImagePlaceholder);
+            });
             card.Controls.Add(picProduct);
 
             // Brand
-            var lblBrand = new Label
+            card.Controls.Add(new Label
             {
                 Text = sp.TenThuongHieu?.ToUpper() ?? "N/A",
                 Font = new Font("Segoe UI", 8F, FontStyle.Bold),
                 ForeColor = Color.Gray,
-                Location = new Point(10, 178),
-                Size = new Size(180, 18),
+                Location = new Point(10, 135),
+                Size = new Size(180, 16),
                 AutoEllipsis = true
-            };
-            card.Controls.Add(lblBrand);
+            });
 
             // Product Name
-            var lblName = new Label
+            card.Controls.Add(new Label
             {
                 Text = sp.TenSP,
-                Font = new Font("Segoe UI", 9.5F),
+                Font = new Font("Segoe UI", 9F),
                 ForeColor = Color.FromArgb(45, 45, 48),
-                Location = new Point(10, 196),
-                Size = new Size(180, 42),
+                Location = new Point(10, 153),
+                Size = new Size(180, 35),
                 AutoEllipsis = true
-            };
-            card.Controls.Add(lblName);
+            });
 
             // Rating
-            var lblRating = new Label
+            card.Controls.Add(new Label
             {
-                Text = "★★★★★ (0)",
+                Text = "★★★★★",
                 Font = new Font("Segoe UI", 8F),
                 ForeColor = Color.FromArgb(255, 193, 7),
-                Location = new Point(10, 240),
-                Size = new Size(100, 18)
-            };
-            card.Controls.Add(lblRating);
+                Location = new Point(10, 192),
+                Size = new Size(80, 16)
+            });
 
             // Price
-            var lblPrice = new Label
+            card.Controls.Add(new Label
             {
                 Text = sp.GiaFormatted,
-                Font = new Font("Segoe UI", 13F, FontStyle.Bold),
+                Font = new Font("Segoe UI", 12F, FontStyle.Bold),
                 ForeColor = _accentRed,
-                Location = new Point(10, 260),
-                Size = new Size(130, 25)
-            };
-            card.Controls.Add(lblPrice);
+                Location = new Point(10, 212),
+                Size = new Size(120, 22)
+            });
 
             // Add to cart button
             var btnAddCart = new Button
             {
                 Text = "🛒",
-                Font = new Font("Segoe UI Emoji", 14F),
-                Size = new Size(45, 40),
-                Location = new Point(card.Width - 55, 260),
+                Font = new Font("Segoe UI Emoji", 12F),
+                Size = new Size(40, 35),
+                Location = new Point(card.Width - 50, 210),
                 FlatStyle = FlatStyle.Flat,
                 BackColor = _lightPurple,
                 ForeColor = Color.White,
                 Cursor = Cursors.Hand
             };
             btnAddCart.FlatAppearance.BorderSize = 0;
-            btnAddCart.Click += (s, e) => AddToCart(sp.MaSP);
+            
+            int maSP = sp.MaSP;
+            btnAddCart.Click += (s, e) => AddToCart(maSP);
             card.Controls.Add(btnAddCart);
 
-            // Hover effects
-            card.MouseEnter += (s, e) => card.BackColor = Color.FromArgb(252, 250, 255);
-            card.MouseLeave += (s, e) => card.BackColor = Color.White;
-            picProduct.MouseEnter += (s, e) => card.BackColor = Color.FromArgb(252, 250, 255);
-            picProduct.MouseLeave += (s, e) => card.BackColor = Color.White;
-
-            // Click for detail
-            card.Click += (s, e) => ShowProductDetail(sp.MaSP);
-            picProduct.Click += (s, e) => ShowProductDetail(sp.MaSP);
-            lblName.Click += (s, e) => ShowProductDetail(sp.MaSP);
+            card.Click += (s, e) => ShowProductDetail(maSP);
+            picProduct.Click += (s, e) => ShowProductDetail(maSP);
 
             return card;
         }
@@ -704,35 +554,26 @@ namespace cosmetics_store.FormKH
 
         private void ShowInvoicesList()
         {
-            var panel = CreateContentPanel("📋 HÓA ĐƠN MUA HÀNG CỦA BẠN", 
-                "Chỉ hiển thị hóa đơn của tài khoản đang đăng nhập. Bạn chỉ có quyền XEM, không thể chỉnh sửa.");
+            var panel = CreateContentPanel("📋 HÓA ĐƠN MUA HÀNG");
 
             if (!CurrentUser.IsLoggedIn)
             {
-                AddNotLoggedInMessage(panel, 100);
+                AddNotLoggedInMessage(panel, 80);
                 pnlMainArea.Controls.Add(panel);
                 return;
             }
 
             var invoices = _khService.GetMyInvoices();
 
-            var flowInvoices = new FlowLayoutPanel
+            int yPos = 80;
+            if (invoices == null || invoices.Count == 0)
             {
-                Location = new Point(20, 90),
-                Size = new Size(panel.Width - 60, panel.Height - 120),
-                Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom,
-                AutoScroll = true,
-                FlowDirection = FlowDirection.TopDown,
-                WrapContents = false
-            };
-
-            if (invoices.Count == 0)
-            {
-                flowInvoices.Controls.Add(new Label
+                panel.Controls.Add(new Label
                 {
                     Text = "📭 Bạn chưa có hóa đơn nào.",
                     Font = new Font("Segoe UI", 12F),
                     ForeColor = Color.Gray,
+                    Location = new Point(20, yPos),
                     AutoSize = true
                 });
             }
@@ -740,80 +581,45 @@ namespace cosmetics_store.FormKH
             {
                 foreach (var hd in invoices)
                 {
-                    flowInvoices.Controls.Add(CreateInvoiceCard(hd));
+                    panel.Controls.Add(CreateInvoiceCard(hd, yPos));
+                    yPos += 85;
                 }
             }
 
-            panel.Controls.Add(flowInvoices);
             pnlMainArea.Controls.Add(panel);
         }
 
-        private Panel CreateInvoiceCard(HoaDonDTO hd)
+        private Panel CreateInvoiceCard(HoaDonDTO hd, int yPos)
         {
             var card = new Panel
             {
-                Size = new Size(Math.Min(800, pnlMainArea.Width - 80), 105),
+                Size = new Size(Math.Min(700, pnlMainArea.Width - 60), 75),
+                Location = new Point(20, yPos),
                 BackColor = Color.FromArgb(250, 248, 255),
-                Margin = new Padding(0, 8, 0, 8),
-                Cursor = Cursors.Hand
-            };
-
-            card.Paint += (s, e) =>
-            {
-                using (var pen = new Pen(Color.FromArgb(220, 210, 230), 1))
-                {
-                    e.Graphics.DrawRectangle(pen, 0, 0, card.Width - 1, card.Height - 1);
-                }
+                Cursor = Cursors.Hand,
+                BorderStyle = BorderStyle.FixedSingle
             };
 
             card.Controls.Add(new Label
             {
-                Text = $"🧾 Mã HĐ: #{hd.MaHD}",
-                Font = new Font("Segoe UI", 12F, FontStyle.Bold),
+                Text = $"🧾 #{hd.MaHD} | 📅 {hd.NgayFormatted} | 💰 {hd.TongTienFormatted}",
+                Font = new Font("Segoe UI", 11F, FontStyle.Bold),
                 ForeColor = _primaryPurple,
-                Location = new Point(15, 15),
+                Location = new Point(10, 12),
                 AutoSize = true
             });
 
             card.Controls.Add(new Label
             {
-                Text = $"📅 {hd.NgayFormatted}",
+                Text = $"{(hd.DaThanhToan ? "✅ Đã thanh toán" : "⏳ Chờ thanh toán")} | 📦 {hd.SoSanPham} SP",
                 Font = new Font("Segoe UI", 10F),
-                ForeColor = Color.Gray,
-                Location = new Point(15, 45),
-                AutoSize = true
-            });
-
-            card.Controls.Add(new Label
-            {
-                Text = $"💰 {hd.TongTienFormatted}",
-                Font = new Font("Segoe UI", 12F, FontStyle.Bold),
-                ForeColor = _accentRed,
-                Location = new Point(280, 30),
-                AutoSize = true
-            });
-
-            card.Controls.Add(new Label
-            {
-                Text = hd.DaThanhToan ? "✅ Đã thanh toán" : "⏳ Chờ thanh toán",
-                Font = new Font("Segoe UI", 10F, FontStyle.Bold),
                 ForeColor = hd.DaThanhToan ? _accentGreen : Color.Orange,
-                Location = new Point(500, 30),
+                Location = new Point(10, 42),
                 AutoSize = true
             });
 
-            card.Controls.Add(new Label
-            {
-                Text = $"💳 {hd.PhuongThucTT ?? "N/A"} | 📦 {hd.SoSanPham} sản phẩm",
-                Font = new Font("Segoe UI", 9F),
-                ForeColor = Color.Gray,
-                Location = new Point(15, 75),
-                AutoSize = true
-            });
-
-            card.MouseEnter += (s, e) => card.BackColor = Color.FromArgb(240, 235, 250);
-            card.MouseLeave += (s, e) => card.BackColor = Color.FromArgb(250, 248, 255);
-            card.Click += (s, e) => ShowInvoiceDetailDialog(hd.MaHD);
+            int maHD = hd.MaHD;
+            card.Click += (s, e) => ShowInvoiceDetailDialog(maHD);
 
             return card;
         }
@@ -827,20 +633,15 @@ namespace cosmetics_store.FormKH
                 return;
             }
 
-            string message = $"═══ CHI TIẾT HÓA ĐƠN #{detail.MaHD} ═══\n\n";
+            string message = $"══ HÓA ĐƠN #{detail.MaHD} ══\n\n";
             message += $"📅 Ngày: {detail.NgayFormatted}\n";
-            message += $"💳 Phương thức: {detail.PhuongThucTT}\n";
             message += $"📊 Trạng thái: {detail.TrangThai}\n\n";
-            message += "────── SẢN PHẨM ──────\n";
+            message += "── SẢN PHẨM ──\n";
 
             foreach (var ct in detail.ChiTiet)
-            {
-                message += $"\n• {ct.TenSP}\n";
-                message += $"  {ct.SoLuong} x {ct.DonGiaFormatted} = {ct.ThanhTienFormatted}\n";
-            }
+                message += $"• {ct.TenSP}: {ct.SoLuong} x {ct.DonGiaFormatted} = {ct.ThanhTienFormatted}\n";
 
-            message += $"\n══════════════════════\n";
-            message += $"💰 TỔNG CỘNG: {detail.TongTienFormatted}";
+            message += $"\n💰 TỔNG: {detail.TongTienFormatted}";
 
             XtraMessageBox.Show(message, "Chi tiết hóa đơn", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
@@ -851,7 +652,7 @@ namespace cosmetics_store.FormKH
 
         private void ShowPaymentPanel()
         {
-            var panel = CreateContentPanel("💳 THANH TOÁN HÓA ĐƠN", "");
+            var panel = CreateContentPanel("💳 THANH TOÁN HÓA ĐƠN");
 
             if (!CurrentUser.IsLoggedIn)
             {
@@ -862,7 +663,7 @@ namespace cosmetics_store.FormKH
 
             var unpaidInvoices = _khService.GetUnpaidInvoices();
 
-            if (unpaidInvoices.Count == 0)
+            if (unpaidInvoices == null || unpaidInvoices.Count == 0)
             {
                 panel.Controls.Add(new Label
                 {
@@ -875,20 +676,11 @@ namespace cosmetics_store.FormKH
             }
             else
             {
-                panel.Controls.Add(new Label
-                {
-                    Text = $"⚠️ Bạn có {unpaidInvoices.Count} hóa đơn chờ thanh toán:",
-                    Font = new Font("Segoe UI", 11F),
-                    ForeColor = Color.Orange,
-                    Location = new Point(20, 60),
-                    AutoSize = true
-                });
-
-                int yPos = 100;
+                int yPos = 80;
                 foreach (var hd in unpaidInvoices)
                 {
                     panel.Controls.Add(CreatePaymentCard(hd, yPos));
-                    yPos += 130;
+                    yPos += 100;
                 }
             }
 
@@ -899,80 +691,53 @@ namespace cosmetics_store.FormKH
         {
             var card = new Panel
             {
-                Size = new Size(Math.Min(750, pnlMainArea.Width - 80), 115),
+                Size = new Size(Math.Min(600, pnlMainArea.Width - 60), 90),
                 Location = new Point(20, yPos),
                 BackColor = Color.FromArgb(255, 250, 245),
-                Padding = new Padding(15)
-            };
-
-            card.Paint += (s, e) =>
-            {
-                using (var pen = new Pen(Color.FromArgb(255, 200, 150), 2))
-                {
-                    e.Graphics.DrawRectangle(pen, 0, 0, card.Width - 1, card.Height - 1);
-                }
+                BorderStyle = BorderStyle.FixedSingle
             };
 
             card.Controls.Add(new Label
             {
                 Text = $"🧾 HĐ #{hd.MaHD} | {hd.NgayFormatted} | {hd.TongTienFormatted}",
-                Font = new Font("Segoe UI", 12F, FontStyle.Bold),
-                ForeColor = Color.FromArgb(45, 45, 48),
-                Location = new Point(15, 15),
+                Font = new Font("Segoe UI", 11F, FontStyle.Bold),
+                Location = new Point(10, 10),
                 AutoSize = true
             });
 
-            card.Controls.Add(new Label
-            {
-                Text = "Chọn phương thức thanh toán:",
-                Font = new Font("Segoe UI", 9F),
-                Location = new Point(15, 48),
-                AutoSize = true
-            });
+            int btnX = 10;
+            var methods = new[] { ("COD", "🚚 COD"), ("Bank", "🏦 Chuyển khoản") };
 
-            int btnX = 15;
-            var paymentMethods = new[]
+            foreach (var (method, text) in methods)
             {
-                ("🚚 COD", "COD - Thanh toán khi nhận hàng"),
-                ("🏦 Chuyển khoản", "Chuyển khoản ngân hàng"),
-                ("📱 Ví điện tử", "Ví điện tử (MoMo/ZaloPay)")
-            };
-
-            foreach (var (btnText, method) in paymentMethods)
-            {
-                var btn = CreatePaymentButton(btnText, btnX, 72, () => ProcessPayment(hd.MaHD, method));
+                var btn = new Button
+                {
+                    Text = text,
+                    Font = new Font("Segoe UI", 9F, FontStyle.Bold),
+                    Size = new Size(120, 30),
+                    Location = new Point(btnX, 50),
+                    FlatStyle = FlatStyle.Flat,
+                    BackColor = _lightPurple,
+                    ForeColor = Color.White,
+                    Cursor = Cursors.Hand
+                };
+                btn.FlatAppearance.BorderSize = 0;
+                
+                int maHD = hd.MaHD;
+                string payMethod = method;
+                btn.Click += (s, e) => ProcessPayment(maHD, payMethod);
                 card.Controls.Add(btn);
-                btnX += btn.Width + 15;
+                btnX += 130;
             }
 
             return card;
         }
 
-        private Button CreatePaymentButton(string text, int x, int y, Action action)
-        {
-            var btn = new Button
-            {
-                Text = text,
-                Font = new Font("Segoe UI", 9F, FontStyle.Bold),
-                Size = new Size(130, 32),
-                Location = new Point(x, y),
-                FlatStyle = FlatStyle.Flat,
-                BackColor = _lightPurple,
-                ForeColor = Color.White,
-                Cursor = Cursors.Hand
-            };
-            btn.FlatAppearance.BorderSize = 0;
-            btn.Click += (s, e) => action();
-            return btn;
-        }
-
         private void ProcessPayment(int maHD, string paymentMethod)
         {
             var result = XtraMessageBox.Show(
-                $"Xác nhận thanh toán hóa đơn #{maHD}?\n\nPhương thức: {paymentMethod}",
-                "Xác nhận thanh toán",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Question);
+                $"Xác nhận thanh toán hóa đơn #{maHD}?\nPhương thức: {paymentMethod}",
+                "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             if (result == DialogResult.Yes)
             {
@@ -980,11 +745,8 @@ namespace cosmetics_store.FormKH
                 
                 if (payResult.Success)
                 {
-                    XtraMessageBox.Show(
-                        $"✅ Thanh toán thành công!\n\nMã HĐ: #{payResult.MaHD}\nSố tiền: {payResult.TongTien:N0}đ",
-                        "Thành công",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Information);
+                    XtraMessageBox.Show($"✅ Thanh toán thành công!", "Thành công",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
                     ShowPaymentPage();
                 }
                 else
@@ -1000,39 +762,17 @@ namespace cosmetics_store.FormKH
 
         private void ShowAccountInfo()
         {
-            var panel = CreateContentPanel("👤 THÔNG TIN TÀI KHOẢN", "");
+            var panel = CreateContentPanel("👤 THÔNG TIN TÀI KHOẢN");
 
             if (!CurrentUser.IsLoggedIn)
             {
                 AddNotLoggedInMessage(panel, 80);
-                
-                var btnLogin = new Button
-                {
-                    Text = "Đăng nhập ngay",
-                    Font = new Font("Segoe UI", 11F, FontStyle.Bold),
-                    Size = new Size(160, 45),
-                    Location = new Point(20, 130),
-                    FlatStyle = FlatStyle.Flat,
-                    BackColor = _lightPurple,
-                    ForeColor = Color.White,
-                    Cursor = Cursors.Hand
-                };
-                btnLogin.FlatAppearance.BorderSize = 0;
-                btnLogin.Click += (s, e) =>
-                {
-                    this.Hide();
-                    var loginForm = new Forms.fLogin();
-                    loginForm.FormClosed += (sender, args) => this.Close();
-                    loginForm.Show();
-                };
-                panel.Controls.Add(btnLogin);
                 pnlMainArea.Controls.Add(panel);
                 return;
             }
 
             var accountInfo = _khService.GetAccountInfo();
             
-            // Kiểm tra null
             if (accountInfo == null)
             {
                 panel.Controls.Add(new Label
@@ -1047,38 +787,13 @@ namespace cosmetics_store.FormKH
                 return;
             }
 
-            // Avatar
-            var avatarPanel = new Panel
-            {
-                Size = new Size(110, 110),
-                Location = new Point(20, 70),
-                BackColor = Color.FromArgb(200, 180, 220)
-            };
-            
-            string avatarChar = "U";
-            if (!string.IsNullOrEmpty(accountInfo.HoTen) && accountInfo.HoTen.Length > 0)
-            {
-                avatarChar = accountInfo.HoTen.Substring(0, 1).ToUpper();
-            }
-            
-            avatarPanel.Controls.Add(new Label
-            {
-                Text = avatarChar,
-                Font = new Font("Segoe UI", 40F, FontStyle.Bold),
-                ForeColor = Color.White,
-                Dock = DockStyle.Fill,
-                TextAlign = ContentAlignment.MiddleCenter
-            });
-            panel.Controls.Add(avatarPanel);
-
-            // Info items
             var infoItems = new[]
             {
-                ("👤 Họ tên:", accountInfo.HoTen ?? "Chưa cập nhật"),
-                ("📧 Email:", accountInfo.Email ?? "Chưa cập nhật"),
-                ("🔐 Tên đăng nhập:", accountInfo.TenDN ?? "Chưa cập nhật"),
-                ("🎭 Loại tài khoản:", "Khách hàng"),
-                ("📞 Số điện thoại:", accountInfo.SDT ?? "Chưa cập nhật")
+                ("Họ tên:", accountInfo.HoTen ?? "-"),
+                ("Email:", accountInfo.Email ?? "-"),
+                ("Tài khoản:", accountInfo.TenDN ?? "-"),
+                ("SĐT:", !string.IsNullOrEmpty(accountInfo.SDT) ? accountInfo.SDT : "-"),
+                ("Địa chỉ:", !string.IsNullOrEmpty(accountInfo.DiaChi) ? accountInfo.DiaChi : "-")
             };
 
             int yPos = 80;
@@ -1087,46 +802,23 @@ namespace cosmetics_store.FormKH
                 panel.Controls.Add(new Label
                 {
                     Text = label,
-                    Font = new Font("Segoe UI", 11F),
+                    Font = new Font("Segoe UI", 10F),
                     ForeColor = Color.Gray,
-                    Location = new Point(150, yPos),
-                    Size = new Size(160, 28)
+                    Location = new Point(20, yPos),
+                    Size = new Size(100, 22)
                 });
 
                 panel.Controls.Add(new Label
                 {
                     Text = value,
-                    Font = new Font("Segoe UI", 11F, FontStyle.Bold),
+                    Font = new Font("Segoe UI", 10F, FontStyle.Bold),
                     ForeColor = Color.FromArgb(45, 45, 48),
-                    Location = new Point(320, yPos),
+                    Location = new Point(130, yPos),
                     AutoSize = true,
                     MaximumSize = new Size(400, 0)
                 });
-                yPos += 38;
+                yPos += 30;
             }
-
-            // Permissions info
-            var permPanel = new Panel
-            {
-                Size = new Size(350, 160),
-                Location = new Point(20, 300),
-                BackColor = Color.FromArgb(245, 245, 250),
-                Padding = new Padding(15)
-            };
-            
-            permPanel.Controls.Add(new Label
-            {
-                Text = "ℹ️ Quyền hạn của bạn:\n\n" +
-                       "✅ Xem sản phẩm\n" +
-                       "✅ Thêm vào giỏ hàng\n" +
-                       "✅ Xem hóa đơn của bạn\n" +
-                       "✅ Thanh toán hóa đơn\n" +
-                       "❌ Không có quyền quản trị",
-                Font = new Font("Segoe UI", 10F),
-                ForeColor = Color.FromArgb(80, 80, 80),
-                Dock = DockStyle.Fill
-            });
-            panel.Controls.Add(permPanel);
 
             pnlMainArea.Controls.Add(panel);
         }
@@ -1158,9 +850,7 @@ namespace cosmetics_store.FormKH
 
         private void ShowProductDetail(int maSP)
         {
-            var product = _context.SanPhams
-                .Include(sp => sp.ThuongHieu)
-                .FirstOrDefault(sp => sp.MaSP == maSP);
+            var product = _context.SanPhams.Include(sp => sp.ThuongHieu).FirstOrDefault(sp => sp.MaSP == maSP);
                 
             if (product != null)
             {
@@ -1168,7 +858,14 @@ namespace cosmetics_store.FormKH
                 {
                     if (form.ShowDialog() == DialogResult.OK)
                     {
-                        AddToCart(maSP);
+                        var qty = form.SelectedQuantity;
+                        if (qty <= 0) qty = 1;
+                        var result = _khService.AddToCart(maSP, qty);
+                        if (result.Success)
+                        {
+                            UpdateCartCount();
+                            XtraMessageBox.Show($"✅ {result.Message}", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
                     }
                 }
             }
@@ -1180,12 +877,10 @@ namespace cosmetics_store.FormKH
             
             if (cartItems.Count == 0)
             {
-                XtraMessageBox.Show("🛒 Giỏ hàng trống!\nHãy thêm sản phẩm từ trang Sản phẩm.", 
-                    "Giỏ hàng", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                XtraMessageBox.Show("🛒 Giỏ hàng trống!", "Giỏ hàng", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 
-            // Convert to legacy CartItem for fGioHang compatibility
             var legacyCart = cartItems.Select(c => new CartItem
             {
                 MaSP = c.MaSP,
@@ -1200,7 +895,9 @@ namespace cosmetics_store.FormKH
                 {
                     _khService.ClearCart();
                     UpdateCartCount();
-                    LoadTopProducts();
+                    _cachedTopProducts = null;
+                    _cachedAllProducts = null;
+                    ShowHomePage();
                 }
             }
         }
@@ -1214,13 +911,16 @@ namespace cosmetics_store.FormKH
             string keyword = txtTimKiem.Text.Trim();
             if (string.IsNullOrEmpty(keyword))
             {
-                LoadTopProducts();
+                ShowHomePage();
                 return;
             }
 
+            HideAllDynamicPanels();
             pnlHero.Visible = false;
-            lblSectionTitle.Text = $"🔍 KẾT QUẢ TÌM KIẾM: \"{keyword.ToUpper()}\"";
-
+            pnlProducts.Visible = true;
+            UpdateProductsPosition();
+            
+            lblSectionTitle.Text = $"🔍 \"{keyword.ToUpper()}\"";
             var products = _khService.SearchProducts(keyword);
             DisplayProducts(products);
         }
@@ -1238,7 +938,7 @@ namespace cosmetics_store.FormKH
 
         #region Helper Methods
 
-        private Panel CreateContentPanel(string title, string subtitle)
+        private Panel CreateContentPanel(string title)
         {
             var panel = new Panel
             {
@@ -1251,23 +951,11 @@ namespace cosmetics_store.FormKH
             panel.Controls.Add(new Label
             {
                 Text = title,
-                Font = new Font("Segoe UI", 20F, FontStyle.Bold),
+                Font = new Font("Segoe UI", 18F, FontStyle.Bold),
                 ForeColor = _primaryPurple,
-                Location = new Point(20, 20),
+                Location = new Point(20, 25),
                 AutoSize = true
             });
-
-            if (!string.IsNullOrEmpty(subtitle))
-            {
-                panel.Controls.Add(new Label
-                {
-                    Text = subtitle,
-                    Font = new Font("Segoe UI", 9.5F),
-                    ForeColor = Color.Gray,
-                    Location = new Point(20, 58),
-                    AutoSize = true
-                });
-            }
 
             return panel;
         }
@@ -1277,7 +965,7 @@ namespace cosmetics_store.FormKH
             panel.Controls.Add(new Label
             {
                 Text = "⚠️ Vui lòng đăng nhập để sử dụng chức năng này.",
-                Font = new Font("Segoe UI", 13F),
+                Font = new Font("Segoe UI", 12F),
                 ForeColor = Color.OrangeRed,
                 Location = new Point(20, yPos),
                 AutoSize = true
@@ -1286,7 +974,7 @@ namespace cosmetics_store.FormKH
 
         #endregion
 
-        #region Other Events
+        #region Events
 
         private void btnDangXuat_Click(object sender, EventArgs e)
         {
@@ -1312,22 +1000,7 @@ namespace cosmetics_store.FormKH
         private void lblDangNhap_Click(object sender, EventArgs e)
         {
             if (CurrentUser.IsLoggedIn)
-            {
                 ShowAccountInfoPage();
-            }
-            else
-            {
-                var result = XtraMessageBox.Show("Bạn chưa đăng nhập. Đăng nhập ngay?", "Thông báo",
-                    MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-                if (result == DialogResult.Yes)
-                {
-                    this.Hide();
-                    var loginForm = new Forms.fLogin();
-                    loginForm.FormClosed += (s, args) => this.Close();
-                    loginForm.Show();
-                }
-            }
         }
 
         private void searchControl_TextChanged(object sender, EventArgs e) { }
@@ -1344,9 +1017,7 @@ namespace cosmetics_store.FormKH
                     MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                 if (result == DialogResult.Yes)
-                {
                     CurrentUser.Logout();
-                }
                 else
                 {
                     e.Cancel = true;
@@ -1362,9 +1033,6 @@ namespace cosmetics_store.FormKH
             {
                 _bannerTimer?.Stop();
                 _bannerTimer?.Dispose();
-                _hoverTimer?.Dispose();
-                _promoScrollTimer?.Stop();
-                _promoScrollTimer?.Dispose();
                 _khService?.Dispose();
                 _context?.Dispose();
             }
@@ -1373,10 +1041,7 @@ namespace cosmetics_store.FormKH
 
         #endregion
 
-        private void flowSidebar_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
+        private void flowSidebar_Paint(object sender, PaintEventArgs e) { }
     }
 
     public class CartItem

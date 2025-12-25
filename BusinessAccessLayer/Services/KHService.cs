@@ -8,7 +8,6 @@ using BusinessAccessLayer.DTOs;
 
 namespace BusinessAccessLayer.Services
 {
-    
     public class KHService : IDisposable
     {
         private readonly CosmeticsContext _context;
@@ -26,19 +25,17 @@ namespace BusinessAccessLayer.Services
 
         #region Sản Phẩm 
 
-        // Lấy danh sách sản phẩm bán chạy nhất
         public List<SanPhamDTO> GetTopProducts(int count = 10)
         {
             try
             {
-                // Lấy bảng sản phẩm join với thương hiệu và loại sản phẩm
                 return _context.SanPhams
                     .Include(sp => sp.ThuongHieu)
                     .Include(sp => sp.LoaiSP)
-                    .Where(sp => sp.SoLuongTon > 0)  // Kiểm tra số lượng tồn kho, hàng còn trong kho 
-                    .OrderByDescending(sp => sp.CT_HoaDons.Count) // Sắp xếp giảm dần theo số lượng bán được
-                    .ThenByDescending(sp => sp.MaSP) // Nếu số lượng bán được bằng nhau thì sắp xếp theo mã sản phẩm giảm dần
-                    .Take(count) // Lấy số lượng sản phẩm theo tham số count
+                    .Where(sp => sp.SoLuongTon > 0)
+                    .OrderByDescending(sp => sp.CT_HoaDons.Count)
+                    .ThenByDescending(sp => sp.MaSP)
+                    .Take(count)
                     .Select(sp => new SanPhamDTO
                     {
                         MaSP = sp.MaSP,
@@ -51,7 +48,7 @@ namespace BusinessAccessLayer.Services
                         TenLoai = sp.LoaiSP.TenLoai,
                         QuocGia = sp.ThuongHieu.QuocGia
                     })
-                    .ToList(); // Trả về danh sách sản phẩm
+                    .ToList();
             }
             catch (Exception ex)
             {
@@ -60,7 +57,6 @@ namespace BusinessAccessLayer.Services
             }
         }
 
-        // Lấy tất cả sản phẩm với phân trang
         public List<SanPhamDTO> GetAllProducts(int page = 1, int pageSize = 20)
         {
             try
@@ -69,9 +65,9 @@ namespace BusinessAccessLayer.Services
                     .Include(sp => sp.ThuongHieu)
                     .Include(sp => sp.LoaiSP)
                     .Where(sp => sp.SoLuongTon > 0)
-                    .OrderByDescending(sp => sp.MaSP) // Sắp xếp giảm dần theo mã sản phẩm
-                    .Skip((page - 1) * pageSize) // Bỏ qua số sản phẩm của các trang trước
-                    .Take(pageSize) // Lấy số sản phẩm của trang hiện tại
+                    .OrderByDescending(sp => sp.MaSP)
+                    .Skip((page - 1) * pageSize)
+                    .Take(pageSize)
                     .Select(sp => new SanPhamDTO
                     {
                         MaSP = sp.MaSP,
@@ -93,7 +89,6 @@ namespace BusinessAccessLayer.Services
             }
         }
 
-        // Tìm kiếm sản phẩm theo từ khóa
         public List<SanPhamDTO> SearchProducts(string keyword)
         {
             try
@@ -102,7 +97,6 @@ namespace BusinessAccessLayer.Services
                     return GetAllProducts();
 
                 keyword = keyword.ToLower().Trim();
-                // Tìm kiếm trong tên sản phẩm, tên thương hiệu, tên loại sản phẩm và mô tả
                 return _context.SanPhams
                     .Include(sp => sp.ThuongHieu)
                     .Include(sp => sp.LoaiSP)
@@ -111,8 +105,8 @@ namespace BusinessAccessLayer.Services
                                   sp.ThuongHieu.TenThuongHieu.ToLower().Contains(keyword) ||
                                   sp.LoaiSP.TenLoai.ToLower().Contains(keyword) ||
                                   sp.MoTa.ToLower().Contains(keyword)))
-                    .OrderByDescending(sp => sp.MaSP) // Sắp xếp giảm dần theo mã sản phẩm
-                    .Take(50) // Giới hạn kết quả trả về tối đa 50 sản phẩm
+                    .OrderByDescending(sp => sp.MaSP)
+                    .Take(50)
                     .Select(sp => new SanPhamDTO
                     {
                         MaSP = sp.MaSP,
@@ -133,7 +127,7 @@ namespace BusinessAccessLayer.Services
                 return new List<SanPhamDTO>();
             }
         }
-      
+
         #endregion
 
         #region Giỏ hàng
@@ -142,25 +136,20 @@ namespace BusinessAccessLayer.Services
         {
             try
             {
-
-                // lấy sản phẩm từ database
                 var product = _context.SanPhams
                     .Include(sp => sp.ThuongHieu)
                     .FirstOrDefault(sp => sp.MaSP == maSP);
 
-                // xem sản phẩm có tồn tại không
                 if (product == null)
                 {
                     return new CartResult { Success = false, Message = "Sản phẩm không tồn tại" };
                 }
 
-                // xem số lượng tồn kho có đủ không
                 if (product.SoLuongTon < soLuong)
                 {
                     return new CartResult { Success = false, Message = $"Chỉ còn {product.SoLuongTon} sản phẩm trong kho" };
                 }
 
-                // kiểm tra sản phẩm đã có trong giỏ hàng chưa
                 var existing = _cart.FirstOrDefault(c => c.MaSP == maSP);
                 if (existing != null)
                 {
@@ -247,8 +236,9 @@ namespace BusinessAccessLayer.Services
                     })
                     .ToList();
             }
-            catch
+            catch (Exception ex)
             {
+                System.Diagnostics.Debug.WriteLine($"GetMyInvoices Error: {ex.Message}");
                 return new List<HoaDonDTO>();
             }
         }
@@ -281,8 +271,9 @@ namespace BusinessAccessLayer.Services
                     })
                     .ToList();
             }
-            catch
+            catch (Exception ex)
             {
+                System.Diagnostics.Debug.WriteLine($"GetUnpaidInvoices Error: {ex.Message}");
                 return new List<HoaDonDTO>();
             }
         }
@@ -304,7 +295,7 @@ namespace BusinessAccessLayer.Services
                     var khachHang = GetOrCreateKhachHang();
                     if (khachHang != null && hd.MaKH != khachHang.MaKH)
                     {
-                        return null; // Không có quyền xem
+                        return null;
                     }
                 }
 
@@ -326,8 +317,9 @@ namespace BusinessAccessLayer.Services
                     }).ToList()
                 };
             }
-            catch
+            catch (Exception ex)
             {
+                System.Diagnostics.Debug.WriteLine($"GetInvoiceDetail Error: {ex.Message}");
                 return null;
             }
         }
@@ -378,59 +370,161 @@ namespace BusinessAccessLayer.Services
 
         #region Khách hàng
 
+        /// <summary>
+        /// Lấy hoặc tạo khách hàng cho user đang đăng nhập.
+        /// Thứ tự ưu tiên: MaKH = MaNV (legacy) -> Email -> HoTen -> Tạo mới
+        /// </summary>
         public KhachHang GetOrCreateKhachHang()
+        {
+            try
+            {
+                if (!CurrentUser.IsLoggedIn)
+                {
+                    System.Diagnostics.Debug.WriteLine("GetOrCreateKhachHang: User chưa đăng nhập");
+                    return null;
+                }
+
+                var user = CurrentUser.User;
+                System.Diagnostics.Debug.WriteLine($"GetOrCreateKhachHang: MaNV={user.MaNV}, Email={user.Email}, HoTen={user.HoTen}");
+
+                KhachHang khachHang = null;
+
+                // Ưu tiên 1: Tìm theo MaNV (legacy - đăng ký tạo MaKH = MaNV)
+                if (user.MaNV > 0)
+                {
+                    khachHang = _context.KhachHangs.FirstOrDefault(k => k.MaKH == user.MaNV);
+                    if (khachHang != null)
+                    {
+                        System.Diagnostics.Debug.WriteLine($"GetOrCreateKhachHang: Tìm thấy theo MaNV, MaKH={khachHang.MaKH}");
+                    }
+                }
+
+                // Ưu tiên 2: Tìm theo email
+                if (khachHang == null && !string.IsNullOrEmpty(user.Email))
+                {
+                    khachHang = _context.KhachHangs.FirstOrDefault(k => k.Email == user.Email);
+                    if (khachHang != null)
+                    {
+                        System.Diagnostics.Debug.WriteLine($"GetOrCreateKhachHang: Tìm thấy theo Email, MaKH={khachHang.MaKH}");
+                    }
+                }
+
+                // Ưu tiên 3: Tìm theo tên (fallback)
+                if (khachHang == null && !string.IsNullOrEmpty(user.HoTen))
+                {
+                    khachHang = _context.KhachHangs.FirstOrDefault(k => k.HoTen == user.HoTen);
+                    if (khachHang != null)
+                    {
+                        System.Diagnostics.Debug.WriteLine($"GetOrCreateKhachHang: Tìm thấy theo HoTen, MaKH={khachHang.MaKH}");
+                    }
+                }
+
+                // Nếu không tìm thấy, tạo mới KhachHang
+                if (khachHang == null)
+                {
+                    System.Diagnostics.Debug.WriteLine("GetOrCreateKhachHang: Tạo mới khách hàng");
+
+                    khachHang = new KhachHang
+                    {
+                        HoTen = user.HoTen ?? "Khách hàng",
+                        Email = user.Email ?? "",
+                        SDT = "",
+                        GioiTinh = "Khác",
+                        DiaChi = ""
+                    };
+
+                    _context.KhachHangs.Add(khachHang);
+                    _context.SaveChanges();
+
+                    System.Diagnostics.Debug.WriteLine($"GetOrCreateKhachHang: Đã tạo mới, MaKH={khachHang.MaKH}");
+                }
+                else
+                {
+                    // Cập nhật email nếu khách hàng cũ chưa có email
+                    if (string.IsNullOrEmpty(khachHang.Email) && !string.IsNullOrEmpty(user.Email))
+                    {
+                        khachHang.Email = user.Email;
+                        _context.SaveChanges();
+                        System.Diagnostics.Debug.WriteLine($"GetOrCreateKhachHang: Cập nhật email cho MaKH={khachHang.MaKH}");
+                    }
+                }
+
+                // Lưu MaKH vào CurrentUser để sử dụng sau
+                CurrentUser.MaKH = khachHang.MaKH;
+
+                return khachHang;
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"GetOrCreateKhachHang Error: {ex.Message}");
+                System.Diagnostics.Debug.WriteLine($"StackTrace: {ex.StackTrace}");
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// Lấy thông tin tài khoản của khách hàng đang đăng nhập
+        /// </summary>
+        public ThongTinTaiKhoanDTO GetAccountInfo()
         {
             try
             {
                 if (!CurrentUser.IsLoggedIn) return null;
 
                 var user = CurrentUser.User;
-                if (user.MaNV <= 0) return null;
+                var khachHang = GetOrCreateKhachHang();
 
-                // Đồng bộ theo thiết kế hiện tại: MaKH = MaNV (tạo khi đăng ký)
-                var khachHang = _context.KhachHangs.FirstOrDefault(k => k.MaKH == user.MaNV);
-
-                if (khachHang == null)
+                // Trả về thông tin tài khoản kết hợp từ UserInfo và KhachHang
+                return new ThongTinTaiKhoanDTO
                 {
-                    // Trường hợp dữ liệu cũ chưa đồng bộ: tạo mới hồ sơ KhachHang
-                    khachHang = new KhachHang
-                    {
-                        MaKH = user.MaNV,
-                        HoTen = user.HoTen ?? "Khách hàng",
-                        SDT = "",
-                        GioiTinh = "Khác",
-                        DiaChi = ""
-                    };
-                    _context.KhachHangs.Add(khachHang);
-                    _context.SaveChanges();
-                }
-
-                return khachHang;
+                    MaKH = khachHang?.MaKH ?? 0,
+                    MaNV = user.MaNV,
+                    HoTen = khachHang?.HoTen ?? user.HoTen ?? "Chưa cập nhật",
+                    Email = khachHang?.Email ?? user.Email ?? "Chưa cập nhật",
+                    TenDN = user.TenDN ?? "Chưa cập nhật",
+                    ChucVu = "Khách hàng",
+                    Quyen = user.Quyen ?? "Khách hàng",
+                    DiaChi = khachHang?.DiaChi ?? "",
+                    SDT = khachHang?.SDT ?? "",
+                    GioiTinh = khachHang?.GioiTinh ?? "Khác"
+                };
             }
-            catch
+            catch (Exception ex)
             {
+                System.Diagnostics.Debug.WriteLine($"GetAccountInfo Error: {ex.Message}");
                 return null;
             }
         }
 
-        public ThongTinTaiKhoanDTO GetAccountInfo()
+        /// <summary>
+        /// Cập nhật thông tin khách hàng
+        /// </summary>
+        public bool UpdateCustomerInfo(string hoTen, string sdt, string diaChi, string email, string gioiTinh)
         {
-            if (!CurrentUser.IsLoggedIn) return null;
-
-            var user = CurrentUser.User;
-            var khachHang = GetOrCreateKhachHang();
-
-            return new ThongTinTaiKhoanDTO
+            try
             {
-                MaNV = user.MaNV,
-                HoTen = user.HoTen,
-                Email = user.Email,
-                TenDN = user.TenDN,
-                ChucVu = user.ChucVu ?? "Khách hàng",
-                Quyen = user.Quyen,
-                DiaChi = khachHang?.DiaChi,
-                SDT = khachHang?.SDT
-            };
+                var khachHang = GetOrCreateKhachHang();
+                if (khachHang == null) return false;
+
+                if (!string.IsNullOrWhiteSpace(hoTen))
+                    khachHang.HoTen = hoTen;
+                if (!string.IsNullOrWhiteSpace(sdt))
+                    khachHang.SDT = sdt;
+                if (!string.IsNullOrWhiteSpace(diaChi))
+                    khachHang.DiaChi = diaChi;
+                if (!string.IsNullOrWhiteSpace(email))
+                    khachHang.Email = email;
+                if (!string.IsNullOrWhiteSpace(gioiTinh))
+                    khachHang.GioiTinh = gioiTinh;
+
+                _context.SaveChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"UpdateCustomerInfo Error: {ex.Message}");
+                return false;
+            }
         }
 
         #endregion

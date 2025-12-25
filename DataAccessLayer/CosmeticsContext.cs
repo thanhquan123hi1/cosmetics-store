@@ -23,9 +23,7 @@ namespace DataAccessLayer
 
         public DbSet<AuditLog> AuditLogs { get; set; }
 
-        /// <summary>
         /// Bảng lưu token reset mật khẩu
-        /// </summary>
         public DbSet<ResetPasswordToken> ResetPasswordTokens { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

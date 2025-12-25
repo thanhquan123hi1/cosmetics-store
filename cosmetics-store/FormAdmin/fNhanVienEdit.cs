@@ -50,246 +50,41 @@ namespace cosmetics_store.Forms
 
         private void SetupUI()
         {
-            this.Text = _isEditMode ? "✏️ SỬA THÔNG TIN NHÂN VIÊN" : "➕ THÊM NHÂN VIÊN MỚI";
+            // Chỉ thiết lập title và properties cơ bản, không tạo lại controls
+            this.Text = _isEditMode ? "✏️ Sửa thông tin nhân viên" : "➕ Thêm nhân viên mới";
             this.BackColor = Color.FromArgb(245, 246, 250);
-            this.FormBorderStyle = FormBorderStyle.FixedDialog;
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
-            this.StartPosition = FormStartPosition.CenterParent;
-            this.Size = new Size(550, 580);
-
-            // Panel title
-            var pnlHeader = new Panel
-            {
-                Dock = DockStyle.Top,
-                Height = 60,
-                BackColor = _primaryColor
-            };
             
-            var lblTitle = new Label
+            // Cập nhật caption cho layout items
+            if (layoutItemHoTen != null) layoutItemHoTen.Text = "Họ tên: *";
+            if (layoutItemNgaySinh != null) layoutItemNgaySinh.Text = "Ngày sinh:";
+            if (layoutItemGioiTinh != null) layoutItemGioiTinh.Text = "Giới tính:";
+            if (layoutItemDiaChi != null) layoutItemDiaChi.Text = "Địa chỉ:";
+            if (layoutItemSDT != null) layoutItemSDT.Text = "Số điện thoại:";
+            if (layoutItemChucVu != null) layoutItemChucVu.Text = "Chức vụ: *";
+
+            // Cập nhật button text
+            if (btnOk != null)
             {
-                Text = _isEditMode ? "✏️ SỬA THÔNG TIN NHÂN VIÊN" : "➕ THÊM NHÂN VIÊN MỚI",
-                Font = new Font("Segoe UI", 16F, FontStyle.Bold),
-                ForeColor = Color.White,
-                Location = new Point(20, 15),
-                AutoSize = true
-            };
-            pnlHeader.Controls.Add(lblTitle);
-            this.Controls.Add(pnlHeader);
-
-            // Main content
-            int startY = 80;
-            int lblWidth = 130;
-            int txtWidth = 350;
-            int spacing = 50;
-
-            // Họ tên
-            AddFormField("Họ tên:", txtHoTen, startY, lblWidth, txtWidth, true);
-            startY += spacing;
-
-            // Ngày sinh
-            AddFormLabel("Ngày sinh:", startY, lblWidth, false);
-            if (dateNgaySinh != null)
-            {
-                dateNgaySinh.Location = new Point(155, startY);
-                dateNgaySinh.Size = new Size(200, 30);
+                btnOk.Text = "💾 Lưu";
+                btnOk.Appearance.BackColor = _successColor;
             }
-            startY += spacing;
+            if (btnCancel != null)
+            {
+                btnCancel.Text = "❌ Hủy";
+                btnCancel.Appearance.BackColor = _dangerColor;
+            }
 
-            // Giới tính
-            AddFormLabel("Giới tính:", startY, lblWidth, false);
+            // Xóa duplicate items trong combo boxes
             if (cboGioiTinh != null)
             {
-                cboGioiTinh.Location = new Point(155, startY);
-                cboGioiTinh.Size = new Size(150, 30);
+                cboGioiTinh.Properties.Items.Clear();
+                cboGioiTinh.Properties.Items.AddRange(new[] { "Nam", "Nữ", "Khác" });
             }
-            startY += spacing;
-
-            // Địa chỉ
-            AddFormField("Địa chỉ:", txtDiaChi, startY, lblWidth, txtWidth, false);
-            startY += spacing;
-
-            // SĐT
-            AddFormField("Số điện thoại:", txtSDT, startY, lblWidth, txtWidth, false);
-            startY += spacing;
-
-            // Chức vụ
-            AddFormLabel("Chức vụ:", startY, lblWidth, true);
             if (cboChucVu != null)
             {
-                cboChucVu.Location = new Point(155, startY);
-                cboChucVu.Size = new Size(200, 30);
+                cboChucVu.Properties.Items.Clear();
+                cboChucVu.Properties.Items.AddRange(new[] { "Quản trị viên", "Quản lý", "Nhân viên bán hàng", "Nhân viên kho", "Kế toán" });
             }
-            startY += spacing + 10;
-
-            // === SECTION: Tài khoản (chỉ hiển thị khi thêm mới) ===
-            if (!_isEditMode)
-            {
-                var lblSection = new Label
-                {
-                    Text = "─── TẠO TÀI KHOẢN ĐĂNG NHẬP ───",
-                    Font = new Font("Segoe UI", 10F, FontStyle.Bold),
-                    ForeColor = _primaryColor,
-                    Location = new Point(20, startY),
-                    AutoSize = true
-                };
-                this.Controls.Add(lblSection);
-                startY += 35;
-
-                // Checkbox tạo tài khoản
-                chkTaoTaiKhoan = new CheckEdit
-                {
-                    Text = "Tạo tài khoản đăng nhập cho nhân viên này",
-                    Font = new Font("Segoe UI", 10F),
-                    Location = new Point(155, startY),
-                    Size = new Size(350, 25),
-                    Checked = true
-                };
-                chkTaoTaiKhoan.CheckedChanged += ChkTaoTaiKhoan_CheckedChanged;
-                this.Controls.Add(chkTaoTaiKhoan);
-                startY += 35;
-
-                // Tên đăng nhập
-                lblTenDN = new Label
-                {
-                    Text = "Tên đăng nhập: *",
-                    Font = new Font("Segoe UI", 10F),
-                    ForeColor = _dangerColor,
-                    Location = new Point(20, startY + 5),
-                    Size = new Size(lblWidth, 25)
-                };
-                this.Controls.Add(lblTenDN);
-
-                txtTenDN = new TextEdit
-                {
-                    Location = new Point(155, startY),
-                    Size = new Size(200, 30),
-                    Font = new Font("Segoe UI", 10F)
-                };
-                this.Controls.Add(txtTenDN);
-                startY += spacing;
-
-                // Mật khẩu
-                lblMatKhau = new Label
-                {
-                    Text = "Mật khẩu: *",
-                    Font = new Font("Segoe UI", 10F),
-                    ForeColor = _dangerColor,
-                    Location = new Point(20, startY + 5),
-                    Size = new Size(lblWidth, 25)
-                };
-                this.Controls.Add(lblMatKhau);
-
-                txtMatKhau = new TextEdit
-                {
-                    Location = new Point(155, startY),
-                    Size = new Size(200, 30),
-                    Font = new Font("Segoe UI", 10F)
-                };
-                txtMatKhau.Properties.PasswordChar = '*';
-                this.Controls.Add(txtMatKhau);
-                startY += spacing;
-
-                // Email
-                lblEmail = new Label
-                {
-                    Text = "Email: *",
-                    Font = new Font("Segoe UI", 10F),
-                    ForeColor = _dangerColor,
-                    Location = new Point(20, startY + 5),
-                    Size = new Size(lblWidth, 25)
-                };
-                this.Controls.Add(lblEmail);
-
-                txtEmail = new TextEdit
-                {
-                    Location = new Point(155, startY),
-                    Size = new Size(300, 30),
-                    Font = new Font("Segoe UI", 10F)
-                };
-                this.Controls.Add(txtEmail);
-                startY += spacing;
-
-                // Quyền
-                lblQuyen = new Label
-                {
-                    Text = "Quyền:",
-                    Font = new Font("Segoe UI", 10F),
-                    ForeColor = _primaryColor,
-                    Location = new Point(20, startY + 5),
-                    Size = new Size(lblWidth, 25)
-                };
-                this.Controls.Add(lblQuyen);
-
-                cboQuyen = new ComboBoxEdit
-                {
-                    Location = new Point(155, startY),
-                    Size = new Size(200, 30)
-                };
-                cboQuyen.Properties.Items.AddRange(new[] { "Nhân viên bán hàng", "Quản lý", "Quản trị viên" });
-                cboQuyen.SelectedIndex = 0;
-                this.Controls.Add(cboQuyen);
-                startY += spacing + 20;
-            }
-
-            // Buttons
-            var btnOK = new SimpleButton
-            {
-                Text = "💾 Lưu",
-                Size = new Size(120, 45),
-                Location = new Point(this.ClientSize.Width - 270, startY),
-                Appearance = { BackColor = _successColor, ForeColor = Color.White, Font = new Font("Segoe UI", 11F, FontStyle.Bold) }
-            };
-            btnOK.Click += btnOk_Click;
-            this.Controls.Add(btnOK);
-
-            var btnCancel = new SimpleButton
-            {
-                Text = "❌ Hủy",
-                Size = new Size(120, 45),
-                Location = new Point(this.ClientSize.Width - 140, startY),
-                Appearance = { BackColor = _dangerColor, ForeColor = Color.White, Font = new Font("Segoe UI", 11F, FontStyle.Bold) }
-            };
-            btnCancel.Click += btnCancel_Click;
-            this.Controls.Add(btnCancel);
-        }
-
-        // Controls cho tài khoản
-        private CheckEdit chkTaoTaiKhoan;
-        private Label lblTenDN, lblMatKhau, lblEmail, lblQuyen;
-        private TextEdit txtTenDN, txtMatKhau, txtEmail;
-        private ComboBoxEdit cboQuyen;
-
-        private void ChkTaoTaiKhoan_CheckedChanged(object sender, EventArgs e)
-        {
-            bool enabled = chkTaoTaiKhoan.Checked;
-            if (txtTenDN != null) txtTenDN.Enabled = enabled;
-            if (txtMatKhau != null) txtMatKhau.Enabled = enabled;
-            if (txtEmail != null) txtEmail.Enabled = enabled;
-            if (cboQuyen != null) cboQuyen.Enabled = enabled;
-        }
-
-        private void AddFormField(string labelText, TextEdit textEdit, int yPos, int lblWidth, int txtWidth, bool required)
-        {
-            AddFormLabel(labelText, yPos, lblWidth, required);
-            if (textEdit != null)
-            {
-                textEdit.Location = new Point(155, yPos);
-                textEdit.Size = new Size(txtWidth, 30);
-            }
-        }
-
-        private void AddFormLabel(string labelText, int yPos, int lblWidth, bool required)
-        {
-            var lbl = new Label
-            {
-                Text = labelText + (required ? " *" : ""),
-                Font = new Font("Segoe UI", 10F),
-                ForeColor = required ? _dangerColor : _primaryColor,
-                Location = new Point(20, yPos + 5),
-                Size = new Size(lblWidth, 25)
-            };
-            this.Controls.Add(lbl);
         }
 
         private void InitializeForm()
@@ -297,9 +92,12 @@ namespace cosmetics_store.Forms
             // Giá trị mặc định
             if (!_isEditMode)
             {
-                if (cboGioiTinh != null) cboGioiTinh.SelectedIndex = 0;
-                if (cboChucVu != null) cboChucVu.SelectedIndex = 2; // Nhân viên bán hàng
-                if (dateNgaySinh != null) dateNgaySinh.EditValue = DateTime.Now.AddYears(-25);
+                if (cboGioiTinh != null && cboGioiTinh.Properties.Items.Count > 0) 
+                    cboGioiTinh.SelectedIndex = 0;
+                if (cboChucVu != null && cboChucVu.Properties.Items.Count > 2) 
+                    cboChucVu.SelectedIndex = 2; // Nhân viên bán hàng
+                if (dateNgaySinh != null) 
+                    dateNgaySinh.EditValue = DateTime.Now.AddYears(-25);
             }
         }
 
@@ -338,23 +136,12 @@ namespace cosmetics_store.Forms
             nhanVien.SDT = txtSDT?.Text?.Trim() ?? nhanVien.SDT;
         }
 
-        public bool ShouldCreateAccount => !_isEditMode && chkTaoTaiKhoan != null && chkTaoTaiKhoan.Checked;
+        // Tạm thời disable tính năng tạo tài khoản đi kèm vì form dùng LayoutControl
+        public bool ShouldCreateAccount => false;
 
         public TaiKhoan GetTaiKhoan(int maNV)
         {
-            if (!ShouldCreateAccount) return null;
-
-            string quyen = cboQuyen?.EditValue?.ToString() ?? "Nhân viên bán hàng";
-            
-            return new TaiKhoan
-            {
-                MaNV = maNV,
-                TenDN = txtTenDN?.Text?.Trim() ?? "",
-                MatKhau = PasswordHasher.HashPassword(txtMatKhau?.Text ?? "123456"),
-                Email = txtEmail?.Text?.Trim() ?? "",
-                Quyen = quyen,
-                TrangThai = true
-            };
+            return null;
         }
 
         private bool ValidateInput()
@@ -390,77 +177,6 @@ namespace cosmetics_store.Forms
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 cboChucVu?.Focus();
                 return false;
-            }
-
-            // Validate tài khoản nếu tạo mới
-            if (ShouldCreateAccount)
-            {
-                if (string.IsNullOrWhiteSpace(txtTenDN?.Text))
-                {
-                    XtraMessageBox.Show("Vui lòng nhập tên đăng nhập!", "Thông báo",
-                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    txtTenDN?.Focus();
-                    return false;
-                }
-
-                // Kiểm tra tên đăng nhập đã tồn tại
-                var existingUser = _context.TaiKhoans.FirstOrDefault(t => t.TenDN == txtTenDN.Text.Trim());
-                if (existingUser != null)
-                {
-                    XtraMessageBox.Show("Tên đăng nhập đã tồn tại!", "Thông báo",
-                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    txtTenDN?.Focus();
-                    return false;
-                }
-
-                if (string.IsNullOrWhiteSpace(txtMatKhau?.Text))
-                {
-                    XtraMessageBox.Show("Vui lòng nhập mật khẩu!", "Thông báo",
-                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    txtMatKhau?.Focus();
-                    return false;
-                }
-
-                if (txtMatKhau.Text.Length < 6)
-                {
-                    XtraMessageBox.Show("Mật khẩu phải có ít nhất 6 ký tự!", "Thông báo",
-                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    txtMatKhau?.Focus();
-                    return false;
-                }
-
-                if (string.IsNullOrWhiteSpace(txtEmail?.Text))
-                {
-                    XtraMessageBox.Show("Vui lòng nhập email!", "Thông báo",
-                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    txtEmail?.Focus();
-                    return false;
-                }
-
-                // Validate email format
-                try
-                {
-                    var addr = new System.Net.Mail.MailAddress(txtEmail.Text.Trim());
-                    if (addr.Address != txtEmail.Text.Trim())
-                        throw new Exception();
-                }
-                catch
-                {
-                    XtraMessageBox.Show("Email không hợp lệ!", "Thông báo",
-                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    txtEmail?.Focus();
-                    return false;
-                }
-
-                // Kiểm tra email đã tồn tại
-                var existingEmail = _context.TaiKhoans.FirstOrDefault(t => t.Email == txtEmail.Text.Trim());
-                if (existingEmail != null)
-                {
-                    XtraMessageBox.Show("Email đã được sử dụng!", "Thông báo",
-                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    txtEmail?.Focus();
-                    return false;
-                }
             }
 
             return true;
